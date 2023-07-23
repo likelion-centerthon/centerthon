@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+      <link rel="stylesheet" href="{% static 'base.css' %}" />
+      <title>중앙톤 프로젝트</title>
+    {% include 'head.html' %}
+   </head>
+  <body>
+      <div class="content">
+          {% include 'header.html' %}
+          {% block content %}
+          {% endblock %}
+          <div>{% include 'footer.html' %}</div>
+      </div>
+  </body>
+</html>
