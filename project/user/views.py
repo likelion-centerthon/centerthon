@@ -3,7 +3,7 @@ from django.utils import timezone
 from django.shortcuts import render,redirect
 from django.views.generic import View, CreateView, UpdateView, DeleteView
 
-from .models import User
+from .models import User, Artist
 import requests
 
 uri = "http://127.0.0.1:8000"
@@ -75,6 +75,11 @@ class KakaoCallback(View):
 
 def select_artist(request):
     if request.method=='GET':
-        list=None
+        artists = Artist.objects.all()
+        return render(request, './user/artist.html', {"artists":artists})
     elif request.method=='POST':
-        list=None
+        user = request.user
+        artist_pk = str(request.POST.get('artist'))
+        artist = Artist.objects.get(pk=artist_pk)
+        user.artist.add(artist)
+        return render(request, './user/login.html')
