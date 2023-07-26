@@ -1,7 +1,7 @@
 ---
 name: Centerthon issue template
 about: Describe this issue template's purpose here.
-title: ex. [BE] OO 기능구현
+title: "[BE] OO 기능구현"
 labels: ''
 assignees: ''
 
