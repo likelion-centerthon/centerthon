@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Meeting Detail</title>
+</head>
+<body>
+    <h1>{{ meeting.title }}</h1>
+    <p><strong>Meeting Date:</strong> {{ meeting.meetDate }}</p>
+    <p><strong>Location:</strong> {{ meeting.location }}</p>
+    <p><strong>Age Restriction:</strong> {{ meeting.age }}</p>
+    <p><strong>Number of People:</strong> {{ meeting.peopleNm }}</p>
+    <p><strong>Kakao Chat Link:</strong> {{ meeting.kakaoLink }}</p>
+    <p><strong>Meeting State:</strong> {{ meeting.meetingState }}</p>
+    {% if meeting.image %}
+        <img src="{{ meeting.image.url }}" alt="{{ meeting.title }} Image">
+    {% endif %}
+    <p><strong>Body:</strong></p>
+    <p>{{ meeting.body }}</p>
+    <hr>
+    <a href="{% url 'applyMeeting' meeting_id=meeting.id %}"><p><strong>모임 신청하기</strong></p></a>
+</body>
+</html>
