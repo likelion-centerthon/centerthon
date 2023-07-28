@@ -8,7 +8,7 @@
     {% for artist in artists %}
     <form method="post">
         {% csrf_token %}
-        {{artist.teamName}}<input type="hidden" name="artist" value="{{ artist.pk }}">
+        {{artist.artistName}}<input type="hidden" name="artist" value="{{ artist.pk }}">
         <button type="submit">선택하기</button>
     </form>
     {% endfor %}
