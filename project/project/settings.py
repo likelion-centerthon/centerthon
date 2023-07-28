@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'artist',
     'alert',
     'userWorking',
+    'support',
 ]
 
 MIDDLEWARE = [
