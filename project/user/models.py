@@ -1,6 +1,9 @@
 from django.db import models
 from django.core.validators import RegexValidator
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
+
+from artist.models import Artist
+
 class UserManager(BaseUserManager):
     def create_user(self, kakaoId, userName, age, gender, password=None, **extra_fields):
         user = self.model(
@@ -41,7 +44,9 @@ class User(AbstractBaseUser, PermissionsMixin):
     phoneNumber = models.CharField(validators=[phoneNumberRegex], max_length=11, unique=True, null=True)
     subPhoneNumber=models.CharField(null=True, validators=[phoneNumberRegex], max_length=11)
     region=models.CharField(null=True, max_length=20)
-    artist=models.ManyToManyField('artist.Artist', related_name='fans')
+
+    artists=models.ManyToManyField(Artist)
+
     is_staff = models.BooleanField(default=False)
     is_admin = models.BooleanField(default=False)
     is_active = models.BooleanField(default=False)

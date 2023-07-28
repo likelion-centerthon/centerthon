@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>아티스트 선택</title>
+</head>
+<body>
+    {% for artist in artists %}
+    <form method="post" action="{% url 'artist:select_artist' pk=artist.pk %}">
+        {% csrf_token %}
+        <button type="submit">
+             <img src="{{ artist.artistImage.url }}" width="150" height="100">
+             {{ artist.artistName }}
+        </button>
+    </form>
+    {% endfor %}
+</body>
+</html>

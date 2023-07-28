@@ -76,17 +76,5 @@ class KakaoCallback(View):
         # 로그인
         user = User.objects.get(kakaoId=user_info['id'])
         login(request, user, 'user.auth.MyBackend')
-        # return redirect('user:signup', pk=user.pk)
-        return redirect('user:artists')
+        return redirect('artist:artist_list')
 
-def select_artist(request):
-    if request.method=='GET':
-        artists = Artist.objects.all()
-        return render(request, './user/artist.html', {"artists":artists})
-    elif request.method=='POST':
-        user = request.user
-        artist_pk = str(request.POST.get('artist'))
-        artist = Artist.objects.get(pk=artist_pk)
-        print(artist)
-        user.artist.add(artist)
-        return render(request, './user/login.html')
