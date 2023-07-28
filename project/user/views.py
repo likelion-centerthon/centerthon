@@ -3,7 +3,8 @@ from django.utils import timezone
 from django.shortcuts import render,redirect
 from django.views.generic import View, CreateView, UpdateView, DeleteView
 
-from .models import User, Artist
+from .models import User
+from artist.models import Artist
 import requests
 
 uri = "http://127.0.0.1:8000"
@@ -26,7 +27,11 @@ def sign_up(request, pk):
         user.subPhoneNumber=request.POST.get('subPhoneNumber')
         user.region=request.POST.get('region')
         user.save()
-        return redirect('user:login')
+        return redirect('user:tutorial')
+
+# 아티스트선택/튜토리얼 분기 페이지
+def tutorial(request):
+    return render(request, './user/tutorial.html')
 
 # 인가 코드 요청
 class Kakao(View):

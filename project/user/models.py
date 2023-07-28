@@ -4,7 +4,6 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, Permis
 
 from artist.models import Artist
 
-
 class UserManager(BaseUserManager):
     def create_user(self, kakaoId, userName, age, gender, password=None, **extra_fields):
         user = self.model(

@@ -6,7 +6,7 @@ from artist.models import Artist
 def artist_list(request):
     user = request.user
 
-    if not user.is_authenticated:
+    if user.is_authenticated:
         if request.method == 'GET': # 아티스트 전체 조회
             artists = Artist.objects.all()
 
@@ -20,8 +20,7 @@ def artist_list(request):
 
 # 아티스트 선택 후 아티스트 정보 페이지 이동
 def select_artist(request, pk):
-    if not request.user.is_authenticated:
-
+    if request.user.is_authenticated:
         if request.method == 'POST':
             user = request.user
             artist = get_object_or_404(Artist, pk=pk)
