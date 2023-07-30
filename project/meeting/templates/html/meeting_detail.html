@@ -5,17 +5,17 @@
 </head>
 <body>
     <h1>{{ meeting.title }}</h1>
-    <p><strong>모임 일자:</strong> {{ meeting.meetDate }}</p>
-    <p><strong>장소:</strong> {{ meeting.location }}</p>
-    <p><strong>나이 제한:</strong> {{ meeting.age }}</p>
-    <p><strong>인원:</strong> {{ meeting.peopleNm }}</p>
-    <p><strong>오픈채팅 링크:</strong> {{ meeting.kakaoLink }}</p>
-    <p><strong>모임 상태:</strong> {{ meeting.meetingState }}</p>
     {% if meeting.image %}
         <img src="{{ meeting.image.url }}" alt="{{ meeting.title }} Image">
     {% endif %}
-    <p><strong>Body:</strong></p>
+    <p><strong>모임 일자:</strong> {{ meeting.meetDate|date:"Y/m/d" }}</p>
+    <p><strong>장소:</strong> {{ meeting.location }}</p>
+    <p><strong>나이 제한:</strong> {{ meeting.age }}</p>
+    <p><strong>인원:</strong> {{ meeting.peopleNm }}</p>
+    <p><strong>오픈채팅링크:</strong> {{ meeting.kakaoLink }}</p>
+    <p><strong>내용:</strong></p>
     <p>{{ meeting.body }}</p>
+    <p><strong>모임 상태:</strong> {{ meeting.meetingState }}</p>
     <hr>
     <a href="{% url 'applyMeeting' meeting_id=meeting.id %}"><p><strong>모임 신청하기</strong></p></a>
 </body>

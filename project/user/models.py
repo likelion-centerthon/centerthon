@@ -42,7 +42,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     phoneNumber = models.CharField(validators=[phoneNumberRegex], max_length=11, unique=True, null=True)
     subPhoneNumber=models.CharField(null=True, validators=[phoneNumberRegex], max_length=11)
     region=models.CharField(null=True, max_length=20)
-    # artist=models.ManyToManyField('user.Artist', related_name='fans')
+    artist=models.ManyToManyField('user.Artist', related_name='fans')
     is_staff = models.BooleanField(default=False)
     is_admin = models.BooleanField(default=False)
     is_active = models.BooleanField(default=False)

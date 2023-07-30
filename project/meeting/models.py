@@ -37,3 +37,4 @@ class MeetingMember(models.Model):
     memberState = models.CharField(max_length=20, choices=[(status.value, status.name) for status in MemberState], default = MemberState.대기.value)
     def __str__(self):
         return self.User.userName
+

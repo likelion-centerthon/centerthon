@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Meeting, MeetingMember,MeetingState, MemberState
 from artist.models import Artist
+from .forms import MeetingEditForm
 from django.db.models import Q
 
 
@@ -21,7 +22,7 @@ def CreateMeeting(request, artist_id):
         meeting.writeUser = request.user
         meeting.artist = artist
         meeting.save()
-        return redirect('createMeeting', artist_id=artist_id)
+        return redirect('MeetingList', artist_id=artist_id)
 
     return render(request, "html/meeting_create.html")
 
@@ -83,38 +84,22 @@ def applyMeeting(request, meeting_id):
     }
     return redirect('meeting_detail', meeting_id=meeting_id)
 
-#수정 필요
+#수정 기능
 def editMeeting(request, meeting_id):
-    meeting = Meeting.objects.get(id=meeting_id)
+    meeting = get_object_or_404(Meeting, id=meeting_id)
 
     if request.method == 'POST':
-        title = request.POST.get('title')
-        body = request.POST.get('body')
-        meetDate = request.POST.get('meetDate')
-        location = request.POST.get('location')
-        age = request.POST.get('age')
-        peopleNm = request.POST.get('peopleNm')
-        kakaoLink = request.POST.get('kakaoLink')
-        meeting.title = title
-        meeting.body = body
-        meeting.meetDate = meetDate
-        meeting.location = location
-        meeting.age = age
-        meeting.peopleNm = peopleNm
-        meeting.kakaoLink = kakaoLink
-        if 'image' in request.FILES:
-            meeting.image = request.FILES['image']
+        form = MeetingEditForm(request.POST, request.FILES, instance=meeting)
+        if form.is_valid():
+            form.save()
+            return redirect('meeting_detail', meeting_id=meeting_id)
+    else:
+        form = MeetingEditForm(instance=meeting)
 
-        meeting.save()
-
-        return redirect('meeting_detail', meeting_id=meeting_id)
-
-    context = {'meeting': meeting}
+    context = {'form': form, 'meeting': meeting}
     return render(request, "html/meeting_edit.html", context)
 
-#내가 작성한 모임 리스
-
-# 뷰함수
+#내가 작성한 모임 리스트
 def writedMeetingList(request, artist_id):
     artists = Artist.objects.all()
     artist = get_object_or_404(Artist, pk=artist_id)

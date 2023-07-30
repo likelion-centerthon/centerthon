@@ -5,18 +5,18 @@
     <title>모임 상세 조회</title>
 </head>
 <body>
-    <h1>{{ meeting.title }}</h1>
-    <p><strong>일시:</strong> {{ meeting.meetDate }}</p>
-    <p><strong>장소:</strong> {{ meeting.location }}</p>
-    <p><strong>나이 제한:</strong> {{ meeting.age }}</p>
-    <p><strong>인원:</strong> {{ meeting.peopleNm }}</p>
-    <p><strong>오픈채팅방링크:</strong> {{ meeting.kakaoLink }}</p>
-    <p><strong>만남 일자:</strong> {{ meeting.meetingState }}</p>
+       <h1>{{ meeting.title }}</h1>
     {% if meeting.image %}
         <img src="{{ meeting.image.url }}" alt="{{ meeting.title }} Image">
     {% endif %}
+    <p><strong>모임 일자:</strong> {{ meeting.meetDate|date:"Y/m/d" }}</p>
+    <p><strong>장소:</strong> {{ meeting.location }}</p>
+    <p><strong>나이 제한:</strong> {{ meeting.age }}</p>
+    <p><strong>인원:</strong> {{ meeting.peopleNm }}</p>
+    <p><strong>오픈채팅링크:</strong> {{ meeting.kakaoLink }}</p>
     <p><strong>내용:</strong></p>
     <p>{{ meeting.body }}</p>
+    <p><strong>모임 상태:</strong> {{ meeting.meetingState }}</p>
     <hr>
     <form method="post" action="{% url 'editMeeting' meeting_id=meeting.id %}">
         {% csrf_token %}

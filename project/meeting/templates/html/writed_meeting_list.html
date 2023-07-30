@@ -32,7 +32,7 @@
     <hr>
     <form method="get" action="{% url 'writedMeetingList' artist_id=artist_id %}">
         <label for="searchInput">신청자 검색:</label>
-        <input type="text" id="searchInput" name="search">
+        <input type="text" id="searchInput" name="search" placeholder="신청자명을 검색할 수 있어요">
         <button type="submit">검색</button>
     </form>
 
@@ -50,6 +50,7 @@
                                 <li>
                                     <h3>{{ meetingMember.User.userName }}</h3>
                                     <h3>{{ meetingMember.memberState }}</h3>
+                                    <p>신청자 정보 확인</p>
 
                                     <form method="post" action="{% url 'memberStateAccept' artist_id=artist.id meetingMember_id=meetingMember.id %}">
                                         {% csrf_token %}
