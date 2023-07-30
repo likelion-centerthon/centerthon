@@ -4,6 +4,7 @@ from django.utils import timezone
 from django.db import models
 
 from artist.models import Artist
+
 from user.models import User
 
 
@@ -20,6 +21,7 @@ class Post(models.Model):
     title = models.CharField(max_length=50)
     contents = models.TextField(max_length=1000)
     regTime = models.DateTimeField(timezone.now())
+
 
     def __str__(self):
         return self.title

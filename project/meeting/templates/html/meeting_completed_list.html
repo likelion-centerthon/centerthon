@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <label for="artistDropdown">아티스트 선택:</label>
+    <select id="artistDropdown" name="artist_id" onchange="selectArtist(this)">
+        <option value="">전체</option>
+        {% for artist in artists %}
+            <option value="{{ artist.id }}">{{ artist.artistName }}</option>
+        {% endfor %}
+    </select>
+
+    <script>
+        function selectArtist(dropdown) {
+            const selectedArtistId = dropdown.value;
+            if (selectedArtistId) {
+                window.location.href = `/meeting/${selectedArtistId}/completed/`;
+            } else {
+                window.location.href = '/meeting/';
+            }
+        }
+    </script>
+
+    <h1>모임 목록</h1>
+    <p>{{ artist.artistName }} 페이지 - 모집 완료 </p>
+        <h2><a href="{% url 'writedMeetingList' artist_id=artist_id %}">나의 모임 - 내가 작성한 페이지로</a></h2>
+
+    <hr>
+        <p><a href="{% url 'MeetingList' artist_id=artist_id %}">전체 - 모집 중 페이지로</a></p>
+
+    <hr>
+</head>
+<body>
+    <h1>{{ meeting.artist.artistName }}</h1>
+
+    {% for meeting in meetings_completed %}
+        <div>
+            <h2><a href="{% url 'meeting_detail' meeting_id=meeting.id %}">{{ meeting.title }}</a></h2>
+            {% if meeting.image %}
+                <img src="{{ meeting.image.url }}" alt="{{ meeting.title }} Image" width="200">
+            {% else %}
+                <p>No image available</p>
+            {% endif %}
+            <p>{{ meeting.peopleNm }}명</p>
+        </div>
+        <hr>
+    {% endfor %}
+    <a href="{% url 'createMeeting' artist_id=artist_id %}"><p><strong>모임 작성하기</strong></p></a>
+
+</body>
+</html>

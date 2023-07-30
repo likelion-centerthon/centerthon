@@ -44,7 +44,6 @@ class User(AbstractBaseUser, PermissionsMixin):
     phoneNumber = models.CharField(validators=[phoneNumberRegex], max_length=11, unique=True, null=True)
     subPhoneNumber=models.CharField(null=True, validators=[phoneNumberRegex], max_length=11)
     region=models.CharField(null=True, max_length=20)
-
     artists=models.ManyToManyField(Artist)
 
     is_staff = models.BooleanField(default=False)

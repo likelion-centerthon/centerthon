@@ -1,0 +1,38 @@
+<!-- meeting_create.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>모임 작성하기</title>
+</head>
+<body>
+    <h1>모임 작성하기</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="id_title">모임명:</label>
+        <input type="text" name="title" id="id_title"><br>
+
+        <label for="id_body">내용:</label>
+        <textarea name="body" id="id_body"></textarea><br>
+
+        <label for="id_meetDate">일시:</label>
+        <input type="date" name="meetDate" id="id_meetDate"><br>
+
+        <label for="id_location">장소:</label>
+        <input type="text" name="location" id="id_location"><br>
+
+        <label for="id_age">나이제한:</label>
+        <input type="text" name="age" id="id_age"><br>
+
+        <label for="id_peopleNm">인원:</label>
+        <input type="number" name="peopleNm" id="id_peopleNm"><br>
+
+        <label for="id_kakaoLink">오픈 채팅방 링크:</label>
+        <input type="text" name="kakaoLink" id="id_kakaoLink"><br>
+
+        <label for="id_image">사진 첨부:</label>
+        <input type="file" name="image" id="id_image"><br>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
