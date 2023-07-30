@@ -1,3 +1,4 @@
+
 from django.shortcuts import render, get_object_or_404, redirect
 
 from artist.models import Artist
@@ -28,3 +29,4 @@ def select_artist(request, pk):
             return render(request, 'artist/artist_info.html', context={'artist':artist})
 
     return redirect('user:login')
+
