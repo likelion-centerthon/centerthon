@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>신청한 미팅 목록</title>
+    <label for="artistDropdown">아티스트 선택:</label>
+    <select id="artistDropdown" name="artist_id" onchange="selectArtist(this)">
+        <option value="">전체</option>
+        {% for artist in artists %}
+            <option value="{{ artist.id }}">{{ artist.artistName }}</option>
+        {% endfor %}
+    </select>
+
+    <script>
+        function selectArtist(dropdown) {
+            const selectedArtistId = dropdown.value;
+            if (selectedArtistId) {
+                window.location.href = `/meeting/${selectedArtistId}/apply`;
+            } else {
+                window.location.href = '/meeting/';
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>신청한 미팅 목록</h1>
+    <p>{{ artist.artistName }} 페이지 - 내가 신청한 모임</p>
+    <h2><a href="{% url 'MeetingList' artist_id=artist_id %}">전체-모집 중 페이지로</a></h2>
+    <hr>
+    <p><a href="{% url 'writedMeetingList' artist_id=artist_id %}">나의 모임 - 내가 작성한 페이지로</a></p>
+    <p><a href="{% url 'subPNList' artist_id=artist_id %}">나의 모임 - 보호자 전화번호</a></p>
+
+    <hr>
+    <form method="get" action="{% url 'applyedMeetingList' artist_id=artist_id %}">
+        <label for="searchInput">모임 검색:</label>
+        <input type="text" id="searchInput" name="search" placeholder="내가 신청한 모임명을 검색할 수 있어요">
+        <button type="submit">검색</button>
+    </form>
+    <h2>신청한 모임 목록</h2>
+    <ul>
+        {% for applyedMeeting in applyedMeetings %}
+            <li>
+                <h3><a href="{% url 'meeting_detail' meeting_id=applyedMeeting.Meeting.id %}">{{ applyedMeeting.Meeting.title }}</a></h3>
+                <p>{{ applyedMeeting.writeDate|date:"Y/m/d" }}에 신청했습니다.</p>
+                {% if applyedMeeting.memberState == "대기" %}
+                    <p>현재 대기 상태입니다.</p>
+                {% endif %}
+                {% if applyedMeeting.memberState == "승인" %}
+                    <p>현재 승인 상태입니다. 알림을 확인하세요</p>
+                {% endif %}
+                {% if applyedMeeting.memberState == "거부" %}
+                    <p>현재 거부 상태입니다. 다른 모임을 찾아보세요</p>
+                {% endif %}
+            </li>
+        {% empty %}
+            <p>신청한 모임이 없습니다.</p>
+        {% endfor %}
+    </ul>
+</body>
+</html>

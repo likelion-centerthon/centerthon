@@ -5,12 +5,12 @@
 </head>
 <body>
     <h1>{{ meeting.title }}</h1>
-    <p><strong>Meeting Date:</strong> {{ meeting.meetDate }}</p>
-    <p><strong>Location:</strong> {{ meeting.location }}</p>
-    <p><strong>Age Restriction:</strong> {{ meeting.age }}</p>
-    <p><strong>Number of People:</strong> {{ meeting.peopleNm }}</p>
-    <p><strong>Kakao Chat Link:</strong> {{ meeting.kakaoLink }}</p>
-    <p><strong>Meeting State:</strong> {{ meeting.meetingState }}</p>
+    <p><strong>모임 일자:</strong> {{ meeting.meetDate }}</p>
+    <p><strong>장소:</strong> {{ meeting.location }}</p>
+    <p><strong>나이 제한:</strong> {{ meeting.age }}</p>
+    <p><strong>인원:</strong> {{ meeting.peopleNm }}</p>
+    <p><strong>오픈채팅 링크:</strong> {{ meeting.kakaoLink }}</p>
+    <p><strong>모임 상태:</strong> {{ meeting.meetingState }}</p>
     {% if meeting.image %}
         <img src="{{ meeting.image.url }}" alt="{{ meeting.title }} Image">
     {% endif %}

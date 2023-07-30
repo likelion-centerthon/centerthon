@@ -24,10 +24,10 @@ class Meeting(models.Model):
     location = models.CharField(max_length=50) #장소
     age = models.CharField(max_length=10) #나이제한
     peopleNm = models.IntegerField() #인원
-    kakaoLink = models.TextField() #카카오채팅방링크
+    kakaoLink = models.URLField() #카카오채팅방링크
     meetingState = models.CharField(max_length=20, choices=[(status.value, status.name) for status in MeetingState], default=MeetingState.모집중.value) #모집 상태
     image = models.ImageField(upload_to='meeting_images/', null=True, blank=True) #사진첨부
-    writeUser = models.ForeignKey(User, on_delete=models.CASCADE, null=True) #작성자
+    writeUser = models.ForeignKey(User, on_delete=models.CASCADE,null=True) #작성자
     artist = models.ForeignKey(Artist, related_name="artist_meetings", on_delete=models.CASCADE)
 
 class MeetingMember(models.Model):
