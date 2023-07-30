@@ -10,7 +10,7 @@ class UserWorking(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     artist = models.ForeignKey(Artist, on_delete=models.CASCADE)
 
-    startLike = models.DateField(default=timezone.now())
+    startLike = models.DateTimeField(auto_now=True)
     postRecord = models.IntegerField(default=0)
     commentRecord = models.IntegerField(default=0)
     meetingHost = models.IntegerField(default=0)

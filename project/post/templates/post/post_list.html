@@ -5,32 +5,43 @@
     <title>게시글 전체 조회</title>
 </head>
 <body>
-    <form method="post" action="{% url 'post:post_list' category='가수' %}">
+    {% include 'header.html' with artist=artist %}
+    <form method="post" action="{% url 'post:post_list' artist_pk=artist.pk category='가수' %}">
         {% csrf_token %}
         <button type="submit">아티스트 게시판</button>
     </form>
 
-    <form method="post" action="{% url 'post:post_list' category='자유' %}">
+    <form method="post" action="{% url 'post:post_list' artist_pk=artist.pk category='자유' %}">
         {% csrf_token %}
         <button type="submit">일상 게시판</button>
     </form>
 
+
+    <form method="post" action="{% url 'post:to_create' artist_pk=artist.pk %}">
+        {% csrf_token %}
+        <button type="submit">게시글 작성</button>
+    </form>
+
     {% for post in posts %}
         {% if request.user == post.author %}
-            <form method="post" action="{% url 'post:edit_post' pk=post.pk %}">
+            <form method="get" action="{% url 'post:edit_post' pk=post.pk %}">
+                {% csrf_token %}
                 <button type="submit">수정</button>
             </form>
 
             <form method="get" action="{% url 'post:delete_post' pk=post.pk %}">
+                {% csrf_token %}
                 <button type="submit">삭제</button>
             </form>
         {% endif %}
 
         <a href="{% url 'post:post_detail' pk=post.pk%}">{{ post.title }}</a>
-        <img src="{{ post.postIamge.url }}" width="150" height="100">
+        <img src="{{ post.postImage.url }}" width="150" height="100">
         {{ post.author.userName }}
         {{ post.regTime }}
     </form>
     {% endfor %}
+    {% include 'footer.html' with artist=artist %}
+
 </body>
 </html>

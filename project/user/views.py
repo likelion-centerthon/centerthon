@@ -1,3 +1,4 @@
+from alert.models import Alert
 from django.contrib.auth import login, authenticate
 from django.utils import timezone
 from django.shortcuts import render,redirect
@@ -27,6 +28,12 @@ def sign_up(request, pk):
         user.subPhoneNumber=request.POST.get('subPhoneNumber')
         user.region=request.POST.get('region')
         user.save()
+
+        # 회원가입 시 알림 객체 생성
+        Alert.objects.create(
+            user=user
+        )
+
         return redirect('user:tutorial')
 
 # 아티스트선택/튜토리얼 분기 페이지

@@ -5,6 +5,7 @@
     <title>SNS</title>
 </head>
 <body>
+    {% include 'header.html' with artist=artist %}
     <form method="post" action="{% url 'artist:select_artist' pk=artist.pk %}">
         {% csrf_token %}
         <button type="submit">아티스트 정보</button>
@@ -16,5 +17,7 @@
     </form>
 
     {{ artist.artistName }}
+
+    {% include 'footer.html' with artist=artist %}
 </body>
 </html>

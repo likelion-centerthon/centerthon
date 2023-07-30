@@ -1,6 +1,8 @@
 <div>
     <form method="post" action="{% url 'userWorking:show_userWorking' pk=artist.pk %}">
         {% csrf_token %}
-        <button type="submit">{{ artist.artistName }}</button>
+        <button type="submit">{{ artist.artistName }} 이용행보 보기</button>
     </form>
+
+
 </div>

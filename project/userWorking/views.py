@@ -8,9 +8,9 @@ def show_userWorking(request, pk):
     user = request.user
     artist = Artist.objects.get(pk=pk)
 
-    if user.is_athenticated():
+    if user.is_authenticated:
         if request.method == 'POST':
             userWorking = UserWorking.objects.get(user=user, artist=artist)
-            return render(request, 'userWorking:userWorking.html', context={'userWorking':userWorking})
+            return render(request, 'userWorking/userWorking.html', context={'userWorking':userWorking, 'artist':artist})
 
     return redirect('user:login')
