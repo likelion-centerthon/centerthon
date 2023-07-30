@@ -23,6 +23,7 @@ urlpatterns = [
     path('', include('user.urls'), name="main"),
     path('meeting/', include('meeting.urls')),
     path('artist/', include('artist.urls')),
+    path('userWorking/', include('userWorking.urls')),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
