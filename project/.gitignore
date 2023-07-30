@@ -168,6 +168,12 @@ cython_debug/
 /myvenv
 /venv
 
+/user/migrations/
+/alert/migrations/
+/artist/migrations/
+/post/migrations/
+/support/migrations/
+/userWorking/migrations/
 # PyCharm
 #  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
 #  be found at https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore

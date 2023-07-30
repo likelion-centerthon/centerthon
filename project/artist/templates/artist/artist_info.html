@@ -5,12 +5,13 @@
     <title>아티스트 상세 정보</title>
 </head>
 <body>
-    <form method="post" action="{% url 'artist:artist_info' %}">
+    {% include 'header.html' with artist=artist %}
+    <form method="post" action="{% url 'artist:select_artist' pk=artist.pk %}">
         {% csrf_token %}
         <button type="submit">아티스트 정보</button>
     </form>
 
-    <form method="post" action="{% url 'artist:artist_sns' %}">
+    <form method="post" action="{% url 'artist:artist_sns' pk=artist.pk %}">
         {% csrf_token %}
         <button type="submit">SNS 보기</button>
     </form>
@@ -26,5 +27,7 @@
     <div>{{ artist.color }}</div>
     <div>{{ artist.fanName }}</div>
     <div>{{ artist.agency }}</div>
+
+
 </body>
 </html>

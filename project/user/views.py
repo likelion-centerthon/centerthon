@@ -76,5 +76,9 @@ class KakaoCallback(View):
         # 로그인
         user = User.objects.get(kakaoId=user_info['id'])
         login(request, user, 'user.auth.MyBackend')
-        return redirect('artist:artist_list')
+
+        if user.artists.all(): # 구독한 아티스트가 있다면 구독 아티스트로 이동
+            return redirect('artist:subscribe_list', category='none')
+        else: # 첫 사용자라면 아티스트 전체조회로 이동
+            return redirect('artist:artist_list', category='none')
 

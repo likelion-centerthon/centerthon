@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>게시글 전체 조회</title>
+</head>
+<body>
+    <form method="post" action="{% url 'post:post_list' category='가수' %}">
+        {% csrf_token %}
+        <button type="submit">아티스트 게시판</button>
+    </form>
+
+    <form method="post" action="{% url 'post:post_list' category='자유' %}">
+        {% csrf_token %}
+        <button type="submit">일상 게시판</button>
+    </form>
+
+    {% for post in posts %}
+        {% if request.user == post.author %}
+            <form method="post" action="{% url 'post:edit_post' pk=post.pk %}">
+                <button type="submit">수정</button>
+            </form>
+
+            <form method="get" action="{% url 'post:delete_post' pk=post.pk %}">
+                <button type="submit">삭제</button>
+            </form>
+        {% endif %}
+
+        <a href="{% url 'post:post_detail' pk=post.pk%}">{{ post.title }}</a>
+        <img src="{{ post.postIamge.url }}" width="150" height="100">
+        {{ post.author.userName }}
+        {{ post.regTime }}
+    </form>
+    {% endfor %}
+</body>
+</html>
