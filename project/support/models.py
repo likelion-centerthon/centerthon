@@ -11,7 +11,7 @@ class Support(models.Model):
     user = models.ForeignKey('user.User', on_delete=models.CASCADE)
     title = models.CharField(max_length=20)
     body = models.TextField()
-    regTime = models.DateTimeField(timezone.now())
+    regTime = models.DateTimeField(auto_now=True)
     deadline = models.DateTimeField()
     fundraising = models.IntegerField()
     account = models.CharField(max_length=14)
