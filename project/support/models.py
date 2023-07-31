@@ -12,6 +12,7 @@ class Support(models.Model):
     title = models.CharField(max_length=20)
     body = models.TextField()
     regTime = models.DateTimeField(auto_now=True)
+    image = models.ImageField()
     deadline = models.DateTimeField()
     fundraising = models.IntegerField()
     account = models.CharField(max_length=14)
