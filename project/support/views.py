@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-
+from django.db.models import Q
 from artist.models import Artist
 from support.models import Support, SupportForm
 
@@ -18,6 +18,22 @@ def support_list_complete(request, pk):
     #계좌의 총 잔액도 불러와야 함
     return render(request, './support/support_list.html', {"supports":supports, "artist":artist})
 
+#내가 참여한 서포트(진행 중)
+def my_support_list(request, pk):
+    artist = Artist.objects.get(pk=pk)
+    supports = Support.objects.filter(
+        Q(artist=artist, user=request.user, status='진행중')| Q(artist=artist, form__user=request.user,
+                                                               status='진행중')).distinct()
+    return render(request, './support/support_list_my.html', {"supports":supports, "artist":artist})
+
+#내가 참여한 서포트(완료)
+def my_support_list_complete(request, pk):
+    artist = Artist.objects.get(pk=pk)
+    supports = Support.objects.filter(
+        Q(artist=artist, user=request.user, status='완료') | Q(artist=artist, form__user=request.user,
+                                                              status='완료')).distinct()
+    return render(request, './support/support_list_my.html', {"supports": supports, "artist": artist})
+
 #상세조회
 def support_dtl(request, pk, spt_pk):
     artist=Artist.objects.get(pk=pk)
@@ -25,6 +41,7 @@ def support_dtl(request, pk, spt_pk):
     support_form=SupportForm.objects.filter(support=support)
     return render(request, './support/support_dtl.html', {"support":support, "artist":artist, "support_form":support_form})
 
+#서포트 참여 폼 입력(미완성)
 def create_support_form(request, pk, spt_pk):
     artist = Artist.objects.get(pk=pk)
     user = request.user
@@ -47,7 +64,8 @@ def create_support_form(request, pk, spt_pk):
         )
         #입금정보 작성 직후 계좌 확인하는 로직 필요함
         return redirect('support:support_dtl', pk=artist.pk, spt_pk=support.pk)
-#생성
+
+#서포트 게시글 생성(미완성)
 def create_support(request, pk):
     user=request.user
     artist=Artist.objects.get(pk=pk)

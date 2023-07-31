@@ -11,8 +11,8 @@
         <button onclick="location.href='{% url 'support:my_support_list' pk=artist.pk %}'">내가 참여한 서포트</button>
     </div>
     <div>
-        <button onclick="location.href='{% url 'support:support_list' pk=artist.pk %}'">진행중</button>
-        <button onclick="location.href='{% url 'support:support_list_complete' pk=artist.pk %}'">완료</button>
+        <button onclick="location.href='{% url 'support:my_support_list' pk=artist.pk %}'">진행중</button>
+        <button onclick="location.href='{% url 'support:my_support_list_complete' pk=artist.pk %}'">완료</button>
         <button onclick="location.href='{% url 'support:create_support' pk=artist.pk %}'">작성</button>
     </div>
     <h1>{{artist.artistName}} 서포트 전체조회</h1>

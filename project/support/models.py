@@ -19,6 +19,9 @@ class Support(models.Model):
     bank = models.CharField(max_length=10)
     status = models.CharField(choices=[(status.value, status.name) for status in SupportStatus], default=SupportStatus.in_progress.value, max_length=5)
 
+    def __str__(self):
+        return self.title
+
 class SupportFormStatus(Enum):
     waiting = '대기'
     auto_check = '확인'
@@ -26,13 +29,14 @@ class SupportFormStatus(Enum):
     cancel='취소'
 
 class SupportForm(models.Model):
-    support = models.ForeignKey(Support, on_delete=models.CASCADE)
+    support = models.ForeignKey(Support, on_delete=models.CASCADE, related_name="form")
     user = models.ForeignKey('user.User', on_delete=models.CASCADE)
     depositor = models.CharField(max_length=10)
     credit = models.IntegerField()
     creditTime = models.DateTimeField()
     status = models.CharField(choices=[(status.value, status.name) for status in SupportFormStatus], default=SupportFormStatus.waiting.value, max_length=5)
-
+    def __str__(self):
+        return self.depositor
 # class Block(models.Model):
 
 
