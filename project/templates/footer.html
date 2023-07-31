@@ -1,4 +1,5 @@
 <div>
+    <hr>
     <form method="post" action="{% url 'post:post_list' artist_pk=artist.pk category='가수' %}">
         {% csrf_token %}
         <button type="submit">게시판</button>

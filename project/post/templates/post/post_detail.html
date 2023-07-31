@@ -14,10 +14,12 @@
         <img src="{{ post.postImage.url }}" width="150" height="100">
 
         {% for comment in comments %}
-            <form method="get" action="{% url 'post:delete_comment' pk=comment.pk %}">
-                {% csrf_token %}
-                <button type="submit">삭제</button>
-            </form>
+            {% if request.user == comment.author %}
+                <form method="get" action="{% url 'post:delete_comment' pk=comment.pk %}">
+                    {% csrf_token %}
+                    <button type="submit">삭제</button>
+                </form>
+            {% endif %}
 
             <div>{{ comment.contents }}</div>
             <div>{{ comment.author.userName }}</div>

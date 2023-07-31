@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 
 from artist.models import Artist
 from post.models import Post, Comment
+from userWorking.models import UserWorking
 
 
 # 게시글 전체 조회, 카테고리 분류
@@ -54,20 +55,15 @@ def create_post(request, artist_pk):
             contents=contents,
         )
 
+        # 이용행보 수정
+        userWorking = UserWorking.objects.get(user=user, artist=artist)
+        userWorking.postRecord += 1
+        userWorking.save()
+
         return redirect('post:post_list', artist_pk=artist.pk, category=category)
 
     return render(request, 'post/create_post.html', context={'artist':artist})
 
-# 게시글 생성 페이지 이동
-def to_create(request, artist_pk):
-    user = request.user
-    artist = Artist.objects.get(pk=artist_pk)
-
-    if not user.is_authenticated:
-        return redirect('user:login')
-
-    if request.method == 'POST':
-        return render(request, 'post/create_post.html', context={'artist':artist})
 
 # 게시글 수정
 def edit_post(request, pk):
@@ -115,6 +111,7 @@ def delete_post(request, pk):
 
     return render(request, 'post/failDelete.html')
 
+
 # 댓글 생성
 def create_comment(request, pk):
     user = request.user
@@ -132,9 +129,16 @@ def create_comment(request, pk):
             contents=contents
         )
 
-        alert = Alert.objects.get(user=post.author)
+        # 댓글 작성 시 알림 생성
+        Alert.objects.create(
+            user=post.author,
+            message=user.userName + '님이 ' + post.title + '게시글에 댓글을 남기셨습니다.'
+        )
 
-        alert.message = (user.userName + '님이 ' + post.title + '게시글에 댓글을 남기셨습니다.')
+        # 이용행보 수정
+        userWorking = UserWorking.objects.get(user=user, artist=post.artist)
+        userWorking.commentRecord += 1
+        userWorking.save()
 
         comments = Comment.objects.filter(post=post)
         return render(request, 'post/post_detail.html', context={'post':post, 'comments':comments})

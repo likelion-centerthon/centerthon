@@ -1,4 +1,4 @@
-
+from django.utils import timezone
 from django.shortcuts import render, get_object_or_404, redirect
 
 from artist.models import Artist
@@ -55,6 +55,7 @@ def select_artist(request, pk):
                 UserWorking.objects.create(
                     user=user,
                     artist=artist,
+                    startLike=timezone.now()
                 )
 
             return render(request, 'artist/artist_info.html', context={'artist':artist})

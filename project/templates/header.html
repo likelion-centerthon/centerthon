@@ -1,8 +1,17 @@
 <div>
+    <form method="get" action="{% url 'artist:artist_list' category='none' %}">
+        {% csrf_token %}
+        <button type="submit">다른 아티스트 보기</button>
+    </form>
+
     <form method="post" action="{% url 'userWorking:show_userWorking' pk=artist.pk %}">
         {% csrf_token %}
         <button type="submit">{{ artist.artistName }} 이용행보 보기</button>
     </form>
 
-
+    <form method="post" action="{% url 'alert:show_alert' %}">
+        {% csrf_token %}
+        <button type="submit">알림보기</button>
+    </form>
+    <hr>
 </div>
