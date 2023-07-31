@@ -17,7 +17,7 @@
     </form>
 
 
-    <form method="post" action="{% url 'post:to_create' artist_pk=artist.pk %}">
+    <form method="get" action="{% url 'post:create_post' artist_pk=artist.pk %}">
         {% csrf_token %}
         <button type="submit">게시글 작성</button>
     </form>

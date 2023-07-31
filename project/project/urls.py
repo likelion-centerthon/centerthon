@@ -25,6 +25,7 @@ urlpatterns = [
     path('artist/', include('artist.urls')),
     path('userWorking/', include('userWorking.urls')),
     path('post/', include('post.urls')),
+    path('alert/', include('alert.urls')),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

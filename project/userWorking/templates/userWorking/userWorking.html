@@ -7,13 +7,13 @@
 <body>
     {% include 'header.html' with artist=artist %}
 
-    <div>{{ userWorking.startLike }}</div>
-    <div>{{ userWorking.postRecord }}</div>
-    <div>{{ userWorking.commentRecord }}</div>
-    <div>{{ userWorking.meetingHost }}</div>
-    <div>{{ userWorking.meetingGuest }}</div>
-    <div>{{ userWorking.supportHost }}</div>
-    <div>{{ userWorking.supportGuest }}</div>
+    <div>구독 시작일: {{ userWorking.startLike }}</div>
+    <div>게시글 작성 횟수: {{ userWorking.postRecord }}</div>
+    <div>댓글 작성 횟수: {{ userWorking.commentRecord }}</div>
+    <div>모임 주최 횟수: {{ userWorking.meetingHost }}</div>
+    <div>모임 참여 횟수: {{ userWorking.meetingGuest }}</div>
+    <div>서포트 주최 횟수: {{ userWorking.supportHost }}</div>
+    <div>서포트 참여 횟수: {{ userWorking.supportGuest }}</div>
 
     {% include 'footer.html' with artist=artist %}
 
