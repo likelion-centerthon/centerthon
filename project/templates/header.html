@@ -1,6 +1,27 @@
 <div>
+    <form method="get" action="{% url 'artist:subscribe_list' category='none' %}">
+        {% csrf_token %}
+        <button type="submit">{{ artist.artistName }}, 아티스트 변경</button>
+    </form>
+
     <form method="post" action="{% url 'userWorking:show_userWorking' pk=artist.pk %}">
         {% csrf_token %}
-        <button type="submit">{{ artist.artistName }}</button>
+        <button type="submit">{{ artist.artistName }} 이용행보 보기</button>
     </form>
+
+    <button>알림보기</button>
+
+    {% for alert in alerts %}
+        <div>
+            <div>{{ alert.artist.artistName }}</div>
+            <div>{{ alert.message }}</div>
+            {% if alert.openChatURL %}
+                <div>{{ alert.openChatURL }}</div>
+            {% endif %}
+            <div>{{ alert.regTime }}</div>
+            <div>{{ alert.is_read }}</div>
+            <hr>
+        </div>
+    {% endfor %}
+    <hr>
 </div>

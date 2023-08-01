@@ -5,7 +5,6 @@
     <title>아티스트 선택</title>
 </head>
 <body>
-
     <form method="post" action="{% url 'artist:artist_list' category='KPOP' %}">
         {% csrf_token %}
         <button type="submit">K-POP</button>

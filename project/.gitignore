@@ -183,10 +183,4 @@ cython_debug/
 
 # End of https://www.toptal.com/developers/gitignore/api/django
 
-/user/migrations/
-/meeting/migrations/
-/alert/migrations/
-/artist/migrations/
-/post/migrations/
-/userWorking/migrations/
-/*/migrations/
+/*/migrations

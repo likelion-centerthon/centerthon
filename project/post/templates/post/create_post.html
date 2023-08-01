@@ -5,15 +5,20 @@
     <title>게시글 작성 폼</title>
 </head>
 <body>
-    <form method="post" action="{% url 'post:create_post' %}">
-        <select name="category">
+    {% include 'header.html' with artist=artist alerts=alerts %}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <select name="category" value="{{ post.category }}">
             <option value="가수">가수</option>
             <option value="자유">자유</option>
         </select>
         <input type="text" name="title" value="{{ post.title }}">
         <input type="textarea" name="contents" value="{{ post.contents }}">
-        <input type="file" name="image" value="{{ post.image.url }}">
+        <input type="file" name="image" value="{{ post.image }}">
         <button type="submit">작성하기</button>
     </form>
+
+    {% include 'footer.html' with artist=artist %}
+
 </body>
 </html>

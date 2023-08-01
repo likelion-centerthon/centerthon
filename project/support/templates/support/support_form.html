@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>모금자 작성 폼</title>
+</head>
+<body>
+    {% include 'header.html' with artist=artist %}
+    <div>
+        <h1>입금 후 모금 정보를 작성해주세요.</h1>
+        <form method="post" action="{% url 'support:create_support_form' pk=artist.pk spt_pk=support.pk %}">
+            {% csrf_token %}
+            <label for="depositor">입금자명</label>
+            <input type="text" name="depositor" id="depositor"><br>
+            <labe for="credit">모금액</labe>
+            <input type="number" name="credit" id="credit"><br>
+            <label for="creditTime">입금시간</label>
+            <input type="datetime-local" name="creditTime" id="creditTime"><br>
+            <button type="submit">작성하기</button>
+        </form>
+    </div>
+    {% include 'footer.html' with artist=artist %}
+</body>
+</html>

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    {% include 'header.html' with artist=artist alerts=alerts%}
     <title>신청한 미팅 목록</title>
     <label for="artistDropdown">아티스트 선택:</label>
     <select id="artistDropdown" name="artist_id" onchange="selectArtist(this)">
@@ -24,13 +25,13 @@
 <body>
     <h1>신청한 미팅 목록</h1>
     <p>{{ artist.artistName }} 페이지 - 내가 신청한 모임</p>
-    <h2><a href="{% url 'MeetingList' artist_id=artist_id %}">전체-모집 중 페이지로</a></h2>
+    <h2><a href="{% url 'meeting:MeetingList' artist_id=artist_id %}">전체-모집 중 페이지로</a></h2>
     <hr>
-    <p><a href="{% url 'writedMeetingList' artist_id=artist_id %}">나의 모임 - 내가 작성한 페이지로</a></p>
-    <p><a href="{% url 'subPNList' artist_id=artist_id %}">나의 모임 - 보호자 전화번호</a></p>
+    <p><a href="{% url 'meeting:writedMeetingList' artist_id=artist_id %}">나의 모임 - 내가 작성한 페이지로</a></p>
+    <p><a href="{% url 'meeting:subPNList' artist_id=artist_id %}">나의 모임 - 보호자 전화번호</a></p>
 
     <hr>
-    <form method="get" action="{% url 'applyedMeetingList' artist_id=artist_id %}">
+    <form method="get" action="{% url 'meeting:applyedMeetingList' artist_id=artist_id %}">
         <label for="searchInput">모임 검색:</label>
         <input type="text" id="searchInput" name="search" placeholder="내가 신청한 모임명을 검색할 수 있어요">
         <button type="submit">검색</button>
@@ -39,7 +40,7 @@
     <ul>
         {% for applyedMeeting in applyedMeetings %}
             <li>
-                <h3><a href="{% url 'meeting_detail' meeting_id=applyedMeeting.Meeting.id %}">{{ applyedMeeting.Meeting.title }}</a></h3>
+                <h3><a href="{% url 'meeting:meeting_detail' meeting_id=applyedMeeting.Meeting.id artist_id=artist_id %}">{{ applyedMeeting.Meeting.title }}</a></h3>
                 <p>{{ applyedMeeting.writeDate|date:"Y/m/d" }}에 신청했습니다.</p>
                 {% if applyedMeeting.memberState == "대기" %}
                     <p>현재 대기 상태입니다.</p>
@@ -55,5 +56,6 @@
             <p>신청한 모임이 없습니다.</p>
         {% endfor %}
     </ul>
+    {% include 'footer.html' with artist=artist %}
 </body>
 </html>

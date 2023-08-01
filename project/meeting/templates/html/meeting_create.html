@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+        {% include 'header.html' with artist=artist alerts=alerts%}
     <title>모임 작성하기</title>
 </head>
 <body>
@@ -34,5 +35,6 @@
 
         <input type="submit" value="Submit">
     </form>
+    {% include 'footer.html' with artist=artist %}
 </body>
 </html>
