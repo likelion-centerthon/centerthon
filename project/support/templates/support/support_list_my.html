@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>서포트 전체조회</title>
+</head>
+<body>
+    {% include 'header.html' with artist=artist %}
+    <div style="margin-bottom:5px;">
+        <button onclick="location.href='{% url 'support:support_list' pk=artist.pk %}'">서포트 전체</button>
+        <button onclick="location.href='{% url 'support:my_support_list' pk=artist.pk %}'">내가 참여한 서포트</button>
+    </div>
+    <div>
+        <button onclick="location.href='{% url 'support:my_support_list' pk=artist.pk %}'">진행중</button>
+        <button onclick="location.href='{% url 'support:my_support_list_complete' pk=artist.pk %}'">완료</button>
+        <button onclick="location.href='{% url 'support:create_support' pk=artist.pk %}'">작성</button>
+    </div>
+    <h1>{{artist.artistName}} 서포트 전체조회</h1>
+    {% for support in supports %}
+    <div style="margin-bottom:30px;" onclick="location.href='{% url 'support:support_dtl' pk=artist.pk spt_pk=support.pk %}'">
+        제목: {{support.title}}<br>
+        목표: {{support.fundraising}}<br>
+        종료: {{support.deadline|date:"Y/m/d Ah:i"}}<br>
+        계좌: {{support.bank}} {{support.account}}<br>
+    </div>
+    {% endfor %}
+
+    {% include 'footer.html' with artist=artist %}
+</body>
+</html>

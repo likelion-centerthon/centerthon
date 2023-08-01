@@ -2,6 +2,8 @@ from django.contrib import admin
 from django.urls import path
 from .views import CreateMeeting, MeetingDtl,MeetingList,closeMeeting,MeetingCloseList,applyMeeting,editMeeting,writedMeetingList,memberStateAccept, memberStateRefusal,applyedMeetingList,subPNList
 
+app_name = "meeting"
+
 urlpatterns = [
     path('<int:artist_id>/',MeetingList, name="MeetingList"),
     path('<int:artist_id>/completed/',MeetingCloseList,name="MeetingCloseList"),

@@ -64,5 +64,5 @@ def select_artist(request, pk):
 # sns 페이지 이동
 def artist_sns(request, pk):
     artist = get_object_or_404(Artist, pk=pk)
-    if request.method == 'POST':
-        return render(request, 'artist/artist_sns.html', context={'artist':artist})
+    # if request.method == 'POST':
+    return render(request, 'artist/artist_sns.html', context={'artist':artist})
