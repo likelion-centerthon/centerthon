@@ -35,7 +35,8 @@ def MeetingDtl(request, meeting_id):
 
 #모집 중인 모임 목록
 def MeetingList(reqeust, artist_id):
-    artists = Artist.objects.all()
+    user = reqeust.user
+    artists = user.artists.all()
     artist =get_object_or_404(Artist, pk=artist_id)
     meetings = artist.artist_meetings.all()
     meetings_recruiting = meetings.filter(meetingState=MeetingState.모집중.value)
