@@ -3,7 +3,6 @@ from django.db.models import Q
 from artist.models import Artist
 from support.models import Support, SupportForm
 
-
 #전체조회(진행중)
 def support_list(request, pk):
     artist = Artist.objects.get(pk=pk)
@@ -93,4 +92,37 @@ def create_support(request, pk):
             account=account,
             deadline=deadline
         )
+        #bank모델 생성 후 연동하기
         return redirect('support:support_list', pk=artist.pk)
+
+#서포트 게시글 수정
+def update_support(request, pk, spt_pk):
+    artist = Artist.objects.get(pk=pk)
+    support = Support.objects.get(pk=spt_pk)
+
+    if not request.user == support.user:
+        return redirect('support:support_dtl', pk=artist.pk, spt_pk=support.pk)
+
+    if request.method == 'GET':
+        return render(request, './support/support_update.html', {"support":support, "artist":artist})
+
+    if request.method == 'POST':
+        title=request.POST.get('title')
+        body=request.POST.get('body')
+        fundraising=request.POST.get('fundraising')
+        image=request.FILES.get('image')
+        deadline=request.POST.get('deadline')
+
+        if image is None:
+            image = support.image
+
+        if not deadline.strip():
+            deadline = support.deadline
+
+        support.title=title
+        support.body=body
+        support.fundraising=fundraising
+        support.image=image
+        support.deadline=deadline
+        support.save()
+        return redirect('support:support_dtl', pk=artist.pk, spt_pk=support.pk)
