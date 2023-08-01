@@ -11,4 +11,4 @@ def show_alert(request):
 
     if request.method == 'POST':
         alerts = Alert.objects.filter(user=user)
-        return render(request, 'alert/show_alert.html', context={'alerts':alerts})
+        return render(request, 'header.html', context={'alerts':alerts})

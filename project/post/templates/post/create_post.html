@@ -5,8 +5,8 @@
     <title>게시글 작성 폼</title>
 </head>
 <body>
-    {% include 'header.html' with artist=artist %}
-    <form method="post">
+    {% include 'header.html' with artist=artist alerts=alerts %}
+    <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <select name="category" value="{{ post.category }}">
             <option value="가수">가수</option>

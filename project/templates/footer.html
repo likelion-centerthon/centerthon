@@ -4,7 +4,7 @@
 <!--        {% csrf_token %}-->
 <!--        <button type="submit">게시판</button>-->
 <!--    </form>-->
-    <button onclick="location.href='{% url 'artist:artist_sns' pk=artist.pk %}'">내 가수</button>
+    <button onclick="location.href='{% url 'artist:select_artist' pk=artist.pk %}'">내 가수</button>
     <button onclick="location.href='{% url 'post:post_list' artist_pk=artist.pk category='가수' %}'">게시판</button>
     <button onclick="location.href='{% url 'support:support_list' pk=artist.pk %}'">서포트</button>
 
