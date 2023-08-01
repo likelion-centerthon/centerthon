@@ -7,6 +7,7 @@
     <button onclick="location.href='{% url 'artist:select_artist' pk=artist.pk %}'">내 가수</button>
     <button onclick="location.href='{% url 'post:post_list' artist_pk=artist.pk category='가수' %}'">게시판</button>
     <button onclick="location.href='{% url 'support:support_list' pk=artist.pk %}'">서포트</button>
+    <button onclick="location.href='{% url 'meeting:MeetingList' artist_id=artist.id %}'">모임</button>
 
     Copyright © 2023 중앙톤 프로젝트
 </div>

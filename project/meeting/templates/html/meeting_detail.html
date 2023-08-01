@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+        {% include 'header.html' with artist=artist alerts=alerts%}
     <title>Meeting Detail</title>
+
 </head>
 <body>
     <h1>{{ meeting.title }}</h1>
@@ -17,6 +19,7 @@
     <p>{{ meeting.body }}</p>
     <p><strong>모임 상태:</strong> {{ meeting.meetingState }}</p>
     <hr>
-    <a href="{% url 'applyMeeting' meeting_id=meeting.id %}"><p><strong>모임 신청하기</strong></p></a>
+    <a href="{% url 'meeting:applyMeeting' artist_id=artist.id meeting_id=meeting.id %}"><p><strong>모임 신청하기</strong></p></a>
+    {% include 'footer.html' with artist=artist %}
 </body>
 </html>

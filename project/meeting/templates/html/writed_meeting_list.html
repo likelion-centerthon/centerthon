@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+        {% include 'header.html' with artist=artist alerts=alerts%}
     <title>작성한 미팅 목록</title>
     <label for="artistDropdown">아티스트 선택:</label>
     <select id="artistDropdown" name="artist_id" onchange="selectArtist(this)">
@@ -24,13 +25,13 @@
 <body>
     <h1>작성한 미팅 목록</h1>
     <p>{{ artist.artistName }} 페이지 - 내가 작성한 모임</p>
-    <h2><a href="{% url 'MeetingList' artist_id=artist_id %}">전체 - 모집 중 페이지로</a></h2>
+    <h2><a href="{% url 'meeting:MeetingList' artist_id=artist_id %}">전체 - 모집 중 페이지로</a></h2>
     <hr>
-    <p><a href="{% url 'applyedMeetingList' artist_id=artist_id %}">나의 모임 - 내가 신청한 페이지로</a></p>
-    <p><a href="{% url 'subPNList' artist_id=artist_id %}">나의 모임 - 보호자 전화번호</a></p>
+    <p><a href="{% url 'meeting:applyedMeetingList' artist_id=artist_id %}">나의 모임 - 내가 신청한 페이지로</a></p>
+    <p><a href="{% url 'meeting:subPNList' artist_id=artist_id %}">나의 모임 - 보호자 전화번호</a></p>
 
     <hr>
-    <form method="get" action="{% url 'writedMeetingList' artist_id=artist_id %}">
+    <form method="get" action="{% url 'meeting:writedMeetingList' artist_id=artist_id %}">
         <label for="searchInput">신청자 검색:</label>
         <input type="text" id="searchInput" name="search" placeholder="신청자명을 검색할 수 있어요">
         <button type="submit">검색</button>
@@ -41,7 +42,7 @@
 <ul>
     {% for meeting in meetings %}
         <li>
-            <h2><a href="{% url 'meeting_detail' meeting_id=meeting.id %}">{{ meeting.title }}</a></h2>
+            <h2><a href="{% url 'meeting:meeting_detail' meeting_id=meeting.id artist_id=artist_id%}">{{ meeting.title }}</a></h2>
             {% if meeting.members.exists %}
                 <ul>
                     {% for meetingMember in meeting.members.all %}
@@ -52,12 +53,12 @@
                                     <h3>{{ meetingMember.memberState }}</h3>
                                     <p>신청자 정보 확인</p>
 
-                                    <form method="post" action="{% url 'memberStateAccept' artist_id=artist.id meetingMember_id=meetingMember.id %}">
+                                    <form method="post" action="{% url 'meeting:memberStateAccept' artist_id=artist.id meetingMember_id=meetingMember.id %}">
                                         {% csrf_token %}
                                         <button type="submit">수락하기</button>
                                     </form>
 
-                                    <form method="post" action="{% url 'memberStateRefusal' artist_id=artist.id meetingMember_id=meetingMember.id %}">
+                                    <form method="post" action="{% url 'meeting:memberStateRefusal' artist_id=artist.id meetingMember_id=meetingMember.id %}">
                                         {% csrf_token %}
                                         <button type="submit">거부하기</button>
                                     </form>
@@ -77,6 +78,6 @@
 
 <!-- ... (이후 템플릿 코드 유지) ... -->
 
-
+    {% include 'footer.html' with artist=artist %}
 </body>
 </html>
