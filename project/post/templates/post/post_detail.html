@@ -5,14 +5,16 @@
     <title>게시글 상세</title>
 </head>
 <body>
-    {% include 'header.html' with artist=post.artist %}
+    {% include 'header.html' with artist=post.artist alerts=alerts%}
         <div>{{ post.category }}</div>
         <div>{{ post.title }}</div>
         <div>{{ post.contents }}</div>
         <div>{{ post.author.userName }}</div>
         <div>{{ post.regTime }}</div>
-        <img src="{{ post.postImage.url }}" width="150" height="100">
-
+        {% if post.image %}
+            <img src="{{ post.image.url }}" width="150" height="100">
+        {% endif %}
+        <hr>
         {% for comment in comments %}
             {% if request.user == comment.author %}
                 <form method="get" action="{% url 'post:delete_comment' pk=comment.pk %}">
@@ -24,6 +26,7 @@
             <div>{{ comment.contents }}</div>
             <div>{{ comment.author.userName }}</div>
             <div>{{ comment.regTime }}</div>
+            <hr>
         {% endfor %}
 
         <div>댓글 작성하기</div>
