@@ -17,12 +17,14 @@
     </div>
     <h1>{{artist.artistName}} 서포트 전체조회</h1>
     {% for support in supports %}
-    <div style="margin-bottom:30px;" onclick="location.href='{% url 'support:support_dtl' pk=artist.pk spt_pk=support.pk %}'">
+    <div style="margin-top:30px;" onclick="location.href='{% url 'support:support_dtl' pk=artist.pk spt_pk=support.pk %}'">
         제목: {{support.title}}<br>
         목표: {{support.fundraising}}<br>
-        종료: {{support.deadline|date:"Y/m/d Ah:i"}}<br>
+        종료: {{support.deadline|date:"Y-m-d A h:i"}}<br>
         계좌: {{support.bank}} {{support.account}}<br>
+        모금: {{support.balanceAmt}} <br>
     </div>
+    <hr>
     {% endfor %}
 
     {% include 'footer.html' with artist=artist %}

@@ -7,12 +7,18 @@
 <body>
     {% include 'header.html' with artist=artist %}
     <h1>상세조회</h1>
+    {% if support.user == request.user %}
+    <button onclick="location.href='{% url 'support:update_support' pk=artist.pk spt_pk=support.pk %}'">수정하기</button>
+    {% endif %}
     <h2>제목:{{support.title}}</h2>
     <p>목표모금액:{{support.fundraising}}</p>
     <p>내용:{{support.body}}</p>
-    <img src=""></img>
+    {% if support.image %}
+    <img src="{{support.image.url}}" alt="서포트 이미지" style="width:315px;"></img>
+    {% endif %}
     <p>계좌:{{support.bank}} {{support.account}}</p>
-    <p>마감기한:{{support.deadline|date:"Y/m/d Ah:i"}}</p>
+    <p>마감기한:{{support.deadline|date:"Y-m-d A h:i"}}</p>
+    <p>현재모금액:{{support.balanceAmt}}</p>
 
     {% if not support.user == request.user %}
     <button onclick="location.href='{% url 'support:create_support_form' pk=artist.pk spt_pk=support.pk %}'">모금 정보 작성하기</button>
@@ -22,10 +28,10 @@
     <button onclick="location.href='{% url 'support:create_support_form' pk=artist.pk spt_pk=support.pk %}'">모금 마감하기</button>
     <h2>모금자 정보</h2>
     {% for form in support_form %}
-    <div style="margin-bottom:5px;">
+    <div style="margin-top:5px;">
         {{form.depositor}}<br>
         {{form.credit}}<br>
-        {{form.creditTime}}<br>
+        {{form.creditTime|date:"Y-m-d A h:i"}}<br>
         {{form.status}}<br>
     </div>
     {% endfor %}

@@ -1,6 +1,6 @@
 from django.urls import path
 from support.views import support_list, create_support, support_list_complete, support_dtl, create_support_form, \
-    my_support_list, my_support_list_complete
+    my_support_list, my_support_list_complete, update_support
 
 app_name = "support"
 
@@ -15,7 +15,7 @@ urlpatterns = [
     # 상세보기
     path('<int:pk>/post/<int:spt_pk>/', support_dtl, name='support_dtl'),
     # 수정
-    # 삭제
+    path('<int:pk>/update/<int:spt_pk>/', update_support, name='update_support'),
     # 모금정보 작성
     path('<int:pk>/post/<int:spt_pk>/form/', create_support_form, name='create_support_form')
 ]
