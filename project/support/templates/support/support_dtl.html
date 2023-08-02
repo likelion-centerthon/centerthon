@@ -7,10 +7,15 @@
 <body>
     {% include 'header.html' with artist=artist %}
     <h1>상세조회</h1>
+    {% if support.user == request.user %}
+    <button onclick="location.href='{% url 'support:update_support' pk=artist.pk spt_pk=support.pk %}'">수정하기</button>
+    {% endif %}
     <h2>제목:{{support.title}}</h2>
     <p>목표모금액:{{support.fundraising}}</p>
     <p>내용:{{support.body}}</p>
-    <img src=""></img>
+    {% if support.image %}
+    <img src="{{support.image.url}}" alt="서포트 이미지" style="width:315px;"></img>
+    {% endif %}
     <p>계좌:{{support.bank}} {{support.account}}</p>
     <p>마감기한:{{support.deadline|date:"Y/m/d Ah:i"}}</p>
 
