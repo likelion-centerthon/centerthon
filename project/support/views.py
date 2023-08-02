@@ -2,8 +2,33 @@ from django.shortcuts import render, redirect
 from django.db.models import Q, F
 from django.utils import timezone
 from artist.models import Artist
-from support.models import Support, SupportForm, Bank, SupportFormStatus
+from support.models import Support, SupportForm, Bank, SupportFormStatus, Block
 from alert.models import Alert
+from userWorking.models import UserWorking
+from hashlib import sha256
+
+# 해시 생성
+def calculate_hash(index, prev_hash, timestamp, inoutType, depositor, credit, creditTime):
+    return sha256(f"{index}{prev_hash}{timestamp}{inoutType}{depositor}{credit}{creditTime}".encode()).hexdigest()
+
+# 블록체인 생성
+def create_new_bloack(support, supportForm, inoutType):
+    prev_block = Block.objects.filter(support=support).order_by('timestamp').first()
+    index = prev_block.index + 1
+    timestamp = timezone.now()
+    hash = calculate_hash(index, prev_block.hash, timestamp, '입금', supportForm.depositor, supportForm.credit,
+                          supportForm.creditTime)
+    return Block.objects.create(
+        support=support,
+        index=index,
+        prev_hash=prev_block.hash,
+        timestamp=timestamp,
+        hash=hash,
+        inoutType=inoutType,
+        depositor=supportForm.depositor,
+        credit=supportForm.credit,
+        creditTime=supportForm.creditTime
+    )
 
 # 전체조회(진행중)
 def support_list(request, pk):
@@ -38,12 +63,17 @@ def my_support_list_complete(request, pk):
     return render(request, './support/support_list_my.html',
                   {"supports": supports, "artist": artist, "alert": alert})
 
-# 상세조회
+# 상세조회(미완성)
 def support_dtl(request, pk, spt_pk):
     artist=Artist.objects.get(pk=pk)
     support=Support.objects.get(pk=spt_pk)
     support_form=SupportForm.objects.filter(support=support)
-    return render(request, './support/support_dtl.html', {"support":support, "artist":artist, "support_form":support_form})
+
+    if request.method=='GET':
+        return render(request, './support/support_dtl.html', {"support":support, "artist":artist, "support_form":support_form})
+    # 모집종료
+    # 대기중 서포트 폼 상태 변경
+
 
 # 서포트 참여 폼 입력
 def create_support_form(request, pk, spt_pk):
@@ -81,9 +111,15 @@ def create_support_form(request, pk, spt_pk):
                 creditTime__lte=thirty_minutes_later
             )
             if bank:
+                userWorking = UserWorking.objects.get(user=user, artist=artist)
+                userWorking.supportGuest += 1
                 supportForm.status = SupportFormStatus.auto_check.value
                 support.balanceAmt += bank.credit
+                userWorking.save()
                 supportForm.save()
+                support.save()
+                # 블록 체인 생성
+                create_new_bloack(support, supportForm, '입금')
                 # 성공 알림 생성
                 Alert.objects.create(
                     user=user,
@@ -128,12 +164,21 @@ def create_support(request, pk):
             account=account,
             deadline=deadline
         )
-
+        # 제네시스 블록 생성
+        Block.objects.create(
+            support=support,
+            index=0,
+            prev_hash="0",
+            hash="0"
+        )
         # 성공 알림 생성
         Alert.objects.create(
             user=user,
             message=F'<{support.title}> 서포트가 등록되었습니다!',
         )
+        userWorking=UserWorking.objects.get(user=user, artist=artist)
+        userWorking.supportHost += 1
+        userWorking.save()
         return redirect('support:support_list', pk=artist.pk)
 
 #서포트 게시글 수정

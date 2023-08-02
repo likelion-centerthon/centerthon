@@ -39,12 +39,23 @@ class SupportForm(models.Model):
     def __str__(self):
         return self.depositor
 
-# class Block(models.Model):
-
-
 class AccountType(Enum):
     deposit='입금'
     withdraw='출금'
+
+class Block(models.Model):
+    support=models.ForeignKey(Support, on_delete=models.CASCADE)
+    index=models.IntegerField()
+    prev_hash=models.CharField(max_length=256)
+    timestamp=models.DateTimeField(auto_now=True)
+    hash=models.CharField(max_length=256)
+    inoutType = models.CharField(max_length=5, choices=[(account.value, account.name) for account in AccountType], default=AccountType.deposit.value, null=True)
+    depositor = models.CharField(max_length=10, null=True)
+    credit = models.IntegerField(null=True)
+    creditTime = models.DateTimeField(null=True)
+
+    def __str__(self):
+        return f"{self.support.title} Block {self.index}"
 
 class Bank(models.Model):
     support = models.ForeignKey(Support, on_delete=models.CASCADE, related_name='supportBank')
