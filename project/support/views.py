@@ -100,8 +100,8 @@ def create_support_form(request, pk, spt_pk):
         )
         #계좌 내역과 입력 폼 비교
         current_time = timezone.now()
-        thirty_minutes_ago = current_time - timezone.timedelta(minutes=30)
-        thirty_minutes_later = current_time + timezone.timedelta(minutes=30)
+        thirty_minutes_ago = current_time - timezone.timedelta(minutes=5)
+        thirty_minutes_later = current_time + timezone.timedelta(minutes=5)
         try:
             bank = Bank.objects.get(
                 support=support,
@@ -119,9 +119,11 @@ def create_support_form(request, pk, spt_pk):
                 supportForm.save()
                 support.save()
                 # 블록 체인 생성
+
                 create_new_bloack(support, supportForm, '입금')
                 # 성공 알림 생성
                 Alert.objects.create(
+                    artist=artist,
                     user=user,
                     message=F'{support.title}의 모금 내역이 자동 확인 되었습니다! 🎉',
                 )
@@ -129,6 +131,7 @@ def create_support_form(request, pk, spt_pk):
         except Bank.DoesNotExist:
             # 실패 알림 생성
             Alert.objects.create(
+                artist=artist,
                 user=user,
                 message=F'{support.title}의 모금 내역이 확인되지 않았습니다. 입력 정보를 확인해 주세요.',
             )
