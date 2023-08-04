@@ -35,14 +35,14 @@ def support_list(request, pk):
     artist = Artist.objects.get(pk=pk)
     supports = Support.objects.filter(artist=artist, status='진행중')
     alert = Alert.objects.filter(user=request.user)
-    return render(request, './support/support_list.html', {"supports":supports, "artist":artist, "alert":alert})
+    return render(request, './support/support_list.html', {"supports":supports, "artist":artist, "alerts":alert})
 
 # 전체조회(완료)
 def support_list_complete(request, pk):
     artist = Artist.objects.get(pk=pk)
     supports = Support.objects.filter(artist=artist, status='완료')
     alert = Alert.objects.filter(user=request.user)
-    return render(request, './support/support_list.html', {"supports": supports, "artist": artist, "alert": alert})
+    return render(request, './support/support_list.html', {"supports": supports, "artist": artist, "alerts": alert})
 
 # 내가 참여한 서포트(진행 중)
 def my_support_list(request, pk):
@@ -51,7 +51,7 @@ def my_support_list(request, pk):
         Q(artist=artist, user=request.user, status='진행중')| Q(artist=artist, form__user=request.user,
                                                                status='진행중')).distinct()
     alert = Alert.objects.filter(user=request.user)
-    return render(request, './support/support_list_my.html', {"supports":supports, "artist":artist, "alert":alert})
+    return render(request, './support/support_list_my.html', {"supports":supports, "artist":artist, "alerts":alert})
 
 # 내가 참여한 서포트(완료)
 def my_support_list_complete(request, pk):
@@ -61,16 +61,17 @@ def my_support_list_complete(request, pk):
                                                               status='완료')).distinct()
     alert = Alert.objects.filter(user=request.user)
     return render(request, './support/support_list_my.html',
-                  {"supports": supports, "artist": artist, "alert": alert})
+                  {"supports": supports, "artist": artist, "alerts": alert})
 
 # 상세조회(미완성)
 def support_dtl(request, pk, spt_pk):
     artist=Artist.objects.get(pk=pk)
     support=Support.objects.get(pk=spt_pk)
     support_form=SupportForm.objects.filter(support=support)
+    alerts=Alert.objects.filter(user=request.user)
 
     if request.method=='GET':
-        return render(request, './support/support_dtl.html', {"support":support, "artist":artist, "support_form":support_form})
+        return render(request, './support/support_dtl.html', {"support":support, "artist":artist, "support_form":support_form, "alerts":alerts})
     # 모집종료
     # 대기중 서포트 폼 상태 변경
 
@@ -83,7 +84,7 @@ def create_support_form(request, pk, spt_pk):
     alert = Alert.objects.filter(user=user)
 
     if request.method=='GET':
-        return render(request, './support/support_form.html', {"support":support, "artist":artist, "alert": alert})
+        return render(request, './support/support_form.html', {"support":support, "artist":artist, "alerts": alert})
 
     # 제출 로직
     if request.method=='POST':
@@ -100,8 +101,8 @@ def create_support_form(request, pk, spt_pk):
         )
         #계좌 내역과 입력 폼 비교
         current_time = timezone.now()
-        thirty_minutes_ago = current_time - timezone.timedelta(minutes=30)
-        thirty_minutes_later = current_time + timezone.timedelta(minutes=30)
+        thirty_minutes_ago = current_time - timezone.timedelta(minutes=5)
+        thirty_minutes_later = current_time + timezone.timedelta(minutes=5)
         try:
             bank = Bank.objects.get(
                 support=support,
@@ -119,9 +120,11 @@ def create_support_form(request, pk, spt_pk):
                 supportForm.save()
                 support.save()
                 # 블록 체인 생성
+
                 create_new_bloack(support, supportForm, '입금')
                 # 성공 알림 생성
                 Alert.objects.create(
+                    artist=artist,
                     user=user,
                     message=F'{support.title}의 모금 내역이 자동 확인 되었습니다! 🎉',
                 )
@@ -129,6 +132,7 @@ def create_support_form(request, pk, spt_pk):
         except Bank.DoesNotExist:
             # 실패 알림 생성
             Alert.objects.create(
+                artist=artist,
                 user=user,
                 message=F'{support.title}의 모금 내역이 확인되지 않았습니다. 입력 정보를 확인해 주세요.',
             )
@@ -142,7 +146,7 @@ def create_support(request, pk):
     alert = Alert.objects.filter(user=user)
 
     if request.method == 'GET':
-        return render(request, './support/support_create.html', {"artist":artist, "alert":alert})
+        return render(request, './support/support_create.html', {"artist":artist, "alerts":alert})
 
     if request.method == "POST":
         title = request.POST.get('title')
@@ -191,7 +195,7 @@ def update_support(request, pk, spt_pk):
         return redirect('support:support_dtl', pk=artist.pk, spt_pk=support.pk)
 
     if request.method == 'GET':
-        return render(request, './support/support_update.html', {"support":support, "artist":artist, "alert":alert})
+        return render(request, './support/support_update.html', {"support":support, "artist":artist, "alerts":alert})
 
     if request.method == 'POST':
         title=request.POST.get('title')
