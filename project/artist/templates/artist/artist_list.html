@@ -1,15 +1,5 @@
 {% extends 'base_no_nav.html' %}
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>아티스트 선택</title>
-</head>
-<body>
-    
-<div class="container">
-
     <form method="post" action="{% url 'artist:artist_list' category='KPOP' %}">
         {% csrf_token %}
         <button type="submit">K-POP</button>
@@ -40,6 +30,4 @@
     </form>
     {% endfor %}
     </div>
-</body>
-</html>
 {% endblock %}
