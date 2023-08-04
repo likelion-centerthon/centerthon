@@ -17,8 +17,8 @@
 filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 border-radius: 16px; padding: 20px" onclick="location.href='{% url 'support:support_dtl' pk=artist.pk spt_pk=support.pk %}'">
     <h1> {{support.title}}<br></h1>
-   <h3> 목표: {{support.fundraising}}<br></h3>
-   <h3>종료: {{support.deadline|date:"Y/m/d Ah:i"}}<br></h3>
+    <h3> 목표: {{support.fundraising}}<br></h3>
+    <h3>종료: {{support.deadline|date:"Y/m/d Ah:i"}}<br></h3>
     <h2>{{support.bank}} {{support.account}}<br></h2>
     <h3>{{support.balanceAmt}}</h3>
     <div class="box" id="completionBox">
@@ -26,6 +26,6 @@ border-radius: 16px; padding: 20px" onclick="location.href='{% url 'support:supp
       </div>
 </div>
 {% endfor %}
-
+</div>
 {% endblock %}
 {% endwith %}
