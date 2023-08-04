@@ -153,7 +153,7 @@ def create_comment(request, pk):
         userWorking.save()
 
         comments = Comment.objects.filter(post=post)
-        return render(request, 'post/post_detail.html', context={'post':post, 'comments':comments})
+        return render(request, 'post/post_detail.html', context={'post':post, 'comments':comments,'artist':post.artist})
 
 # 댓글 삭제
 def delete_comment(request, pk):
@@ -164,6 +164,8 @@ def delete_comment(request, pk):
 
     if request.method == "GET":
         comment = Comment.objects.get(pk=pk)
+        artist = comment.post.artist
+
         post = comment.post
         comment.delete()
 
@@ -174,6 +176,6 @@ def delete_comment(request, pk):
         userWorking.commentRecord -= 1
         userWorking.save()
 
-        return render(request, 'post/post_detail.html', context={'post':comment.post, 'comments':comments})
+        return render(request, 'post/post_detail.html', context={'post':comment.post, 'comments':comments, 'artist':artist})
 
     return render(request, 'post/failDelete.html')

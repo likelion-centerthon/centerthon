@@ -18,6 +18,7 @@ def artist_list(request, category):
             if category == 'none':
                 artists = Artist.objects.all()
             else: # 필터링
+
                 artists = Artist.objects.filter(category=category)
 
         return render(request, 'artist/artist_list.html', context={'artists': artists})
