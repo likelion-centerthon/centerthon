@@ -22,6 +22,7 @@
         </form>
         <button><img class="alram" src="{% static 'images/alram.png'%}" alt="알람" ></img></button>
       </div>
+{% comment %}       
         {% for alert in alerts %}
         <div>
           <div>{{ alert.artist.artistName }}</div>
@@ -33,7 +34,7 @@
           <div>{{ alert.is_read }}</div>
          
         </div>
-        {% endfor %}
+        {% endfor %} {% endcomment %}
       
       </div>
 

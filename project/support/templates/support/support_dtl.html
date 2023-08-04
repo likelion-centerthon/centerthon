@@ -3,25 +3,27 @@
 {% with artist=artist alerts=alerts %}
 {% block content %}
     <h1>상세조회</h1>
+    <div class="percent"></div>
+
     {% if support.user == request.user %}
     <button onclick="location.href='{% url 'support:update_support' pk=artist.pk spt_pk=support.pk %}'">수정하기</button>
     {% endif %}
-    <h2>제목:{{support.title}}</h2>
-    <p>목표모금액:{{support.fundraising}}</p>
-    <p>내용:{{support.body}}</p>
-
+    <div class="register">
+    <div class="title">{{support.title}}</div>
+    <div class="goal">{{support.fundraising}}</div>
+    <div class="detail">{{support.body}}</div>
     {% if support.image %}
-    <img src="{{support.image.url}}" alt="서포트 이미지" style="width:315px;"></img>
+    <img class="support-img" src="supportimg.png" alt="Support Image">
     {% endif %}
 
-    <p>계좌:{{support.bank}} {{support.account}}</p>
-    <p>마감기한:{{support.deadline|date:"Y-m-d A h:i"}}</p>
-    <p>현재모금액:{{support.balanceAmt}}</p>
+    <div class="account">{{support.bank}} {{support.account}}</div>
+    <div class="enddate">{{support.deadline|date:"Y/m/d Ah:i"}}</div>
+    </div>
 
 {% if not support.status == '완료' %}
     <!--일반 사용자일 때-->
     {% if not support.user == request.user %}
-    <button onclick="location.href='{% url 'support:create_support_form' pk=artist.pk spt_pk=support.pk %}'">모금 정보 작성하기</button>
+    <button class="start-Button" onclick="location.href='{% url 'support:create_support_form' pk=artist.pk spt_pk=support.pk %}'">모금 정보 작성하기</button>
     {% endif %}
 
     <!--관리자일 때-->
@@ -30,14 +32,48 @@
             {% csrf_token %}
             <input type="hidden" name="form_type" value="closing">
             {% if not warning %}
-            <button type="submit">마감하기</button>
+            <button class="start-Button"  type="submit">마감하기</button>
             {% endif %}
             {% if warning %}
-            <button type="submit">{{warning}}</button>
+            <button class="start-Button"  type="submit">{{warning}}</button>
             {% endif %}
         </form>
-        {% include './support_dtl_list.html' with support_form=support_form %}
-    {% endif %}
+        <div class="line"></div>
+
+        <p class="text">모금자 정보</p>
+        <div class="supportinfo-container">
+            {% for form in support_form %}
+            <div class="info-text">
+                <div style="margin-bottom:10px; border: 1px solid #333333; filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)); border-radius: 16px; padding: 5px">
+                    <p>{{form.depositor}} | {{form.credit}}원</p>
+                    <p style="color: #949494">{{form.creditTime}}</p>
+      
+                    {% if form.status == '대기' %}
+                    <div  onclick="showPopup()">대기 </div>
+                    <div id="pop_info_1" class="pop_wrap" style="display: none">
+                        <div class="pop_inner">
+                          <p class="dsc">입금 확인이 되었나요?</p>
+                          <form method="post" action="{% url 'support:support_dtl' pk=artist.pk spt_pk=support.pk %}">
+                            {% csrf_token %}
+                            <input type="hidden" name="form_type" value="wait_status">
+                            <input type="hidden" name="form_pk" value="{{form.pk}}">
+                            <input type="submit" value="네">
+                        </form>
+                          <button type="button" class="btn_no">아니요</button>
+                        </div>
+                    
+                    </div>
+                    {% endif %}
+                  
+                    {% if not form.status == '대기' %}
+                    {{form.status}}
+                    {% endif %}               
+                 </div>
+            </div>
+       
+        {% endfor %}
+    </div>
+        {% endif %}
 {% endif %}
 
 {% if support.status == '완료' %}
@@ -54,5 +90,34 @@
 
 {% endif %}
 
+
+
+  <script>
+    function showPopup() {
+        const popup = document.getElementById('pop_info_1');
+        popup.style.display = 'block';
+      
+      }
+    
+      function hidePopup() {
+        const popup = document.getElementById('pop_info_1');
+        popup.style.display = 'none';
+      }
+    
+      // Add event listeners to the "Yes" and "No" buttons
+      const btnYes = document.querySelector('.btn_yes');
+      const btnNo = document.querySelector('.btn_no');
+      const text = document.querySelector('.info-text span')
+      btnYes.addEventListener('click', function () {
+        hidePopup(); // Hide the popup when "Yes" is clicked
+        text.innerHTML="입금 확인"
+        text.style.color="blue";
+      });
+    
+      btnNo.addEventListener('click', function () {
+        hidePopup(); // Hide the popup when "No" is clicked
+      });
+    
+  </script>
 {% endblock %}
 {% endwith %}

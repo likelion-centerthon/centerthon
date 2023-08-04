@@ -1,25 +1,32 @@
 {% extends 'base.html' %}
 {% with artist=artist alerts=alerts %}
 {% block content %}
-    <div style="margin-bottom:5px;">
-        <button onclick="location.href='{% url 'support:support_list' pk=artist.pk %}'">서포트 전체</button>
-        <button onclick="location.href='{% url 'support:my_support_list' pk=artist.pk %}'">내가 참여한 서포트</button>
-    </div>
-    <div>
-        <button onclick="location.href='{% url 'support:support_list' pk=artist.pk %}'">진행중</button>
-        <button onclick="location.href='{% url 'support:support_list_complete' pk=artist.pk %}'">완료</button>
-        <button onclick="location.href='{% url 'support:create_support' pk=artist.pk %}'">작성</button>
-    </div>
-    <h1>{{artist.artistName}} 서포트 전체조회</h1>
-    {% for support in supports %}
-    <div style="margin-top:30px;" onclick="location.href='{% url 'support:support_dtl' pk=artist.pk spt_pk=support.pk %}'">
-        제목: {{support.title}}<br>
-        목표: {{support.fundraising}}<br>
-        종료: {{support.deadline|date:"Y-m-d A h:i"}}<br>
-        계좌: {{support.bank}} {{support.account}}<br>
-        모금: {{support.balanceAmt}} <br>
-    </div>
-    <hr>
-    {% endfor %}
+
+<div style="margin-bottom:5px;" class="category">
+    <button class="all" onclick="location.href='{% url 'support:support_list' pk=artist.pk %}'">서포트 전체</button>
+    <button class="mysupport" onclick="location.href='{% url 'support:my_support_list' pk=artist.pk %}'">내가 참여한 서포트</button>
+</div>
+<div class="category-button">
+    <button class="all-button" onclick="location.href='{% url 'support:support_list' pk=artist.pk %}'">진행중</button>
+    <button class="end-button" onclick="location.href='{% url 'support:support_list_complete' pk=artist.pk %}'">완료</button>
+    <button class="write-button" onclick="location.href='{% url 'support:create_support' pk=artist.pk %}'">작성</button>
+</div>
+<div class="supporting">
+{% for support in supports %}
+<div  style="margin-bottom:30px;  border: 1px solid #333333;
+filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+border-radius: 16px; padding: 20px" onclick="location.href='{% url 'support:support_dtl' pk=artist.pk spt_pk=support.pk %}'">
+    <h1> {{support.title}}<br></h1>
+   <h3> 목표: {{support.fundraising}}<br></h3>
+   <h3>종료: {{support.deadline|date:"Y/m/d Ah:i"}}<br></h3>
+    <h2>{{support.bank}} {{support.account}}<br></h2>
+    <h3>{{support.balanceAmt}}</h3>
+    <div class="box" id="completionBox">
+        67<span style="font-size: 17px">%</span>
+      </div>
+</div>
+{% endfor %}
+<div>
+   
 {% endblock %}
 {% endwith %}
