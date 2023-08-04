@@ -3,9 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <title>튜토리얼</title>
+    <style>
+        body {
+            background-color: rgba(255, 255, 255, 1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .button-container {
+            display: flex;
+            flex-direction: column; 
+            align-items: center; 
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: rgba(188, 103, 255, 1);
+            color: #fff;
+            text-decoration: none;
+            text-align: center;
+            border-radius: 5px;
+            margin: 5px;
+            border-top-left-radius:30px;
+	        border-top-right-radius:30px;
+	        border-bottom-left-radius:30px;
+	        border-bottom-right-radius:30px;
+            width: 200px;
+
+        }
+
+    </style>
 </head>
 <body>
-    <div><a href="#">앱 사용법 익히러 가기</a></div>
-    <div><a href="{% url 'user:artists' %}">아티스트 선택하러 가기</a></div>
+    <div class="button-container">
+        <a class="button" href="#">앱 사용법 익히러 가기</a>
+        <a class="button" href="{% url 'user:artists' %}">아티스트 선택하러 가기</a>
+    </div>
 </body>
 </html>

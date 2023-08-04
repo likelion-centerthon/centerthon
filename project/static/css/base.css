@@ -1,12 +1,18 @@
 body {
-  background-color: #aaa;
+  background-color: rgb(25, 0, 215);
+  height: 100%;
   margin: 0;
 }
-
-.content {
-  background-color: #fff;
+.container {
+  align-items: center;
+  position: relative;
+  display: flex;
+  justify-content: center;
   width: 375px;
+  height: 812px;
   margin: 0 auto;
-  padding: 10px;
-  box-sizing: border-box;
+  background-color: #ffffff;
+  box-shadow: 2px 2px 9px rgba(0, 0, 0, 0.25);
+  flex-direction: column; 
+
 }

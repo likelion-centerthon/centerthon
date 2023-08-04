@@ -1,6 +1,10 @@
+
+{% load static %}
+
 {% extends 'base.html' %}
 {% with artist=artist alerts=alerts %}
 {% block content %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +12,10 @@
     <title>아티스트 상세 정보</title>
 </head>
 <body>
+
+    <div class="container">
+    {% include 'base.html' with artist=artist %}
+
     <form method="post" action="{% url 'artist:select_artist' pk=artist.pk %}">
         {% csrf_token %}
         <button type="submit">아티스트 정보</button>
@@ -29,6 +37,9 @@
     <div>{{ artist.color }}</div>
     <div>{{ artist.fanName }}</div>
     <div>{{ artist.agency }}</div>
+
+</div>
+
 </body>
 </html>
 {% endblock %}

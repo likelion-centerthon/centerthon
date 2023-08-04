@@ -1,4 +1,148 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>서포트 전체조회</title>
+    <style>
+      
+        /*하단바*/
+        .footer {
+            box-sizing: border-box;
+            position: absolute;
+            width: 375px;
+            height: 80px;
+            top: 720px;
+            left:0.5px;
+            background: #ffffff;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+          }
+        
+          .label {
+            margin-top: 2px;
+            font-family: "Poppins";
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 150%;
+            color: #000000;
+          }
+          .footer img {
+            width: 48px;
+            height: 48px;
+          }
+          
+          .footer h3 {
+            margin-top: 2px;
+            font-family: "Poppins";
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 150%;
+            color: #000000;
+          }
+          
+          .footer div {
+            text-align: center;
+          }
+          
+          .footer .label.colored {
+            color: #bc67ff;
+          }
+          .support .label {
+            color: #bc67ff;
+          }
+    </style>
+</head>
+<body>
 <div>
+
+    <hr>
+
+<div class="footer">
+    <div class="singer" onclick="location.href='{% url 'artist:select_artist' pk=artist.pk %}'">
+        <img id="singer-img" src="{% static 'images/singer.png'%}" alt="가수 이미지"></img>
+      <div class="label">내 가수</div> 
+    </div>
+    <div class="list"  onclick="location.href='{% url 'post:post_list' artist_pk=artist.pk category='가수' %}'">
+        <img id="list-img" src="{% static 'images/list.png'%}" alt="게시글 이미지" ></img>
+      <div class="label">게시글</div>
+    </div>
+    <div class="group"  onclick="location.href='{% url 'meeting:MeetingList' artist_id=artist.id %}'">
+        <img id="group-img" src="{% static 'images/group.png'%}" alt="그룹 이미지" ></img>
+      <div class="label">모임</div>
+    </div>
+    <div class="support" onclick="location.href='{% url 'support:support_list' pk=artist.pk %}'">
+        <img id="support-img" src="{% static 'images/purplesupport.png'%}" alt="그룹 이미지" ></img>
+      <div class="label">서포트</div>
+    </div>
+  </div>
+<script>
+    //하단바 아이콘 변경
+function handleImageHover(elementId, newImageSrc) {
+    const imgElement = document.getElementById(elementId);
+    imgElement.src = "{% static 'images/newImageSrc.png'%}";
+  }
+  
+  const singerImg = document.getElementById("singer-img");
+  const listImg = document.getElementById("list-img");
+  const groupImg = document.getElementById("group-img");
+  
+  singerImg.addEventListener("mouseenter", function () {
+    handleImageHover("singer-img", "purplesinger.png");
+  });
+  
+  singerImg.addEventListener("mouseleave", function () {
+    handleImageHover("singer-img", "singer.png");
+  });
+  
+  listImg.addEventListener("mouseenter", function () {
+    handleImageHover("list-img", "purplelist.png");
+  });
+  
+  listImg.addEventListener("mouseleave", function () {
+    handleImageHover("list-img", "list.png");
+  });
+  
+  groupImg.addEventListener("mouseenter", function () {
+    handleImageHover("group-img", "purplegroup.png");
+  });
+  
+  groupImg.addEventListener("mouseleave", function () {
+    handleImageHover("group-img", "group.png");
+  });
+  
+ 
+//하단바 h3 색상 변경
+document
+.getElementById("singer-img")
+.addEventListener("mouseover", function () {
+  document.querySelector(".singer .label").classList.add("colored");
+});
+
+document.getElementById("singer-img").addEventListener("mouseout", function () {
+document.querySelector(".singer .label").classList.remove("colored");
+});
+
+document.getElementById("list-img").addEventListener("mouseover", function () {
+document.querySelector(".list .label").classList.add("colored");
+});
+
+document.getElementById("list-img").addEventListener("mouseout", function () {
+document.querySelector(".list .label").classList.remove("colored");
+});
+
+document.getElementById("group-img").addEventListener("mouseover", function () {
+document.querySelector(".group .label").classList.add("colored");
+});
+
+document.getElementById("group-img").addEventListener("mouseout", function () {
+document.querySelector(".group .label").classList.remove("colored");
+});
+</script>
+</body>
+</html>
+
     <button onclick="location.href='{% url 'artist:select_artist' pk=artist.pk %}'">내 가수</button>
     <button onclick="location.href='{% url 'post:post_list' artist_pk=artist.pk category='가수' %}'">게시판</button>
     <button onclick="location.href='{% url 'support:support_list' pk=artist.pk %}'">서포트</button>
