@@ -188,4 +188,3 @@ def subPNList(request, artist_id):
 
     return render(request, 'html/writed_meeting_PN.html', {'meetings': meetings, 'artist_id': artist_id,'artists' : artists,'artist' : artist, 'search': search, 'alerts':alerts,})
 
-
