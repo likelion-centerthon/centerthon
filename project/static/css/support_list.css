@@ -103,7 +103,7 @@ box-sizing: border-box;
 
 overflow-y:scroll;
 overflow-x:hidden;
-height: 570px;
+height: calc(100% - 95px);
 display: flex;
 flex-direction: column;
 justify-content: space-between;

@@ -1,14 +1,9 @@
 {% load static %}
 
-    <meta charset="UTF-8">
-    <title>서포트 전체조회</title>
-    <link rel="stylesheet" href="{% static 'css/footer.css' %}" />
-<div>
-
 <div class="footer">
     <div class="singer" onclick="location.href='{% url 'artist:select_artist' pk=artist.pk %}'">
         <img id="singer-img" src="{% static 'images/singer.png'%}" alt="가수 이미지"></img>
-      <div class="label">내 가수</div> 
+      <div class="label">내 가수</div>
     </div>
     <div class="list"  onclick="location.href='{% url 'post:post_list' artist_pk=artist.pk category='가수' %}'">
         <img id="list-img" src="{% static 'images/list.png'%}" alt="게시글 이미지" ></img>
@@ -22,45 +17,45 @@
         <img id="support-img" src="{% static 'images/purplesupport.png'%}" alt="그룹 이미지" ></img>
       <div class="label">서포트</div>
     </div>
-    
+
   </div>
-  
+
 <script>
     //하단바 아이콘 변경
 function handleImageHover(elementId, newImageSrc) {
     const imgElement = document.getElementById(elementId);
     imgElement.src = "{% static 'images/newImageSrc.png'%}";
   }
-  
+
   const singerImg = document.getElementById("singer-img");
   const listImg = document.getElementById("list-img");
   const groupImg = document.getElementById("group-img");
-  
+
   singerImg.addEventListener("mouseenter", function () {
     handleImageHover("singer-img", "purplesinger.png");
   });
-  
+
   singerImg.addEventListener("mouseleave", function () {
     handleImageHover("singer-img", "singer.png");
   });
-  
+
   listImg.addEventListener("mouseenter", function () {
     handleImageHover("list-img", "purplelist.png");
   });
-  
+
   listImg.addEventListener("mouseleave", function () {
     handleImageHover("list-img", "list.png");
   });
-  
+
   groupImg.addEventListener("mouseenter", function () {
     handleImageHover("group-img", "purplegroup.png");
   });
-  
+
   groupImg.addEventListener("mouseleave", function () {
     handleImageHover("group-img", "group.png");
   });
-  
- 
+
+
 //하단바 h3 색상 변경
 document
 .getElementById("singer-img")
@@ -88,4 +83,3 @@ document.getElementById("group-img").addEventListener("mouseout", function () {
 document.querySelector(".group .label").classList.remove("colored");
 });
 </script>
-
