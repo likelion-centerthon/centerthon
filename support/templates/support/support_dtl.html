@@ -1,0 +1,330 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>서포트 전체조회</title>
+    <style>
+       
+        /*시작하기 버튼*/
+        .start-Button {
+          position: absolute;
+          width: 327px;
+          height: 60px;
+          left: 25px;
+          top: 640px;
+          background: #b3b1b0;
+          border-radius: 30.5px;
+          font-family: "Poppins";
+          font-style: normal;
+          font-weight: 700;
+          font-size: 20px;
+          line-height: 180%;
+          text-align: center;
+          color: #ffffff;
+          border: none;
+        }
+        /*뒤로 가기 아이콘*/
+        .back {
+          position: absolute;
+          width: 80px;
+          height: 80px;
+          left: 3px;
+          top: 50px;
+        }
+        /*서포트 시작하기*/
+        h1 {
+          position: absolute;
+          width: 180px;
+          height: 35px;
+          left: calc(50% - 170px / 2);
+          top: 50px;
+          font-family: "Poppins";
+          font-style: normal;
+          font-weight: 700;
+          font-size: 24px;
+          line-height: 147%;
+          text-align: center;
+          color: #000000;
+        }
+        .percent{
+        /* Rectangle 22 */
+      
+      box-sizing: border-box;
+      
+      position: absolute;
+      left: 6.67%;
+      right: 6.13%;
+      top: 15%;
+      bottom: 83.94%;
+      
+      background: #BC67FF;
+      mix-blend-mode: normal;
+      border: 1px dashed #BC67FF;
+      border-radius: 16px;
+      
+      
+        }
+    
+        /*서포트 등록 폼*/
+        
+        .register div {
+          width: 327px;
+         
+          box-sizing: border-box;
+          position: absolute;
+          left: 5.87%;
+          right: 6.93%;
+          mix-blend-mode: normal;
+          border: 1px solid #b3b1b0;
+          border-radius: 16px;
+          /* New Password */
+      
+      text-indent: 10px;
+      font-family: 'Poppins';
+      font-style: normal;
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 200%;
+      /* identical to box height, or 30px */
+      
+      color: #333333;
+      
+      mix-blend-mode: normal;
+      
+        }
+        /*제목*/
+        .title {
+          top: 160px;
+          height: 52px;
+        }
+        /*목표 모금액*/
+          .goal {
+            top: 220px;
+            height: 52px;
+          }
+          /*마감 날짜*/
+          .enddate{
+            top: 280px;
+            height: 52px;
+          }
+          /*계좌 번호*/
+          .account {
+            top: 340px;
+            height: 52px;
+          }
+          /*내용*/
+          .detail {
+            height: 230px;
+            top: 400px;
+         
+          }
+          .support-img{
+        
+        position: absolute;
+        width: 279px;
+        height: 251px;
+        left: 51px;
+        top: 605px;
+        
+        
+        
+          }
+          .line{
+        position: absolute;
+        width: 250px;
+        height: 0px;
+        left: calc(50% - 250px/2 + 4.5px);
+        top: 712px;
+        
+        border: 3px solid rgba(51, 51, 51, 0.7);
+        
+        }
+        .text{
+            /* New Password */
+        
+        position: absolute;
+        left: 37.07%;
+        right: 36.8%;
+        top:80.33%;
+        width: 200px;
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 150%;
+        /* identical to box height, or 30px */
+        
+        color: #333333;
+        
+        mix-blend-mode: normal;
+        
+        }
+        /*모금자 정보 목록*/
+        .supportinfo-container{
+            /* Rectangle 11 */
+            z-index: 0;
+            overflow-y:scroll; overflow-x:hidden; height:70px;
+        position: absolute;
+        left: 6.4%;
+        right: 6.4%;
+        top: 86.86%;
+        bottom: 12.09%;
+        mix-blend-mode: normal;
+    
+        
+        }
+        .info-text p {
+            /* Add styles for the text inside the support information div */
+            font-family: 'Poppins';
+            font-style: normal;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 150%;
+            /* identical to box height, or 24px */
+            color: #333333;
+            margin-bottom: 2px;
+            margin-top: 2px;
+            margin-left: 10px;
+          }
+          .info-text span {
+            position: absolute;
+            left: 250px;
+            top: 19px;
+            color: red;
+          }
+      
+          
+        h3{
+            /* 입금 확인 */
+        
+        position: absolute;
+        width: 79px;
+        height: 30px;
+        left: 262px;
+        top: 1259px;
+        
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 150%;
+        color: #0033EA;
+        
+        
+        }
+       
+          /*팝업창*/
+        .wrap{padding:10px;}
+        
+        .pop_wrap{position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,.5); font-size:0; text-align:center;}
+        .pop_wrap:after{display:inline-block; height:100%; vertical-align:middle; content:'';}
+        .pop_wrap .pop_inner{border-radius:10px;display:inline-block; padding:20px 30px; background:#fff; width:200px; vertical-align:middle; font-size:14px;}
+        .btn_yes, .btn_no{
+            color:#3A7BBC; width: 90px; font-size: 12px; height: 20px; border: none; background-color: #fff;
+        }
+        .btn_no{
+            color:red; 
+        
+        }
+        ::-webkit-scrollbar {
+            width: 2px; /* Set the width of the vertical scrollbar */
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1; /* Set the background color of the scrollbar track */
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #888; /* Set the color of the scrollbar thumb */
+            border-radius: 6px; /* Set the border radius of the scrollbar thumb */
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555; /* Set the color of the scrollbar thumb when hovering */
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        {% include 'base.html' with artist=artist %}
+       
+        <img class="back" src="{% static 'images/back.png'%}" alt="뒤로가기">
+        <h1>상세조회</h1>
+        <div class="percent"></div>
+
+        <div class="register">
+
+            <div class="title">{{support.title}}</div>
+            <div class="goal">{{support.fundraising}}</div>
+            <div class="detail">{{support.body}}</div>
+            <img class="support-img" src="supportimg.png" alt="Support Image">
+            <div class="account">{{support.bank}} {{support.account}}</div>
+            <div class="enddate">{{support.deadline|date:"Y/m/d Ah:i"}}</div>
+        </div>
+
+        {% if not support.user == request.user %}
+        <button onclick="location.href='{% url 'support:create_support_form' pk=artist.pk spt_pk=support.pk %}'">모금 정보 작성하기</button>
+        {% endif %}
+    
+        {% if support.user == request.user %}
+        <button class="start-Button" onclick="location.href='{% url 'support:create_support_form' pk=artist.pk spt_pk=support.pk %}'">모금 마감하기</button>
+        <div class="line"></div>
+
+        <p class="text">모금자 정보</p>
+        <div class="supportinfo-container">
+            {% for form in support_form %}
+            <div class="info-text" onclick="showPopup()">
+                <div style="margin-bottom:10px; border: 1px solid #333333; filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)); border-radius: 16px; padding: 5px">
+                    <p>{{form.depositor}} | {{form.credit}}원</p>
+                    <p style="color: #949494">{{form.creditTime}}</p>
+                    <span>{{form.status}}</span>
+                </div>
+            </div>
+       
+        {% endfor %}
+    </div>
+    
+        {% endif %}
+    
+        {% if support.status == '완료' %}
+        {% endif %}
+    </div>
+</div>
+<div id="pop_info_1" class="pop_wrap" style="display: none">
+    <div class="pop_inner">
+      <p class="dsc">입금 확인이 되었나요?</p>
+      <button type="button" class="btn_yes">네</button>
+      <button type="button" class="btn_no">아니요</button>
+    </div>
+
+  </div>
+  <script>
+    function showPopup() {
+        const popup = document.getElementById('pop_info_1');
+        popup.style.display = 'block';
+      }
+    
+      function hidePopup() {
+        const popup = document.getElementById('pop_info_1');
+        popup.style.display = 'none';
+      }
+    
+      // Add event listeners to the "Yes" and "No" buttons
+      const btnYes = document.querySelector('.btn_yes');
+      const btnNo = document.querySelector('.btn_no');
+      const text = document.querySelector('.info-text span')
+      btnYes.addEventListener('click', function () {
+        hidePopup(); // Hide the popup when "Yes" is clicked
+        text.innerHTML="입금 확인"
+        text.style.color="blue";
+      });
+    
+      btnNo.addEventListener('click', function () {
+        hidePopup(); // Hide the popup when "No" is clicked
+      });
+    
+  </script>
+</body>
+</html>

@@ -1,0 +1,242 @@
+body {
+    background-color: rgb(215, 208, 184);
+    height: 100%;
+    margin: 0;
+  }
+  .container {
+    align-items: center;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 375px;
+    height: 812px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    box-shadow: 2px 2px 9px rgba(0, 0, 0, 0.25);
+    flex-direction: column; 
+   
+  }
+.back {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    left: 3px;
+    top: 50px;
+  }
+  /*서포트 시작하기*/
+  h1 {
+    position: absolute;
+    width: 180px;
+    height: 35px;
+    left: calc(50% - 170px / 2);
+    top: 50px;
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 147%;
+    text-align: center;
+    color: #000000;
+  }
+  h2 {
+    position: absolute;
+    width: 345px;
+    height: 44px;
+    left: 30px;
+    top: 125px;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    display: flex;
+    align-items: center;
+    color: #221d1d;
+  }
+  /*서포트 등록 폼*/
+  .register input {
+    width: 327px;
+    height: 52px;
+    box-sizing: border-box;
+    position: absolute;
+    left: 5.87%;
+    right: 6.93%;
+    mix-blend-mode: normal;
+    border: 1px solid #b3b1b0;
+    border-radius: 16px;
+  }
+  /*제목*/
+  .title {
+    top: 205px;
+  }
+  /*목표 모금액*/
+  .goal {
+    top: 275px;
+  }
+  /*계좌 번호*/
+  .account {
+    top: 415px;
+  }
+  /*내용*/
+  .detail {
+    width: 327px;
+    height: 150px;
+    box-sizing: border-box;
+    position: absolute;
+    left: 6.13%;
+    right: 6.67%;
+    top: 485px;
+    resize: none;
+    mix-blend-mode: normal;
+    border: 1px solid #b3b1b0;
+    border-radius: 16px;
+  }
+  input::placeholder,
+  textarea::placeholder {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 150%;
+    text-align: center;
+    text-align: left;
+    color: #b3b1b0;
+  }
+  textarea::placeholder {
+    padding-top: 2px;
+  }
+  input,
+  textarea {
+    text-indent: 15px;
+  }
+  /*사진 추가 버튼, 은행 버튼*/
+  .addImg-Button,
+  .account-Button {
+    box-sizing: border-box;
+    position: absolute;
+    width: 68px;
+    height: 34px;
+    left: 267px;
+    top: 585px;
+    background: #ffffff;
+    border: 1px solid #b3b1b0;
+    border-radius: 30px;
+  }
+  .addImg-button{
+      width:30px;
+  }
+  /*버튼 마우스 효과*/
+  .addImg-Button:hover,
+  .addImg-Button:focus,
+  .account-Button:hover,
+  .account-Button:focus {
+    border: 1px solid #00a9ff;
+    outline: 3px solid lightblue;
+  }
+  .account-Button {
+    top: 423px;
+  }
+  .account-Button::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 11px;
+    width: 30;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 6px solid #d9d9d9;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+  .account-Button.on::after {
+    transform: translateY(-50%) rotate(180deg);
+  }
+  .account-list {
+    list-style-type: none;
+    display: none;
+    position: absolute;
+    width: 65px;
+    top: 441px;
+    left: 270px;
+    padding: 0;
+    border: 1px solid #c4c4c4;
+    box-sizing: border-box;
+    box-shadow: 4px 4px 14px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    background-color: #fff;
+  }
+  .account-Button.on + .account-list {
+    display: block;
+  }
+  .account-list li {
+    width: 65px;
+    height: 40px;
+    padding: 5px 8px;
+    box-sizing: border-box;
+  }
+  .account-list li button {
+    width: 100%;
+    padding: 7px 10px;
+    border: none;
+    background-color: #fff;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: left;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  /*list 마우스 효과*/
+  .account-list li button:hover,
+  .account-list li button:focus {
+    background-color: lightblue;
+  }
+  /*서포트 마감일*/
+  .custom-date {
+    top: 345px;
+    box-sizing: border-box;
+    position: absolute;
+    mix-blend-mode: normal;
+    border: 1px solid #b3b1b0;
+    border-radius: 16px;
+    padding: 15px;
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 150%;
+    color: #b3b1b0;
+    text-indent: 0px;
+  }
+  /*시작하기 버튼*/
+  .start-Button {
+    position: absolute;
+    width: 327px;
+    height: 60px;
+    left: 25px;
+    top: 650px;
+    background: #b3b1b0;
+    border-radius: 30.5px;
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 180%;
+    text-align: center;
+    color: #ffffff;
+    border: none;
+  }
+  /*input 마우스 효과*/
+  input:focus,
+  textarea:focus {
+    outline: 2px solid #00a9ff;
+  }
+  input[type='datetime-local']::before {
+      content: attr(data-placeholder);
+      width: 100%;
+    }
+    input[type='datetime-local']:focus::before,
+  input[type='datetime-local']:valid::before {
+    display: none;
+  }

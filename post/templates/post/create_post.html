@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>게시글 작성 폼</title>
+    <style>
+        /*아티스트 게시판*/
+select {
+  padding: 4px;
+  font-size: 14px;
+  box-sizing: border-box;
+  position: absolute;
+  width: 312px;
+  height: 50px;
+  left: 33px;
+  top: 122px;
+  background: #ffffff;
+  border-radius: 16px;
+}
+select option:hover {
+background: #9b51e0;
+color: #fff;
+}
+option {
+  background: #fff;
+  position: absolute;
+  width: 157px;
+  height: 19px;
+  left: 51px;
+  top: 138px;
+}
+/*제목 작성*/
+.title {
+  box-sizing: border-box;
+  position: absolute;
+  width: 312px;
+  height: 50px;
+  left: 33px;
+  top: 186px;
+  background: #ffffff;
+  border: 1px solid #545454;
+  border-radius: 16px;
+}
+input::placeholder,
+textarea::placeholder,
+select {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 18px;
+  text-align: center;
+  text-align: left;
+  color: #857c7c;
+
+}
+textarea::placeholder {
+  padding-top: 1px;
+}
+input,
+textarea,
+select{
+  text-indent: 15px;
+}
+/*내용 입력*/
+.detail {
+  box-sizing: border-box;
+  position: absolute;
+  width: 312px;
+  height: 375px;
+  left: 31px;
+  top: 251px;
+  background: #ffffff;
+  border: 1px solid #545454;
+  border-radius: 16px;
+  resize: none;
+}
+/*사진 추가 버튼*/
+.addImg-Button {
+  box-sizing: border-box;
+  position: absolute;
+  width: 68px;
+  height: 34px;
+  left: 257px;
+  top: 576px;
+  background: #ffffff;
+  border: 1px solid #b3b1b0;
+  border-radius: 30px;
+}
+/*사진 추가 버튼 마우스 효과*/
+.addImg-Button:hover,
+.addImg-Button:focus {
+  border: 1px solid #9b51e0;
+  outline: 3px solid #f8e4ff;
+}
+/*작성하기 버튼*/
+.write-Button {
+  position: absolute;
+  width: 312px;
+  height: 60px;
+  left: 31px;
+  top: 743px;
+  background: #bc67ff;
+  border-radius: 30.5px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 180%;
+  text-align: center;
+  color: #ffffff;
+  border: none;
+}
+/*input 마우스 효과*/
+input:focus,
+textarea:focus,
+select:focus {
+  outline: 2px solid #bc67ff;
+}
+
+.filebox input[type="file"] {  /* 파일 필드 숨기기 */
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip:rect(0,0,0,0);
+    border: 0;
+  }
+  .filebox label {
+    box-sizing: border-box;
+    position: absolute;
+    width: 68px;
+    height: 34px;
+    left: 257px;
+    top: 576px;
+    background: #ffffff;
+    border: 1px solid #b3b1b0;
+    border-radius: 30px;
+  }
+    </style>
+</head>
+<body>
+    <div class="container">
+    {% include 'base.html' with artist=artist %}
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <select name="category" value="{{ post.category }}">
+            <option value="none" selected>게시판을 선택해 주세요</option>
+            <option value="가수">가수</option>
+            <option value="자유">자유</option>
+        </select>
+        <input class="title" type="text" name="title" value="{{ post.title }}" placeholder="클릭하여 제목을 작성해 주세요">
+        <input  class="detail" type="textarea" name="contents" value="{{ post.contents }}" style="padding-top: 15px;"placeholder="클릭하여 내용을 입력해 주세요">
+        <input class="addImg-Button" type="file" name="image" value="{{ post.image }}" placthodeler="사진">
+        <button type="submit"  class="write-Button">작성하기</button>
+    </form>
+</div>
+
+</body>
+</html>

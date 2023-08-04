@@ -1,0 +1,17 @@
+body {
+  background-color: rgb(230, 230, 230);
+  height: 100%;
+  margin: 0;
+}
+.container {
+  align-items: center;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 375px;
+  height: 880px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  box-shadow: 2px 2px 9px rgba(0, 0, 0, 0.25);
+  flex-direction: column; 
+}

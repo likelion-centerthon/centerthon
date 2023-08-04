@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>구독한 아티스트</title>
+</head>
+<body>
+
+    <form method="get" action="{% url 'artist:subscribe_list' category='KPOP' %}">
+        {% csrf_token %}
+        <button type="submit">K-POP</button>
+    </form>
+
+    <form method="post" action="{% url 'artist:subscribe_list' category='트로트' %}">
+        {% csrf_token %}
+        <button type="submit">트로트</button>
+    </form>
+
+    <form method="post" action="{% url 'artist:subscribe_list' category='발라드' %}">
+        {% csrf_token %}
+        <button type="submit">발라드</button>
+    </form>
+
+    <form method="post" action="{% url 'artist:subscribe_list' category='기타' %}">
+        {% csrf_token %}
+        <button type="submit">기타</button>
+    </form>
+
+    {% for artist in artists %}
+    <form method="post" action="{% url 'artist:select_artist' pk=artist.pk %}">
+        {% csrf_token %}
+        <button type="submit">
+             <img src="{{ artist.artistImage.url }}" width="150" height="100">
+             {{ artist.artistName }}
+        </button>
+    </form>
+    {% endfor %}
+    <form method="post" action="{% url 'artist:artist_list' category='none' %}">
+         {% csrf_token %}
+         <button type="submit">다른 아티스트 찾으러 가기 ></button>
+    </form>
+</body>
+</html>

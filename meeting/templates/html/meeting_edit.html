@@ -1,0 +1,48 @@
+<!-- meeting_edit.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+        {% include 'header.html' with artist=artist alerts=alerts%}
+    <title>미팅 수정</title>
+</head>
+<body>
+    <h1>미팅 수정</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="title">제목:</label>
+        <input type="text" id="title" name="title" value="{{ meeting.title }}" required>
+        <br>
+        <label for="body">본문:</label>
+        <textarea id="body" name="body" rows="4" required>{{ meeting.body }}</textarea>
+        <br>
+        <label for="meetDate">일시:</label>
+        <input type="date" id="meetDate" name="meetDate" value="{{ meeting.meetDate }}" required>
+        <br>
+        <label for="location">장소:</label>
+        <input type="text" id="location" name="location" value="{{ meeting.location }}" required>
+        <br>
+        <label for="age">나이 제한:</label>
+        <input type="text" id="age" name="age" value="{{ meeting.age }}" required>
+        <br>
+        <label for="peopleNm">인원:</label>
+        <input type="number" id="peopleNm" name="peopleNm" value="{{ meeting.peopleNm }}" required>
+        <br>
+        <label for="kakaoLink">오픈채팅방 링크:</label>
+        <input type="url" id="kakaoLink" name="kakaoLink" value="{{ meeting.kakaoLink }}" required>
+        <br>
+        <label for="image">이미지:</label>
+        <input type="file" id="image" name="image" accept="image/*">
+        <br>
+        {% if meeting.image %}
+            <img src="{{ meeting.image.url }}" alt="{{ meeting.title }} Image" width="200">
+            <br>
+        {% else %}
+            <p>No image available</p>
+            <br>
+        {% endif %}
+        <button type="submit">저장</button>
+    </form>
+    {% include 'footer.html' with artist=artist %}
+</body>
+</html>

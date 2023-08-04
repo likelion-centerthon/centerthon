@@ -1,0 +1,206 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>모금자 작성 폼</title>
+    <style>
+      
+.back {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  left: 3px;
+  top: 50px;
+}
+/*모임 등록하기*/
+h1 {
+  position: absolute;
+  width: 220px;
+  height: 35px;
+  left: calc(50% - 190px / 2);
+  top: 50px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 147%;
+  text-align: center;
+  color: #000000;
+}
+h2 {
+  position: absolute;
+  width: 345px;
+  height: 44px;
+  left: 30px;
+  top: 125px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 22px;
+  display: flex;
+  align-items: center;
+  color: #221d1d;
+}
+h3 {
+  /* 모임을 통해 다양한 사람들과 소통해요 */
+  position: absolute;
+  width: 321px;
+  height: 24px;
+  left: 32px;
+  top: 161px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 17px;
+  display: flex;
+  align-items: center;
+  color: #545454;
+}
+/*모임 등록 폼*/
+.register input {
+  width: 327px;
+  height: 52px;
+  box-sizing: border-box;
+  position: absolute;
+  left: 5.87%;
+  right: 6.93%;
+  mix-blend-mode: normal;
+  border: 1px solid #b3b1b0;
+  border-radius: 16px;
+}
+/*입금자명*/
+.fundraisername {
+  top: 205px;
+}
+/*모금액*/
+.fundpay {
+  top: 275px;
+}
+/*모금 시간*/
+.custom-time {
+  top: 345px;
+  box-sizing: border-box;
+  position: absolute;
+  mix-blend-mode: normal;
+  border: 1px solid #b3b1b0;
+  border-radius: 16px;
+  padding: 15px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 150%;
+  color: #b3b1b0;
+  text-indent: 0px;
+}
+
+.custom-time::before {
+    content: attr(data-placeholder);
+    color: #999; /* Placeholder text color */
+}
+  
+
+input::placeholder {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 150%;
+  text-align: center;
+  text-align: left;
+  color: #b3b1b0;
+}
+/*들여쓰기*/
+input {
+  text-indent: 15px;
+}
+.start-Button {
+  position: absolute;
+  width: 327px;
+  height: 60px;
+  left: 25px;
+  top: 420px;
+  background: #b3b1b0;
+  border-radius: 30.5px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 180%;
+  text-align: center;
+  color: #ffffff;
+  border: none;
+}
+input[type='datetime-local']::before {
+    content: attr(data-placeholder);
+    width: 100%;
+  }
+  input[type='datetime-local']:focus::before,
+input[type='datetime-local']:valid::before {
+  display: none;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        {% include 'base.html' with artist=artist %}
+    <div>
+        <img class="back" src="{% static 'images/back.png'%}" alt="뒤로가기">
+
+        <h1>모금 정보 작성하기</h1>
+        <h2>입금 후 모금 정보를 작성해주세요</h2>
+
+        <form class="register" method="post" action="{% url 'support:create_support_form' pk=artist.pk spt_pk=support.pk %}">
+            {% csrf_token %}
+          
+            <input class="fundraisername" placeholder="입금자명" type="text" name="depositor" id="depositor"><br>
+         
+            <input  class="fundpay"  placeholder="모금액" type="number" name="credit" id="credit"><br>
+        
+            <input data-placeholder="입금 시간" 
+            required
+            aria-required="true"
+            value={startDateValue}
+            className={styles.selectDay}
+            onChange={StartDateValueHandler}  
+            class="custom-time" 
+            id="date-input" type="datetime-local" name="creditTime" id="creditTime"><br>
+            <button class="start-Button" type="submit">항목을 모두 작성해주세요</button>
+        </form>
+    </div>
+ 
+</div>
+<script>
+    let inputs = document.querySelectorAll("input");
+let startButton = document.querySelector(".start-Button");
+startButton.disabled = true;
+
+function checkInputs() {
+  let allFilled = true;
+  inputs.forEach(function(input){
+    if (input.value === "") {
+      allFilled = false;
+      return;
+    }
+  });
+
+  if (allFilled) {
+    startButton.disabled = false;
+    startButton.style.backgroundColor = "#00A9FF";
+    startButton.innerHTML="제출"
+  } else {
+    startButton.disabled = true;
+
+  }
+}
+inputs.forEach(function(input){
+  input.addEventListener("input", checkInputs);
+});
+
+</script>
+</body>
+</html>
