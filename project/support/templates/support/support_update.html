@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>게시글 상세</title>
-</head>
-<body>
-    {% include 'header.html' with artist=artist %}
+{% extends 'base.html' %}
+{% with artist=artist alerts=alerts %}
+{% block content %}
     <div>
         <h1>서포트 수정하기</h1>
         <p>서포트 정보를 작성해주세요.</p>
@@ -38,6 +33,6 @@
                 <button type="submit">수정하기</button>
             </form>
     </div>
-    {% include 'footer.html' with artist=artist %}
-</body>
-</html>
+{% endblock %}
+{% endwith %}
+
