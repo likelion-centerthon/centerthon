@@ -9,7 +9,6 @@
 <body>
     
 <div class="container">
-    {% include 'base.html' with artist=artist %}
 
     <form method="post" action="{% url 'artist:artist_list' category='KPOP' %}">
         {% csrf_token %}

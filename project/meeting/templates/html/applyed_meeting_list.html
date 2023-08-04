@@ -27,7 +27,7 @@
     <p>{{ artist.artistName }} 페이지 - 내가 신청한 모임</p>
     <button onclick="location.href='{% url 'meeting:MeetingList' artist_id=artist.id %}'">모임</button>
     <hr>
-    <p><a href="{% url 'meeting:writedMeetingList' artist_id=artist_id %}">나의 모임 - 내가 작성한 페이지로</a></p>
+    <button onclick="location.href='{%url 'meeting:writedMeetingList' artist_id=artist_id  %}'">나의 모임 - 내가 작성한 페이지로</button>
     <p><a href="{% url 'meeting:subPNList' artist_id=artist_id %}">나의 모임 - 보호자 전화번호</a></p>
 
     <hr>
