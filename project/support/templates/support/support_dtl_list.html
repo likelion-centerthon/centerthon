@@ -1,0 +1,23 @@
+<h2>모금자 정보</h2>
+{% for form in support_form %}
+<div style="margin-top:5px;">
+  {{form.depositor}}<br>
+  {{form.credit}}<br>
+  {{form.creditTime|date:"Y-m-d A h:i"}}
+
+  {% if form.status == '대기' %}
+  {{form.status}}<br>
+  <form method="post" action="{% url 'support:support_dtl' pk=artist.pk spt_pk=support.pk %}">
+      {% csrf_token %}
+      <input type="hidden" name="form_type" value="wait_status">
+      <input type="hidden" name="form_pk" value="{{form.pk}}">
+      <input type="submit" value="대기">
+  </form>
+  {% endif %}
+
+  {% if not form.status == '대기' %}
+  {{form.statue}}
+  {% endif %}
+
+</div>
+{% endfor %}
