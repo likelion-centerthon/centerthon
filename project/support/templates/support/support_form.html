@@ -2,30 +2,26 @@
 {%load static%}
 {% with artist=artist alerts=alerts %}
 {% block content %}
-<div>
-        <img class="back" src="{% static 'images/back.png'%}" alt="뒤로가기">
+<img class="back" src="{% static 'images/back.png'%}" alt="뒤로가기">
 
-        <h1>모금 정보 작성하기</h1>
-        <h2>입금 후 모금 정보를 작성해주세요</h2>
+<h1>모금 정보 작성하기</h1>
+<h2>입금 후 모금 정보를 작성해주세요</h2>
 
-        <form class="register" method="post" action="{% url 'support:create_support_form' pk=artist.pk spt_pk=support.pk %}">
-            {% csrf_token %}
-          
-            <input class="fundraisername" placeholder="입금자명" type="text" name="depositor" id="depositor"><br>
-         
-            <input  class="fundpay"  placeholder="모금액" type="number" name="credit" id="credit"><br>
-        
-            <input data-placeholder="입금 시간" 
-            required
-            aria-required="true"
-            value={startDateValue}
-            className={styles.selectDay}
-            onChange={StartDateValueHandler}  
-            class="custom-time" 
-            id="date-input" type="datetime-local" name="creditTime" id="creditTime"><br>
-            <button class="start-Button" type="submit">항목을 모두 작성해주세요</button>
-        </form>
-    </div>
+<form class="register" method="post" action="{% url 'support:create_support_form' pk=artist.pk spt_pk=support.pk %}">
+    {% csrf_token %}
+    <input class="fundraisername" placeholder="입금자명" type="text" name="depositor" id="depositor"><br>
+    <input  class="fundpay"  placeholder="모금액" type="number" name="credit" id="credit"><br>
+    <input data-placeholder="입금 시간"
+    required
+    aria-required="true"
+    value={startDateValue}
+    className={styles.selectDay}
+    onChange={StartDateValueHandler}
+    class="custom-time"
+    id="date-input" type="datetime-local" name="creditTime" id="creditTime" />
+    <button class="start-Button" type="submit">항목을 모두 작성해주세요</button>
+</form>
+
 
 <script>
     let inputs = document.querySelectorAll("input");
@@ -57,5 +53,5 @@ inputs.forEach(function(input){
 </script>
 
 
-    {% endblock %}
-    {% endwith %}
+{% endblock %}
+{% endwith %}
