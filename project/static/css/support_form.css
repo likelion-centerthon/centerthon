@@ -1,0 +1,122 @@
+.back {
+   
+    width: 80px;
+    height: 80px;
+    left: 3px;
+    top: 50px;
+  }
+  /*모임 등록하기*/
+  h1 {
+   
+    width: 220px;
+    height: 35px;
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 147%;
+    text-align: center;
+    color: #000000;
+  }
+  h2 {
+  
+    width: 345px;
+    height: 44px;
+ 
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 22px;
+    display: flex;
+    align-items: center;
+    color: #221d1d;
+  }
+  h3 {
+ 
+    width: 321px;
+    height: 24px;
+ 
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 17px;
+    display: flex;
+    align-items: center;
+    color: #545454;
+  }
+  /*모임 등록 폼*/
+  .register input {
+    width: 327px;
+    height: 52px;
+    box-sizing: border-box;
+  
+
+    mix-blend-mode: normal;
+    border: 1px solid #b3b1b0;
+    border-radius: 16px;
+  }
+
+  /*모금 시간*/
+  .custom-time {
+   
+    box-sizing: border-box;
+   
+    mix-blend-mode: normal;
+    border: 1px solid #b3b1b0;
+    border-radius: 16px;
+    padding: 15px;
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 150%;
+    color: #b3b1b0;
+    text-indent: 0px;
+  }
+  
+  .custom-time::before {
+      content: attr(data-placeholder);
+      color: #999; /* Placeholder text color */
+  }
+    
+  
+  input::placeholder {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 150%;
+    text-align: center;
+    text-align: left;
+    color: #b3b1b0;
+  }
+  /*들여쓰기*/
+  input {
+    text-indent: 15px;
+  }
+  .start-Button {
+    width: 327px;
+    height: 60px;
+  
+    background: #b3b1b0;
+    border-radius: 30.5px;
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 180%;
+    text-align: center;
+    color: #ffffff;
+    border: none;
+  }
+  input[type='datetime-local']::before {
+      content: attr(data-placeholder);
+      width: 100%;
+    }
+    input[type='datetime-local']:focus::before,
+  input[type='datetime-local']:valid::before {
+    display: none;
+  }
+  

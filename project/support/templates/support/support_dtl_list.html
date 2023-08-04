@@ -1,12 +1,13 @@
-<h2>모금자 정보</h2>
-{% for form in support_form %}
-<div style="margin-top:5px;">
-  {{form.depositor}}<br>
-  {{form.credit}}<br>
-  {{form.creditTime|date:"Y-m-d A h:i"}}
+<p class="text">모금자 정보</p>
+<div class="supportinfo-container">
+  {% for form in support_form %}
+  <div class="info-text" onclick="showPopup()">
+      <div style="margin-bottom:10px; border: 1px solid #333333; filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)); border-radius: 16px; padding: 5px">
+          <p>{{form.depositor}} | {{form.credit}}원</p>
+          <p style="color: #949494">{{form.creditTime}}</p>
 
   {% if form.status == '대기' %}
-  {{form.status}}<br>
+  <span>{{form.status}}</span>
   <form method="post" action="{% url 'support:support_dtl' pk=artist.pk spt_pk=support.pk %}">
       {% csrf_token %}
       <input type="hidden" name="form_type" value="wait_status">
@@ -21,3 +22,30 @@
 
 </div>
 {% endfor %}
+
+<script>
+  function showPopup() {
+      const popup = document.getElementById('pop_info_1');
+      popup.style.display = 'block';
+    }
+  
+    function hidePopup() {
+      const popup = document.getElementById('pop_info_1');
+      popup.style.display = 'none';
+    }
+  
+    // Add event listeners to the "Yes" and "No" buttons
+    const btnYes = document.querySelector('.btn_yes');
+    const btnNo = document.querySelector('.btn_no');
+    const text = document.querySelector('.info-text span')
+    btnYes.addEventListener('click', function () {
+      hidePopup(); // Hide the popup when "Yes" is clicked
+      text.innerHTML="입금 확인"
+      text.style.color="blue";
+    });
+  
+    btnNo.addEventListener('click', function () {
+      hidePopup(); // Hide the popup when "No" is clicked
+    });
+  
+</script>
