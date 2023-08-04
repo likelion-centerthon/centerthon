@@ -3,6 +3,7 @@
 <head>
     {% include 'header.html' with artist=artist alerts=alerts%}
     <title>신청한 미팅 목록</title>
+    <hr>
     <label for="artistDropdown">아티스트 선택:</label>
     <select id="artistDropdown" name="artist_id" onchange="selectArtist(this)">
         <option value="">전체</option>
