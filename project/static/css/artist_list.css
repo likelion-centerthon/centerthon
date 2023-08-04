@@ -1,4 +1,76 @@
-/* artist_select.css */
+/* 전체 body 스타일 */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+/* 컨테이너 스타일 */
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* 카테고리 버튼 스타일 */
+.category-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.category-buttons form {
+    display: inline;
+}
+
+.category-buttons button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.category-buttons button:hover {
+    background-color: #0056b3;
+}
+
+/* 아티스트 목록 스타일 */
+.artist-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-gap: 20px;
+}
+
+.artist-list form {
+    display: inline;
+}
+
+.artist-list button {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    background-color: #f0f0f0;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.artist-list button img {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+/* 추가적인 스타일을 필요에 맞게 추가해주세요 */
+
+/* artist_select.css
 
 body {
 	font-family: Arial, sans-serif;
@@ -69,4 +141,4 @@ body {
   .selected {
 	background-color: #e07443 !important;
   }
-  
+   */

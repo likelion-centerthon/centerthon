@@ -1,44 +1,49 @@
 {% extends 'base_no_nav.html' %}
+{% load static %}
 {% block content %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>아티스트 선택</title>
+    <link rel="stylesheet" href="{% static 'css/artist_list.css' %}"> <!-- 외부 CSS 파일 연결 (style.css 파일 경로에 맞게 변경해주세요) -->
 </head>
 <body>
-    
-<div class="container">
+    <div class="container">
 
-    <form method="post" action="{% url 'artist:artist_list' category='KPOP' %}">
-        {% csrf_token %}
-        <button type="submit">K-POP</button>
-    </form>
+        <div class="category-buttons">
+            <form method="post" action="{% url 'artist:artist_list' category='KPOP' %}">
+                {% csrf_token %}
+                <button type="submit">K-POP</button>
+            </form>
 
-    <form method="post" action="{% url 'artist:artist_list' category='트로트' %}">
-        {% csrf_token %}
-        <button type="submit">트로트</button>
-    </form>
+            <form method="post" action="{% url 'artist:artist_list' category='트로트' %}">
+                {% csrf_token %}
+                <button type="submit">트로트</button>
+            </form>
 
-    <form method="post" action="{% url 'artist:artist_list' category='발라드' %}">
-        {% csrf_token %}
-        <button type="submit">발라드</button>
-    </form>
+            <form method="post" action="{% url 'artist:artist_list' category='발라드' %}">
+                {% csrf_token %}
+                <button type="submit">발라드</button>
+            </form>
 
-    <form method="post" action="{% url 'artist:artist_list' category='기타' %}">
-        {% csrf_token %}
-        <button type="submit">기타</button>
-    </form>
+            <form method="post" action="{% url 'artist:artist_list' category='기타' %}">
+                {% csrf_token %}
+                <button type="submit">기타</button>
+            </form>
+        </div>
 
-    {% for artist in artists %}
-    <form method="post" action="{% url 'artist:select_artist' pk=artist.pk %}">
-        {% csrf_token %}
-        <button type="submit">
-             <img src="{{ artist.artistImage.url }}" width="150" height="100">
-             {{ artist.artistName }}
-        </button>
-    </form>
-    {% endfor %}
+        <div class="artist-list">
+            {% for artist in artists %}
+            <form method="post" action="{% url 'artist:select_artist' pk=artist.pk %}">
+                {% csrf_token %}
+                <button type="submit">
+                     <img src="{{ artist.artistImage.url }}" width="150" height="100">
+                     {{ artist.artistName }}
+                </button>
+            </form>
+            {% endfor %}
+        </div>
     </div>
 </body>
 </html>
