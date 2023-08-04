@@ -1,5 +1,5 @@
-{% load static %}
 <!DOCTYPE html>
+{% load static %}
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
@@ -9,11 +9,9 @@
     {% include 'head.html' %}
    </head>
   <body>
-      <div class="content" style="width: 375px; margin:0 auto">
-          {% include 'header.html' %}
+      <div class="content" style="width:375px; margin=0 auto">
           {% block content %}
           {% endblock %}
-          <div>{% include 'footer.html' %}</div>
       </div>
   </body>
 </html>
