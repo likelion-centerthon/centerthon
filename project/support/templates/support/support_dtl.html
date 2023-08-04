@@ -8,32 +8,50 @@
     <h2>제목:{{support.title}}</h2>
     <p>목표모금액:{{support.fundraising}}</p>
     <p>내용:{{support.body}}</p>
+
     {% if support.image %}
     <img src="{{support.image.url}}" alt="서포트 이미지" style="width:315px;"></img>
     {% endif %}
+
     <p>계좌:{{support.bank}} {{support.account}}</p>
     <p>마감기한:{{support.deadline|date:"Y-m-d A h:i"}}</p>
     <p>현재모금액:{{support.balanceAmt}}</p>
 
+{% if not support.status == '완료' %}
+    <!--일반 사용자일 때-->
     {% if not support.user == request.user %}
     <button onclick="location.href='{% url 'support:create_support_form' pk=artist.pk spt_pk=support.pk %}'">모금 정보 작성하기</button>
     {% endif %}
 
+    <!--관리자일 때-->
     {% if support.user == request.user %}
-    <button onclick="location.href='{% url 'support:create_support_form' pk=artist.pk spt_pk=support.pk %}'">모금 마감하기</button>
-    <h2>모금자 정보</h2>
-    {% for form in support_form %}
-    <div style="margin-top:5px;">
-        {{form.depositor}}<br>
-        {{form.credit}}<br>
-        {{form.creditTime|date:"Y-m-d A h:i"}}<br>
-        {{form.status}}<br>
+        <form method="post" action="{% url 'support:support_dtl' pk=artist.pk spt_pk=support.pk %}">
+            {% csrf_token %}
+            <input type="hidden" name="form_type" value="closing">
+            {% if not warning %}
+            <button type="submit">마감하기</button>
+            {% endif %}
+            {% if warning %}
+            <button type="submit">{{warning}}</button>
+            {% endif %}
+        </form>
+        {% include './support_dtl_list.html' with support_form=support_form %}
+    {% endif %}
+{% endif %}
+
+{% if support.status == '완료' %}
+    <button>완료된 서포트입니다</button>
+    <p>출금내역</p>
+
+    {% for bank in banks %}
+    <div>
+        {{bank.depositor}}<br>
+        {{bank.creditTime|date:"Y-m-d A h:i"}}<br>
+        {{bank.credit}} 출금<br>
     </div>
     {% endfor %}
-    {% endif %}
 
-    {% if support.status == '완료' %}
-    {% endif %}
+{% endif %}
 
 {% endblock %}
 {% endwith %}

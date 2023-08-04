@@ -12,8 +12,8 @@ def calculate_hash(index, prev_hash, timestamp, inoutType, depositor, credit, cr
     return sha256(f"{index}{prev_hash}{timestamp}{inoutType}{depositor}{credit}{creditTime}".encode()).hexdigest()
 
 # 블록체인 생성
-def create_new_bloack(support, supportForm, inoutType):
-    prev_block = Block.objects.filter(support=support).order_by('timestamp').first()
+def create_new_block(support, supportForm, inoutType):
+    prev_block = Block.objects.filter(support=support).order_by('-timestamp').first()
     index = prev_block.index + 1
     timestamp = timezone.now()
     hash = calculate_hash(index, prev_block.hash, timestamp, '입금', supportForm.depositor, supportForm.credit,
@@ -72,9 +72,45 @@ def support_dtl(request, pk, spt_pk):
 
     if request.method=='GET':
         return render(request, './support/support_dtl.html', {"support":support, "artist":artist, "support_form":support_form, "alerts":alerts})
-    # 모집종료
-    # 대기중 서포트 폼 상태 변경
 
+    if request.method=='POST':
+        form_type=request.POST.get('form_type')
+
+        # 수동 입금 확인
+        if form_type=='wait_status':
+            form_pk=request.POST.get('form_pk')
+            form=SupportForm.objects.get(pk=form_pk)
+            user_working = UserWorking.objects.get(user=form.user)
+
+            form.status=SupportFormStatus.self_check.value
+            support.balanceAmt+=form.credit
+            user_working.supportGuest+=1
+            form.save()
+            support.save()
+            user_working.save()
+            create_new_block(support, form, '입금')
+            return render(request, './support/support_dtl.html', {"support": support, "artist": artist, "support_form": support_form, "alerts": alerts})
+
+        # 서포트 마감하기
+        elif form_type=='closing':
+            if SupportForm.objects.filter(support=support, status=SupportFormStatus.waiting.value).exists():
+                return render(request, './support/support_dtl.html',
+                              {"support": support, "artist": artist, "support_form": support_form, "alerts": alerts, "warning":"모든 입금 내역을 확인해주세요."})
+            else:
+                try:
+                    banks=Bank.objects.filter(support=support, inoutType='출금').order_by('creditTime')
+                    if banks:
+                        support.status='완료'
+                        support.save()
+                        for bank in banks:
+                            create_new_block(support, bank, '출금')
+                        return render(request, './support/support_dtl.html',
+                                      {"support": support, "artist": artist, "support_form": support_form, "alerts": alerts,
+                                       "banks": banks})
+                except Bank.DoesNotExist:
+                    return render(request, './support/support_dtl.html',
+                                  {"support": support, "artist": artist, "support_form": support_form, "alerts": alerts,
+                                   "banks": "출금내역이 존재하지 않습니다."})
 
 # 서포트 참여 폼 입력
 def create_support_form(request, pk, spt_pk):
@@ -120,8 +156,7 @@ def create_support_form(request, pk, spt_pk):
                 supportForm.save()
                 support.save()
                 # 블록 체인 생성
-
-                create_new_bloack(support, supportForm, '입금')
+                create_new_block(support, supportForm, '입금')
                 # 성공 알림 생성
                 Alert.objects.create(
                     artist=artist,
