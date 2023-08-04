@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>서포트 전체조회</title>
-</head>
-<body>
-    {% include 'header.html' with artist=artist %}
+{% extends 'base.html' %}
+{% with artist=artist alerts=alerts %}
+{% block content %}
+<!--    {% include 'header.html' with artist=artist alerts=alerts %}-->
     <div style="margin-bottom:5px;">
         <button onclick="location.href='{% url 'support:support_list' pk=artist.pk %}'">서포트 전체</button>
         <button onclick="location.href='{% url 'support:my_support_list' pk=artist.pk %}'">내가 참여한 서포트</button>
@@ -26,7 +22,6 @@
     </div>
     <hr>
     {% endfor %}
-
-    {% include 'footer.html' with artist=artist %}
-</body>
-</html>
+<!--    {% include 'footer.html' with artist=artist %}-->
+{% endblock %}
+{% endwith %}

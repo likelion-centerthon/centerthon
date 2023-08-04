@@ -1,3 +1,6 @@
+{% extends 'base.html' %}
+{% with artist=artist alerts=alerts %}
+{% block content %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +8,6 @@
     <title>게시글 전체 조회</title>
 </head>
 <body>
-    {% include 'header.html' with artist=artist alerts=alerts%}
     <form method="post" action="{% url 'post:post_list' artist_pk=artist.pk category='가수' %}">
         {% csrf_token %}
         <button type="submit">아티스트 게시판</button>
@@ -44,7 +46,7 @@
         <hr>
     </form>
     {% endfor %}
-    {% include 'footer.html' with artist=artist %}
-
 </body>
 </html>
+{% endblock %}
+{% endwith %}

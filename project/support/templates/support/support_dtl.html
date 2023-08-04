@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>서포트 전체조회</title>
-</head>
-<body>
-    {% include 'header.html' with artist=artist %}
+{% extends 'base.html' %}
+{% with artist=artist alerts=alerts %}
+{% block content %}
     <h1>상세조회</h1>
     {% if support.user == request.user %}
     <button onclick="location.href='{% url 'support:update_support' pk=artist.pk spt_pk=support.pk %}'">수정하기</button>
@@ -40,6 +35,5 @@
     {% if support.status == '완료' %}
     {% endif %}
 
-    {% include 'footer.html' with artist=artist %}
-</body>
-</html>
+{% endblock %}
+{% endwith %}
