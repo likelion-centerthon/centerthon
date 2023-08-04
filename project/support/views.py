@@ -80,7 +80,7 @@ def support_dtl(request, pk, spt_pk):
         if form_type=='wait_status':
             form_pk=request.POST.get('form_pk')
             form=SupportForm.objects.get(pk=form_pk)
-            user_working = UserWorking.objects.get(user=form.user)
+            user_working = UserWorking.objects.get(user=form.user, artist = artist)
 
             form.status=SupportFormStatus.self_check.value
             support.balanceAmt+=form.credit
@@ -212,6 +212,7 @@ def create_support(request, pk):
         )
         # 성공 알림 생성
         Alert.objects.create(
+            artist=artist,
             user=user,
             message=F'<{support.title}> 서포트가 등록되었습니다!',
         )

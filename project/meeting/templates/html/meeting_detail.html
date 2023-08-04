@@ -14,12 +14,28 @@
     <p><strong>장소:</strong> {{ meeting.location }}</p>
     <p><strong>나이 제한:</strong> {{ meeting.age }}</p>
     <p><strong>인원:</strong> {{ meeting.peopleNm }}</p>
-    <p><strong>오픈채팅링크:</strong> {{ meeting.kakaoLink }}</p>
     <p><strong>내용:</strong></p>
     <p>{{ meeting.body }}</p>
     <p><strong>모임 상태:</strong> {{ meeting.meetingState }}</p>
     <hr>
-    <a href="{% url 'meeting:applyMeeting' artist_id=artist.id meeting_id=meeting.id %}"><p><strong>모임 신청하기</strong></p></a>
+        {% if request.user != meeting.writeUser %}
+           <form method="post" action="{% url 'meeting:applyMeeting' artist_id=artist.id meeting_id=meeting.id %}">
+            {% csrf_token %}
+            <button type="submit">신청하기</button>
+        </form>
+    {% endif %}
+
+    {% if request.user == meeting.writeUser %}
+          <form method="post" action="{% url 'meeting:editMeeting' artist_id=artist.id meeting_id=meeting.id %}">
+            {% csrf_token %}
+            <button type="submit">수정하기</button>
+        </form>
+
+        <form method="post" action="{% url 'meeting:closeMeeting' artist_id=artist.id meeting_id=meeting.id %}">
+            {% csrf_token %}
+            <button type="submit">마감하기</button>
+        </form>
+    {% endif %}
     {% include 'footer.html' with artist=artist %}
 </body>
 </html>

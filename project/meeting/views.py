@@ -3,6 +3,7 @@ from .models import Meeting, MeetingMember, MeetingState, MemberState
 from artist.models import Artist
 from .forms import MeetingEditForm
 from alert.models import Alert
+from userWorking.models import UserWorking
 
 
 #모임 생성
@@ -24,6 +25,11 @@ def CreateMeeting(request, artist_id):
         meeting.writeUser = request.user
         meeting.artist = artist
         meeting.save()
+        userWorking=UserWorking.objects.get(user=user, artist=artist)
+        userWorking.meetingHost += 1
+        userWorking.save()
+        Alert.objects.create(user=user, artist=artist,
+                             message=F'<{meeting.title}> 모임이 등록되었습니다!')
         return redirect('meeting:MeetingList', artist_id=artist_id)
 
     return render(request, "html/meeting_create.html", {'artist': artist, 'alerts': alerts})
@@ -34,8 +40,8 @@ def MeetingDtl(request, artist_id, meeting_id):
     user = request.user
     alerts = Alert.objects.filter(user=user)
     meeting = get_object_or_404(Meeting, pk=meeting_id)
-    if meeting.writeUser == request.user:
-        return render(request, "html/meeting_detail_admin.html", {'meeting': meeting, 'alerts':alerts, 'artist': artist})
+    # if meeting.writeUser == request.user:
+    #     return render(request, "html/meeting_detail_admin.html", {'meeting': meeting, 'alerts':alerts, 'artist': artist})
     return render(request, "html/meeting_detail.html", {'meeting': meeting, 'alerts': alerts, 'artist': artist})
 
 #모집 중인 모임 목록
@@ -94,9 +100,10 @@ def applyMeeting(request, meeting_id, artist_id):
     meeting = get_object_or_404(Meeting, id=meeting_id)
     meetingMember=MeetingMember.objects.create(User=user, Meeting = meeting)
     meeting_members = meeting.members.all()
-    print(meeting_members)
     meetingMember.save()
     meeting.save()
+    Alert.objects.create(user=user, artist=artist,
+                         message=F'<{meeting.title}> 모임을 신청했습니다!')
     context = {
         'meeting_id': meeting_id,
         'alerts' : alerts,
@@ -139,20 +146,26 @@ def writedMeetingList(request, artist_id):
 
 #모임 신청자 수락
 def memberStateAccept(request, meetingMember_id, artist_id):
-    user = request.user
-    alerts = Alert.objects.filter(user=user)
+    artist = get_object_or_404(Artist, pk=artist_id)
     member = MeetingMember.objects.get(id=meetingMember_id)
     member.memberState = MemberState.승인.value
     member.save()
+    userWorking = UserWorking.objects.get(user=member.User, artist=artist)
+    userWorking.meetingGuest += 1
+    userWorking.save()
+    Alert.objects.create(user=member.User, artist=artist,
+                         message=F'<{member.Meeting.title}> 모임의 신청이 수락되었습니다!',
+                        openChatURL=F'<{member.Meeting.kakaoLink}> 오픈채팅 링크에 접속하세요!')
     return redirect('meeting:writedMeetingList', artist_id = artist_id)
 
 #모임 신청자 거부
 def memberStateRefusal(request, meetingMember_id, artist_id):
-    user = request.user
-    alerts = Alert.objects.filter(user=user)
+    artist = get_object_or_404(Artist, pk=artist_id)
     meetingMember = get_object_or_404(MeetingMember, id=meetingMember_id)
     meetingMember.memberState = "거부"
     meetingMember.save()
+    Alert.objects.create(user=meetingMember.User, artist=artist,
+                         message=F'<{meetingMember.Meeting.title}> 모임의 신청이 거절되었습니다!')
     return redirect('meeting:writedMeetingList', artist_id = artist_id)
 
 #내가 신청한 모임 목록

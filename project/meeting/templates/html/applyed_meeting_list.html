@@ -3,33 +3,20 @@
 <head>
     {% include 'header.html' with artist=artist alerts=alerts%}
     <title>신청한 미팅 목록</title>
-    <hr>
-    <label for="artistDropdown">아티스트 선택:</label>
-    <select id="artistDropdown" name="artist_id" onchange="selectArtist(this)">
-        <option value="">전체</option>
-        {% for artist in artists %}
-            <option value="{{ artist.id }}">{{ artist.artistName }}</option>
-        {% endfor %}
-    </select>
-
-    <script>
-        function selectArtist(dropdown) {
-            const selectedArtistId = dropdown.value;
-            if (selectedArtistId) {
-                window.location.href = `/meeting/${selectedArtistId}/apply`;
-            } else {
-                window.location.href = '/meeting/';
-            }
-        }
-    </script>
 </head>
 <body>
     <h1>신청한 미팅 목록</h1>
     <p>{{ artist.artistName }} 페이지 - 내가 신청한 모임</p>
-    <button onclick="location.href='{% url 'meeting:MeetingList' artist_id=artist.id %}'">모임</button>
-    <hr>
-    <button onclick="location.href='{%url 'meeting:writedMeetingList' artist_id=artist_id  %}'">나의 모임 - 내가 작성한 페이지로</button>
-    <p><a href="{% url 'meeting:subPNList' artist_id=artist_id %}">나의 모임 - 보호자 전화번호</a></p>
+    <div>
+    <button onclick="location.href='{% url 'meeting:MeetingList' artist_id=artist.id %}'">모임 전체</button>
+        <button onclick="location.href='{%url 'meeting:writedMeetingList' artist_id=artist_id  %}'">나의 모임</button>
+    </div>
+
+    <div>
+        <button onclick="location.href='{%url 'meeting:writedMeetingList' artist_id=artist_id  %}'">작성</button>
+        <button onclick="location.href='{%url 'meeting:applyedMeetingList' artist_id=artist_id  %}'">신청</button>
+    <button onclick="location.href='{%url 'meeting:subPNList' artist_id=artist_id  %}'">보호자</button>
+    </div>
 
     <hr>
     <form method="get" action="{% url 'meeting:applyedMeetingList' artist_id=artist_id %}">
