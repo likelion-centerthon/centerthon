@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{%load static%}
 {% with artist=artist alerts=alerts %}
 {% block content %}
     <div>
@@ -14,5 +15,5 @@
             <button type="submit">작성하기</button>
         </form>
     </div>
-{% endblock %}
-{% endwith %}
+    {% endblock %}
+    {% endwith %}

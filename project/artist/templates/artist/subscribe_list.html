@@ -1,12 +1,5 @@
 {% extends 'base_no_nav.html' %}
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>구독한 아티스트</title>
-</head>
-<body>
 
     <form method="get" action="{% url 'artist:subscribe_list' category='KPOP' %}">
         {% csrf_token %}
@@ -41,6 +34,5 @@
          {% csrf_token %}
          <button type="submit">다른 아티스트 찾으러 가기 ></button>
     </form>
-</body>
-</html>
+
 {% endblock %}

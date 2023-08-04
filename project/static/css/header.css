@@ -1,0 +1,74 @@
+ /*상단바*/
+ .header {
+   justify-content: space-between;
+    display: flex;
+    width: 375px;
+    box-sizing: border-box;
+    background: #ffffff;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+ 
+  }
+  .icon{
+    display: flex;
+  }
+  /*상단바 아티스트 선택 박스*/
+  .btn-select::after {
+    content: "";
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid #d9d9d9;
+    transform: translateY(-50%);
+    pointer-events: none;
+
+  }
+  .btn-select {
+    width: 168px;
+    padding: 13px 30px 13px 14px;
+    background-color: #fff;
+    box-sizing: border-box;
+    cursor: pointer;
+    text-align: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    position: absolute;
+    height: 34px;
+  
+    border: 1px solid #545454;
+    border-radius: 30px;
+    /* 아티스트 선택 */
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 22px;
+    text-align: center;
+    color: #545454;
+    line-height: 10px;
+  }
+  .btn-select:hover,
+  .btn-select:focus {
+    border: 1px solid #9b51e0;
+    outline: 3px solid #f8e4ff;
+  }
+  .btn-select.on::after {
+    transform: translateY(-50%) rotate(180deg);
+  }
+button{
+    border: 0;
+}
+  /*알람 아이콘*/
+  .alram,
+  .user {
+    
+    width: 29px;
+    height: 29px;
+    left: 324px;
+    top: 20px;
+  }
+  .user {
+    left: 290px;
+  }

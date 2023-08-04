@@ -1,0 +1,43 @@
+  /*하단바*/
+  .footer {
+    box-sizing: border-box;
+    width: 375px;
+    height: 80px;
+    background: #ffffff;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .label {
+    margin-top: 2px;
+    font-family: "Poppins";
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 150%;
+    color: #000000;
+  }
+  .footer img {
+    width: 48px;
+    height: 48px;
+  }
+  
+  .footer h3 {
+    margin-top: 2px;
+    font-family: "Poppins";
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 150%;
+    color: #000000;
+  }
+  
+  .footer div {
+    text-align: center;
+  }
+  
+  .footer .label.colored {
+    color: #bc67ff;
+  }
+  .support .label {
+    color: #bc67ff;
+  }

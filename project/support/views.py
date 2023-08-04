@@ -99,14 +99,14 @@ def support_dtl(request, pk, spt_pk):
             else:
                 try:
                     banks=Bank.objects.filter(support=support, inoutType='출금').order_by('creditTime')
-                    if banks:
-                        support.status='완료'
-                        support.save()
-                        for bank in banks:
-                            create_new_block(support, bank, '출금')
-                        return render(request, './support/support_dtl.html',
-                                      {"support": support, "artist": artist, "support_form": support_form, "alerts": alerts,
-                                       "banks": banks})
+                    
+                    support.status='완료'
+                    support.save()
+                    for bank in banks:
+                        create_new_block(support, bank, '출금')
+                    return render(request, './support/support_dtl.html',
+                                    {"support": support, "artist": artist, "support_form": support_form, "alerts": alerts,
+                                    "banks": banks})
                 except Bank.DoesNotExist:
                     return render(request, './support/support_dtl.html',
                                   {"support": support, "artist": artist, "support_form": support_form, "alerts": alerts,

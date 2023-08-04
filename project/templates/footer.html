@@ -1,63 +1,9 @@
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
+
     <meta charset="UTF-8">
     <title>서포트 전체조회</title>
-    <style>
-      
-        /*하단바*/
-        .footer {
-            box-sizing: border-box;
-            position: absolute;
-            width: 375px;
-            height: 80px;
-            top: 720px;
-            left:0.5px;
-            background: #ffffff;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-          }
-        
-          .label {
-            margin-top: 2px;
-            font-family: "Poppins";
-            font-weight: 500;
-            font-size: 14px;
-            line-height: 150%;
-            color: #000000;
-          }
-          .footer img {
-            width: 48px;
-            height: 48px;
-          }
-          
-          .footer h3 {
-            margin-top: 2px;
-            font-family: "Poppins";
-            font-weight: 500;
-            font-size: 14px;
-            line-height: 150%;
-            color: #000000;
-          }
-          
-          .footer div {
-            text-align: center;
-          }
-          
-          .footer .label.colored {
-            color: #bc67ff;
-          }
-          .support .label {
-            color: #bc67ff;
-          }
-    </style>
-</head>
-<body>
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}" />
 <div>
-
-    <hr>
 
 <div class="footer">
     <div class="singer" onclick="location.href='{% url 'artist:select_artist' pk=artist.pk %}'">
@@ -76,7 +22,9 @@
         <img id="support-img" src="{% static 'images/purplesupport.png'%}" alt="그룹 이미지" ></img>
       <div class="label">서포트</div>
     </div>
+    
   </div>
+  
 <script>
     //하단바 아이콘 변경
 function handleImageHover(elementId, newImageSrc) {
@@ -140,13 +88,4 @@ document.getElementById("group-img").addEventListener("mouseout", function () {
 document.querySelector(".group .label").classList.remove("colored");
 });
 </script>
-</body>
-</html>
 
-    <button onclick="location.href='{% url 'artist:select_artist' pk=artist.pk %}'">내 가수</button>
-    <button onclick="location.href='{% url 'post:post_list' artist_pk=artist.pk category='가수' %}'">게시판</button>
-    <button onclick="location.href='{% url 'support:support_list' pk=artist.pk %}'">서포트</button>
-    <button onclick="location.href='{% url 'meeting:MeetingList' artist_id=artist.id %}'">모임</button><br>
-
-    Copyright © 2023 중앙톤 프로젝트
-</div>
