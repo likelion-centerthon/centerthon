@@ -6,9 +6,9 @@
            
           }
           /*서포트 시작하기*/
-          .support-start {
+          .spt_crt_h1{
            
-            width: 180px;
+            width: 300px;
             height: 35px;
            
             font-family: "Poppins";
@@ -18,9 +18,9 @@
             line-height: 147%;
             text-align: center;
             color: #000000;
-            margin-left:80px;
+            margin-left:-30px;
           }
-          .support-start2{
+          .spt_crt_h2 {
             width: 345px;
             height: 44px;
            
@@ -30,18 +30,21 @@
             font-size: 18px;
             line-height: 22px;
             display: flex;
-            align-items: center;
-            color: #221d1d;
+          
+            color: #221d1d; 
+            margin: -3px 0px 10px 25px;
+
           }
           /*서포트 등록 폼*/
           .register input {
             width: 327px;
             height: 52px;
             box-sizing: border-box;
-            margin-left:80px;
+            
             mix-blend-mode: normal;
             border: 1px solid #b3b1b0;
             border-radius: 16px;
+            margin:3px 0px 3px 20px;
           }
           
         
@@ -55,6 +58,8 @@
             mix-blend-mode: normal;
             border: 1px solid #b3b1b0;
             border-radius: 16px;
+            margin: 3px 0px 3px 20px;
+
           }
           input::placeholder,
           textarea::placeholder {
@@ -74,29 +79,67 @@
           textarea {
             text-indent: 15px;
           }
-          /*사진 추가 버튼, 은행 버튼*/
-          .addImg-Button,
-          .account-Button {
+          .custom-addImg-Button {
+            width: 327px;
+            height: 60px;
+            background: #b3b1b0;
+            border-radius: 30.5px;
+            font-family: "Poppins";
+            font-style: normal;
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 180%;
+            text-align: center;
+            color: #ffffff;
+            border: none;
+            margin: 3px 0px 3px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+          }
+        
+          .register input,
+          .detail,
+          .custom-date {
+            mix-blend-mode: normal;
+          }
+          
+          .account {
+            width: 218px; 
+            height: 52px;
+            box-sizing: border-box;
+            mix-blend-mode: normal;
+            border: 1px solid #b3b1b0;
+            border-radius: 16px;
+            margin: 3px 0px 3px 20px;
+            float: left;
+          }
+          
+          .select-wrapper {
+            position: absolute;
+           margin:5px 0px 0px 250px;
+            z-index: 1;
+          }
+          
+          .account-Button, .addImg-Button {
             box-sizing: border-box;
             width: 68px;
             height: 34px;
-           
             background: #ffffff;
             border: 1px solid #b3b1b0;
             border-radius: 30px;
-          }
-          .addImg-button{
-              width:30px;
+            cursor: pointer;
           }
           /*버튼 마우스 효과*/
           .addImg-Button:hover,
           .addImg-Button:focus,
           .account-Button:hover,
           .account-Button:focus {
-            border: 1px solid #00a9ff;
-            outline: 3px solid lightblue;
+            border: 1px solid #BC67FF;;
+            outline: 3px solid #f8e4ff;
           }
-          .account-Button {
+          .account-Button, .addImg-Button {
             top: 423px;
           }
           .account-Button::after {
@@ -113,45 +156,8 @@
           .account-Button.on::after {
             transform: translateY(-50%) rotate(180deg);
           }
-          .account-list {
-            list-style-type: none;
-            display: none;
-          
-            width: 65px;
-           
-            padding: 0;
-            border: 1px solid #c4c4c4;
-            box-sizing: border-box;
-            box-shadow: 4px 4px 14px rgba(0, 0, 0, 0.15);
-            border-radius: 10px;
-            background-color: #fff;
-          }
-          .account-Button.on + .account-list {
-            display: block;
-          }
-          .account-list li {
-            width: 65px;
-            height: 40px;
-            padding: 5px 8px;
-            box-sizing: border-box;
-          }
-          .account-list li button {
-            width: 100%;
-            padding: 7px 10px;
-            border: none;
-            background-color: #fff;
-            border-radius: 8px;
-            cursor: pointer;
-            text-align: left;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-            overflow: hidden;
-          }
-          /*list 마우스 효과*/
-          .account-list li button:hover,
-          .account-list li button:focus {
-            background-color: lightblue;
-          }
+       
+       
           /*서포트 마감일*/
           .custom-date {
           
@@ -184,11 +190,12 @@
             text-align: center;
             color: #ffffff;
             border: none;
+            margin: 3px 0px 3px 20px;
           }
           /*input 마우스 효과*/
           input:focus,
           textarea:focus {
-            outline: 2px solid #00a9ff;
+            outline: 2px solid #BC67FF;;
           }
           input[type='datetime-local']::before {
               content: attr(data-placeholder);
