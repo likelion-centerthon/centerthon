@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
+{% load static %}
 {% with artist=artist alerts=alerts %}
 {% block content %}
-
 <div style="margin-bottom:5px;" class="category">
     <button class="all" onclick="location.href='{% url 'support:support_list' pk=artist.pk %}'">서포트 전체</button>
     <button class="mysupport" onclick="location.href='{% url 'support:my_support_list' pk=artist.pk %}'">내가 참여한 서포트</button>

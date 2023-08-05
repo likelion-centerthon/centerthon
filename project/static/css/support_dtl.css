@@ -1,8 +1,9 @@
 /*시작하기 버튼*/
 .start-Button {
-width: 327px;
-height: 60px;
+    width: 327px;
+    height: 60px;
 
+<<<<<<< HEAD
 background: #b3b1b0;
 border-radius: 30.5px;
 font-family: "Poppins";
@@ -14,19 +15,33 @@ text-align: center;
 color: #ffffff;
 border: none;
 margin-top:200px;
+=======
+    background: #b3b1b0;
+    border-radius: 30.5px;
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 180%;
+    text-align: center;
+    color: #ffffff;
+    border: none;
+    margin-top:200px;
+>>>>>>> 65842d66298f9b9ff996e6464f2e8d618fc3aeaf
 }
 /*뒤로 가기 아이콘*/
 .back {
-width: 80px;
-height: 80px;
+    width: 80px;
+    height: 80px;
 
 }
 /*서포트 시작하기*/
 h1 {
 
-width: 180px;
-height: 35px;
+    width: 180px;
+    height: 35px;
 
+<<<<<<< HEAD
 font-family: "Poppins";
 font-style: normal;
 font-weight: 700;
@@ -35,6 +50,16 @@ line-height: 147%;
 text-align: center;
 color: #000000;
 margin-left:-40px;
+=======
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 147%;
+    text-align: center;
+    color: #000000;
+    margin-left:-40px;
+>>>>>>> 65842d66298f9b9ff996e6464f2e8d618fc3aeaf
 }
 .percent{
 /* Rectangle 22 */
@@ -55,6 +80,7 @@ margin:2px 10px 20px 25px;
 /*서포트 등록 폼*/
 
 .detail-container div {
+<<<<<<< HEAD
 width: 327px;
 height: 50px;
 box-sizing: border-box;
@@ -62,8 +88,25 @@ box-sizing: border-box;
 mix-blend-mode: normal;
 border: 1px solid #b3b1b0;
 border-radius: 16px;
+=======
+    width: 327px;
+    height: 50px;
+    box-sizing: border-box;
+    mix-blend-mode: normal;
+    border: 1px solid #b3b1b0;
+    border-radius: 16px;
+>>>>>>> 65842d66298f9b9ff996e6464f2e8d618fc3aeaf
 /* New Password */
+    text-indent: 10px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 200%;
+    color: #333333;
+    margin: 3px 0px 3px 20px;
 
+<<<<<<< HEAD
 text-indent: 10px;
 font-family: 'Poppins';
 font-style: normal;
@@ -74,28 +117,44 @@ color: #333333;
 margin: 3px 0px 3px 20px;
 
 mix-blend-mode: normal;
+=======
+    mix-blend-mode: normal;
+>>>>>>> 65842d66298f9b9ff996e6464f2e8d618fc3aeaf
 
 }
 /*제목*/
 .detail-container .title {
   margin: 3px 0px 3px 20px;
+<<<<<<< HEAD
 
 height: 52px;
 }
 /*목표 모금액*/
 .detail-container .goal {
 
+=======
+  height: 52px;
+}
+/*목표 모금액*/
+.detail-container .goal {
+>>>>>>> 65842d66298f9b9ff996e6464f2e8d618fc3aeaf
   height: 52px;
 }
 /*마감 날짜*/
 .detail-container .enddate{
+<<<<<<< HEAD
 
+=======
+>>>>>>> 65842d66298f9b9ff996e6464f2e8d618fc3aeaf
   height: 52px;
   margin-top: 65px;
 }
 /*계좌 번호*/
 .detail-container .account {
+<<<<<<< HEAD
 
+=======
+>>>>>>> 65842d66298f9b9ff996e6464f2e8d618fc3aeaf
   height: 52px;
 }
 /*내용*/
@@ -104,12 +163,13 @@ height: 52px;
 
 }
 .detail-container .support-img{
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 65842d66298f9b9ff996e6464f2e8d618fc3aeaf
 width: 279px;
 height: 251px;
-
-
 
 }
 .line{
