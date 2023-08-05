@@ -3,7 +3,6 @@
 {% with artist=artist alerts=alerts %}
 {% block content %}
 
-<link rel="stylesheet" href="{% static 'css/artist_info.css' %}">
 
 <div class="category">
     <form method="post" action="{% url 'artist:select_artist' pk=artist.pk %}">
@@ -31,6 +30,9 @@
         <div class="artist-debut">{{ artist.debutDate }}</div>
         <div class="artist-agency">{{ artist.agency }}</div>
         <div class="artist-fandom">{{ artist.fanName }}</div>
+        <div>{{ artist.instagram }}</div>   
+        <div>{{ artist.twitter }}</div>
+        <div>{{ artist.youtube }}</div>
         <div class="artist-instagram-icon">
           
             <img src="{% static 'images/instagram_icon.png' %}" alt="Instagram Icon">
@@ -41,11 +43,12 @@
         </div>
     </div>
  </div>
+<!-- 
+
+<div><img src="{{ artist.artistImage.url }}" style="width: 360px"></div>
+<div>{{ artist.color }}</div>
+ -->
 
 </div>
-
-
-
-
 {% endblock %}
 {% endwith %}
