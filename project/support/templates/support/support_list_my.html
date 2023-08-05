@@ -13,14 +13,13 @@
 </div>
 <div class="supporting">
 {% for support in supports %}
-<div  style="margin-bottom:30px;  border: 1px solid #333333;
+<div  style="margin-bottom:20px;  margin-left: 10px;border: 1px solid #333333; width:310px;
 filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 border-radius: 16px; padding: 20px" onclick="location.href='{% url 'support:support_dtl' pk=artist.pk spt_pk=support.pk %}'">
-    <h1> {{support.title}}<br></h1>
-   <h3> 목표: {{support.fundraising}}<br></h3>
-   <h3>종료: {{support.deadline|date:"Y/m/d Ah:i"}}<br></h3>
-    <h2>{{support.bank}} {{support.account}}<br></h2>
-    <h3>{{support.balanceAmt}}</h3>
+    <div class="support-title"> {{support.title}}<br></div>
+   <div class="support-goal"> 목표: {{support.fundraising}}<br></div>
+   <div class="support-end">종료: {{support.deadline|date:"Y/m/d Ah:i"}}<br></div>
+    <div class="support-bank">{{support.bank}} {{support.account}}<br></div>
     <div class="box" id="completionBox">
         67<span style="font-size: 17px">%</span>
       </div>
