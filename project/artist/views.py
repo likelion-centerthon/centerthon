@@ -34,7 +34,7 @@ def subscribe_list(request, category):
             artists = user.artists.all()
 
         if request.method == 'POST': # 필터링 시 post 요청
-            artists = user.artists.all().filter(category=category)
+            artists = user.artists.objects.filter(category=category)
 
         return render(request, 'artist/subscribe_list.html', context={'artists': artists})
 
