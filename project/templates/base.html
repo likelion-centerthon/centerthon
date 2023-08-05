@@ -4,12 +4,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-      <link rel="stylesheet" href="{% static 'css/base.css' %}?after" />
-      <link rel="stylesheet" href="{% static 'css/header.css' %}?after" />
-      <link rel="stylesheet" href="{% static 'css/support_form.css' %}?after" />
-      <link rel="stylesheet" href="{% static 'css/support_create.css' %}?after" />
-      <link rel="stylesheet" href="{% static 'css/support_list.css' %}?after" />
-      <link rel="stylesheet" href="{% static 'css/support_dtl.css' %}?after" />
+
+      <link rel="stylesheet" href="{% static 'css/base.css' %}" />
+      <link rel="stylesheet" href="{% static 'css/header.css' %}" />
+      <link rel="stylesheet" href="{% static 'css/footer.css' %}" />
+      <link rel="stylesheet" href="{% static 'css/support_form.css' %}" />
+      <link rel="stylesheet" href="{% static 'css/support_create.css' %}" />
+      <link rel="stylesheet" href="{% static 'css/support_list.css' %}" />
+      <link rel="stylesheet" href="{% static 'css/support_dtl.css' %}" />
+
 
       <title>중앙톤 프로젝트</title>
     {% include 'head.html' %}
@@ -17,10 +20,12 @@
   <body>
       <div class="container" >
           {% include 'header.html' %}
-          <div style="height:715px;   overflow: hidden;">{% block content %}
-          {% endblock %}</div>
-       
+          <div class="content">
+              {% block content %}
+              {% endblock %}
+          </div>
+         {% include 'footer.html' %}
       </div>
-      {% include 'footer.html' %}
+
   </body>
 </html>

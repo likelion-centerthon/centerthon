@@ -8,33 +8,22 @@
 <form class="register" method="post" action="{% url 'support:update_support' pk=artist.pk spt_pk=support.pk %}">
     {% csrf_token %}
     <input  class="title" placeholder="제목"  type="text" name="title" id="title" value="{{support.title}}">
-
     <input class="goal" placeholder="목표 모금액"  type="number" name="fundraising" id="fundraising" value="{{support.fundraising}}">
-  
     <input   data-placeholder="모금 종료 기간" required
     aria-required="true"
-
     className={styles.selectDay}
     onChange={StartDateValueHandler}  class="custom-date" type="datetime-local" name="deadline" id="dead" value="{{support.deadline}}">
-  
     <textarea class="detail" placeholder="내용" name="body" id="body">{{support.body}}</textarea>
-
     <input  class="addImg-Button" type="file" name="image" value="{{ support.image }}" id="image">
- 
     <input class="account" placeholder="계좌번호"  type="text" name="account" id="account" value="{{support.account}}">
-
     <select class="account-Button" onclick="return false;" name="bank" value="{{ support.bank }}" id="bank">
         <option value="우리">우리</option>
         <option value="농협">농협</option>
         <option value="신한">신한</option>
         <option value="삼성">삼성</option>
-
     </select>
-   
-    
-        <button class="start-Button" disabled type="submit">항목을 모두 작성해주세요</button>
-    </form>
-</div>
+    <button class="start-Button" disabled type="submit">항목을 모두 작성해주세요</button>
+</form>
 {% endblock %}
 {% endwith %}
 

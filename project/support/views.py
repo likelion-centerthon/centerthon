@@ -99,6 +99,7 @@ def support_dtl(request, pk, spt_pk):
             else:
                 try:
                     banks=Bank.objects.filter(support=support, inoutType='출금').order_by('creditTime')
+                    print(banks)
                     
                     support.status='완료'
                     support.save()
@@ -110,7 +111,7 @@ def support_dtl(request, pk, spt_pk):
                 except Bank.DoesNotExist:
                     return render(request, './support/support_dtl.html',
                                   {"support": support, "artist": artist, "support_form": support_form, "alerts": alerts,
-                                   "banks": "출금내역이 존재하지 않습니다."})
+                                   "banks": None})
 
 # 서포트 참여 폼 입력
 def create_support_form(request, pk, spt_pk):

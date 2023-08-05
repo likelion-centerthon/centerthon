@@ -8,12 +8,13 @@
     {% if support.user == request.user %}
     <button onclick="location.href='{% url 'support:update_support' pk=artist.pk spt_pk=support.pk %}'">수정하기</button>
     {% endif %}
+
     <div class="register">
     <div class="title">{{support.title}}</div>
     <div class="goal">{{support.fundraising}}</div>
     <div class="detail">{{support.body}}</div>
     {% if support.image %}
-    <img class="support-img" src="supportimg.png" alt="Support Image">
+    <img src={{support.image.url}} class="support-img"  alt="Support Image">
     {% endif %}
 
     <div class="account">{{support.bank}} {{support.account}}</div>
@@ -79,6 +80,9 @@
 {% if support.status == '완료' %}
     <button>완료된 서포트입니다</button>
     <p>출금내역</p>
+    {% if not banks %}
+    <div>출금 내역이 없습니다.</div>
+    {% endif %}
 
     {% for bank in banks %}
     <div>
@@ -87,7 +91,6 @@
         {{bank.credit}} 출금<br>
     </div>
     {% endfor %}
-
 {% endif %}
 
 
