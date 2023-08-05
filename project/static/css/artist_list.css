@@ -1,4 +1,8 @@
 
+.page-title {
+    margin: 100px 0 0;
+    text-align: center ;
+}
 
 /* 카테고리 버튼 스타일 */
 .category-buttons {
@@ -30,7 +34,7 @@
 .artist-list {
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* 한 줄에 최대 3개의 이미지를 표시하도록 설정 */
-    grid-gap: 20px;
+    grid-gap: 5px;
     justify-items: center;
 	margin: 20px 10px 10px;
 }
@@ -65,12 +69,6 @@
     margin-top: 10px;
 }
 
-/* 페이지 제목 스타일 */
-.page-title {
-    margin: 100px 0 0; /* 상단 여백을 10px로 지정하여 하단에서 시작하도록 설정 */
-}
-
-
 
 /* 다른 아티스트 찾으러 가기 버튼 스타일 */
 .find-another-artist {
@@ -97,8 +95,4 @@
     background-color: #BC67FF; /* 변경된 컬러 코드 */
     color: #ffffff;
     
-}
-/* 페이지 제목 스타일 */
-.page-title {
-    margin: 100px 0 0; 
 }
