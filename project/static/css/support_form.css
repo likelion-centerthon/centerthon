@@ -6,9 +6,8 @@
     top: 50px;
   }
   /*모임 등록하기*/
-  h1 {
-   
-    width: 220px;
+  .support_form_h1 {
+    width: 260px;
     height: 35px;
     font-family: "Poppins";
     font-style: normal;
@@ -17,8 +16,9 @@
     line-height: 147%;
     text-align: center;
     color: #000000;
+  
   }
-  h2 {
+  .support_form_h2 {
   
     width: 345px;
     height: 44px;
