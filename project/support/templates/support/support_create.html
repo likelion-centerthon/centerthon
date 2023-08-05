@@ -12,6 +12,7 @@
 <form class="register" method="post" action="{% url 'support:create_support' pk=artist.pk %}">
     {% csrf_token %}
     <input  class="title" placeholder="제목"  type="text" name="title" id="title">
+
     <input class="goal" placeholder="목표 모금액"  type="number" name="fundraising" id="fundraising">
   
     <input   data-placeholder="모금 종료 기간" required

@@ -18,9 +18,16 @@
 .category {
     box-sizing: border-box;
     height: 60px;
- 
+
     background: #fff;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+box-sizing: border-box;
+
+width: 375px;
+height: 60px;
+background: #fff;
+box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+
 }
 .all,
 .mysupport {
@@ -32,6 +39,14 @@
     text-align: center;
 
     color: #000000;
+font-family: "Inter";
+font-style: normal;
+font-weight: 700;
+font-size: 18px;
+line-height: 22px;
+text-align: center;
+margin-left:10px;
+color: #000000;
 
     box-sizing: border-box;
     width: 160px;
@@ -42,6 +57,7 @@
 }
 
 .mysupport {
+left: 183px;
 width: 175px;
 }
 
@@ -66,6 +82,14 @@ border-bottom: 3px solid #000000;
     border: 1px solid #b3b1b0;
     border-radius: 30px;
     margin-left:150px;
+box-sizing: border-box;
+
+width: 58px;
+height: 26px;
+background: #ffffff;
+border: 1px solid #b3b1b0;
+border-radius: 30px;
+margin-left:130px;
 }
 .end-button {
     box-sizing: border-box;
@@ -100,8 +124,8 @@ border-bottom: 3px solid #000000;
     border: 1px solid #333333;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     border-radius: 16px; padding: 20px;
-  
-   
+
+
 }
 
 .spt_list_h1 {
@@ -149,4 +173,7 @@ border-bottom: 3px solid #000000;
     font-size: 50px;
     line-height: 150%;
     color: #000000;
+
+margin-left:220px;
+margin-top:-80px;
 }

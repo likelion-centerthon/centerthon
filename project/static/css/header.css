@@ -7,12 +7,13 @@
     background: #ffffff;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
     padding: 15px;
+  
   }
   .icon{
     display: flex;
     background-color:transparent;  }
   /*상단바 아티스트 선택 박스*/
- 
+
   .btn-select {
     width: 168px;
     padding: 13px 30px 13px 14px;
@@ -37,9 +38,14 @@
     color: #545454;
     line-height: 10px;
   }
+  .btn-select:active{
+    box-shadow: 1px 1px 0 rgb(0,0,0,0.5);
+    position: relative;
+    top:2px;
+  }
   .btn-select::after {
     content: "";
-   
+
     width: 30;
     height: 40;
     border-left: 12px solid transparent;
@@ -48,8 +54,8 @@
     transform: translateY(-90%);
     pointer-events: none;
 
-   
- 
+
+
   }
   .btn-select:active{
     box-shadow: 1px 1px 0 rgb(0,0,0,0.5);
@@ -69,8 +75,10 @@ button{
   /*알람 아이콘*/
   .alram,
   .user {
+    
     width: 29px;
     height: 29px;
+
     background-color: #fff;
 
   }
