@@ -1,22 +1,4 @@
-/* 전체 body 스타일 */
- body {
-    background-color: rgb(230, 230, 230);
-    height: 100%;
-    margin: 0;
 
-}
-
-.container {
-    align-items: center;
-    position: relative;
-    display: flex;
-    width: 375px;
-    height: 812px;
-    margin: 0 auto;
-    background-color: #ffffff;
-    box-shadow: 2px 2px 9px rgba(0, 0, 0, 0.25);
-    flex-direction: column;
-} 
 
 /* 카테고리 버튼 스타일 */
 .category-buttons {
@@ -63,7 +45,7 @@
     width: 100px;
     height: 100px;
     overflow: hidden;
-    border-radius: 50%; /* 이미지를 원형으로 만듭니다 */
+    border-radius: 50%; /* 이미지를 원형*/
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
@@ -86,4 +68,37 @@
 /* 페이지 제목 스타일 */
 .page-title {
     margin: 100px 0 0; /* 상단 여백을 10px로 지정하여 하단에서 시작하도록 설정 */
+}
+
+
+
+/* 다른 아티스트 찾으러 가기 버튼 스타일 */
+.find-another-artist {
+    position: absolute; 
+    width: 272.12px;
+    height: 40px;
+    top: 750px;
+    left: 50%; /* 가로 중앙 정렬을 위해 상위 요소의 50% 위치를 기준으로 설정 */
+    transform: translate(-50%, -50%); /* 버튼의 절반 크기만큼 이동하여 정확한 중앙 위치 조정 */
+    background-color: #BC67FF; 
+    box-shadow: 0px 0px 4px #BC67FF;
+    border-radius: 50px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+    color: #555555;
+    cursor: pointer;
+}
+
+.find-another-artist:hover {
+    background-color: #BC67FF; /* 변경된 컬러 코드 */
+    color: #ffffff;
+    
+}
+/* 페이지 제목 스타일 */
+.page-title {
+    margin: 100px 0 0; 
 }

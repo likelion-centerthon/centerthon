@@ -1,14 +1,8 @@
-{% load static %}
+{% extends 'base_no_nav.html' %}
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>아티스트 선택</title>
-    <link rel="stylesheet" href="{% static 'css/artist_list.css' %}">
-</head>
-<body>
-    <div class="container">
+
+
+ 
         <!-- 페이지 제목 -->
         <h2 class="page-title">나의 아티스트 선택하기</h2>
 
@@ -48,6 +42,5 @@
             {% endfor %}
         </div>
     </div>
-</body>
-</html>
+
 {% endblock %}

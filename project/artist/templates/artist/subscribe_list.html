@@ -1,19 +1,12 @@
-{% load static %}
+{% extends 'base_no_nav.html' %}
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Subscribe List</title>
-    <link rel="stylesheet" href="{% static 'css/subscribe_list2.css' %}">
-</head>
-<body>
-    <div class="container">
+
+
           <!-- 페이지 제목 추가 -->
           <h2 class="page-title">나의 아티스트 선택하기</h2>
 
         <div class="category-buttons">
-            <form method="get" action="{% url 'artist:subscribe_list' category='KPOP' %}">
+            <form method="post" action="{% url 'artist:subscribe_list' category='KPOP' %}">
                 {% csrf_token %}
                 <button type="submit">K-POP</button>
             </form>
@@ -45,12 +38,12 @@
                         <div class="artist-name">{{ artist.artistName }}</div>
                     </button>
                 </form>
-           
+                {% endfor %}
             <form method="post" action="{% url 'artist:artist_list' category='none' %}">
                 {% csrf_token %}
                 <button type="submit" class="find-another-artist">다른 아티스트 찾으러 가기 ></button>
             </form>
-            {% endfor %}
+           
         </div>
     </div>
 </body>
