@@ -6,7 +6,6 @@
 <body>
     <h1>작성한 미팅 목록</h1>
     <p>{{ artist.artistName }} 페이지 - 보호자 전화번호</p>
-    <h2><a href="{% url 'meeting:MeetingList' artist_id=artist_id %}">전체 - 모집 중 페이지로</a></h2>
     <div>
     <button onclick="location.href='{% url 'meeting:MeetingList' artist_id=artist.id %}'">모임 전체</button>
         <button onclick="location.href='{%url 'meeting:writedMeetingList' artist_id=artist_id  %}'">나의 모임</button>
