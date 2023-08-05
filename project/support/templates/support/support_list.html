@@ -12,6 +12,7 @@
     <button class="write-button" onclick="location.href='{% url 'support:create_support' pk=artist.pk %}'">작성</button>
 </div>
 <div class="supporting">
+
     {% for support in supports %}
     <div class="support_box" onclick="location.href='{% url 'support:support_dtl' pk=artist.pk spt_pk=support.pk %}'">
         <div style="width: 70%;">
@@ -26,6 +27,7 @@
         </div>
     </div>
     {% endfor %}
+
 </div>
 {% endblock %}
 {% endwith %}
