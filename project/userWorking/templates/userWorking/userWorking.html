@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>나의 활동 내역</title>
-</head>
-<body>
-    {% include 'header.html' with artist=artist alerts=alerts %}
+{% extends 'base.html' %}
+{%load static%}
+{% with artist=artist alerts=alerts %}
+{% block content %}
+
     <img src="{{ userWorking.artist.artistImage.url }}" width="150" height="100">
     <div>구독 시작일: {{ userWorking.startDay }}</div>
     <div>지금까지 {{ userWorking.likeDays }}일 동안 활동 중</div>
@@ -16,7 +13,5 @@
     <div>서포트 주최 횟수: {{ userWorking.supportHost }}</div>
     <div>서포트 참여 횟수: {{ userWorking.supportGuest }}</div>
 
-    {% include 'footer.html' with artist=artist %}
-
-</body>
-</html>
+    {% endblock %}
+    {% endwith %}

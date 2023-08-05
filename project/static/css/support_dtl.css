@@ -1,38 +1,40 @@
 /*시작하기 버튼*/
 .start-Button {
-width: 327px;
-height: 60px;
+    width: 327px;
+    height: 60px;
 
-background: #b3b1b0;
-border-radius: 30.5px;
-font-family: "Poppins";
-font-style: normal;
-font-weight: 700;
-font-size: 20px;
-line-height: 180%;
-text-align: center;
-color: #ffffff;
-border: none;
+    background: #b3b1b0;
+    border-radius: 30.5px;
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 180%;
+    text-align: center;
+    color: #ffffff;
+    border: none;
+    margin-top:200px;
 }
 /*뒤로 가기 아이콘*/
 .back {
-width: 80px;
-height: 80px;
+    width: 80px;
+    height: 80px;
 
 }
 /*서포트 시작하기*/
 h1 {
 
-width: 180px;
-height: 35px;
+    width: 180px;
+    height: 35px;
 
-font-family: "Poppins";
-font-style: normal;
-font-weight: 700;
-font-size: 24px;
-line-height: 147%;
-text-align: center;
-color: #000000;
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 147%;
+    text-align: center;
+    color: #000000;
+    margin-left:-40px;
 }
 .percent{
 /* Rectangle 22 */
@@ -45,67 +47,59 @@ background: #BC67FF;
 mix-blend-mode: normal;
 border: 1px dashed #BC67FF;
 border-radius: 16px;
-
-
+height: 10px;
+width: 320px;
+margin:2px 10px 20px 25px;
 }
 
 /*서포트 등록 폼*/
 
-.register div {
-width: 327px;
-height: 50px;
-box-sizing: border-box;
-
-mix-blend-mode: normal;
-border: 1px solid #b3b1b0;
-border-radius: 16px;
+.detail-container div {
+    width: 327px;
+    height: 50px;
+    box-sizing: border-box;
+    mix-blend-mode: normal;
+    border: 1px solid #b3b1b0;
+    border-radius: 16px;
 /* New Password */
+    text-indent: 10px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 200%;
+    color: #333333;
+    margin: 3px 0px 3px 20px;
 
-text-indent: 10px;
-font-family: 'Poppins';
-font-style: normal;
-font-weight: 500;
-font-size: 20px;
-line-height: 200%;
-/* identical to box height, or 30px */
-
-color: #333333;
-
-mix-blend-mode: normal;
+    mix-blend-mode: normal;
 
 }
 /*제목*/
-.title {
-
-height: 52px;
+.detail-container .title {
+  margin: 3px 0px 3px 20px;
+  height: 52px;
 }
 /*목표 모금액*/
-.goal {
-
+.detail-container .goal {
   height: 52px;
 }
 /*마감 날짜*/
-.enddate{
-
+.detail-container .enddate{
   height: 52px;
+  margin-top: 65px;
 }
 /*계좌 번호*/
-.account {
-
+.detail-container .account {
   height: 52px;
 }
 /*내용*/
-.detail {
+.detail-container .detail {
   height: 230px;
 
 }
-.support-img{
-
-
+.detail-container .support-img{
 width: 279px;
 height: 251px;
-
-
 
 }
 .line{
@@ -114,7 +108,7 @@ width: 250px;
 height: 0px;
 
 border: 3px solid rgba(51, 51, 51, 0.7);
-
+margin-left:70px;
 }
 .text{
   /* New Password */
@@ -135,12 +129,10 @@ mix-blend-mode: normal;
 }
 /*모금자 정보 목록*/
 .supportinfo-container{
-
   overflow-y:scroll; overflow-x:hidden; height:160px;
-
 mix-blend-mode: normal;
-
-
+width: 350px;
+margin-left:10px;
 }
 .info-text p {
   /* Add styles for the text inside the support information div */
@@ -155,38 +147,17 @@ mix-blend-mode: normal;
   margin-top: 2px;
   margin-left: 10px;
 }
-.info-text span {
-  position: absolute;
-  left: 250px;
-  top: 19px;
-  color: red;
-}
 
 
-h3{
-  /* 입금 확인 */
-
-    width: 79px;
-    height: 30px;
-
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 150%;
-    color: #0033EA;
-
-
-}
 
 /*팝업창*/
 .wrap{padding:10px;}
 
-.pop_wrap{position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,.5); font-size:0; text-align:center;}
+.pop_wrap{ z-index:2; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,.5); font-size:0; text-align:center;}
 .pop_wrap:after{display:inline-block; height:100%; vertical-align:middle; content:'';}
 .pop_wrap .pop_inner{border-radius:10px;display:inline-block; padding:20px 30px; background:#fff; width:200px; vertical-align:middle; font-size:14px;}
 .btn_yes, .btn_no{
-  color:#3A7BBC; width: 90px; font-size: 12px; height: 20px; border: none; background-color: #fff;
+font-size: 12px; height: 20px; border: none; background-color: #fff;
 }
 .btn_no{
   color:red;
