@@ -1,5 +1,5 @@
 /* 전체 body 스타일 */
- body {
+body {
     background-color: rgb(230, 230, 230);
     height: 100%;
     margin: 0;
@@ -36,7 +36,7 @@
     background: #FFFFFF;
     opacity: 0.9;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 15px;
+    border-radius: 15px; 
 }
 
 .category-buttons button:hover {
@@ -50,7 +50,7 @@
     grid-template-columns: repeat(3, 1fr); /* 한 줄에 최대 3개의 이미지를 표시하도록 설정 */
     grid-gap: 20px;
     justify-items: center;
-	margin: 20px 10px 10px;
+    margin: 10px;
 }
 
 .artist-list button {
@@ -63,7 +63,7 @@
     width: 100px;
     height: 100px;
     overflow: hidden;
-    border-radius: 50%; /* 이미지를 원형으로 만듭니다 */
+    border-radius: 50%; /* 정사각형 이미지를 원형으로 보이게 설정 */
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
@@ -83,6 +83,31 @@
     margin-top: 10px;
 }
 
+/* 다른 아티스트 찾으러 가기 버튼 스타일 */
+.find-another-artist {
+    position: absolute; 
+    width: 272.12px;
+    height: 40px;
+    left: 50px;
+    top: 750px;
+    background-color: #BC67FF; 
+    box-shadow: 0px 0px 4px #BC67FF;
+    border-radius: 50px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+    color: #555555;
+    cursor: pointer;
+}
+
+.find-another-artist:hover {
+    background-color: #BC67FF; /* 변경된 컬러 코드 */
+    color: #ffffff;
+    
+}
 /* 페이지 제목 스타일 */
 .page-title {
     margin: 100px 0 0; /* 상단 여백을 10px로 지정하여 하단에서 시작하도록 설정 */

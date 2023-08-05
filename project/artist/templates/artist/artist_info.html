@@ -3,28 +3,46 @@
 {% with artist=artist alerts=alerts %}
 {% block content %}
 
+<link rel="stylesheet" href="{% static 'css/artist_info.css' %}">
 
+<div class="category">
     <form method="post" action="{% url 'artist:select_artist' pk=artist.pk %}">
         {% csrf_token %}
-        <button type="submit">아티스트 정보</button>
-    </form>
+    <button class="all">아티스트 정보</button>
 
-    <form method="post" action="{% url 'artist:artist_sns' pk=artist.pk %}">
-        {% csrf_token %}
-        <button type="submit">SNS 보기</button>
-    </form>
+<form method="post" action="{% url 'artist:artist_sns' pk=artist.pk %}">
+    {% csrf_token %}
+    <button class="mysupport">SNS 보기</button>
+</div>
 
-    </form>
-    <div>{{ artist.artistName }}</div>
-    <div>{{ artist.members }}</div>
-    <div><img src="{{ artist.artistImage.url }}" style="width: 360px"></div>
-    <div>{{ artist.instagram }}</div>
-    <div>{{ artist.twitter }}</div>
-    <div>{{ artist.youtube }}</div>
-    <div>{{ artist.debutDate }}</div>
-    <div>{{ artist.color }}</div>
-    <div>{{ artist.fanName }}</div>
-    <div>{{ artist.agency }}</div>
+
+<div class="artist-info">
+    
+    <div class="artist-image-wrapper">
+        <img src="{{ artist.artistImage.url }}" alt="Artist Image"> 
+        <div class="artist-image" >
+            <div class="artist-image-border" ></div>
+            <div class="artist-image-content" ></div>
+            
+            </div>
+       
+        <div class="artist-name">{{ artist.artistName }}</div>
+        <div class="artist-member">{{ artist.members }}</div>
+        <div class="artist-debut">{{ artist.debutDate }}</div>
+        <div class="artist-agency">{{ artist.agency }}</div>
+        <div class="artist-fandom">{{ artist.fanName }}</div>
+        <div class="artist-instagram-icon">
+          
+            <img src="{% static 'images/instagram_icon.png' %}" alt="Instagram Icon">
+        </div>
+        <div class="artist-twitter-icon">
+      
+            <img src="{% static 'images/twitter_icon.png' %}" alt="Twitter Icon">
+        </div>
+    </div>
+ </div>
+
+</div>
 
 {% endblock %}
 {% endwith %}

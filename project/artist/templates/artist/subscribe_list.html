@@ -1,38 +1,58 @@
-{% extends 'base_no_nav.html' %}
+{% load static %}
 {% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Subscribe List</title>
+    <link rel="stylesheet" href="{% static 'css/subscribe_list2.css' %}">
+</head>
+<body>
+    <div class="container">
+          <!-- 페이지 제목 추가 -->
+          <h2 class="page-title">나의 아티스트 선택하기</h2>
 
-    <form method="get" action="{% url 'artist:subscribe_list' category='KPOP' %}">
-        {% csrf_token %}
-        <button type="submit">K-POP</button>
-    </form>
+        <div class="category-buttons">
+            <form method="get" action="{% url 'artist:subscribe_list' category='KPOP' %}">
+                {% csrf_token %}
+                <button type="submit">K-POP</button>
+            </form>
 
-    <form method="post" action="{% url 'artist:subscribe_list' category='트로트' %}">
-        {% csrf_token %}
-        <button type="submit">트로트</button>
-    </form>
+            <form method="post" action="{% url 'artist:subscribe_list' category='트로트' %}">
+                {% csrf_token %}
+                <button type="submit">트로트</button>
+            </form>
 
-    <form method="post" action="{% url 'artist:subscribe_list' category='발라드' %}">
-        {% csrf_token %}
-        <button type="submit">발라드</button>
-    </form>
+            <form method="post" action="{% url 'artist:subscribe_list' category='발라드' %}">
+                {% csrf_token %}
+                <button type="submit">발라드</button>
+            </form>
 
-    <form method="post" action="{% url 'artist:subscribe_list' category='기타' %}">
-        {% csrf_token %}
-        <button type="submit">기타</button>
-    </form>
+            <form method="post" action="{% url 'artist:subscribe_list' category='기타' %}">
+                {% csrf_token %}
+                <button type="submit">기타</button>
+            </form>
+        </div>
 
-    {% for artist in artists %}
-    <form method="post" action="{% url 'artist:select_artist' pk=artist.pk %}">
-        {% csrf_token %}
-        <button type="submit">
-             <img src="{{ artist.artistImage.url }}" width="150" height="100">
-             {{ artist.artistName }}
-        </button>
-    </form>
-    {% endfor %}
-    <form method="post" action="{% url 'artist:artist_list' category='none' %}">
-         {% csrf_token %}
-         <button type="submit">다른 아티스트 찾으러 가기 ></button>
-    </form>
-
+        <div class="artist-list">
+            {% for artist in artists %}
+                <form method="post" action="{% url 'artist:select_artist' pk=artist.pk %}">
+                    {% csrf_token %}
+                    <button type="submit">
+                        <div class="image-wrapper">
+                            <img src="{{ artist.artistImage.url }}" width="100" height="100">
+                        </div>
+                        <div class="artist-name">{{ artist.artistName }}</div>
+                    </button>
+                </form>
+           
+            <form method="post" action="{% url 'artist:artist_list' category='none' %}">
+                {% csrf_token %}
+                <button type="submit" class="find-another-artist">다른 아티스트 찾으러 가기 ></button>
+            </form>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
 {% endblock %}

@@ -22,9 +22,9 @@
 
 <script>
     //하단바 아이콘 변경
-function handleImageHover(elementId, newImageSrc) {
-    const imgElement = document.getElementById(elementId);
-    imgElement.src = "{% static 'images/newImageSrc.png'%}";
+    function handleImageHover(elementId, newImageSrc) {
+      const imgElement = document.getElementById(elementId);
+      imgElement.src = "{% static 'images/' %}" + newImageSrc;
   }
 
   const singerImg = document.getElementById("singer-img");
