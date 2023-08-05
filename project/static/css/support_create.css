@@ -6,7 +6,7 @@
            
           }
           /*서포트 시작하기*/
-          .support-start {
+          h1 {
            
             width: 180px;
             height: 35px;
@@ -18,9 +18,8 @@
             line-height: 147%;
             text-align: center;
             color: #000000;
-            margin-left:80px;
           }
-          .support-start2{
+          h2 {
             width: 345px;
             height: 44px;
            
@@ -38,7 +37,7 @@
             width: 327px;
             height: 52px;
             box-sizing: border-box;
-            margin-left:80px;
+            
             mix-blend-mode: normal;
             border: 1px solid #b3b1b0;
             border-radius: 16px;

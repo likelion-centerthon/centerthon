@@ -2,10 +2,13 @@
 {% load static %}
 {% with artist=artist alerts=alerts %}
 {% block content %}
+
+
     <form method="post" action="{% url 'artist:select_artist' pk=artist.pk %}">
         {% csrf_token %}
         <button type="submit">아티스트 정보</button>
     </form>
+
     <form method="post" action="{% url 'artist:artist_sns' pk=artist.pk %}">
         {% csrf_token %}
         <button type="submit">SNS 보기</button>

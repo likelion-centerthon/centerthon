@@ -14,7 +14,7 @@
       <div class="label">모임</div>
     </div>
     <div class="support" onclick="location.href='{% url 'support:support_list' pk=artist.pk %}'">
-        <img id="support-img" src="{% static 'images/support.png'%}" alt="그룹 이미지" ></img>
+        <img id="support-img" src="{% static 'images/purplesupport.png'%}" alt="그룹 이미지" ></img>
       <div class="label">서포트</div>
     </div>
 
@@ -22,16 +22,14 @@
 
 <script>
     //하단바 아이콘 변경
-    function handleImageHover(elementId, newImageSrc) {
-      const imgElement = document.getElementById(elementId);
-      imgElement.src = "{% static 'images/' %}" + newImageSrc;
+function handleImageHover(elementId, newImageSrc) {
+    const imgElement = document.getElementById(elementId);
+    imgElement.src = "{% static 'images/newImageSrc.png'%}";
   }
 
   const singerImg = document.getElementById("singer-img");
   const listImg = document.getElementById("list-img");
   const groupImg = document.getElementById("group-img");
-  const supportImg = document.getElementById("support-img");
-
 
   singerImg.addEventListener("mouseenter", function () {
     handleImageHover("singer-img", "purplesinger.png");
@@ -56,15 +54,6 @@
   groupImg.addEventListener("mouseleave", function () {
     handleImageHover("group-img", "group.png");
   });
-
-  supportImg.addEventListener("mouseenter", function () {
-    handleImageHover("support-img", "purplesupport.png");
-  });
-  
-  supportImg.addEventListener("mouseleave", function () {
-    handleImageHover("support-img", "support.png");
-  });
-  
 
 
 //하단바 h3 색상 변경
@@ -93,15 +82,4 @@ document.querySelector(".group .label").classList.add("colored");
 document.getElementById("group-img").addEventListener("mouseout", function () {
 document.querySelector(".group .label").classList.remove("colored");
 });
-
-
-document.getElementById("support-img").addEventListener("mouseover", function () {
-  document.querySelector(".support .label").classList.add("colored");
-  });
-  
-  document.getElementById("support-img").addEventListener("mouseout", function () {
-  document.querySelector(".support .label").classList.remove("colored");
-  });
 </script>
-
-
