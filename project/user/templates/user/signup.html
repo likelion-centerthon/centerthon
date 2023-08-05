@@ -97,8 +97,8 @@
 <body>
     <div class="container">
         <div class="header">회원가입</div>
-        <form method="post">
-            <!-- {% csrf_token %} -->
+        <form method="post" action="{% url 'user:signup' pk=user.pk %}" >
+             {% csrf_token %}
 
             <label for="userName">이름</label>
             <input type="text" name="userName" value="{{ user.userName }}" disabled>
