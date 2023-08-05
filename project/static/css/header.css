@@ -7,23 +7,12 @@
     background: #ffffff;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
     padding: 15px;
-  
   }
   .icon{
     display: flex;
-  }
+    background-color:transparent;  }
   /*상단바 아티스트 선택 박스*/
-  .btn-select::after {
-    content: "";
-    width: 0;
-    height: 0;
-    border-left: 6px solid transparent;
-    border-right: 6px solid transparent;
-    border-top: 6px solid #d9d9d9;
-    transform: translateY(-50%);
-    pointer-events: none;
-
-  }
+ 
   .btn-select {
     width: 168px;
     padding: 13px 30px 13px 14px;
@@ -36,7 +25,6 @@
     overflow: hidden;
     position: absolute;
     height: 34px;
-  
     border: 1px solid #545454;
     border-radius: 30px;
     /* 아티스트 선택 */
@@ -49,23 +37,40 @@
     color: #545454;
     line-height: 10px;
   }
+  .btn-select::after {
+    content: "";
+   
+    width: 30;
+    height: 40;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-top:12px solid #d9d9d9;
+    transform: translateY(-90%);
+    pointer-events: none;
+
+   
+ 
+  }
+  .btn-select:active{
+    box-shadow: 1px 1px 0 rgb(0,0,0,0.5);
+    position: relative;
+    top:2px;
+  }
   .btn-select:hover,
   .btn-select:focus {
     border: 1px solid #9b51e0;
     outline: 3px solid #f8e4ff;
   }
-  .btn-select.on::after {
-    transform: translateY(-50%) rotate(180deg);
-  }
+
 button{
     border: 0;
+    background-color: #fff;
 }
   /*알람 아이콘*/
   .alram,
   .user {
-    
     width: 29px;
     height: 29px;
-  }
-  .user {
+    background-color: #fff;
+
   }
