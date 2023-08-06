@@ -1,55 +1,52 @@
 {% extends 'base.html' %}
-{%load static%}
+{% load static %}
 {% with artist=post.artist alerts=alerts %}
 {% block content %}
 
-
-<img class="back" src="{% static 'images/back.png'%}" alt="이전" ></img>
+<img class="back" src="{% static 'images/back.png'%}" alt="이전">
 <div class="post-dtl-container">
-    <div class="post-dtl-title">{{ post.title }}</div>
-    <div class="post-dtl-name">{{ post.author.userName }}</div>
-    <div  class="post-dtl-regTime"> {{ post.regTime|date:"Y.m.d H:i" }}</div>
+    <div class="post-dtl-title" style="margin-left: 30px;">{{ post.title }}</div>
+
+    <div style="display: flex; position: row; margin: 5px 0px 0px 30px">
+        <div class="post-dtl-name">{{ post.author.userName }}</div>
+        <div class="post-dtl-regTime" style="margin-left: 120px;">{{ post.regTime|date:"Y.m.d H:i" }}</div>
+    </div>
     <div class="post-dtl-line"></div>
 
     {% if post.image %}
-    <img  class="post-dtl-img" src="{{ post.image.url }}" width="150" height="100">
-{% endif %}
-    <div  class="post-dtl-contents">{{ post.contents }}</div>   
+    <img class="post-dtl-img" src="{{ post.image.url }}" width="150" height="100">
+    {% endif %}
+    <div class="post-dtl-contents">{{ post.contents }}</div>
 </div>
 <div class="post-dtl-comment">댓글</div>
 
-    <div class="post-comment-container">
+<div class="post-comment-container">
     {% for comment in comments %}
-    <div style="width: 310px;
-    height: 110px;
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-    box-sizing: border-box;
-    background: #FFFFFF;
-    border-radius: 16px; margin-bottom:16px;
-    padding: 10px;">
-
-        {% if request.user == comment.author %}
+    <div class="post-comment-box">
+        <div style="display: flex; position: row; margin: 10px 0px 0px 20px;">
+            <div>{{ comment.author.userName }}</div>
+            <div style="color: #858585; margin-left: 5px;">{{ comment.regTime|date:"Y.m.d H:i" }}</div>
+            {% if request.user == comment.author %}
             <form method="get" action="{% url 'post:delete_comment' pk=comment.pk %}">
                 {% csrf_token %}
-                <button type="submit">삭제</button>
+                <button type="submit" style="color: red; margin-left: 30px;">삭제하기</button>
             </form>
-        {% endif %}
-
-        <div>{{ comment.contents }}</div>
-        <div>{{ comment.author.userName }}</div>
-
-        <div>{{ comment.regTime|date:"Y.m.d H:i" }}</div>
+            {% endif %}
         </div>
+        <div style="font-size: 18px; margin: -2px 0px 0px 20px;">{{ comment.contents }}</div>
+    </div>
     {% endfor %}
 </div>
 
-    <form method="post" action="{% url 'post:create_comment' pk=post.pk %}">
-        {% csrf_token %}
-        <div style="margin-left:20px;" >
+<form method="post" action="{% url 'post:create_comment' pk=post.pk %}">
+    {% csrf_token %}
+   
+    <div style="display: flex; margin-left:20px;">
         <input class="post-dtl-input" type="text" name="contents" value="{{ comment.contents }}" placeholder="클릭하여 댓글 작성하기">
         <button class="post-dtl-button" type="submit">작성</button>
-    </div>    
-    </form>
+    </div>
+    
+</form>
 
 {% endblock %}
 {% endwith %}

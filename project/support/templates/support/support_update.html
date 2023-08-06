@@ -16,9 +16,18 @@
     aria-required="true"
     className={styles.selectDay}
     onChange={StartDateValueHandler}  class="custom-date" type="datetime-local" name="deadline" id="dead" value="{{support.deadline}}">
-    <textarea class="detail" placeholder="내용" name="body" id="body">{{support.body}}</textarea>
-    <input  class="addImg-Button" type="file" name="image" value="{{ support.image }}" id="image">
-    <article>
+    <div  style="position: relative; border:none;">
+
+      <textarea class="detail" placeholder="내용" name="body" id="body"></textarea>
+      <div class="select-wrapper " style="border:none; margin-top:-50px;">
+  
+      <div class="addImg-Button">
+      <label for="image" class="custom-addImg-Button" >사진</label>
+      <input  style="display:none" type="file" name="image" value="{{ support.image }}" id="image">
+      </div>
+    </div>
+    </div>
+     <article>
         <div  style="position: relative; border:none;">
           <input class="account" placeholder="계좌번호" type="text" name="account" id="account">
           <div class="select-wrapper " style="border:none; margin-top:10px;">

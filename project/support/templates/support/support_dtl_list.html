@@ -23,29 +23,6 @@
 </div>
 {% endfor %}
 
-<script>
-  function showPopup() {
-      const popup = document.getElementById('pop_info_1');
-      popup.style.display = 'block';
-    }
-  
-    function hidePopup() {
-      const popup = document.getElementById('pop_info_1');
-      popup.style.display = 'none';
-    }
-  
-    // Add event listeners to the "Yes" and "No" buttons
-    const btnYes = document.querySelector('.btn_yes');
-    const btnNo = document.querySelector('.btn_no');
-    const text = document.querySelector('.info-text span')
-    btnYes.addEventListener('click', function () {
-      hidePopup(); // Hide the popup when "Yes" is clicked
-      text.innerHTML="입금 확인"
-      text.style.color="blue";
-    });
-  
-    btnNo.addEventListener('click', function () {
-      hidePopup(); // Hide the popup when "No" is clicked
-    });
+
   
 </script>

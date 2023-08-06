@@ -9,8 +9,7 @@
           
             background: #ffffff;
             border-radius: 16px;
-            margin: 3px 0px 3px 20px;
-
+            margin: 3px 0px 3px 35px;
           }
           /*제목 작성*/
           .post-crt-title {
@@ -22,11 +21,11 @@
             background: #ffffff;
             border: 1px solid #545454;
             border-radius: 16px;
-            margin: 3px 0px 3px 20px;
-          }
+            margin: 3px 0px 3px 35px;       
+             }
           input::placeholder,
           textarea::placeholder,
-          select {
+          .post-crt-select {
             font-family: "Inter";
             font-style: normal;
             font-weight: 400;
@@ -56,8 +55,7 @@
             border: 1px solid #545454;
             border-radius: 16px;
             resize: none;
-            margin: 3px 0px 3px 20px;
-
+            margin: 3px 0px 3px 35px;
           }
           /*사진 추가 버튼*/
           .addImg-Button {
@@ -69,8 +67,7 @@
             background: #ffffff;
             border: 1px solid #b3b1b0;
             border-radius: 30px;
-            margin: 3px 0px 3px 20px;
-
+            margin: 3px 0px 3px 25px;
           }
           /*사진 추가 버튼 마우스 효과*/
           .addImg-Button:hover,
@@ -94,8 +91,7 @@
             text-align: center;
             color: #ffffff;
             border: none;
-            margin: 3px 0px 3px 20px;
-
+            margin: 3px 0px 3px 35px;
           }
           /*input 마우스 효과*/
           input:focus,
@@ -103,25 +99,4 @@
           select:focus {
             outline: 2px solid #bc67ff;
           }
-          
-          .filebox input[type="file"] {  /* 파일 필드 숨기기 */
-            
-              width: 1px;
-              height: 1px;
-             
-              margin: -1px;
-              overflow: hidden;
-              clip:rect(0,0,0,0);
-              border: 0;
-            }
-            .filebox label {
-              box-sizing: border-box;
-              position: absolute;
-              width: 68px;
-              height: 34px;
-             
-              background: #ffffff;
-              border: 1px solid #b3b1b0;
-              border-radius: 30px;
-            }
-          
+     

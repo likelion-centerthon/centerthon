@@ -19,10 +19,10 @@
   line-height: 17px;
 
   color: #858585;
-  margin-left:10px;
+ 
 }
 .post-dtl-regTime {
-  width: 100px;
+  width: 150px;
   height: 17px;
 
   font-family: "Inter";
@@ -32,7 +32,6 @@
   line-height: 17px;
 
   color: #858585;
-  margin-left:230px;
 }
 
 .post-dtl-contents {
@@ -78,29 +77,38 @@
   margin: 10px 0px 0px 20px;
 }
 .post-dtl-input {
-  position: absolute;
-  width: 200px;
-  height: 40px;
 
+  width: 260px;
+  height: 40px;
   background: #ffffff;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
   border-radius: 20px;
-}
+  border:none;
+ }
 .post-dtl-button {
-  width: 50px;
+  width: 65px;
   height: 40px;
-
   background: #bc67ff;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 20px;
-  margin-left: 240px;
+  margin-left: 10px;
   color: #fff;
 }
 .post-comment-container {
   overflow-y: scroll;
   overflow-x: hidden;
-  height: 160px;
+  height: 150px;
   mix-blend-mode: normal;
-  width: 310px;
-  margin: 10px 0px 30px 30px;
+  width: 350px;
+  margin: 10px 0px 30px 14px;
+}
+.post-comment-box{
+  width: 335px;
+    height: 90px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    box-sizing: border-box;
+    background: #FFFFFF;
+    border-radius: 16px; 
+    padding: 10px;
+    margin:10px 0px 16px 4px;
 }
