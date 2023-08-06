@@ -1,9 +1,10 @@
-<!-- meeting_edit.html -->
-
+{% extends 'base.html' %}
+{% load static %}
+{% with artist=artist alerts=alerts %}
+{% block content %}
 <!DOCTYPE html>
 <html>
 <head>
-        {% include 'header.html' with artist=artist alerts=alerts%}
     <title>미팅 수정</title>
 </head>
 <body>
@@ -43,6 +44,7 @@
         {% endif %}
         <button type="submit">저장</button>
     </form>
-    {% include 'footer.html' with artist=artist %}
 </body>
 </html>
+{% endblock %}
+{% endwith %}

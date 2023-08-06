@@ -1,7 +1,10 @@
+{% extends 'base.html' %}
+{% load static %}
+{% with artist=artist alerts=alerts %}
+{% block content %}
 <!DOCTYPE html>
 <html>
 <head>
-        {% include 'header.html' with artist=artist alerts=alerts%}
     <title>Meeting Detail</title>
 
 </head>
@@ -36,6 +39,7 @@
             <button type="submit">마감하기</button>
         </form>
     {% endif %}
-    {% include 'footer.html' with artist=artist %}
 </body>
 </html>
+{% endblock %}
+{% endwith %}

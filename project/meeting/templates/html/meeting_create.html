@@ -1,3 +1,7 @@
+{% extends 'base.html' %}
+{% load static %}
+{% with artist=artist alerts=alerts %}
+{% block content %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -81,3 +85,5 @@
     </script>
 </body>
 </html>
+{% endblock %}
+{% endwith %}
