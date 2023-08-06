@@ -1,4 +1,3 @@
-from alert.models import Alert
 from django.contrib.auth import login, authenticate
 from django.utils import timezone
 from django.shortcuts import render,redirect
