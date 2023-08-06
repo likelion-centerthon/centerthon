@@ -13,7 +13,18 @@
 </div>
 
 
-    {{ artist.artistName }}
+<h1>{{ artist.name }}의 아티스트 정보</h1>
+
+<!-- 기존 내용 -->
+<!-- ... -->
+
+<!-- 인스타그램 피드 렌더링 -->
+<h2>인스타그램 피드</h2>
+<div>
+    {% for image_url in feed_data %}
+        <img src="{{ image_url }}" alt="인스타그램 이미지">
+    {% endfor %}
+</div>
 
 {% endblock %}
 {% endwith %}
