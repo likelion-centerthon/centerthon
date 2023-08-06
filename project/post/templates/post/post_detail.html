@@ -12,7 +12,7 @@
     <div>{{ post.title }}</div>
     <div>{{ post.contents }}</div>
     <div>{{ post.author.userName }}</div>
-    <div>{{ post.regTime }}</div>
+    <div>{{ post.regTime|date:"Y.m.d H:i" }}</div>
     {% if post.image %}
         <img src="{{ post.image.url }}" width="150" height="100">
     {% endif %}
@@ -27,7 +27,7 @@
 
         <div>{{ comment.contents }}</div>
         <div>{{ comment.author.userName }}</div>
-        <div>{{ comment.regTime }}</div>
+        <div>{{ comment.regTime|date:"Y.m.d H:i" }}</div>
         <hr>
     {% endfor %}
 

@@ -23,7 +23,7 @@
         </form>
         <button><img class="alram" src="{% static 'images/alram.png'%}" alt="알람" ></img></button>
       </div>
-{% comment %}       
+{% comment %}
         {% for alert in alerts %}
         <div>
           <div>{{ alert.artist.artistName }}</div>
@@ -31,7 +31,7 @@
           {% if alert.openChatURL %}
           <div>{{ alert.openChatURL }}</div>
           {% endif %}
-          <div>{{ alert.regTime }}</div>
+          <div>{{ alert.regTime|date:"Y.m.d H:i" }}</div>
           <div>{{ alert.is_read }}</div>
          
         </div>

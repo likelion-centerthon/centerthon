@@ -42,7 +42,7 @@
             <img src="{{ post.image.url }}" width="150" height="100">
         {% endif %}
         {{ post.author.userName }}
-        {{ post.regTime }}
+        {{ post.regTime|date:"Y.m.d H:i" }}
         <hr>
     </form>
     {% endfor %}
