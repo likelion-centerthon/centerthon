@@ -1,7 +1,10 @@
+{% extends 'base.html' %}
+{% load static %}
+{% with artist=artist alerts=alerts %}
+{% block content %}
 <!DOCTYPE html>
 <html>
 <head>
-    {% include 'header.html' with artist=artist alerts=alerts%}
     <h1>모임 목록</h1>
     <p>{{ artist.artistName }} 페이지 - 모집 중</p>
     <div>
@@ -29,6 +32,7 @@
         <hr>
     {% endfor %}
     <a href="{% url 'meeting:createMeeting' artist_id=artist_id %}"><p><strong>모임 작성하기</strong></p></a>
-    {% include 'footer.html' with artist=artist %}
 </body>
 </html>
+{% endblock %}
+{% endwith %}
