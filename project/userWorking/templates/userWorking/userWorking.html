@@ -2,16 +2,31 @@
 {%load static%}
 {% with artist=artist alerts=alerts %}
 {% block content %}
+<div style="display: flex; align-items: center; justify-content: center; flex-direction: column;">
+    <h1 class="support_form_h1" style="margin-bottom: 20px;">나의 활동 내역</h1>
+    <div style="display: flex; align-items: center;">
+        <img class="use_working_img" src="{{ userWorking.artist.artistImage.url }}">
+        <h2 style="font-size: 20px; margin-left: 30px;">나의 활동 점수는? <br><span style="color:#1D2968; font-size:40px; margin-left: 50px; ">88점</span></h2>
+    </div>
+</div>
+    <h2 class="use_working_startday">구독 시작일: <span style="font-size: 15px;">{{ userWorking.startDay|date:"Y년 m월 d일" }}</span></h2>
+    <h2 class="use_working_likeday">지금까지 <span style="color: #1D2968; font-weight: 1000;">{{ userWorking.likeDays }}</span>일 동안 활동 중</h2>
 
-    <img src="{{ userWorking.artist.artistImage.url }}" width="150" height="100">
-    <div>구독 시작일: {{ userWorking.startDay }}</div>
-    <div>지금까지 {{ userWorking.likeDays }}일 동안 활동 중</div>
-    <div>게시글 작성 횟수: {{ userWorking.postRecord }}</div>
-    <div>댓글 작성 횟수: {{ userWorking.commentRecord }}</div>
-    <div>모임 주최 횟수: {{ userWorking.meetingHost }}</div>
-    <div>모임 참여 횟수: {{ userWorking.meetingGuest }}</div>
-    <div>서포트 주최 횟수: {{ userWorking.supportHost }}</div>
-    <div>서포트 참여 횟수: {{ userWorking.supportGuest }}</div>
+    <div class="user_working_line"></div>
+    <h2 class="user_h2">나의 활동</h2>
+    <div class="user_activity">
+        <div class="use_working_post">게시글 작성 횟수<span>{{ userWorking.postRecord }}회</span></div>
+        <div class="use_working_comment">댓글 작성 횟수&nbsp;&nbsp;&nbsp;<span>{{ userWorking.commentRecord }}회</span></div>
+        <div class="use_working_meeting">모임 주최 횟수&nbsp;&nbsp;&nbsp;<span>{{ userWorking.meetingHost }}회</span></div>
+        <div class="use_working_meetinguest">모임 참여 횟수&nbsp;&nbsp;&nbsp;<span>{{ userWorking.meetingGuest }}회</span></div>
+    </div>
+    <div class="user_working_line"></div>
+    <h2 class="user_h2">서포터즈</h2>
+    <div class="user_support">
+        <div class="use_working_supporthost">서포트 주최 횟수<span>{{ userWorking.supportHost }}회</span></div>
+        <div class="use_working_supportguest">서포트 참여 횟수<span>{{ userWorking.supportGuest }}회</span>
+        </div>
+    </div>
 
-    {% endblock %}
-    {% endwith %}
+{% endblock %}
+{% endwith %}

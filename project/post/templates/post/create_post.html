@@ -1,26 +1,27 @@
 {% extends 'base.html' %}
 {% with artist=artist alerts=alerts %}
+{%load static%}
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>게시글 작성 폼</title>
-</head>
-<body>
-    {% include 'header.html' with artist=artist alerts=alerts %}
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        <select name="category" value="{{ post.category }}">
-            <option value="가수">가수</option>
-            <option value="자유">자유</option>
-        </select>
-        <input type="text" name="title" value="{{ post.title }}">
-        <input type="textarea" name="contents" value="{{ post.contents }}">
-        <input type="file" name="image" value="{{ post.image }}">
-        <button type="submit">작성하기</button>
-    </form>
-</body>
-</html>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <img class="back" src="{% static 'images/back.png'%}" alt="이전" ></img>
+
+    <select class="post-crt-select" name="category" value="{{ post.category }}">
+        <option value="none" selected>게시판을 선택해 주세요</option>
+        <option value="가수">가수</option>
+        <option value="자유">자유</option>
+    </select>
+    <input class="post-crt-title" type="text" name="title" value="{{ post.title }}" placeholder="클릭하여 제목을 작성해 주세요">
+    <div style="position: relative; border:none;">
+        <input class="post-crt-detail" type="textarea" name="contents" value="{{ post.contents }}" style="padding-top: 15px;" placeholder="클릭하여 내용을 입력해 주세요">
+        <div class="select-wrapper" style="border:none; margin-top:-50px;">
+            <div class="addImg-Button">
+                <label for="custom-file" class="custom-addImg-Button">사진</label>
+                <input style="display:none" type="file" name="image" value="{{ post.image }}" id="custom-file">
+            </div>
+        </div>
+    </div>
+    <button type="submit"  class="write-Button">작성하기</button>
+</form>
 {% endblock %}
 {% endwith %}

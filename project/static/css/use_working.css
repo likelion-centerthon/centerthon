@@ -1,0 +1,71 @@
+.use_working_img {
+  box-sizing: border-box;
+  width: 127px;
+  height: 127px;
+  background: #ffffff;
+  border: none;
+  border-radius: 70px;
+
+}
+.use_working_startday {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: center;
+  color: #000000;
+  
+}
+
+.use_working_likeday {
+
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: center;
+
+  color: #000000;
+}
+.user_activity,
+.user_support {
+    display: flex;
+    flex-direction: column;
+  
+  }
+  
+  .user_activity div,
+  .user_support div {
+    width: 350px;
+    height: 24px;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    color: #000000;
+    margin:0px 0px 5px 15px;
+  }
+  
+  .user_activity span,
+  .user_support span{
+    display: inline-block;
+    width: 100px; 
+    text-align: right; 
+    margin-left:80px;
+  }
+  .user_working_line{
+ 
+width: 330px;
+height: 0px;
+
+
+border: 1px solid rgba(0, 0, 0, 0.5);
+margin: 10px 0px 0px 20px;
+  }
+
+  .user_h2{
+    margin-left:18px;
+  }

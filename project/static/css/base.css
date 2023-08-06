@@ -5,7 +5,7 @@ body {
 }
 .container {
   width: 375px;
-  height: 812px;
+  height: 100vh;
   margin: 0 auto;
   background-color: #ffffff;
   box-shadow: 2px 2px 9px rgba(0, 0, 0, 0.25);

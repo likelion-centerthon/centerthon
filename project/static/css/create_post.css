@@ -1,0 +1,102 @@
+        /*아티스트 게시판*/
+        .post-crt-select{
+            padding: 4px;
+            font-size: 14px;
+            box-sizing: border-box;
+          
+            width: 312px;
+            height: 50px;
+          
+            background: #ffffff;
+            border-radius: 16px;
+            margin: 3px 0px 3px 35px;
+          }
+          /*제목 작성*/
+          .post-crt-title {
+            box-sizing: border-box;
+          
+            width: 312px;
+            height: 50px;
+           
+            background: #ffffff;
+            border: 1px solid #545454;
+            border-radius: 16px;
+            margin: 3px 0px 3px 35px;       
+             }
+          input::placeholder,
+          textarea::placeholder,
+          .post-crt-select {
+            font-family: "Inter";
+            font-style: normal;
+            font-weight: 400;
+            font-size: 15px;
+            line-height: 18px;
+            text-align: center;
+            text-align: left;
+            color: #857c7c;
+          
+          }
+          textarea::placeholder {
+            padding-top: 1px;
+          }
+          input,
+          textarea,
+          select{
+            text-indent: 15px;
+          }
+          /*내용 입력*/
+          .post-crt-detail {
+            box-sizing: border-box;
+         
+            width: 312px;
+            height: 375px;
+           
+            background: #ffffff;
+            border: 1px solid #545454;
+            border-radius: 16px;
+            resize: none;
+            margin: 3px 0px 3px 35px;
+          }
+          /*사진 추가 버튼*/
+          .addImg-Button {
+            box-sizing: border-box;
+          
+            width: 68px;
+            height: 34px;
+          
+            background: #ffffff;
+            border: 1px solid #b3b1b0;
+            border-radius: 30px;
+            margin: 3px 0px 3px 25px;
+          }
+          /*사진 추가 버튼 마우스 효과*/
+          .addImg-Button:hover,
+          .addImg-Button:focus {
+            border: 1px solid #9b51e0;
+            outline: 3px solid #f8e4ff;
+          }
+          /*작성하기 버튼*/
+          .write-Button {
+           
+            width: 312px;
+            height: 60px;
+          
+            background: #bc67ff;
+            border-radius: 30.5px;
+            font-family: "Poppins";
+            font-style: normal;
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 180%;
+            text-align: center;
+            color: #ffffff;
+            border: none;
+            margin: 3px 0px 3px 35px;
+          }
+          /*input 마우스 효과*/
+          input:focus,
+          textarea:focus,
+          select:focus {
+            outline: 2px solid #bc67ff;
+          }
+     

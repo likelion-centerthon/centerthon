@@ -1,207 +1,163 @@
-          /*뒤로 가기 아이콘*/
-          .back {
-            
-            width: 80px;
-            height: 80px;
-           
-          }
-          /*서포트 시작하기*/
-          .spt_crt_h1{
-           
-            width: 300px;
-            height: 35px;
-           
-            font-family: "Poppins";
-            font-style: normal;
-            font-weight: 700;
-            font-size: 24px;
-            line-height: 147%;
-            text-align: center;
-            color: #000000;
-            margin-left:-30px;
-          }
-          .spt_crt_h2 {
-            width: 345px;
-            height: 44px;
-           
-            font-family: "Inter";
-            font-style: normal;
-            font-weight: 500;
-            font-size: 18px;
-            line-height: 22px;
-            display: flex;
-          
-            color: #221d1d; 
-            margin: -3px 0px 10px 25px;
+/*서포트 시작하기*/
+.spt_crt_h1 {
+  width: 300px;
 
-          }
-          /*서포트 등록 폼*/
-          .register input {
-            width: 327px;
-            height: 52px;
-            box-sizing: border-box;
-            
-            mix-blend-mode: normal;
-            border: 1px solid #b3b1b0;
-            border-radius: 16px;
-            margin:3px 0px 3px 20px;
-          }
-          
-        
-          /*내용*/
-          .detail {
-            width: 327px;
-            height: 150px;
-            box-sizing: border-box;
-        
-            resize: none;
-            mix-blend-mode: normal;
-            border: 1px solid #b3b1b0;
-            border-radius: 16px;
-            margin: 3px 0px 3px 20px;
+  height: 35px;
 
-          }
-          input::placeholder,
-          textarea::placeholder {
-            font-family: "Poppins";
-            font-style: normal;
-            font-weight: 500;
-            font-size: 18px;
-            line-height: 150%;
-            text-align: center;
-            text-align: left;
-            color: #b3b1b0;
-          }
-          textarea::placeholder {
-            padding-top: 2px;
-          }
-          input,
-          textarea {
-            text-indent: 15px;
-          }
-          .custom-addImg-Button {
-            width: 327px;
-            height: 60px;
-            background: #b3b1b0;
-            border-radius: 30.5px;
-            font-family: "Poppins";
-            font-style: normal;
-            font-weight: 700;
-            font-size: 20px;
-            line-height: 180%;
-            text-align: center;
-            color: #ffffff;
-            border: none;
-            margin: 3px 0px 3px 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-          }
-        
-          .register input,
-          .detail,
-          .custom-date {
-            mix-blend-mode: normal;
-          }
-          
-          .account {
-            width: 218px; 
-            height: 52px;
-            box-sizing: border-box;
-            mix-blend-mode: normal;
-            border: 1px solid #b3b1b0;
-            border-radius: 16px;
-            margin: 3px 0px 3px 20px;
-            float: left;
-          }
-          
-          .select-wrapper {
-            position: absolute;
-           margin:5px 0px 0px 250px;
-            z-index: 1;
-          }
-          
-          .account-Button, .addImg-Button {
-            box-sizing: border-box;
-            width: 68px;
-            height: 34px;
-            background: #ffffff;
-            border: 1px solid #b3b1b0;
-            border-radius: 30px;
-            cursor: pointer;
-          }
-          /*버튼 마우스 효과*/
-          .addImg-Button:hover,
-          .addImg-Button:focus,
-          .account-Button:hover,
-          .account-Button:focus {
-            border: 1px solid #BC67FF;;
-            outline: 3px solid #f8e4ff;
-          }
-          .account-Button, .addImg-Button {
-            top: 423px;
-          }
-          .account-Button::after {
-            content: "";
-           
-            width: 30;
-            height: 0;
-            border-left: 4px solid transparent;
-            border-right: 4px solid transparent;
-            border-top: 6px solid #d9d9d9;
-            transform: translateY(-50%);
-            pointer-events: none;
-          }
-          .account-Button.on::after {
-            transform: translateY(-50%) rotate(180deg);
-          }
-       
-       
-          /*서포트 마감일*/
-          .custom-date {
-          
-            box-sizing: border-box;
-            
-            mix-blend-mode: normal;
-            border: 1px solid #b3b1b0;
-            border-radius: 16px;
-            padding: 15px;
-            font-family: "Poppins";
-            font-style: normal;
-            font-weight: 500;
-            font-size: 18px;
-            line-height: 150%;
-            color: #b3b1b0;
-            text-indent: 0px;
-          }
-          /*시작하기 버튼*/
-          .start-Button {
-            width: 327px;
-            height: 60px;
-          
-            background: #b3b1b0;
-            border-radius: 30.5px;
-            font-family: "Poppins";
-            font-style: normal;
-            font-weight: 700;
-            font-size: 20px;
-            line-height: 180%;
-            text-align: center;
-            color: #ffffff;
-            border: none;
-            margin: 3px 0px 3px 20px;
-          }
-          /*input 마우스 효과*/
-          input:focus,
-          textarea:focus {
-            outline: 2px solid #BC67FF;;
-          }
-          input[type='datetime-local']::before {
-              content: attr(data-placeholder);
-              width: 100%;
-            }
-            input[type='datetime-local']:focus::before,
-          input[type='datetime-local']:valid::before {
-            display: none;
-          }
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 147%;
+  text-align: center;
+  color: #000000;
+
+  margin-left: -45px;
+}
+.spt_crt_h2 {
+  width: 345px;
+  height: 44px;
+
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  display: flex;
+
+  color: #221d1d;
+
+  margin: -3px 0px 10px 25px;
+}
+/*서포트 등록 폼*/
+.register input {
+  width: 327px;
+  height: 52px;
+  box-sizing: border-box;
+  mix-blend-mode: normal;
+  border: 1px solid #b3b1b0;
+  border-radius: 16px;
+  margin: 3px 0px 3px 20px;
+}
+
+/*내용*/
+.detail {
+  width: 327px;
+  height: 150px;
+  box-sizing: border-box;
+  resize: none;
+  mix-blend-mode: normal;
+  border: 1px solid #b3b1b0;
+  border-radius: 16px;
+  margin: 3px 0px 3px 20px;
+}
+input::placeholder,
+textarea::placeholder {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 150%;
+  text-align: center;
+  text-align: left;
+  color: #b3b1b0;
+}
+textarea::placeholder {
+  padding-top: 2px;
+}
+input,
+textarea {
+  text-indent: 15px;
+}
+.addImg-Butoon label {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 19px;
+  color: #333333;
+}
+
+.account {
+  width: 218px;
+
+  height: 52px;
+  box-sizing: border-box;
+  mix-blend-mode: normal;
+  border: 1px solid #b3b1b0;
+  border-radius: 16px;
+  margin: 3px 0px 3px 20px;
+  float: left;
+}
+
+.select-wrapper {
+  position: absolute;
+  margin: 5px 0px 0px 250px;
+  z-index: 1;
+}
+
+.account-Button,
+.addImg-Button {
+  box-sizing: border-box;
+  width: 80px;
+  height: 34px;
+  background: #ffffff;
+  border: 1px solid #b3b1b0;
+  border-radius: 30px;
+  cursor: pointer;
+}
+/*버튼 마우스 효과*/
+.addImg-Button:hover,
+.addImg-Button:focus,
+.account-Button:hover,
+.account-Button:focus {
+  border: 1px solid #bc67ff;
+  outline: 3px solid #f8e4ff;
+}
+
+/*서포트 마감일*/
+.custom-date {
+  box-sizing: border-box;
+
+  mix-blend-mode: normal;
+  border: 1px solid #b3b1b0;
+  border-radius: 16px;
+  padding: 15px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 150%;
+  color: #b3b1b0;
+  text-indent: 0px;
+}
+/*시작하기 버튼*/
+.start-Button {
+  width: 327px;
+  height: 60px;
+
+  background: #b3b1b0;
+  border-radius: 30.5px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 180%;
+  text-align: center;
+  color: #ffffff;
+  border: none;
+  margin: 3px 0px 3px 20px;
+}
+/*input 마우스 효과*/
+input:focus,
+textarea:focus {
+  outline: 2px solid #bc67ff;
+}
+input[type="datetime-local"]::before {
+  content: attr(data-placeholder);
+  width: 100%;
+}
+input[type="datetime-local"]:focus::before,
+input[type="datetime-local"]:valid::before {
+  display: none;
+}
