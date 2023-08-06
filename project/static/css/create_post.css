@@ -1,5 +1,5 @@
         /*아티스트 게시판*/
-        select {
+        .post-crt-select{
             padding: 4px;
             font-size: 14px;
             box-sizing: border-box;
@@ -9,17 +9,8 @@
           
             background: #ffffff;
             border-radius: 16px;
-          }
-          select option:hover {
-          background: #9b51e0;
-          color: #fff;
-          }
-          option {
-            background: #fff;
-          
-            width: 157px;
-            height: 19px;
-            
+            margin: 3px 0px 3px 20px;
+
           }
           /*제목 작성*/
           .post-crt-title {
@@ -31,6 +22,7 @@
             background: #ffffff;
             border: 1px solid #545454;
             border-radius: 16px;
+            margin: 3px 0px 3px 20px;
           }
           input::placeholder,
           textarea::placeholder,
@@ -64,6 +56,8 @@
             border: 1px solid #545454;
             border-radius: 16px;
             resize: none;
+            margin: 3px 0px 3px 20px;
+
           }
           /*사진 추가 버튼*/
           .addImg-Button {
@@ -75,6 +69,8 @@
             background: #ffffff;
             border: 1px solid #b3b1b0;
             border-radius: 30px;
+            margin: 3px 0px 3px 20px;
+
           }
           /*사진 추가 버튼 마우스 효과*/
           .addImg-Button:hover,
@@ -98,6 +94,8 @@
             text-align: center;
             color: #ffffff;
             border: none;
+            margin: 3px 0px 3px 20px;
+
           }
           /*input 마우스 효과*/
           input:focus,

@@ -22,13 +22,7 @@ overflow: hidden;
   font-weight: 400;
   font-size: 18px;
   line-height: 22px;
- 
-  
-          text-align: left;
-          word-wrap: break-word;
-          display: -webkit-box;
-          -webkit-line-clamp: 1 ;
-          -webkit-box-orient: vertical;
+
   color: #000000;
 }
 .post-img {
@@ -36,6 +30,7 @@ overflow: hidden;
   width: 55.76px;
   height: 55px;
   left:240px;
+  top:30px;
 }
 .post-modify,
 .post-delete {
@@ -77,7 +72,4 @@ margin-left:220px;
   margin-bottom: 16px;
   padding: 10px;
 }
-.post-list-container {
-  margin-left: 30px;
-  margin-top: 20px;
-}
+
