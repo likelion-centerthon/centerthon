@@ -3,17 +3,18 @@
 {% with artist=post.artist alerts=alerts %}
 {% block content %}
 
+
 <img class="back" src="{% static 'images/back.png'%}" alt="이전" ></img>
 <div class="post-dtl-container">
     <div class="post-dtl-title">{{ post.title }}</div>
     <div class="post-dtl-name">{{ post.author.userName }}</div>
-    <div  class="post-dtl-regTime">{{ post.regTime }}</div>
+    <div  class="post-dtl-regTime"> {{ post.regTime|date:"Y.m.d H:i" }}</div>
     <div class="post-dtl-line"></div>
+
     {% if post.image %}
     <img  class="post-dtl-img" src="{{ post.image.url }}" width="150" height="100">
 {% endif %}
-    <div  class="post-dtl-contents">{{ post.contents }}</div>
-   
+    <div  class="post-dtl-contents">{{ post.contents }}</div>   
 </div>
 <div class="post-dtl-comment">댓글</div>
 
@@ -36,8 +37,9 @@
 
         <div>{{ comment.contents }}</div>
         <div>{{ comment.author.userName }}</div>
-        <div>{{ comment.regTime }}</div>
-    </div>
+
+        <div>{{ comment.regTime|date:"Y.m.d H:i" }}</div>
+        </div>
     {% endfor %}
 </div>
 

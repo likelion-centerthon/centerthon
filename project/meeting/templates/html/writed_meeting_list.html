@@ -1,7 +1,10 @@
+{% extends 'base.html' %}
+{% load static %}
+{% with artist=artist alerts=alerts %}
+{% block content %}
 <!DOCTYPE html>
 <html>
 <head>
-        {% include 'header.html' with artist=artist alerts=alerts%}
     <title>작성한 미팅 목록</title>
 </head>
 <body>
@@ -62,9 +65,7 @@
         <p>작성한 미팅이 없습니다.</p>
     {% endfor %}
 </ul>
-
-<!-- ... (이후 템플릿 코드 유지) ... -->
-
-    {% include 'footer.html' with artist=artist %}
 </body>
 </html>
+{% endblock %}
+{% endwith %}
