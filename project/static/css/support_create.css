@@ -7,13 +7,10 @@
           }
           /*서포트 시작하기*/
           .spt_crt_h1{
-<<<<<<< HEAD
 
-            width: 180px;
-=======
            
             width: 300px;
->>>>>>> 65842d66298f9b9ff996e6464f2e8d618fc3aeaf
+
             height: 35px;
            
             font-family: "Poppins";
@@ -23,12 +20,9 @@
             line-height: 147%;
             text-align: center;
             color: #000000;
-<<<<<<< HEAD
 
             margin-left:80px;
-=======
-            margin-left:-30px;
->>>>>>> 65842d66298f9b9ff996e6464f2e8d618fc3aeaf
+
           }
           .spt_crt_h2 {
             width: 345px;
@@ -40,13 +34,10 @@
             font-size: 18px;
             line-height: 22px;
             display: flex;
-<<<<<<< HEAD
+
 
             color: #221d1d;
-=======
-          
-            color: #221d1d; 
->>>>>>> 65842d66298f9b9ff996e6464f2e8d618fc3aeaf
+
             margin: -3px 0px 10px 25px;
 
           }
@@ -113,25 +104,16 @@
             align-items: center;
             cursor: pointer;
           }
-<<<<<<< HEAD
-
-=======
-        
->>>>>>> 65842d66298f9b9ff996e6464f2e8d618fc3aeaf
           .register input,
           .detail,
           .custom-date {
             mix-blend-mode: normal;
           }
-<<<<<<< HEAD
 
-          .account {
-            width: 218px;
-=======
           
           .account {
             width: 218px; 
->>>>>>> 65842d66298f9b9ff996e6464f2e8d618fc3aeaf
+
             height: 52px;
             box-sizing: border-box;
             mix-blend-mode: normal;
@@ -140,21 +122,13 @@
             margin: 3px 0px 3px 20px;
             float: left;
           }
-<<<<<<< HEAD
 
-=======
-          
->>>>>>> 65842d66298f9b9ff996e6464f2e8d618fc3aeaf
           .select-wrapper {
             position: absolute;
            margin:5px 0px 0px 250px;
             z-index: 1;
           }
-<<<<<<< HEAD
 
-=======
-          
->>>>>>> 65842d66298f9b9ff996e6464f2e8d618fc3aeaf
           .account-Button, .addImg-Button {
             box-sizing: border-box;
             width: 68px;
@@ -189,13 +163,7 @@
           .account-Button.on::after {
             transform: translateY(-50%) rotate(180deg);
           }
-<<<<<<< HEAD
 
-
-=======
-       
-       
->>>>>>> 65842d66298f9b9ff996e6464f2e8d618fc3aeaf
           /*서포트 마감일*/
           .custom-date {
           
@@ -243,3 +211,25 @@
           input[type='datetime-local']:valid::before {
             display: none;
           }
+          .filebox input[type="file"] {  /* 파일 필드 숨기기 */
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip:rect(0,0,0,0);
+            border: 0;
+          }
+          .filebox label {
+            box-sizing: border-box;
+            position: absolute;
+            width: 68px;
+            height: 34px;
+            left: 257px;
+            top: 576px;
+            background: #ffffff;
+            border: 1px solid #b3b1b0;
+            border-radius: 30px;
+          }
+          

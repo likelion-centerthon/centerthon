@@ -1,0 +1,83 @@
+.post-button {
+  width: 312px;
+  height: 60px;
+  background: #bc67ff;
+  border-radius: 30.5px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 180%;
+  text-align: center;
+  color: #ffffff;
+  border: none;
+  margin-left:30px;
+}
+.post-title {
+  width: 40px;
+  height: 22px;
+overflow: hidden;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+ 
+  
+          text-align: left;
+          word-wrap: break-word;
+          display: -webkit-box;
+          -webkit-line-clamp: 1 ;
+          -webkit-box-orient: vertical;
+  color: #000000;
+}
+.post-img {
+  position: absolute;
+  width: 55.76px;
+  height: 55px;
+  left:240px;
+}
+.post-modify,
+.post-delete {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  margin-top:-100px;
+margin-left:220px;
+  color: #858585;
+
+  border-radius: 10px;
+}
+
+.post-delete {
+  margin-left: 20px; 
+}
+
+.post-name,
+.post-time {
+  width: 200px;
+  width: 62px;
+  height: 17px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #858585;
+}
+.post-list {
+  width: 310px;
+  height: 110px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  box-sizing: border-box;
+  background: #ffffff;
+  border-radius: 16px;
+  margin-bottom: 16px;
+  padding: 10px;
+}
+.post-list-container {
+  margin-left: 30px;
+  margin-top: 20px;
+}

@@ -1,0 +1,133 @@
+.post-dtl-title{
+
+width: 272px;
+height: 24px;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 24px;
+
+color: #000000;
+
+
+}
+.post-dtl-name{
+
+width: 78px;
+height: 17px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 17px;
+
+
+color: #858585;
+
+
+}
+.post-dtl-regTime{
+
+width: 100px;
+height: 17px;
+
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 17px;
+
+
+color: #858585;
+
+
+}
+
+.post-dtl-contents{
+
+width: 204px;
+height: 19px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 19px;
+
+color: #000000;
+
+
+}
+.post-dtl-img{
+
+width: 251px;
+height: 218px;
+
+
+}
+.post-dtl-line{
+
+width: 350px;
+height: 0px;
+
+border: 5px solid #E6E6E6;
+
+}
+.post-dtl-container{
+
+box-sizing: border-box;
+
+width: 347px;
+height: 411px;
+
+
+background: #FFFFFF;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 16px;
+
+
+
+}
+.post-dtl-comment{
+
+width: 60px;
+height: 19px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 19px;
+
+color: #000000;
+
+
+}
+.post-dtl-input{
+
+
+    position: absolute;
+    width:190px;
+    height: 40px;
+    
+    
+    background: #FFFFFF;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    
+    }
+.post-dtl-button{
+  
+width: 50px;
+height: 40px;
+
+
+background: #BC67FF;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 20px;
+margin-left:240px;
+color:#fff;
+}

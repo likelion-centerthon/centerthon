@@ -10,16 +10,10 @@
   }
   .icon{
     display: flex;
-<<<<<<< HEAD
+
     background-color:transparent;  }
   /*상단바 아티스트 선택 박스*/
 
-=======
-    background-color:transparent;
-   }
-  /*상단바 아티스트 선택 박스*/
- 
->>>>>>> 65842d66298f9b9ff996e6464f2e8d618fc3aeaf
   .btn-select {
     width: 168px;
     padding: 13px 30px 13px 14px;
@@ -97,10 +91,6 @@ button{
   .user {
     width: 29px;
     height: 29px;
-<<<<<<< HEAD
-
-=======
->>>>>>> 65842d66298f9b9ff996e6464f2e8d618fc3aeaf
     background-color: #fff;
 
   }

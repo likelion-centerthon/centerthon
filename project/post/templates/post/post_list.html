@@ -6,43 +6,38 @@
         <button class="all" type="submit" onclick="location.href='{% url 'post:post_list' artist_pk=artist.pk category='가수' %}'">아티스트 이야기</button>
     <button class="mysupport" type="submit"onclick="location.href='{% url 'post:post_list' artist_pk=artist.pk category='자유' %}'">일상 이야기</button>
 </div>
-    <form method="get" action="{% url 'post:create_post' artist_pk=artist.pk %}">
-        {% csrf_token %}
-        <button class="post-button" type="submit">게시글 작성</button>
-    </form>
-    <div class="list-container">
+  
+    <div class="post-list-container">
 
     {% for post in posts %}
-    <div style="width: 310px;
-    height: 110px;
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-    box-sizing: border-box;
-    background: #FFFFFF;
-    border-radius: 16px; margin-bottom:16px;
-    padding: 10px;">
+    <div class="post-list">
 
         {% if request.user == post.author %}
             <form method="get" action="{% url 'post:edit_post' pk=post.pk %}">
                 {% csrf_token %}
-                <button  class="modify"  type="submit">수정</button>
+                <button  class="post-modify"  type="submit">수정</button>
             </form>
 
             <form method="get" action="{% url 'post:delete_post' pk=post.pk %}">
                 {% csrf_token %}
-                <button class="delete"  type="submit">삭제</button>
+                <button class="post-delete"  type="submit">삭제</button>
             </form>
         {% endif %}
 
-        <a href="{% url 'post:post_detail' pk=post.pk%}">{{ post.title }}</a>
+        <a class="post-title"href="{% url 'post:post_detail' pk=post.pk%}">{{ post.title }}</a>
         {% if post.image %}
             <img class="post-img" src="{{ post.image.url }}" >
         {% endif %}
-        <h2 class="name">{{ post.author.userName }}</h2>
-        <h2 class="time">{{ post.regTime }}</h2>
+        <h2 class="post-name">{{ post.author.userName }}</h2>
+        <h2 class="post-time">{{ post.regTime }}</h2>
      
-    </form>
+    
 </div>
     {% endfor %}
 </div>
+<form method="get" action="{% url 'post:create_post' artist_pk=artist.pk %}">
+    {% csrf_token %}
+    <button class="post-button" type="submit">게시글 작성하기</button>
+</form>
 {% endblock %}
 {% endwith %}
