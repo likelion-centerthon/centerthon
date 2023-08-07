@@ -1,78 +1,41 @@
-/*시작하기 버튼*/
-.start-Button {
-    width: 327px;
-    height: 60px;
-
-    background: #b3b1b0;
-    border-radius: 30.5px;
-    font-family: "Poppins";
-    font-style: normal;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 180%;
-    text-align: center;
-    color: #ffffff;
-    border: none;
-    margin-top:200px;
+.support_dtl_h1 {
+  width: 260px;
+  height: 35px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 147%;
+  text-align: center;
+  color: #000000;
+ 
 }
-/*뒤로 가기 아이콘*/
-.back {
-    width: 80px;
-    height: 80px;
-
+.percent {
+  box-sizing: border-box;
+  background: #bc67ff;
+  mix-blend-mode: normal;
+  border: 1px dashed #bc67ff;
+  border-radius: 16px;
+  height: 10px;
+  width: 320px;
+  margin: 2px 10px 20px 25px;
 }
-/*서포트 시작하기*/
-h1 {
-
-    width: 180px;
-    height: 35px;
-
-    font-family: "Poppins";
-    font-style: normal;
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 147%;
-    text-align: center;
-    color: #000000;
-    margin-left:-40px;
-}
-.percent{
-/* Rectangle 22 */
-
-box-sizing: border-box;
-
-
-
-background: #BC67FF;
-mix-blend-mode: normal;
-border: 1px dashed #BC67FF;
-border-radius: 16px;
-height: 10px;
-width: 320px;
-margin:2px 10px 20px 25px;
-}
-
-/*서포트 등록 폼*/
 
 .detail-container div {
-    width: 327px;
-    height: 50px;
-    box-sizing: border-box;
-    mix-blend-mode: normal;
-    border: 1px solid #b3b1b0;
-    border-radius: 16px;
-/* New Password */
-    text-indent: 10px;
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 200%;
-    color: #333333;
-    margin: 3px 0px 3px 20px;
-
-    mix-blend-mode: normal;
-
+  width: 327px;
+  height: 50px;
+  box-sizing: border-box;
+  mix-blend-mode: normal;
+  border: 1px solid #b3b1b0;
+  border-radius: 16px;
+  text-indent: 10px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 200%;
+  color: #333333;
+  margin: 3px 0px 3px 20px;
 }
 /*제목*/
 .detail-container .title {
@@ -83,8 +46,12 @@ margin:2px 10px 20px 25px;
 .detail-container .goal {
   height: 52px;
 }
+/*목표 모금액*/
+.detail-container .goal {
+  height: 52px;
+}
 /*마감 날짜*/
-.detail-container .enddate{
+.detail-container .enddate {
   height: 52px;
   margin-top: 65px;
 }
@@ -95,87 +62,105 @@ margin:2px 10px 20px 25px;
 /*내용*/
 .detail-container .detail {
   height: 230px;
-
 }
-.detail-container .support-img{
-width: 279px;
-height: 251px;
-
+.detail-container .support-img {
+  width: 279px;
+  height: 251px;
 }
-.line{
-
-width: 250px;
-height: 0px;
-
-border: 3px solid rgba(51, 51, 51, 0.7);
-margin-left:70px;
+.line {
+  width: 250px;
+  height: 0px;
+  border: 2px solid rgba(51, 51, 51, 0.7);
+  margin: 10px 0px 0px 55px;
 }
-.text{
-  /* New Password */
-
-
-width: 200px;
-font-family: 'Poppins';
-font-style: normal;
-font-weight: 500;
-font-size: 20px;
-line-height: 150%;
-/* identical to box height, or 30px */
-
-color: #333333;
-
-mix-blend-mode: normal;
-
+.text {
+  width: 200px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 150%;
+  color: #333333;
+  mix-blend-mode: normal;
 }
 /*모금자 정보 목록*/
-.supportinfo-container{
-  overflow-y:scroll; overflow-x:hidden; height:160px;
-mix-blend-mode: normal;
-width: 350px;
-margin-left:10px;
+.supportinfo-container {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 160px;
+  mix-blend-mode: normal;
+  width: 350px;
+  margin-left: 10px;
 }
 .info-text p {
-  /* Add styles for the text inside the support information div */
-  font-family: 'Poppins';
+  font-family: "Poppins";
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
   line-height: 150%;
-  /* identical to box height, or 24px */
   color: #333333;
   margin-bottom: 2px;
   margin-top: 2px;
   margin-left: 10px;
 }
 
-
-
 /*팝업창*/
-.wrap{padding:10px;}
-
-.pop_wrap{ z-index:2; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,.5); font-size:0; text-align:center;}
-.pop_wrap:after{display:inline-block; height:100%; vertical-align:middle; content:'';}
-.pop_wrap .pop_inner{border-radius:10px;display:inline-block; padding:20px 30px; background:#fff; width:200px; vertical-align:middle; font-size:14px;}
-.btn_yes, .btn_no{
-font-size: 12px; height: 20px; border: none; background-color: #fff;
-}
-.btn_no{
-  color:red;
-
-}
-::-webkit-scrollbar {
-  width: 2px; /* Set the width of the vertical scrollbar */
+.wrap {
+  padding: 10px;
 }
 
-::-webkit-scrollbar-track {
-  background: #f1f1f1; /* Set the background color of the scrollbar track */
+.pop_wrap {
+  z-index: 2;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  font-size: 0;
+  text-align: center;
+}
+.pop_wrap:after {
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  content: "";
+}
+.pop_wrap .pop_inner {
+  border-radius: 10px;
+  display: inline-block;
+  padding: 20px 30px;
+  background: #fff;
+  width: 200px;
+  vertical-align: middle;
+  font-size: 14px;
+}
+.btn_yes,
+.btn_no {
+  font-size: 12px;
+  height: 20px;
+  border: none;
+  background-color: #fff;
+}
+.btn_no {
+  color: red;
+}
+/*수정 버튼*/
+.modify_button{
+  box-sizing: border-box;
+  width: 58px;
+  height: 26px;
+  background: #ffffff;
+  border: 1px solid #b3b1b0;
+  border-radius: 30px;
 }
 
-::-webkit-scrollbar-thumb {
-  background: #888; /* Set the color of the scrollbar thumb */
-  border-radius: 6px; /* Set the border radius of the scrollbar thumb */
+.modify_button:hover{
+  border: 1px solid #bc67ff;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #555; /* Set the color of the scrollbar thumb when hovering */
+.form-input {
+  border: none;
+  outline: none;
+  background-color: transparent; 
 }

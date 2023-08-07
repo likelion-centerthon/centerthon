@@ -1,52 +1,60 @@
-{% extends 'base.html' %}
-{% with artist=artist alerts=alerts %}
+{% extends 'base.html' %} 
+{% with artist=artist alerts=alerts %} 
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>게시글 전체 조회</title>
-</head>
-<body>
-    <form method="post" action="{% url 'post:post_list' artist_pk=artist.pk category='가수' %}">
+
+<div class="support_list_category">
+  <button
+    class="allsupport"
+    type="submit"
+    onclick="location.href='{% url 'post:post_list' artist_pk=artist.pk category='가수' %}'"
+  >
+    아티스트 이야기
+  </button>
+  <button
+    class="mysupport"
+    type="submit"
+    onclick="location.href='{% url 'post:post_list' artist_pk=artist.pk category='자유' %}'"
+  >
+    일상 이야기
+  </button>
+</div>
+
+<div class="post-list-container">
+  {% for post in posts %}
+  <div class="post-list">
+    <a class="post-title" href="{% url 'post:post_detail' pk=post.pk%}"
+      >{{ post.title }}</a
+    >
+    {% if post.image %}
+    <img class="post-img" src="{{ post.image.url }}" />
+    {% endif %}
+    <div style="display: flex; position: row">
+      <h2 class="post-name">{{ post.author.userName }}</h2>
+      <h2 class="post-time">{{ post.regTime|date:"Y.m.d H:i" }}</h2>
+    </div>
+    <div style="display: flex; position: row; margin-left: 140px">
+      {% if request.user == post.author %}
+      <form method="get" action="{% url 'post:edit_post' pk=post.pk %}">
         {% csrf_token %}
-        <button type="submit">아티스트 게시판</button>
-    </form>
+        <button class="post-modify" ]type="submit">수정</button>
+      </form>
 
-    <form method="post" action="{% url 'post:post_list' artist_pk=artist.pk category='자유' %}">
+      <form method="get" action="{% url 'post:delete_post' pk=post.pk %}">
         {% csrf_token %}
-        <button type="submit">일상 게시판</button>
-    </form>
-
-
-    <form method="get" action="{% url 'post:create_post' artist_pk=artist.pk %}">
-        {% csrf_token %}
-        <button type="submit">게시글 작성</button>
-    </form>
-    <hr>
-    {% for post in posts %}
-        {% if request.user == post.author %}
-            <form method="get" action="{% url 'post:edit_post' pk=post.pk %}">
-                {% csrf_token %}
-                <button type="submit">수정</button>
-            </form>
-
-            <form method="get" action="{% url 'post:delete_post' pk=post.pk %}">
-                {% csrf_token %}
-                <button type="submit">삭제</button>
-            </form>
-        {% endif %}
-
-        <a href="{% url 'post:post_detail' pk=post.pk%}">{{ post.title }}</a>
-        {% if post.image %}
-            <img src="{{ post.image.url }}" width="150" height="100">
-        {% endif %}
-        {{ post.author.userName }}
-        {{ post.regTime }}
-        <hr>
-    </form>
-    {% endfor %}
-</body>
-</html>
+        <button class="post-delete" type="submit" style="margin-left: 3px">
+          삭제
+        </button>
+      </form>
+      {% endif %}
+    </div>
+  </div>
+  {% endfor %}
+</div>
+<form method="get" action="{% url 'post:create_post' artist_pk=artist.pk %}">
+  {% csrf_token %}
+  <button class="post-button" type="submit" >
+    게시글 작성하기
+  </button>
+</form>
 {% endblock %}
-{% endwith %}
+ {% endwith %}

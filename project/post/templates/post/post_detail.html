@@ -1,43 +1,52 @@
 {% extends 'base.html' %}
+{% load static %}
 {% with artist=post.artist alerts=alerts %}
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>게시글 상세</title>
-</head>
-<body>
-    <div>{{ post.category }}</div>
-    <div>{{ post.title }}</div>
-    <div>{{ post.contents }}</div>
-    <div>{{ post.author.userName }}</div>
-    <div>{{ post.regTime }}</div>
+
+<img class="back" src="{% static 'images/back.png'%}" alt="이전">
+<div class="post-dtl-container">
+    <div class="post-dtl-title" style="margin-left: 30px;">{{ post.title }}</div>
+
+    <div style="display: flex; position: row; margin: 5px 0px 0px 30px">
+        <div class="post-dtl-name">{{ post.author.userName }}</div>
+        <div class="post-dtl-regTime" style="margin-left: 120px;">{{ post.regTime|date:"Y.m.d H:i" }}</div>
+    </div>
+    <div class="post-dtl-line"></div>
+
     {% if post.image %}
-        <img src="{{ post.image.url }}" width="150" height="100">
+    <img class="post-dtl-img" src="{{ post.image.url }}" width="150" height="100">
     {% endif %}
-    <hr>
+    <div class="post-dtl-contents">{{ post.contents }}</div>
+</div>
+<div class="post-dtl-comment">댓글</div>
+
+<div class="post-comment-container">
     {% for comment in comments %}
-        {% if request.user == comment.author %}
+    <div class="post-comment-box">
+        <div style="display: flex; position: row; margin: 10px 0px 0px 20px;">
+            <div>{{ comment.author.userName }}</div>
+            <div style="color: #858585; margin-left: 5px;">{{ comment.regTime|date:"Y.m.d H:i" }}</div>
+            {% if request.user == comment.author %}
             <form method="get" action="{% url 'post:delete_comment' pk=comment.pk %}">
                 {% csrf_token %}
-                <button type="submit">삭제</button>
+                <button type="submit" style="color: red; margin-left: 30px;">삭제하기</button>
             </form>
-        {% endif %}
-
-        <div>{{ comment.contents }}</div>
-        <div>{{ comment.author.userName }}</div>
-        <div>{{ comment.regTime }}</div>
-        <hr>
+            {% endif %}
+        </div>
+        <div style="font-size: 18px; margin: -2px 0px 0px 20px;">{{ comment.contents }}</div>
+    </div>
     {% endfor %}
+</div>
 
-    <div>댓글 작성하기</div>
-    <form method="post" action="{% url 'post:create_comment' pk=post.pk %}">
-        {% csrf_token %}
-        <input type="text" name="contents" value="{{ comment.contents }}">
-        <button type="submit">댓글달기</button>
-    </form>
-</body>
-</html>
+<form method="post" action="{% url 'post:create_comment' pk=post.pk %}">
+    {% csrf_token %}
+   
+    <div style="display: flex; margin-left:20px;">
+        <input class="post-dtl-input" type="text" name="contents" value="{{ comment.contents }}" placeholder="클릭하여 댓글 작성하기">
+        <button class="post-dtl-button" type="submit">작성</button>
+    </div>
+    
+</form>
+
 {% endblock %}
 {% endwith %}
