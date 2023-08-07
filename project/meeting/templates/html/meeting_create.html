@@ -1,89 +1,47 @@
-{% extends 'base.html' %}
+{% extends 'base_meeting.html' %}
 {% load static %}
 {% with artist=artist alerts=alerts %}
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>모임 작성하기</title>
-    <style>
-        .error-message {
-            color: red;
-        }
-    </style>
-</head>
-<body>
+
     <div class="container">
         <h1>모임 작성하기</h1>
         <form id="meetingForm" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <label for="id_title">모임명:</label>
-            <input type="text" name="title" id="id_title"><br>
-            <p id="titleError" class="error-message"></p>
+            <input type="text" name="title" id="id_title" required><br>
 
             <label for="id_body">내용:</label>
-            <textarea name="body" id="id_body"></textarea><br>
-            <p id="bodyError" class="error-message"></p>
+            <textarea name="body" id="id_body" required></textarea><br>
 
             <label for="id_meetDate">일시:</label>
-            <input type="date" name="meetDate" id="id_meetDate"><br>
-            <p id="meetDateError" class="error-message"></p>
+            <input type="date" name="meetDate" id="id_meetDate" required><br>
+
 
             <label for="id_location">장소:</label>
-            <input type="text" name="location" id="id_location"><br>
-            <p id="locationError" class="error-message"></p>
+            <input type="text" name="location" id="id_location" required><br>
+
 
             <label for="id_age">나이제한:</label>
-            <input type="text" name="age" id="id_age"><br>
-            <p id="ageError" class="error-message"></p>
+            <input type="text" name="age" id="id_age" required><br>
+
 
             <label for="id_peopleNm">인원:</label>
-            <input type="number" name="peopleNm" id="id_peopleNm"><br>
-            <p id="peopleNmError" class="error-message"></p>
+            <input type="number" name="peopleNm" id="id_peopleNm" required><br>
+
 
             <label for="id_kakaoLink">오픈 채팅방 링크:</label>
-            <input type="text" name="kakaoLink" id="id_kakaoLink"><br>
-            <p id="kakaoLinkError" class="error-message"></p>
+            <input type="text" name="kakaoLink" id="id_kakaoLink" required><br>
 
             <label for="id_image">사진 첨부:</label>
-            <input type="file" name="image" id="id_image"><br>
-            <p id="imageError" class="error-message"></p>
+            <input type="file" name="image" id="id_image" required><br>
+
 
             <input type="submit" value="Submit">
         </form>
     </div>
-
-    <script>
-        document.getElementById('meetingForm').addEventListener('submit', function (event) {
-            // 필수 필드를 가져옵니다.
-            const title = document.getElementById('id_title');
-            const body = document.getElementById('id_body');
-            const meetDate = document.getElementById('id_meetDate');
-            const location = document.getElementById('id_location');
-            const age = document.getElementById('id_age');
-            const peopleNm = document.getElementById('id_peopleNm');
-            const kakaoLink = document.getElementById('id_kakaoLink');
-            const image = document.getElementById('id_image');
-
-            // 필수 필드 중 하나라도 비어있는 경우 폼 제출을 막고 오류 메시지를 표시합니다.
-            if (!title.value || !body.value || !meetDate.value || !location.value || !age.value || !peopleNm.value || !kakaoLink.value || !image.value) {
-                event.preventDefault(); // 폼 제출 막기
-
-                // 오류 메시지를 표시합니다.
-                document.getElementById('titleError').textContent = title.value ? '' : '모임명을 입력하세요.';
-                document.getElementById('bodyError').textContent = body.value ? '' : '내용을 입력하세요.';
-                document.getElementById('meetDateError').textContent = meetDate.value ? '' : '일시를 입력하세요.';
-                document.getElementById('locationError').textContent = location.value ? '' : '장소를 입력하세요.';
-                document.getElementById('ageError').textContent = age.value ? '' : '나이제한을 입력하세요.';
-                document.getElementById('peopleNmError').textContent = peopleNm.value ? '' : '인원을 입력하세요.';
-                document.getElementById('kakaoLinkError').textContent = kakaoLink.value ? '' : '오픈 채팅방 링크를 입력하세요.';
-                document.getElementById('imageError').textContent = image.value ? '' : '사진을 첨부하세요.';
-            }
-        });
-    </script>
-</body>
-</html>
 {% endblock %}
 {% endwith %}

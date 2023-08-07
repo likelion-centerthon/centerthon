@@ -1,0 +1,271 @@
+/*화면 크기 맞추기*/
+body {
+  background-color: rgb(215, 208, 184);
+  height: 100%;
+  margin: 0;
+}
+.container {
+  align-items: center;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 375px;
+  height: 1002px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  box-shadow: 2px 2px 9px rgba(0, 0, 0, 0.25);
+}
+/*상단바*/
+.header {
+  position: absolute;
+  width: 375px;
+  height: 60px;
+  top: -10px;
+  box-sizing: border-box;
+  background: #ffffff;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+/*상단바 아티스트 선택 박스*/
+.btn-select::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 14px;
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid #d9d9d9;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.btn-select {
+  width: 168px;
+  padding: 13px 30px 13px 14px;
+  background-color: #fff;
+  box-sizing: border-box;
+  cursor: pointer;
+  text-align: center;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  position: absolute;
+  height: 34px;
+  left: 18px;
+  top: 17px;
+  border: 1px solid #545454;
+  border-radius: 30px;
+  /* 아티스트 선택 */
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 22px;
+  text-align: center;
+  color: #545454;
+  line-height: 10px;
+}
+/*select박스 마우스 효과*/
+.btn-select:hover,
+.btn-select:focus {
+  border: 1px solid #9b51e0;
+  outline: 3px solid #f8e4ff;
+}
+.btn-select.on::after {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+ /*알람 아이콘*/
+ .alram, .user{
+  position: absolute;
+  width: 29px;
+  height: 29px;
+  left: 324px;
+  top: 20px;
+}
+.user{
+  left: 290px;
+}
+/*뒤로 가기 아이콘*/
+.back {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  left: 3px;
+  top: 50px;
+}
+/*모임 등록하기*/
+h1 {
+  position: absolute;
+  width: 170px;
+  height: 35px;
+  left: calc(50% - 150px / 2);
+  top: 50px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 147%;
+  text-align: center;
+  color: #000000;
+}
+h2 {
+  /* 등록하고 싶은 모임 세부 사항을 작성해요! */
+  position: absolute;
+  width: 345px;
+  height: 44px;
+  left: 30px;
+  top: 125px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 22px;
+  display: flex;
+  align-items: center;
+  color: #221d1d;
+}
+
+h3 {
+  /* 모임을 통해 다양한 사람들과 소통해요 */
+  position: absolute;
+  width: 321px;
+  height: 24px;
+  left: 32px;
+  top: 161px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 17px;
+  display: flex;
+  align-items: center;
+  color: #545454;
+}
+/*모임 등로 폼*/
+.register input {
+  width: 327px;
+  height: 52px;
+  box-sizing: border-box;
+  position: absolute;
+  left: 5.87%;
+  right: 6.93%;
+  mix-blend-mode: normal;
+  border: 1px solid #b3b1b0;
+  border-radius: 16px;
+}
+.name {
+  top: 205px;
+}
+.place {
+  top: 275px;
+}
+.custom-date {
+  top: 345px;
+  box-sizing: border-box;
+  position: absolute;
+  mix-blend-mode: normal;
+  border: 1px solid #b3b1b0;
+  border-radius: 16px;
+  padding: 15px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 150%;
+  color: #b3b1b0;
+  text-indent: 0px;
+}
+.age {
+  top: 415px;
+}
+.people {
+  top: 485px;
+}
+.openkakao {
+  top: 555px;
+}
+.detail {
+  width: 327px;
+  height: 150px;
+  box-sizing: border-box;
+  position: absolute;
+  left: 6.13%;
+  right: 6.67%;
+  top: 625px;
+  resize: none;
+  mix-blend-mode: normal;
+  border: 1px solid #b3b1b0;
+  border-radius: 16px;
+}
+input::placeholder,
+textarea::placeholder {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 150%;
+  text-align: center;
+  text-align: left;
+  color: #b3b1b0;
+}
+textarea::placeholder {
+  padding-top: 2px;
+}
+input,
+textarea {
+  text-indent: 15px;
+}
+/*사진 추가 버튼*/
+.addImg-Button {
+  box-sizing: border-box;
+  position: absolute;
+  width: 68px;
+  height: 34px;
+  left: 267px;
+  top: 725px;
+  background: #ffffff;
+  border: 1px solid #b3b1b0;
+  border-radius: 30px;
+}
+/*사진 추가 버튼 마우스 효과*/
+.addImg-Button:hover,
+.addImg-Button:focus {
+  border: 1px solid #9b51e0;
+  outline: 3px solid #f8e4ff;
+}
+/*모임 등록하기 버튼*/
+.register-Button {
+  position: absolute;
+  width: 334px;
+  height: 51px;
+  left: 16px;
+  top: 785px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  background: #BC67FF;
+  border-radius: 15px;
+  /* 모임 등록하기 */
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  color: #ffffff;
+  text-align: center;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+input[type='datetime-local']::before {
+  content: attr(data-placeholder);
+  width: 100%;
+}
+input[type='datetime-local']:focus::before,
+input[type='datetime-local']:valid::before {
+display: none;
+}

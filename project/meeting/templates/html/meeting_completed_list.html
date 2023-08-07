@@ -1,10 +1,8 @@
-{% extends 'base.html' %}
+{% extends 'base_meeting.html' %}
 {% load static %}
 {% with artist=artist alerts=alerts %}
 {% block content %}
-<!DOCTYPE html>
-<html>
-<head>
+
     <h1>모임 목록</h1>
     <p>{{ artist.artistName }} 페이지 - 모집 완료 </p>
     <div>
@@ -15,8 +13,8 @@
         <button onclick="location.href='{%url 'meeting:writedMeetingList' artist_id=artist_id  %}'">진행중</button>
     <button onclick="location.href='{%url 'meeting:MeetingCloseList' artist_id=artist_id  %}'">종료</button>
     </div>
-</head>
-<body>
+
+
     <h1>{{ meeting.artist.artistName }}</h1>
 
     {% for meeting in meetings_completed %}
@@ -29,10 +27,10 @@
             {% endif %}
             <p>{{ meeting.peopleNm }}명</p>
         </div>
-        <hr>
+      
     {% endfor %}
     <a href="{% url 'meeting:createMeeting' artist_id=artist_id %}"><p><strong>모임 작성하기</strong></p></a>
-</body>
-</html>
+
+    
 {% endblock %}
 {% endwith %}

@@ -25,7 +25,7 @@ def artist_list(request, category):
 
     return redirect('user:login')
 
-# 구독한 아티스트 조회
+# 구독한 아티스트 조회0
 def subscribe_list(request, category):
     user = request.user
 

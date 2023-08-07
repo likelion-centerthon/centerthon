@@ -1,19 +1,15 @@
-{% extends 'base.html' %}
+{% extends 'base_meeting.html' %}
 {% load static %}
 {% with artist=artist alerts=alerts %}
 {% block content %}
-<!DOCTYPE html>
-<html>
-<head>
-    <title>작성한 미팅 목록</title>
-</head>
-<body>
-    <h1>작성한 미팅 목록</h1>
-    <p>{{ artist.artistName }} 페이지 - 내가 작성한 모임</p>
-    <div>
-    <button onclick="location.href='{% url 'meeting:MeetingList' artist_id=artist.id %}'">모임 전체</button>
-        <button onclick="location.href='{%url 'meeting:writedMeetingList' artist_id=artist_id  %}'">나의 모임</button>
-    </div>
+
+    <div class="category">
+        <button onclick="location.href='{% url 'meeting:MeetingList' artist_id=artist.id %}'">모임 전체</button>
+            <button onclick="location.href='{%url 'meeting:writedMeetingList' artist_id=artist_id  %}'">나의 모임</button>
+        </div>
+
+        <h1>작성한 미팅 목록</h1>
+        <p>{{ artist.artistName }} 페이지 - 내가 작성한 모임</p>
 
     <div>
         <button onclick="location.href='{%url 'meeting:writedMeetingList' artist_id=artist_id  %}'">작성</button>
@@ -41,7 +37,10 @@
                                 <li>
                                     <h3>{{ meetingMember.User.userName }}</h3>
                                     <h3>{{ meetingMember.memberState }}</h3>
-                                    <p>신청자 정보 확인</p>
+                                    <form method="post" action="{% url 'userWorking:show_userWorking_guest' pk=artist.id meetingMember_id=meetingMember.id %}">
+                                        {% csrf_token %}
+                                        <button type="submit">신청자 정보 확인</button>
+                                    </form>
 
                                     <form method="post" action="{% url 'meeting:memberStateAccept' artist_id=artist.id meetingMember_id=meetingMember.id %}">
                                         {% csrf_token %}
@@ -65,7 +64,6 @@
         <p>작성한 미팅이 없습니다.</p>
     {% endfor %}
 </ul>
-</body>
-</html>
+
 {% endblock %}
 {% endwith %}

@@ -1,15 +1,10 @@
-{% extends 'base.html' %}
+{% extends 'base_meeting.html' %}
 {% load static %}
 {% with artist=artist alerts=alerts %}
 {% block content %}
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Meeting Detail</title>
 
-</head>
-<body>
-    <h1>{{ meeting.title }}</h1>
+
+    <h1 class="detail-title-meeting">{{ meeting.title }}</h1>
     {% if meeting.image %}
         <img src="{{ meeting.image.url }}" alt="{{ meeting.title }} Image">
     {% endif %}
@@ -20,7 +15,7 @@
     <p><strong>내용:</strong></p>
     <p>{{ meeting.body }}</p>
     <p><strong>모임 상태:</strong> {{ meeting.meetingState }}</p>
-    <hr>
+
         {% if request.user != meeting.writeUser %}
            <form method="post" action="{% url 'meeting:applyMeeting' artist_id=artist.id meeting_id=meeting.id %}">
             {% csrf_token %}
@@ -39,7 +34,6 @@
             <button type="submit">마감하기</button>
         </form>
     {% endif %}
-</body>
-</html>
+
 {% endblock %}
 {% endwith %}

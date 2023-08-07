@@ -18,17 +18,16 @@
 <div class="artist_image">
     <img src="{{ artist.artistImage.url }}">
 </div>
-<div class="custom-box">
+<div class="custom-box" >
     <div class="artist_info">
         <div class="artist_name"> 아티스트  {{ artist.artistName }}</div>
         <div class="artist_members"> 멤버 {{ artist.members }}</div>
         <div class="artist_debuteDate"> 데뷔 {{ artist.debutDate }}</div>
-        <div class="artist_color"> 팬덤색 {{ artist.color }}</div>
         <div class="artist_fanName"> 팬덤 {{ artist.fanName }}</div>
         <div class="artist_agency"> 회사 {{ artist.agency }}</div>
         <div class="artist_social">
             <div class="social_icon">
-                <div>인스타그램</div><a href="{{ artist.instagram }}" target="_blank"><img src="{% static 'images/instagram_icon.png' %}" alt="인스타그램"></a>
+                <div>인스타</div><a href="{{ artist.instagram }}" target="_blank"><img src="{% static 'images/instagram_icon.png' %}" alt="인스타그램"></a>
                 <div>트위터 </div><a href="{{ artist.twitter }}" target="_blank"><img src="{% static 'images/twitter_icon.png' %}" alt="트위터"></a>
                 <div>유튜브 </div> <a href="{{ artist.youtube }}" target="_blank"><img src="{% static 'images/youtube_icon.png' %}" alt="유튜브"></a>
             </div>
