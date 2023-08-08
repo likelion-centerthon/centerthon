@@ -48,15 +48,18 @@
 }
 
 .artist_image img {
+
     width: 100%;
     height: 100%;
     object-fit: cover; 
 }
 
+
 .meeting-grid {
     margin: 50px 30px 30px 30px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+
     gap: 20px; 
     justify-content: center; 
 }
@@ -92,7 +95,6 @@
     justify-content: center;
     margin-top: 10px;
     margin-bottom: 20px;
-   
 }
 
 .create-button {
