@@ -80,7 +80,6 @@
   background-color: #7a36c1;
 }
 
-/* 승인 및 거부 버튼 스타일 */
 .confirm-button{
   background-color: #BC67FF;
   color: white;
@@ -92,7 +91,7 @@
   transition: background-color 0.3s ease;
 }
 .accept{
-  color: #28a745; /* 초록색 */
+  color: #28a745;
   border: none;
   padding: 8px 16px;
   margin-right: 8px;
@@ -102,10 +101,10 @@
 
 }
 .accept:hover {
-  background-color: #218838; /* 더 진한 초록색 */
+  background-color: #218838;
 }
 
-/* 거부 버튼 스타일 */
+
 .refuse {
   color: rgb(255, 44, 44);
   border: none;
@@ -117,7 +116,7 @@
 }
 
 .refuse:hover {
-  background-color: #c82333; /* 더 진한 빨간색 */
+  background-color: #c82333; 
 }
 
 
@@ -125,7 +124,7 @@
   background-color: #7a36c1;
 }
 
-/* 회의 정보 컨테이너 스타일 */
+
 .meeting-writed {
   padding: 20px;
   border: 1px solid #ddd;
@@ -133,7 +132,7 @@
   background-color: #f9f9f9;
 }
 
-/* 신청자 정보 컨테이너 스타일 */
+
 .writed-lost {
   padding: 10px;
   border: 1px solid #ccc;
@@ -141,7 +140,6 @@
   background-color: white;
 }
 
-/* 회의 및 신청자 정보 스타일 */
 h2 {
   margin-top: 0;
 }
@@ -154,7 +152,6 @@ p {
   margin: 10px 0;
 }
 
-/* 링크 스타일 */
 a {
   color: #8a8a8a;
   text-decoration: none;
@@ -165,8 +162,6 @@ a:hover {
   color: #0c0c0c;
 }
 
-
-/* 부모 컨테이너 스타일 */
 .member-container {
   border: 1px solid #ddd;
   padding: 10px;
@@ -179,11 +174,11 @@ a:hover {
   margin-bottom: 10px;
 }
 
-/* 사용자 이름 스타일 */
+
 .member-info h3 {
   margin-right: 10px;
 }
-/* 액션 버튼 컨테이너 스타일 */
+
 .action-buttons {
   display: flex;
   gap: 10px;
