@@ -1,12 +1,11 @@
 
-/* Center-align the form */
 .edit {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     margin: 0 auto;
-    max-width: 500px; /* You can adjust this value as needed */
+    max-width: 500px; 
 }
 
   h1 {
@@ -21,7 +20,6 @@
     color: #000000;
   }
   
-  /* 모임 등록 폼 */
   .edit input {
     width: 327px;
     height: 52px;
@@ -51,7 +49,6 @@
   }
   
   .detail1-container {
-    /* Container for .detail1 and .addImg-Button */
     width: 327px;
     margin: 10px auto;
     display: flex;
@@ -69,7 +66,6 @@
     border-radius: 16px;
   }
   
-  /* 사진 추가 버튼 */
   .addImg-Button {
     box-sizing: border-box;
     width: 68px;
@@ -81,7 +77,6 @@
     margin-left: auto;
   }
   
-  /* 모임 등록하기 버튼 */
   .submit-button {
     width: 334px;
     height: 51px;

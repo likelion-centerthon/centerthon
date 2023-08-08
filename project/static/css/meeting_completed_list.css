@@ -37,7 +37,6 @@
 }
 
 .artist_image_2 {
-
     width: 150px;
     height: 150px;
     border-radius: 50%; 
@@ -49,20 +48,17 @@
 }
 
 .artist_image img {
-    
     width: 100%;
     height: 100%;
     object-fit: cover; 
 }
 
-
-/* 기존의 CSS 코드는 그대로 유지합니다 */
 .meeting-grid {
     margin: 50px 30px 30px 30px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px; /* Reduce the gap between images to 20px */
-    justify-content: center; /* Center the grid horizontally */
+    gap: 20px; 
+    justify-content: center; 
 }
 
 .meeting-item {
@@ -73,8 +69,8 @@
     flex-direction: column;
     align-items: center;
     border-radius: 10px;
-    width: 140px; /* Slightly reduce the width to 140px */
-    height: 190px; /* Slightly reduce the height to 190px */
+    width: 140px; 
+    height: 190px; 
 }
 
 .meeting-item img {
@@ -85,7 +81,7 @@
 }
 
 .meeting-item p {
-    margin: 5px 0; /* 요소 사이에 간격을 조정합니다 */
+    margin: 5px 0; 
 }
 
 
@@ -94,10 +90,9 @@
     position: relative;
     display: flex;
     justify-content: center;
-    /* 버튼을 가로 중앙에 정렬합니다 */
     margin-top: 10px;
     margin-bottom: 20px;
-    /* 버튼과 위쪽 요소 간의 간격을 조정합니다 */
+   
 }
 
 .create-button {
@@ -105,11 +100,9 @@
     height: 60px;
     display: flex;
     justify-content: center;
-    /* 버튼을 가로 중앙에 정렬합니다 */
     align-items: center;
     background: #BC67FF;
     border-radius: 30.5px;
-    /* 버튼의 배경색과 둥근 모서리를 지정합니다 */
     margin-top: 50px;
 }
 
@@ -117,20 +110,16 @@
     display: inline-block;
     width: 100%;
     height: 100%;
-    /* 버튼의 크기를 부모 요소에 맞춥니다 */
     border-radius: 30.5px;
 }
 
 .button-text {
     position: absolute;
-    /* 버튼 텍스트를 버튼 안에서 위치시키기 위해 position을 absolute로 지정합니다 */
     left: 0;
     right: 0;
     top: 55%;
     bottom: 0;
-    /* 버튼 텍스트를 버튼의 네 가장자리에 맞춥니다 */
     margin: auto;
-    /* 버튼의 중앙에 정렬하기 위해 margin을 auto로 지정합니다 */
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 700;
@@ -138,7 +127,6 @@
     line-height: 180%;
     text-align: center;
     color: #FFFFFF;
-    /* 필요에 따라 텍스트의 스타일을 조정할 수 있습니다. */
 }
 
 .meeting-button {
