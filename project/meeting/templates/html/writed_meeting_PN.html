@@ -1,36 +1,31 @@
-{% extends 'base.html' %}
+{% extends 'base_meeting.html' %}
 {% load static %}
 {% with artist=artist alerts=alerts %}
 {% block content %}
-<!DOCTYPE html>
-<html>
-<head>
-    <title>작성한 미팅 목록</title>
-<body>
-    <h1>작성한 미팅 목록</h1>
-    <p>{{ artist.artistName }} 페이지 - 보호자 전화번호</p>
-    <div>
-    <button onclick="location.href='{% url 'meeting:MeetingList' artist_id=artist.id %}'">모임 전체</button>
-        <button onclick="location.href='{%url 'meeting:writedMeetingList' artist_id=artist_id  %}'">나의 모임</button>
-    </div>
 
-    <div>
+    <div class="category">
+        <button onclick="location.href='{% url 'meeting:MeetingList' artist_id=artist.id %}'">모임 전체</button>
+            <button onclick="location.href='{%url 'meeting:writedMeetingList' artist_id=artist_id  %}'">나의 모임</button>
+        </div>
+
+    <div class="meeting-button">
         <button onclick="location.href='{%url 'meeting:writedMeetingList' artist_id=artist_id  %}'">작성</button>
         <button onclick="location.href='{%url 'meeting:applyedMeetingList' artist_id=artist_id  %}'">신청</button>
-    <button onclick="location.href='{%url 'meeting:subPNList' artist_id=artist_id  %}'">보호자</button>
+        <button onclick="location.href='{%url 'meeting:subPNList' artist_id=artist_id  %}'">보호자</button>
     </div>
-    <hr>
-    <form method="get" action="{% url 'meeting:subPNList' artist_id=artist_id %}">
+
+    <form class="meeting-search-form" method="get" action="{% url 'meeting:subPNList' artist_id=artist_id %}">
         <label for="searchInput">검색:</label>
         <input type="text" id="searchInput" name="search" placeholder="참석자명을 검색할 수 있어요">
         <button type="submit">검색</button>
     </form>
-    <ul>
+    
+    <div class="meeting-writed">
         {% for meeting in meetings %}
-            <li>
+        <div class="writed-lost">
                 <h2><a href="{% url 'meeting:meeting_detail' meeting_id=meeting.id artist_id=artist_id%}">{{ meeting.title }}</a></h2>
                 {% if meeting.members.exists %}
-                    <ul>
+                <div class="member-info">
                         {% for meetingMember in meeting.members.all %}
                             {% if meetingMember.memberState == "승인" %}
                                 {% if not search or search in meetingMember.User.userName %}
@@ -41,16 +36,15 @@
                                 {% endif %}
                             {% endif %}
                         {% endfor %}
-                    </ul>
+                    </div>
                 {% else %}
                     <p>수락한 모임원이 없습니다.</p>
                 {% endif %}
-            </li>
+                </div>
         {% empty %}
             <p>작성한 미팅이 없습니다.</p>
         {% endfor %}
-    </ul>
-</body>
-</html>
+        </div>
+
 {% endblock %}
 {% endwith %}

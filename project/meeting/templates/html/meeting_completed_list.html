@@ -1,38 +1,46 @@
-{% extends 'base.html' %}
+{% extends 'base_meeting.html' %}
 {% load static %}
 {% with artist=artist alerts=alerts %}
 {% block content %}
-<!DOCTYPE html>
-<html>
-<head>
-    <h1>모임 목록</h1>
-    <p>{{ artist.artistName }} 페이지 - 모집 완료 </p>
-    <div>
-    <button onclick="location.href='{% url 'meeting:MeetingList' artist_id=artist.id %}'">모임 전체</button>
-        <button onclick="location.href='{%url 'meeting:writedMeetingList' artist_id=artist_id  %}'">나의 모임</button>
-    </div>
-    <div>
-        <button onclick="location.href='{%url 'meeting:writedMeetingList' artist_id=artist_id  %}'">진행중</button>
-    <button onclick="location.href='{%url 'meeting:MeetingCloseList' artist_id=artist_id  %}'">종료</button>
-    </div>
-</head>
-<body>
-    <h1>{{ meeting.artist.artistName }}</h1>
 
+<div class="category">
+    <button onclick="location.href='{% url 'meeting:MeetingList' artist_id=artist.id %}'">모임 전체</button>
+    <button onclick="location.href='{% url 'meeting:writedMeetingList' artist_id=artist_id  %}'">나의 모임</button>
+</div>
+<div class="meeting-button">
+    <button onclick="location.href='{% url 'meeting:MeetingList' artist_id=artist.id   %}'">진행중</button>
+    <button onclick="location.href='{%url 'meeting:MeetingCloseList' artist_id=artist_id  %}'">종료</button>
+</div>
+
+<h2 class="title-meeting"> 덕질하기 좋은날 </h2>
+    
+<p class="ment-meeting"> {{ artist.artistName }}을 좋아하는 
+    <br/> 사람들과 다양한 이야기를 
+    <br/> 나누어보세요!</p>
+
+    <div class="artist_image_2">
+        {% if artist.artistImage %}
+            <img src="{{ artist.artistImage.url }}" alt="{{ artist.artistName }} Image" width="200">
+        {% endif %}
+    </div>
+
+
+    <h1>{{ meeting.artist.artistName }}</h1>
+    <div class="meeting-grid">
     {% for meeting in meetings_completed %}
-        <div>
-            <h2><a href="{% url 'meeting:meeting_detail' meeting_id=meeting.id artist_id=artist_id%}">{{ meeting.title }}</a></h2>
+        <div class="meeting-item">
             {% if meeting.image %}
-                <img src="{{ meeting.image.url }}" alt="{{ meeting.title }} Image" width="200">
+            <img src="{{ meeting.image.url }}" alt="{{ meeting.title }} Image" width="200">
             {% else %}
                 <p>No image available</p>
             {% endif %}
-            <p>{{ meeting.peopleNm }}명</p>
+            <p><a href="{% url 'meeting:meeting_detail' meeting_id=meeting.id artist_id=artist_id %}">{{ meeting.title }}</a>             {{ meeting.peopleNm }}명</p>
         </div>
-        <hr>
     {% endfor %}
-    <a href="{% url 'meeting:createMeeting' artist_id=artist_id %}"><p><strong>모임 작성하기</strong></p></a>
-</body>
-</html>
+    </div>
+    
+    <!-- <a href="{% url 'meeting:createMeeting' artist_id=artist_id %}"><p><strong>모임 작성하기</strong></p></a> -->
+
+    
 {% endblock %}
 {% endwith %}
