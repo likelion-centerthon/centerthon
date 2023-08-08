@@ -12,5 +12,4 @@ urlpatterns = [
     path('deletePost/<int:pk>/', delete_post, name='delete_post'),
     path('createComment/<int:pk>/', create_comment, name='create_comment'),
     path('deleteComment/<int:pk>/', delete_comment, name='delete_comment'),
-
 ]
