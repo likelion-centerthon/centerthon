@@ -34,7 +34,8 @@
             {% else %}
                 <p>No image available</p>
             {% endif %}
-            <p><a href="{% url 'meeting:meeting_detail' meeting_id=meeting.id artist_id=artist_id %}">{{ meeting.title }}</a>             {{ meeting.peopleNm }}명</p>
+            <div><p><a href="{% url 'meeting:meeting_detail' meeting_id=meeting.id artist_id=artist_id %}">{{ meeting.title }}</a> </div>
+            <div>{{ meeting.peopleNm }}명</p></div>
         </div>
     {% endfor %}
     </div>
