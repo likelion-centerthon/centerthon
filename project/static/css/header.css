@@ -11,8 +11,8 @@
   .icon{
     display: flex;
 
-    background-color:transparent;  }
-  /*상단바 아티스트 선택 박스*/
+    background-color:transparent;
+  }
 
   .btn-select {
     width: 168px;
@@ -107,7 +107,7 @@ button{
   display: none;
   align-items: center;
   justify-content: center;
-  z-index: 9999; /* 높은 z-index 값으로 설정 */
+  z-index: 9999; 
 }
 
 .notification-content {
@@ -118,7 +118,7 @@ button{
   overflow: auto;
   border-radius: 10px;
   box-shadow: 0px 8px 25px -4px rgba(13, 10, 44, 0.06);
-  z-index: 10000; /* 팝업 내용도 높은 z-index 값으로 설정 */
+  z-index: 10000; 
 }
 
 
@@ -153,11 +153,6 @@ button{
 
 .alert-read {
   font-size: 12px;
-  color: #f44336; /* Red color for unread alerts */
+  color: #f44336; 
   margin-top: 5px;
 }
-
-
-
-
-
