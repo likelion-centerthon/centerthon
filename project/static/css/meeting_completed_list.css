@@ -37,7 +37,6 @@
 }
 
 .artist_image_2 {
-
     width: 150px;
     height: 150px;
     border-radius: 50%; 
@@ -49,14 +48,11 @@
 }
 
 .artist_image img {
-    
     width: 100%;
     height: 100%;
     object-fit: cover; 
 }
 
-
-/* 기존의 CSS 코드는 그대로 유지합니다 */
 .meeting-grid {
     margin: 50px 30px 30px 30px;
     display: grid;
