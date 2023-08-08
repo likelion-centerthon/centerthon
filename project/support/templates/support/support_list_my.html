@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% with artist=artist alerts=alerts %}
 {% block content %}
+{% load custom_filters %}
 
 <div style="margin-bottom:5px;" class="support_list_category">
     <button class="allsupport" onclick="location.href='{% url 'support:support_list' pk=artist.pk %}'">서포트 전체</button>
@@ -24,7 +25,7 @@
         </div>
         <div class="support_percent_box" id="completionBox" >
 
-            <div id="percent"></div><span style="font-size: 17px">%</span>
+            <div id="percent"></div><span style="font-size: 17px">{{support.balanceAmt|avg:support.fundraising}}%</span>
 
        
         </div>
