@@ -2,11 +2,17 @@
 {% load static %}
 {% with artist=artist alerts=alerts %}
 {% block content %}
+{% load custom_filters %}
+
 <div style="  justify-content:row;  display: flex; ">
 <img class="back" src="{% static 'images/back.png'%}" alt="이전" ></img>
     <h1 class="support_dtl_h1" style=" margin-left:-15px;">상세조회</h1>
 </div>
-    <div class="percent"></div>
+    <span id="percent-content" style="display:none;">{{support.balanceAmt|avg:support.fundraising}}</span>
+    <div class="percent">
+        <div class="percent-bar" id="percent-bar-content"></div>
+    </div>
+
     <!--일반 사용자일 때-->
     {% if support.user == request.user %}
     <button style="margin-left:20px;"class="modify_button" onclick="location.href='{% url 'support:update_support' pk=artist.pk spt_pk=support.pk %}'">수정</button>
@@ -107,6 +113,18 @@
 
 
   <script>
+  function calcPercent() {
+    let values = document.getElementById('percent-content').innerText;
+    const percent = document.getElementById('percent-bar-content');
+    if (parseInt(values)/100 == 0)
+        percent.style.width = '20px';
+    else if (parseInt(values)/100 > 1)
+        percent.style.width = '320px';
+    else
+        percent.style.width = (parseInt(values)/100 * 320) + 'px';
+  }
+  calcPercent();
+
     function showPopup() {
       const popup = document.getElementById('pop_info_1');
       popup.style.display = 'block';

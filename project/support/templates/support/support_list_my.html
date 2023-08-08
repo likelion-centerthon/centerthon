@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% with artist=artist alerts=alerts %}
 {% block content %}
+{% load custom_filters %}
 
 <div style="margin-bottom:5px;" class="support_list_category">
     <button class="allsupport" onclick="location.href='{% url 'support:support_list' pk=artist.pk %}'">서포트 전체</button>
@@ -17,14 +18,14 @@
         {%with goal=support.fundraising%}
         <div style="width: 70%;">
             <h1 class="spt_list_h1"> {{support.title}}</h1>
-            <h3 class="spt_list_h3"> 목표: <div  id="goal">{{support.fundraising}}</div></h3>
+            <h3 class="spt_list_h3"> 목표: {{support.fundraising}}</h3>
             <h3 class="spt_list_h3"> 종료: {{support.deadline|date:"Y/m/d Ah:i"}}</h3>
             <h2 class="spt_list_h2">{{support.bank}} {{support.account}}</h2>
                <div id="amt" style="display:none;">{{support.balanceAmt}}</div>
         </div>
         <div class="support_percent_box" id="completionBox" >
 
-            <div id="percent"></div><span style="font-size: 17px">%</span>
+            {{support.balanceAmt|avg:support.fundraising}}<span style="font-size: 17px">%</span>
 
        
         </div>

@@ -11,14 +11,25 @@
  
 }
 .percent {
+  position:relative;
+  box-sizing: border-box;
+  mix-blend-mode: normal;
+  border: 1px solid #B3B1B0;
+  border-radius: 16px;
+  height: 11px;
+  width: 320px;
+  margin: 2px 10px 20px 25px;
+}
+
+#percent-bar-content {
+  position:absolute;
+  left:-0.5px;
   box-sizing: border-box;
   background: #bc67ff;
   mix-blend-mode: normal;
   border: 1px dashed #bc67ff;
   border-radius: 16px;
   height: 10px;
-  width: 320px;
-  margin: 2px 10px 20px 25px;
 }
 
 .detail-container div {
