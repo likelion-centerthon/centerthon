@@ -30,7 +30,7 @@
     <h2>신청한 모임 목록</h2>
     <ul>
         {% for applyedMeeting in applyedMeetings %}
-            <li>
+
                 <h3><a href="{% url 'meeting:meeting_detail' meeting_id=applyedMeeting.Meeting.id artist_id=artist_id %}">{{ applyedMeeting.Meeting.title }}</a></h3>
                 <p>{{ applyedMeeting.writeDate|date:"Y/m/d" }}에 신청했습니다.</p>
                 {% if applyedMeeting.memberState == "대기" %}
@@ -42,7 +42,7 @@
                 {% if applyedMeeting.memberState == "거부" %}
                     <p>현재 거부 상태입니다. 다른 모임을 찾아보세요</p>
                 {% endif %}
-            </li>
+
         {% empty %}
             <p>신청한 모임이 없습니다.</p>
         {% endfor %}

@@ -7,6 +7,9 @@
 <head>
     <h1>모임 목록</h1>
     <p>{{ artist.artistName }} 페이지 - 모집 중</p>
+    {% if artist.artistImage %}
+        <img src="{{ artist.artistImage.url }}" alt="{{ artist.artistName }} Image" width="200">
+    {% endif %}
     <div>
     <button onclick="location.href='{% url 'meeting:MeetingList' artist_id=artist.id %}'">모임 전체</button>
         <button onclick="location.href='{%url 'meeting:writedMeetingList' artist_id=artist_id  %}'">나의 모임</button>
