@@ -1,47 +1,49 @@
-{% extends 'base.html' %}
+{% extends 'base_no_nav.html' %}
 {% load static %}
 {% with artist=artist alerts=alerts %}
 {% block content %}
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>모임 작성하기</title>
 
-    <div class="container">
-        <h1>모임 작성하기</h1>
-        <form id="meetingForm" method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            <label for="id_title">모임명:</label>
-            <input type="text" name="title" id="id_title" required><br>
+    <img class="back" src="{% static 'images/back.png'%}" onclick="goBack()"></img>
+    <h1 class="h1-meeting">모임 작성하기</h1>
+    <h3 class="h2-meeting">등록하고 싶은 모임 세부 사항을 작성해요!</h3>
 
-            <label for="id_body">내용:</label>
-            <textarea name="body" id="id_body" required></textarea><br>
+    <form class="register input" id="meetingForm" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
 
-            <label for="id_meetDate">일시:</label>
-            <input type="date" name="meetDate" id="id_meetDate" required><br>
+        <label for="id_title" class="name" ></label>
+        <input type="text" name="title" id="id_title" placeholder="모임명" required>
 
+        <label for="id_location" class="place"></label>
+        <input type="text" name="location" id="id_location" placeholder="장소" required>
 
-            <label for="id_location">장소:</label>
-            <input type="text" name="location" id="id_location" required><br>
+        <label for="id_meetDate" ></label>
+        <input type="date" name="meetDate" id="id_meetDate" placeholder="일시" required>
 
+        <label for="id_age" class="age"></label>
+        <input type="text" name="age" id="id_age" placeholder="나이제한" required>
 
-            <label for="id_age">나이제한:</label>
-            <input type="text" name="age" id="id_age" required><br>
+        <label for="id_peopleNm" class="people"></label>
+        <input type="number" name="peopleNm" id="id_peopleNm" placeholder="인원" required>
 
+        <label for="id_kakaoLink" class="openkakao"></label>
+        <input type="text" name="kakaoLink" id="id_kakaoLink" placeholder="오픈 채팅방 링크" required>
 
-            <label for="id_peopleNm">인원:</label>
-            <input type="number" name="peopleNm" id="id_peopleNm" required><br>
+        <div class="detail1-container">
+        <label for="id_body"></label>
+        <textarea class="detail1" name="body" id="id_body" placeholder="내용"required></textarea>
+        </div>
 
+        <label for="id_image" class="addImg-Button">사진</label>
+        <input type="file" name="image" id="id_image" required>
 
-            <label for="id_kakaoLink">오픈 채팅방 링크:</label>
-            <input type="text" name="kakaoLink" id="id_kakaoLink" required><br>
+        <input type="submit" value="Submit" class="register-Button">
+    </form>
 
-            <label for="id_image">사진 첨부:</label>
-            <input type="file" name="image" id="id_image" required><br>
+    <script>
+        function goBack() {
+          window.history.back();
+        }
+        </script>
 
-
-            <input type="submit" value="Submit">
-        </form>
-    </div>
 {% endblock %}
 {% endwith %}

@@ -1,0 +1,174 @@
+/* 이미지 스타일 */
+
+.meeting-image {
+    width: 200px;
+    height: 150px;
+    overflow: hidden;
+    position: relative;
+    left: 50%;
+    top: 10%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    
+    
+}
+
+.meeting-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 컨테이너 스타일 */
+.parent-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    
+}
+
+/* 커스텀 박스 스타일 */
+.custom-box2 {
+    position: absolute;
+    width: 300px;
+    height: 380px;
+    left: 50%;
+    top: 30%;
+    transform: translate(-50%, -50%);
+    background: #ffffff;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.custom-box2 p {
+    font-family: 'Arial', sans-serif;
+    font-size: 18px;
+    color: #333;
+    text-align: center;
+    margin: 10px;
+}
+
+/* 수정하기, 마감하기 버튼 스타일 */
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    position: relative;
+    top: 30px; /* 버튼 위치를 조정하여 커스텀 박스 아래로 이동 */
+}
+
+.button-container button {
+    margin: 5px;
+}
+
+/* 나머지 CSS 규칙들 ... */
+
+.custom-box .artist_info div {
+    margin-bottom: 10px;
+}
+
+/* 일정 날짜, 장소, 나이 등의 스타일 */
+.meetdate {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+    color: #545454;
+    margin-bottom: 10px;
+    margin-top: 30px;
+}
+
+.meetlocation,
+.age,
+.peoplename,
+.artist_fanName,
+.meeting-body,
+.meetingstate {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+    color: #545454;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+.detail-title-meeting {
+    text-align: center;
+    color: white;
+    
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: -50px; /* Set a smaller negative margin-top to move the buttons higher */
+    margin-bottom: 30px;
+}
+
+/* submit-button 스타일 */
+.submit-button {
+    box-sizing: border-box;
+    width: 300px; /* 버튼 너비 조정 */
+    height: 50px; /* 버튼 높이 조정 */
+    background-color: #bc67ff; /* 배경색 지정 */
+    border: 1px solid #b3b1b0; /* 테두리 스타일 지정 */
+    border-radius: 30px; /* 버튼 모서리 둥글게 설정 */
+    color: #ffffff; /* 텍스트 색상 지정 */
+    font-size: 20px; /* 폰트 크기 지정 */
+    font-weight: bold; /* 폰트 굵기 지정 */
+    cursor: pointer; /* 커서 스타일 변경 */
+    margin: 5px; /* 버튼 사이 여백 지정 */
+ 
+}
+
+.submit-button:hover {
+    background-color: #ffffff; /* 마우스 호버시 배경색 변경 */
+    border: 1px solid #bc67ff; /* 마우스 호버시 테두리 스타일 변경 */
+    color: #bc67ff; /* 마우스 호버시 텍스트 색상 변경 */
+}
+
+/* edit-button 스타일 */
+.edit-button {
+    box-sizing: border-box;
+    width: 150px; /* 버튼 너비 조정 */
+    height: 50px; /* 버튼 높이 조정 */
+    background-color: #bc67ff; /* 배경색 지정 */
+    border: 1px solid #b3b1b0; /* 테두리 스타일 지정 */
+    border-radius: 30px; /* 버튼 모서리 둥글게 설정 */
+    color: #ffffff; /* 텍스트 색상 지정 */
+    font-size: 20px; /* 폰트 크기 지정 */
+    font-weight: bold; /* 폰트 굵기 지정 */
+    cursor: pointer; /* 커서 스타일 변경 */
+    margin: 5px; /* 버튼 사이 여백 지정 */
+}
+
+/* done-button 스타일 */
+.done-button {
+    box-sizing: border-box;
+    width: 150px; /* 버튼 너비 조정 */
+    height: 50px; /* 버튼 높이 조정 */
+    background-color: #bc67ff; /* 배경색 지정 */
+    border: 1px solid #b3b1b0; /* 테두리 스타일 지정 */
+    border-radius: 30px; /* 버튼 모서리 둥글게 설정 */
+    color: #ffffff; /* 텍스트 색상 지정 */
+    font-size: 20px; /* 폰트 크기 지정 */
+    font-weight: bold; /* 폰트 굵기 지정 */
+    cursor: pointer; /* 커서 스타일 변경 */
+    margin: 5px; /* 버튼 사이 여백 지정 */
+    /* 원하는 done-button 스타일을 여기에 추가 */
+}
+
+.edit-button:hover,.done-button:hover {
+    background-color: #ffffff; /* 마우스 호버시 배경색 변경 */
+    border: 1px solid #bc67ff; /* 마우스 호버시 테두리 스타일 변경 */
+    color: #bc67ff; /* 마우스 호버시 텍스트 색상 변경 */
+}

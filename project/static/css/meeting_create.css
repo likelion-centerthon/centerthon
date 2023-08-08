@@ -1,0 +1,113 @@
+
+#meetingForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  width: 170px;
+  height: 35px;
+  margin: 50px auto 0;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  text-align: center;
+  color: #000000;
+}
+
+h3 {
+  /* 모임을 통해 다양한 사람들과 소통해요 */
+
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 17px;
+  display: flex;
+  margin-left: 30px;
+  align-items: center;
+  color: #545454;
+}
+
+/* 모임 등록 폼 */
+.register input {
+  width: 327px;
+  height: 52px;
+  box-sizing: border-box;
+  margin: 10px auto;
+  mix-blend-mode: normal;
+  border: 1px solid #b3b1b0;
+  border-radius: 16px;
+}
+
+.custom-date {
+  box-sizing: border-box;
+  width: 327px;
+  height: 52px;
+  padding: 15px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 150%;
+  color: #b3b1b0;
+  text-indent: 0px;
+  margin: 10px auto;
+  mix-blend-mode: normal;
+  border: 1px solid #b3b1b0;
+  border-radius: 16px;
+}
+
+.detail1-container {
+  /* Container for .detail1 and .addImg-Button */
+  width: 327px;
+  margin: 10px auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.detail1 {
+  width: 327px;
+  height: 150px;
+  box-sizing: border-box;
+  margin: 10px auto;
+  resize: none;
+  mix-blend-mode: normal;
+  border: 1px solid #b3b1b0;
+  border-radius: 16px;
+}
+
+/* 사진 추가 버튼 */
+.addImg-Button {
+  box-sizing: border-box;
+  width: 68px;
+  height: 34px;
+  background: #ffffff;
+  border: 1px solid #b3b1b0;
+  border-radius: 30px;
+  margin-bottom: 10px;
+  margin-left: auto;
+}
+
+/* 모임 등록하기 버튼 */
+.register-Button {
+  width: 334px;
+  height: 51px;
+  background: #BC67FF;
+  border-radius: 15px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 24px;
+  color: #ffffff;
+  text-align: center;
+  border: none;
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

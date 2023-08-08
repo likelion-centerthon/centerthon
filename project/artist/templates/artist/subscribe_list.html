@@ -3,7 +3,7 @@
 
 
           <!-- 페이지 제목 추가 -->
-          <h2 class="page-title">나의 아티스트 선택하기</h2>
+          <h2 class="page-title">구독한 아티스트 목록</h2>
 
         <div class="category-buttons">
             <form method="post" action="{% url 'artist:subscribe_list' category='KPOP' %}">
@@ -41,7 +41,7 @@
                 {% endfor %}
             <form method="post" action="{% url 'artist:artist_list' category='none' %}">
                 {% csrf_token %}
-                <button type="submit" class="find-another-artist">다른 아티스트 찾으러 가기 ></button>
+                <button type="submit" class="find-another-artist">다른 아티스트 찾으러 가기</button>
             </form>
            
         </div>
