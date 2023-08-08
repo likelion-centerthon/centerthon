@@ -7,11 +7,11 @@
         <button onclick="location.href='{% url 'meeting:MeetingList' artist_id=artist.id %}'">모임 전체</button>
         <button onclick="location.href='{% url 'meeting:writedMeetingList' artist_id=artist_id  %}'">나의 모임</button>
     </div>
-
     <div class="meeting-button">
         <button onclick="location.href='{% url 'meeting:MeetingList' artist_id=artist.id   %}'">진행중</button>
         <button onclick="location.href='{%url 'meeting:MeetingCloseList' artist_id=artist_id  %}'">종료</button>
     </div>
+
 
     <h2 class="title-meeting"> 덕질하기 좋은날 </h2>
     

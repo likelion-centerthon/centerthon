@@ -8,62 +8,56 @@
             <button onclick="location.href='{%url 'meeting:writedMeetingList' artist_id=artist_id  %}'">나의 모임</button>
         </div>
 
-        <h1>작성한 미팅 목록</h1>
-        <p>{{ artist.artistName }} 페이지 - 내가 작성한 모임</p>
-
-    <div>
-        <button onclick="location.href='{%url 'meeting:writedMeetingList' artist_id=artist_id  %}'">작성</button>
-        <button onclick="location.href='{%url 'meeting:applyedMeetingList' artist_id=artist_id  %}'">신청</button>
-    <button onclick="location.href='{%url 'meeting:subPNList' artist_id=artist_id  %}'">보호자</button>
+    <div class="meeting-button">
+        <button class="write-button" onclick="location.href='{%url 'meeting:writedMeetingList' artist_id=artist_id  %}'">작성</button>
+        <button class="apply-button" onclick="location.href='{%url 'meeting:applyedMeetingList' artist_id=artist_id  %}'">신청</button>
+        <button class="guardian-button"onclick="location.href='{%url 'meeting:subPNList' artist_id=artist_id  %}'">보호자</button>
     </div>
-    <hr>
-    <form method="get" action="{% url 'meeting:writedMeetingList' artist_id=artist_id %}">
+    
+    <form class="meeting-search-form" method="get" action="{% url 'meeting:writedMeetingList' artist_id=artist_id %}">
         <label for="searchInput">신청자 검색:</label>
         <input type="text" id="searchInput" name="search" placeholder="신청자명을 검색할 수 있어요">
         <button type="submit">검색</button>
     </form>
 
-<!-- ... (기존 코드 유지) ... -->
-
-<ul>
-    {% for meeting in meetings %}
-        <li>
-            <h2><a href="{% url 'meeting:meeting_detail' meeting_id=meeting.id artist_id=artist_id%}">{{ meeting.title }}</a></h2>
-            {% if meeting.members.exists %}
-                <ul>
+    <div class="meeting-writed">
+        {% for meeting in meetings %}
+            <div class="writed-lost">
+                <h2><a href="{% url 'meeting:meeting_detail' meeting_id=meeting.id artist_id=artist_id %}">{{ meeting.title }}</a></h2>
+                {% if meeting.members.exists %}
                     {% for meetingMember in meeting.members.all %}
                         {% if meetingMember.memberState == "대기" %}
                             {% if not search or search in meetingMember.User.userName %}
-                                <li>
+                                <div class="member-info">
                                     <h3>{{ meetingMember.User.userName }}</h3>
                                     <h3>{{ meetingMember.memberState }}</h3>
                                     <form method="post" action="{% url 'userWorking:show_userWorking_guest' pk=artist.id meetingMember_id=meetingMember.id %}">
                                         {% csrf_token %}
-                                        <button type="submit">신청자 정보 확인</button>
+                                        <button class="confirm-button" type="submit">신청자 정보 확인</button>
                                     </form>
-
+                                </div>
+                                <div class="action-buttons">
                                     <form method="post" action="{% url 'meeting:memberStateAccept' artist_id=artist.id meetingMember_id=meetingMember.id %}">
                                         {% csrf_token %}
-                                        <button type="submit">수락하기</button>
+                                        <button class="accept" type="submit">수락하기</button>
                                     </form>
-
                                     <form method="post" action="{% url 'meeting:memberStateRefusal' artist_id=artist.id meetingMember_id=meetingMember.id %}">
                                         {% csrf_token %}
-                                        <button type="submit">거부하기</button>
+                                        <button class="refuse" type="submit">거부하기</button>
                                     </form>
-                                </li>
+                                </div>
                             {% endif %}
                         {% endif %}
                     {% endfor %}
-                </ul>
-            {% else %}
-                <p>신청자가 없습니다.</p>
-            {% endif %}
-        </li>
-    {% empty %}
-        <p>작성한 미팅이 없습니다.</p>
-    {% endfor %}
-</ul>
+                {% else %}
+                    <p>신청자가 없습니다.</p>
+                {% endif %}
+            </div> <!-- 박스 닫는 위치 수정 -->
+        {% empty %}
+            <p>작성한 미팅이 없습니다.</p>
+        {% endfor %}
+    </div>
+    
 
 {% endblock %}
 {% endwith %}

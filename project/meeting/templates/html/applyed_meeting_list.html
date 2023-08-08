@@ -3,29 +3,27 @@
 {% with artist=artist alerts=alerts %}
 {% block content %}
 
-    <p>{{ artist.artistName }} 페이지 - 내가 신청한 모임</p>
-    <div>
-    <button onclick="location.href='{% url 'meeting:MeetingList' artist_id=artist.id %}'">모임 전체</button>
+<div class="category">
+        <button onclick="location.href='{% url 'meeting:MeetingList' artist_id=artist.id %}'">모임 전체</button>
         <button onclick="location.href='{%url 'meeting:writedMeetingList' artist_id=artist_id  %}'">나의 모임</button>
     </div>
 
-    <div>
+    <div class="meeting-button">
         <button onclick="location.href='{%url 'meeting:writedMeetingList' artist_id=artist_id  %}'">작성</button>
         <button onclick="location.href='{%url 'meeting:applyedMeetingList' artist_id=artist_id  %}'">신청</button>
     <button onclick="location.href='{%url 'meeting:subPNList' artist_id=artist_id  %}'">보호자</button>
     </div>
 
-
-    <form method="get" action="{% url 'meeting:applyedMeetingList' artist_id=artist_id %}">
+    <form class="meeting-search-form" method="get" action="{% url 'meeting:applyedMeetingList' artist_id=artist_id %}">
         <label for="searchInput">모임 검색:</label>
         <input type="text" id="searchInput" name="search" placeholder="내가 신청한 모임명을 검색할 수 있어요">
         <button type="submit">검색</button>
     </form>
 
-    <h2>신청한 모임 목록</h2>
-
+         <div class="meeting-writed">
         {% for applyedMeeting in applyedMeetings %}
-           
+        <div class="writed-lost">
+            <div class="member-info">
                 <h3><a href="{% url 'meeting:meeting_detail' meeting_id=applyedMeeting.Meeting.id artist_id=artist_id %}">{{ applyedMeeting.Meeting.title }}</a></h3>
                 <p>{{ applyedMeeting.writeDate|date:"Y/m/d" }}에 신청했습니다.</p>
                 {% if applyedMeeting.memberState == "대기" %}
@@ -37,10 +35,12 @@
                 {% if applyedMeeting.memberState == "거부" %}
                     <p>현재 거부 상태입니다. 다른 모임을 찾아보세요</p>
                 {% endif %}
-           
+            </div>
+            </div>
         {% empty %}
             <p>신청한 모임이 없습니다.</p>
         {% endfor %}
+        </div>
 
 {% endblock %}
 {% endwith %}

@@ -1,0 +1,46 @@
+
+
+.category {
+    box-sizing: border-box;
+    width: 375px;
+    background: #ffffff;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+}
+
+.category button {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+    color: #000000;
+    box-sizing: border-box;
+    width: 160px;
+    height: 60px;
+    background: #ffffff;
+    border: none;
+}
+
+.category button:hover {
+    border-bottom: 3px solid #000000;
+}
+.meeting-button{
+    height: 26px;
+    margin: 15px 0 10px 22px;
+  }
+  .meeting-button button:hover{
+    border: 1px solid #bc67ff;
+  }
+  .meeting-button button{
+      box-sizing: border-box;
+    width: 58px;
+    height: 26px;
+    background: #ffffff;
+    border: 1px solid #b3b1b0;
+    border-radius: 30px;
+  }
+  

@@ -1,5 +1,5 @@
 
-.category-meeting {
+.category {
   box-sizing: border-box;
   position: absolute;
   width: 375px;
@@ -49,8 +49,8 @@
 }
 .custom-box {
   position: absolute;
-  width: 375px;
-  height: 280px;
+  width: 300px;
+  height: 250px;
   left: 50%;
   top: 40%;
   transform: translate(-50%, 25%);
@@ -72,12 +72,12 @@
   width: 346px;
   height: 28px;
   left: 50%;
-  top: -230px;
+  top: -220px;
   transform: translateX(-50%); /* 가로 방향으로 가운데 정렬 */
   font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
-  font-size: 32px;
+  font-size: 27px;
   line-height: 39px;
   text-align: center;
   color: #545454;
@@ -116,18 +116,13 @@
   margin-top: 10px;
 }
 
-
 .social_icon {
   display: flex;
   align-items: center;
-  position: absolute;
   left: 50%;
-  transform: translateX(-50%);
 }
 .social_icon a {
   margin-right: 10px;
-  
- 
 }
 .social_icon img {
   width: 30px; 
