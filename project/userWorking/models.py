@@ -18,6 +18,7 @@ class UserWorking(models.Model):
     meetingGuest = models.IntegerField(default=0)
     supportHost = models.IntegerField(default=0)
     supportGuest = models.IntegerField(default=0)
+    score = models.IntegerField(default=0)
 
     def __str__(self):
         return self.user.userName

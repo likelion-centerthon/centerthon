@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 {% with artist=artist alerts=alerts %}
-{%load static%}
+{% load static %}
 {% block content %}
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    <img class="back" src="{% static 'images/back.png'%}" alt="이전" ></img>
+    <img class="back" src="{% static 'images/back.png'%}" alt="이전" onclick="goBack()"></img>
 
     <select class="post-crt-select" name="category" value="{{ post.category }}">
         <option value="가수" selected>게시판을 선택해 주세요</option>
@@ -23,5 +23,11 @@
     </div>
     <button type="submit"  class="write-Button">작성하기</button>
 </form>
+
+<script>
+        function goBack() {
+          window.history.back();
+        }
+        </script>
 {% endblock %}
 {% endwith %}
