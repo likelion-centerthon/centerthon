@@ -70,7 +70,7 @@ TEMPLATES = [
             ],
             'libraries': {
                 'custom_filters': 'support.templatetags.custom_filters',
-                }
+            }
         },
     },
 ]
