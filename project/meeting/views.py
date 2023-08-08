@@ -138,8 +138,15 @@ def writedMeetingList(request, artist_id):
     search = request.GET.get('search')
 
     meetings = Meeting.objects.filter(writeUser=user, artist=artist)
+
     if search:
-        meetings = meetings.filter(members__User__userName__icontains=search).distinct()
+        filtered_meetings = []
+        for meeting in meetings:
+            filtered_members = meeting.members.filter(memberState='대기')
+            if filtered_members.exists():
+                filtered_meetings.append(meeting)
+
+        meetings = filtered_meetings
 
     return render(request, 'html/writed_meeting_list.html', {'meetings': meetings, 'artist_id': artist_id, 'artists': artists, 'artist': artist, 'search': search, 'alerts':alerts})
 
