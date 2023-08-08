@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'base_meeting.html' %}
 {% with artist=artist alerts=alerts %}
 {% block content %}
 
@@ -13,7 +13,46 @@
 </div>
 
 
-    {{ artist.artistName }}
+<h1>{{ artist.name }}의 아티스트 정보</h1>
+
+<!-- 기존 내용 -->
+
+<div class=e0_335>
+    <div class=e0_344>
+      <div class="e0_345"></div>
+      <div class=e0_346>
+        <div class="e0_347"></div>
+        <div class="e0_348"></div>
+      </div><span  class="e0_349">36K</span>
+      <div class=e0_350>
+        <div class=e0_351>
+          <div class="e0_352"></div>
+        </div>
+      </div>
+      <div class="e0_353"></div><span  class="e0_354">2023.7.10</span>
+    </div>
+    <div class=e0_355>
+      <div class="e0_356"></div>
+      <div class=e0_357>
+        <div class="e0_358"></div>
+        <div class="e0_359"></div>
+      </div><span  class="e0_360">36K</span>
+      <div class=e0_361>
+        <div class=e0_362>
+          <div class="e0_363"></div>
+        </div>
+      </div>
+      <div class="e0_364"></div><span  class="e0_365">2023.7.10</span>
+    </div>
+  </div>
+
+<!-- 인스타그램 피드 렌더링 -->
+<h2>인스타그램 피드</h2>
+<div>
+    {% for image_url in feed_data %}
+        <img src="{{ image_url }}" alt="인스타그램 이미지">
+    {% endfor %}
+</div>
 
 {% endblock %}
 {% endwith %}
