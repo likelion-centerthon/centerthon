@@ -38,39 +38,13 @@
     color: #545454;
     line-height: 10px;
   }
-  .btn-select::after {
-    content: "";
-   
-    width: 30;
-    height: 40;
-    border-left: 12px solid transparent;
-    border-right: 12px solid transparent;
-    border-top:12px solid #d9d9d9;
-    transform: translateY(-90%);
-    pointer-events: none;
-
-   
  
-  }
   .btn-select:active{
     box-shadow: 1px 1px 0 rgb(0,0,0,0.5);
     position: relative;
     top:2px;
   }
-  .btn-select::after {
-    content: "";
 
-    width: 30;
-    height: 40;
-    border-left: 12px solid transparent;
-    border-right: 12px solid transparent;
-    border-top:12px solid #d9d9d9;
-    transform: translateY(-90%);
-    pointer-events: none;
-
-
-
-  }
   .btn-select:active{
     box-shadow: 1px 1px 0 rgb(0,0,0,0.5);
     position: relative;

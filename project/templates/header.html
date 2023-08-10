@@ -1,12 +1,13 @@
 {% load static %}
 <div class="header">
+ 
   <form
     method="get"
     action="{% url 'artist:subscribe_list' category='none' %}"
   >
     {% csrf_token %}
     <button class="btn-select" type="submit">
-      {{ artist.artistName }}
+      &nbsp;&nbsp; {{ artist.artistName }}&nbsp;•••
     </button>
   </form>
           <div class="icon">

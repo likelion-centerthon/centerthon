@@ -2,16 +2,15 @@
 {% with artist=artist alerts=alerts %}
 {% block content %}
 
-<div class="category">
-    <form method="post" action="{% url 'artist:select_artist' pk=artist.pk %}">
-        {% csrf_token %}
-    <button class="all">아티스트 정보</button>
+<div class="support_list_category">
+  <form method="post" action="{% url 'artist:select_artist' pk=artist.pk %}">
+      {% csrf_token %}
+  <button class="allsupport"  style="width:160px;font-weight: 1000;margin-left: 15px;">아티스트 정보</button>
 
 <form method="post" action="{% url 'artist:artist_sns' pk=artist.pk %}">
-    {% csrf_token %}
-    <button class="mysupport">SNS 보기</button>
+  {% csrf_token %}
+  <button class="mysupport"  style="width:160px;font-weight: 1000;margin-left: 15px;">SNS 보기</button>
 </div>
-
 
 <h1>{{ artist.name }}의 아티스트 정보</h1>
 

@@ -3,9 +3,9 @@
 {% block content %}
 {% load custom_filters %}
 
-<div style="margin-bottom:5px;" class="support_list_category">
-    <button class="allsupport" onclick="location.href='{% url 'support:support_list' pk=artist.pk %}'">서포트 전체</button>
-    <button class="mysupport" onclick="location.href='{% url 'support:my_support_list' pk=artist.pk %}'">내가 참여한 서포트</button>
+<div style="margin-bottom:5px; " class="support_list_category">
+    <button class="allsupport" id ="all"  style="width:160px;font-weight: 1000;margin-left: 15px;"onclick="location.href='{% url 'support:support_list' pk=artist.pk %}'">서포트 전체</button>
+    <button class="mysupport" id="my" style="width:160px;font-weight: 1000;margin-left: 15px;" onclick="location.href='{% url 'support:my_support_list' pk=artist.pk %}'">참여한 서포트</button>
 </div>
 <div class="support_button">
     <button class="all_button" onclick="location.href='{% url 'support:support_list' pk=artist.pk %}'">진행중</button>
@@ -24,9 +24,7 @@
         </div>
         <div class="support_percent_box" id="completionBox" >
 
-            {{support.balanceAmt|avg:support.fundraising}}<span style="font-size: 17px">%</span>
-
-       
+            <span style="font-size: 30px">{{support.balanceAmt|avg:support.fundraising}}</span><span style="font-size: 17px">%</span>
         </div>
         {%endwith%}
     </div>
@@ -35,3 +33,37 @@
 
 {% endblock %}
 {% endwith %}
+<script type="text/javascript">
+    const allbutton=document.getElementById('all');
+    const endbutton=document.getElementById('my');
+    const writebutton=document.querySelector('.write_button');
+    const allsupportButton = document.querySelector('.allsupport');
+    const mysupportButton = document.querySelector('.mysupport');
+
+    allButton.addEventListener('click', function(){
+        allButton.style.border = '1px solid #bc67ff';
+        endButton.style.border = 'none';
+        writeButton.style.border = 'none';
+    });
+    
+    endButton.addEventListener('click',function(){
+        allButton.style.border = 'none';
+        endButton.style.border = '1px solid #bc67ff';
+        writeButton.style.border = 'none';
+    });
+    
+    writeButton.addEventListener('click',function(){
+        allButton.style.border = 'none';
+        endButton.style.border = 'none';
+        writeButton.style.border = '1px solid #bc67ff';
+    });
+    allsupportButton.addEventListener('click', function(){
+        allsupportButton.style.borderBottom = '2px solid #bc67ff';
+        mysupportButton.style.borderBottom = 'none';
+    });
+
+    mysupportButton.addEventListener('click', function(){
+        allsupportButton.style.borderBottom = 'none';
+        mysupportButton.style.borderBottom = '2px solid #bc67ff';
+    });
+</script>

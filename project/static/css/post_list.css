@@ -17,11 +17,11 @@
 .post-title {
   width: 40px;
   height: 22px;
-overflow: hidden;
+  overflow: hidden;
   font-family: "Inter";
   font-style: normal;
   font-weight: 400;
-  font-size: 18px;
+  font-size: 20px;
   line-height: 22px;
 
   color: #000000;

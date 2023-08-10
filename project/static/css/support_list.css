@@ -15,37 +15,34 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
-/*서포트 전체, 내가 참여한 서포트*/
-.support_list_category {
+ /*서포트 전체, 내가 참여한 서포트*/
+ .support_list_category {
   box-sizing: border-box;
   height: 60px;
   background: #fff;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
-  width: 373px;
+  width: 377px;
 }
+
 .allsupport,
 .mysupport {
   font-family: "Inter";
   font-style: normal;
   font-weight: 700;
-  font-size: 18px;
+  font-size: 19px;
   line-height: 22px;
   text-align: center;
   color: #000000;
   font-family: "Inter";
   font-style: normal;
-  font-weight: 700;;
+  font-weight: 900;
   box-sizing: border-box;
-  width: 150px;
+  width: 160px;
   height: 60px;
   background: #ffffff;
   border: none;
-  margin-left:15px;
-}
-
-.mysupport {
-  width: 170px;
+  
 }
 
 .support_list_category button:hover {
@@ -84,9 +81,11 @@
 .support_list_box{
   display: flex;
   margin: 10px 20px;
-  border: 1px solid #333333;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  box-sizing: border-box;
+  background: #ffffff;
   border-radius: 16px;
+  margin-bottom: 16px;
   padding: 20px;
   font-family: "Poppins";
   font-style: normal;
@@ -112,7 +111,7 @@
 .spt_list_h2 {
   font-size: 20px;
   line-height: 150%;
-  color: #00a9ff;
+  color: #bc67ff;
   margin-top: -10px;
 }
 /*서포트 퍼센트 박스*/

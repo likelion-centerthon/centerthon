@@ -53,14 +53,13 @@
 }
 input::placeholder,
 textarea::placeholder {
+  text-indent: 10px;
   font-family: "Poppins";
   font-style: normal;
   font-weight: 500;
-  font-size: 18px;
-  line-height: 150%;
-  text-align: center;
-  text-align: left;
-  color: #b3b1b0;
+  font-size: 20px;
+  line-height: 200%;
+  color: #333333;
 }
 textarea::placeholder {
   padding-top: 2px;

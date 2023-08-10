@@ -7,14 +7,16 @@
     class="allsupport"
     type="submit"
     onclick="location.href='{% url 'post:post_list' artist_pk=artist.pk category='가수' %}'"
-  >
+    style="width:160px;font-weight: 1000;margin-left: 15px;"
+    >
     아티스트 이야기
   </button>
   <button
     class="mysupport"
     type="submit"
     onclick="location.href='{% url 'post:post_list' artist_pk=artist.pk category='자유' %}'"
-  >
+    style="width:160px;font-weight: 1000;margin-left: 15px;"
+    >
     일상 이야기
   </button>
 </div>
@@ -22,7 +24,7 @@
 <div class="post-list-container">
   {% for post in posts %}
   <div class="post-list">
-    <a class="post-title" href="{% url 'post:post_detail' pk=post.pk%}"
+    <a class="post-title" style=" font-size: 20px;" href="{% url 'post:post_detail' pk=post.pk%}"
       >{{ post.title }}</a
     >
     {% if post.image %}
@@ -52,7 +54,7 @@
 </div>
 <form method="get" action="{% url 'post:create_post' artist_pk=artist.pk %}">
   {% csrf_token %}
-  <button class="post-button" type="submit" >
+  <button class="post-button" type="submit" style="top:500px;" >
     게시글 작성하기
   </button>
 </form>
