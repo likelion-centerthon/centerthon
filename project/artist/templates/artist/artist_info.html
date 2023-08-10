@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'base_meeting.html' %}
 {% load static %}
 {% with artist=artist alerts=alerts %}
 {% block content %}
@@ -12,24 +12,21 @@
     <button class="mysupport"  style="width:160px;font-weight: 1000;margin-left: 15px;">SNS 보기</button>
 </div>
 
-
+<div class="artist_name"> 아티스트  {{ artist.artistName }}</div>
 <div class="artist_image">
     <img src="{{ artist.artistImage.url }}">
 </div>
 <div class="custom-box" >
     <div class="artist_info">
-        <div class="artist_name"> 아티스트  {{ artist.artistName }}</div>
-        <div class="artist_members"> 멤버 {{ artist.members }}</div>
-        <div class="artist_debuteDate"> 데뷔 {{ artist.debutDate }}</div>
-        <div class="artist_fanName"> 팬덤 {{ artist.fanName }}</div>
-        <div class="artist_agency"> 회사 {{ artist.agency }}</div>
-        <div class="artist_social">
+        <div class="artist_members"> <strong>멤버</strong>  {{ artist.members }}</div>
+        <div class="artist_debuteDate"> <strong>데뷔</strong> {{ artist.debutDate }}</div>
+        <div class="artist_fanName"> <strong>팬덤</strong> {{ artist.fanName }}</div>
+        <div class="artist_agency"> <strong>회사</strong> {{ artist.agency }}</div>
             <div class="social_icon">
-                <div>인스타</div><a href="{{ artist.instagram }}" target="_blank"><img src="{% static 'images/instagram_icon.png' %}" alt="인스타그램"></a>
-                <div>트위터 </div><a href="{{ artist.twitter }}" target="_blank"><img src="{% static 'images/twitter_icon.png' %}" alt="트위터"></a>
-                <div>유튜브 </div> <a href="{{ artist.youtube }}" target="_blank"><img src="{% static 'images/youtube_icon.png' %}" alt="유튜브"></a>
+                <div><strong>인스타</strong></div><a href="{{ artist.instagram }}" target="_blank"><img src="{% static 'images/instagram_icon.png' %}" alt="인스타그램"></a>
+                <div><strong>트위터</strong></div><a href="{{ artist.twitter }}" target="_blank"><img src="{% static 'images/twitter_icon.png' %}" alt="트위터"></a>
+                <div><strong>유튜브</strong></div><a href="{{ artist.youtube }}" target="_blank"><img src="{% static 'images/youtube_icon.png' %}" alt="유튜브"></a>
             </div>
-        </div>
     </div>
 </div>
 {% endblock %}

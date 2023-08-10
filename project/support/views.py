@@ -71,7 +71,13 @@ def support_dtl(request, pk, spt_pk):
     alerts=Alert.objects.filter(user=request.user)
 
     if request.method=='GET':
-        return render(request, './support/support_dtl.html', {"support":support, "artist":artist, "support_form":support_form, "alerts":alerts})
+        try:
+            banks=Bank.objects.filter(support=support, inoutType='출금').order_by('creditTime')
+            return render(request, './support/support_dtl.html',
+                          {"support": support, "artist": artist, "support_form": support_form, "alerts": alerts,
+                           "banks": banks})
+        except Bank.DoesNotExist:
+            return render(request, './support/support_dtl.html', {"support":support, "artist":artist, "support_form":support_form, "alerts":alerts, "banks":None})
 
     if request.method=='POST':
         form_type=request.POST.get('form_type')

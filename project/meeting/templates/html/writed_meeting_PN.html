@@ -15,7 +15,7 @@
     </div>
 
     <form class="meeting-search-form" method="get" action="{% url 'meeting:subPNList' artist_id=artist_id %}">
-        <label for="searchInput">검색:</label>
+        <label for="searchInput">보호자 검색:</label>
         <input type="text" id="searchInput" name="search" placeholder="참석자명을 검색할 수 있어요">
         <button type="submit">검색</button>
     </form>
@@ -29,16 +29,15 @@
                         {% for meetingMember in meeting.members.all %}
                             {% if meetingMember.memberState == "승인" %}
                                 {% if not search or search in meetingMember.User.userName %}
-                                    <li>
+                    <div>
                                         <h3>{{ meetingMember }}</h3>
                                         <p>{{ meetingMember.User.subPhoneNumber }}</p>
-                                    </li>
+                    </div>
                                 {% endif %}
                             {% endif %}
                         {% endfor %}
                     </div>
                 {% else %}
-                    <p>수락한 모임원이 없습니다.</p>
                 {% endif %}
                 </div>
         {% empty %}

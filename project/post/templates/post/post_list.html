@@ -34,21 +34,6 @@
       <h2 class="post-name">{{ post.author.userName }}</h2>
       <h2 class="post-time">{{ post.regTime|date:"Y.m.d H:i" }}</h2>
     </div>
-    <div style="display: flex; position: row; margin-left: 140px">
-      {% if request.user == post.author %}
-      <form method="get" action="{% url 'post:edit_post' pk=post.pk %}">
-        {% csrf_token %}
-        <button class="post-modify" ]type="submit">수정</button>
-      </form>
-
-      <form method="get" action="{% url 'post:delete_post' pk=post.pk %}">
-        {% csrf_token %}
-        <button class="post-delete" type="submit" style="margin-left: 3px">
-          삭제
-        </button>
-      </form>
-      {% endif %}
-    </div>
   </div>
   {% endfor %}
 </div>

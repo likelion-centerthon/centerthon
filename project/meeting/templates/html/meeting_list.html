@@ -17,11 +17,11 @@
 
 
     <h2 class="title-meeting"> 덕질하기 좋은날 </h2>
-    
-    <p class="ment-meeting"> {{ artist.artistName }}을 좋아하는 
-        <br/> 사람들과 다양한 이야기를 
+
+    <p class="ment-meeting"> {{ artist.artistName }}을 좋아하는
+        <br/> 사람들과 다양한 이야기를
         <br/> 나누어보세요!</p>
- 
+
 
     <div class="artist_image_2">
         {% if artist.artistImage %}
@@ -37,7 +37,10 @@
                     {% else %}
                         <p>No image available</p>
                     {% endif %}
-                    <p><a href="{% url 'meeting:meeting_detail' meeting_id=meeting.id artist_id=artist_id %}">{{ meeting.title }}</a>             {{ meeting.peopleNm }}명</p>
+                    <div>
+                    <p><a href="{% url 'meeting:meeting_detail' meeting_id=meeting.id artist_id=artist_id %}">{{ meeting.title }}</a>
+                        </div>
+                    <div>{{ meeting.peopleNm }}명</p></div>
                 </div>
             {% endfor %}
         </div>

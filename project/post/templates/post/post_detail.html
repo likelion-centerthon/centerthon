@@ -3,7 +3,7 @@
 {% with artist=post.artist alerts=alerts %}
 {% block content %}
 
-<img class="back" src="{% static 'images/back.png'%}" alt="이전">
+<img class="back" src="{% static 'images/back.png'%}" alt="이전" onclick="goBack()">
 <div class="post-dtl-container">
     <div class="post-dtl-title" style="margin-left: 30px;">{{ post.title }}</div>
 
@@ -17,6 +17,23 @@
     <img class="post-dtl-img" src="{{ post.image.url }}" width="150" height="100">
     {% endif %}
     <div class="post-dtl-contents">{{ post.contents }}</div>
+
+    <div style="display: flex; position: row; margin-left: 140px">
+      {% if request.user == post.author %}
+      <form method="get" action="{% url 'post:edit_post' pk=post.pk %}">
+        {% csrf_token %}
+        <button class="post-modify" ]type="submit">수정</button>
+      </form>
+
+      <form method="get" action="{% url 'post:delete_post' pk=post.pk %}">
+        {% csrf_token %}
+        <button class="post-delete" type="submit" style="margin-left: 3px">
+          삭제
+        </button>
+      </form>
+      {% endif %}
+    </div>
+
 </div>
 <div class="post-dtl-comment">댓글</div>
 
@@ -47,6 +64,11 @@
     </div>
     
 </form>
+<script>
+        function goBack() {
+          window.history.back();
+        }
+        </script>
 
 {% endblock %}
 {% endwith %}
