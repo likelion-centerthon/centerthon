@@ -3,7 +3,7 @@
 {% with artist=artist alerts=alerts %}
 {% block content %}
 <div style="  justify-content:row;  display: flex; ">
-  <img class="back" src="{% static 'images/back.png'%}" alt="이전"  href></img>
+  <img class="back" src="{% static 'images/back.png'%}" alt="이전"  onclick="goBack()"></img>
       <h1 class="support_form_h1" style="margin-left:-15px; ">모금 정보 작성하기</h1>
   </div>
 <h2 class="support_form_h2"style="  margin:3px 0px 3px 20px;">입금 후 모금 정보를 작성해주세요</h2>
@@ -50,7 +50,9 @@ function checkInputs() {
 inputs.forEach(function(input){
   input.addEventListener("input", checkInputs);
 });
-
+function goBack() {
+  window.history.back();
+}
 </script>
 
 

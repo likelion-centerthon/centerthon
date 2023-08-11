@@ -2,23 +2,18 @@
 {% load static %}
 {% with artist=post.artist alerts=alerts %}
 {% block content %}
-
+<div style="  justify-content:row;  display: flex; ">
 <img class="back" src="{% static 'images/back.png'%}" alt="이전" onclick="goBack()">
+<h1 class="support_dtl_h1" style=" margin-left:-15px;">{{ post.title }}</h1>
+</div>
 <div class="post-dtl-container">
     <div class="post-dtl-title" style="margin-left: 30px;">{{ post.title }}</div>
 
     <div style="display: flex; position: row; margin: 5px 0px 0px 30px">
         <div class="post-dtl-name">{{ post.author.userName }}</div>
-        <div class="post-dtl-regTime" style="margin-left: 120px;">{{ post.regTime|date:"Y.m.d H:i" }}</div>
+        <div class="post-dtl-regTime" style="margin-left: 110px;">{{ post.regTime|date:"Y.m.d H:i" }}</div>
     </div>
-    <div class="post-dtl-line"></div>
-
-    {% if post.image %}
-    <img class="post-dtl-img" src="{{ post.image.url }}" width="150" height="100">
-    {% endif %}
-    <div class="post-dtl-contents">{{ post.contents }}</div>
-
-    <div style="display: flex; position: row; margin-left: 140px">
+    <div style="display: flex; position: row; margin-left: 240px; margin-top:10px;">
       {% if request.user == post.author %}
       <form method="get" action="{% url 'post:edit_post' pk=post.pk %}">
         {% csrf_token %}
@@ -33,41 +28,51 @@
       </form>
       {% endif %}
     </div>
+    <div class="post-dtl-line"></div>
+
+    {% if post.image %}
+    <img class="post-dtl-img" src="{{ post.image.url }}" width="150" height="100">
+    {% endif %}
+    <div class="post-dtl-contents">{{ post.contents }}</div>
+
+    
 
 </div>
-<div class="post-dtl-comment">댓글</div>
+
 
 <div class="post-comment-container">
+  <form method="post" action="{% url 'post:create_comment' pk=post.pk %}">
+    {% csrf_token %}
+   
+    <div style="display: flex; margin-left:2px;  ">
+        <input class="post-dtl-input" type="text" name="contents" value="{{ comment.contents }}" placeholder="클릭하여 댓글 작성하기">
+        <button class="post-dtl-button" type="submit">작성</button>
+    </div>
+    
+  </form>
     {% for comment in comments %}
     <div class="post-comment-box">
-        <div style="display: flex; position: row; margin: 10px 0px 0px 20px;">
+        <div style="display: flex; position: row; margin: 5px 0px 0px 20px;">
             <div>{{ comment.author.userName }}</div>
             <div style="color: #858585; margin-left: 5px;">{{ comment.regTime|date:"Y.m.d H:i" }}</div>
             {% if request.user == comment.author %}
             <form method="get" action="{% url 'post:delete_comment' pk=comment.pk %}">
                 {% csrf_token %}
-                <button type="submit" style="color: red; margin-left: 30px;">삭제하기</button>
+                <button type="submit" style="color: red; margin-left: 30px; font-size:16px;">삭제하기</button>
             </form>
             {% endif %}
         </div>
-        <div style="font-size: 18px; margin: -2px 0px 0px 20px;">{{ comment.contents }}</div>
+        <div style="font-size: 20px; margin: -2px 0px 0px 20px;">{{ comment.contents }}</div>
     </div>
     {% endfor %}
 </div>
 
-<form method="post" action="{% url 'post:create_comment' pk=post.pk %}">
-    {% csrf_token %}
-   
-    <div style="display: flex; margin-left:20px; margin-top:-150px; ">
-        <input class="post-dtl-input" type="text" name="contents" value="{{ comment.contents }}" placeholder="클릭하여 댓글 작성하기">
-        <button class="post-dtl-button" type="submit">작성</button>
-    </div>
-    
-</form>
+
 <script>
         function goBack() {
           window.history.back();
         }
+       
         </script>
 
 {% endblock %}

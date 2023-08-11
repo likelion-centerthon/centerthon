@@ -4,9 +4,9 @@
 {% block content %}
 {% load custom_filters %}
 
-<div style="margin-bottom:5px;" class="support_list_category">
+<div style="margin-bottom:5px; display:flex; align-items:center;" class="support_list_category">
     <button class="allsupport" style="width:160px; margin-left:15px; font-size:20px;" onclick="location.href='{% url 'support:support_list' pk=artist.pk %}'">서포트 전체</button>
-    <button class="mysupport" style="width:160px; margin-left:15px; font-size:20px;" onclick="location.href='{% url 'support:my_support_list' pk=artist.pk %}'">참여한 서포트</button>
+    <button class="mysupport" style="width:160px; margin-left:22px; font-size:20px;" onclick="location.href='{% url 'support:my_support_list' pk=artist.pk %}'">참여 서포트</button>
 </div>
 <div class="support_button">
     <button class="all_button" onclick="location.href='{% url 'support:support_list' pk=artist.pk %}'">진행중</button>
@@ -38,7 +38,7 @@
     </div>
     {% endfor %}
 </div>
-<button class="start-Button" style="background: #bc67ff; margin-top:200px;" onclick="location.href='{% url 'support:create_support' pk=artist.pk %}'">작성</button>
+<button class="start-Button" style="margin-left: 27px;background: #bc67ff; margin-top:430px;font-size:22px;" onclick="location.href='{% url 'support:create_support' pk=artist.pk %}'">서포트 작성하기</button>
 
 {% endblock %}
 {% endwith %}

@@ -1,11 +1,12 @@
 {% extends 'base.html' %} 
+{% load static%}
 {% with artist=artist alerts=alerts %} 
 {% block content %}
 
 <div class="support_list_category">
   <button
     class="allsupport"
-    type="submit"
+\    type="submit"
     onclick="location.href='{% url 'post:post_list' artist_pk=artist.pk category='가수' %}'"
     style="width:160px; margin-left:15px; font-size:20px;"
     >
@@ -20,9 +21,14 @@
     일상 이야기
   </button>
 </div>
-
+<div class="support_button">
+  <div  style="margin-left:285px; margin-top:16px;" >
+      <a href="#;" onClick="zoomIn();"><img style="width:20px; height:20px;"src="{% static 'images/zoomin.png'%}" alt="확대"></a>
+        <a href="#;" onClick="zoomOut();"><img style="width:20px; height:20px;"src="{% static 'images/zoomout.png'%}" alt="축소"></a>
+      </div>
+</div>
 <div class="post-list-container" >
-  {% for post in posts %}
+{% for post in posts %}
   <div class="post-list">
     <a class="post-title" href="{% url 'post:post_detail' pk=post.pk%}"
       >{{ post.title }}</a
@@ -39,9 +45,8 @@
 </div>
 <form method="get" action="{% url 'post:create_post' artist_pk=artist.pk %}">
   {% csrf_token %}
-  <button class="post-button" type="submit" >
-    게시글 작성하기
-  </button>
+  <button class="start-Button" style="margin-left: 27px;background: #bc67ff; margin-top:419px;font-size:22px;" onclick="location.href='{% url 'support:create_support' pk=artist.pk %}'">게시글 작성하기</button>
+
 </form>
 {% endblock %}
- {% endwith %}
+{% endwith %}  

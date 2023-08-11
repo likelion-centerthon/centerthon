@@ -6,8 +6,9 @@
 
 <div style="  justify-content:row;  display: flex; ">
 <img class="back" src="{% static 'images/back.png'%}" alt="이전"  onclick="goBack()"></img>
-    <h1 class="support_dtl_h1" style=" margin-left:-15px;">상세조회</h1>
-</div>
+    <h1 class="support_dtl_h1" style=" margin-left:-17px;">상세조회</h1>
+  
+  </div>
     <span id="percent-content" style="display:none;">{{support.balanceAmt|avg:support.fundraising}}</span>
     <div class="percent">
         <div class="percent-bar" id="percent-bar-content"></div>
@@ -23,7 +24,7 @@
     <div class="goal">{{support.fundraising}}</div>
     <div class="detail">{{support.body}}</div>
     {% if support.image %}
-    <img src={{support.image.url}} class="support-img"  alt="Support Image">
+    <img src={{support.image.url}} style="width:1000px height:500px;"  alt="Support Image">
     {% endif %}
   <div  style="position: relative; border:none; margin:-1px 0px -55px 0px;">
     <div class="account">{{support.bank}} {{support.account}}</div>
@@ -47,48 +48,49 @@
             {% csrf_token %}
             <input type="hidden" name="form_type" value="closing">
             {% if not warning %}
-            <button style=" margin-top: 10px;"class="start-Button"  type="submit">마감하기</button>
+            <button style=" margin-top: 10px;"class="start-Button" style="background:#bc67ff; margin-left:10px;"  type="submit">마감하기</button>
             {% endif %}
             {% if warning %}
-            <button style=" margin-top: 10px;" class="start-Button" style=" margin-top: 200px;"  type="submit">{{warning}}</button>
+            <button style=" margin-top: 10px;" class="start-Button" style=" margin-top: 200px;margin-left:10px;"  type="submit">{{warning}}</button>
             {% endif %}
         </form>
         <div class="line"></div>
 
         <p class="text" >모금자 정보</p>
         <div class="supportinfo-container">
-            {% for form in support_form %}
-            <div class="info-text">
-                <div style="margin-bottom:10px; border: 1px solid #333333; filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)); border-radius: 16px; padding: 5px; ">
-                    <p style="font-size:20px;" >{{form.depositor}} | {{form.credit}}원</p>
-                    <p style="color: #949494">{{ form.creditTime|date:"Y.m.d H:i" }}</p>
-      
-                    {% if form.status == '대기' %}
-                    <div  onclick="showPopup()" style="color:red; margin: -30px 0px 20px 280px;font-size:20px; ">대기 </div>
-                    <div id="pop_info_1" class="pop_wrap" style="display: none">
-                      <div class="pop_inner">
-                        <p class="dsc">입금 확인이 되었나요?</p>
-                        <form method="post" action="{% url 'support:support_dtl' pk=artist.pk spt_pk=support.pk %}">
-                            {% csrf_token %}
-                            <input type="hidden" name="form_type" value="wait_status">
-                            <input type="hidden" name="form_pk" value="{{form.pk}}">
-                            <div style="display: flex; align-items: center; margin-left: 50px;"> 
-                                <input type="submit" class="btn_yes" value="네" style="color:blue; outline:none;">
-                                <button type="button" class="btn_no" onclick="hidePopup()" style="margin-left: 10px;">아니요</button>
-                            </div>
-                        </form>
-                    </div>
-                    
-                    </div>
-                    {% endif %}
-                  
-                    {% if not form.status == '대기' %}
-                    <div style="color:blue; margin: -30px 0px 20px 280px; font-size:20px;">{{form.status}}</div>
-                    {% endif %}               
-                 </div>
-            </div>
-       
-        {% endfor %}
+         <!-- 모금자 정보 for문 -->
+{% for form in support_form %}
+<div class="info-text">
+    <div style="margin-bottom:10px; border: 1px solid #333333; filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)); border-radius: 16px; padding: 5px; ">
+        <p style="font-size:20px;" >{{form.depositor}} | {{form.credit}}원</p>
+        <p style="color: #949494; font-size:18px;">{{ form.creditTime|date:"Y.m.d H:i" }}</p>
+
+        {% if form.status == '대기' %}
+        <div  onclick="showPopup('{{ form.pk }}')" style="color:red; margin: -35px 0px 20px 280px;font-size:20px; cursor: pointer;">대기 </div>
+        <div id="pop_info_{{ form.pk }}" class="pop_wrap" style="display: none">
+          <div class="pop_inner">
+            <p class="dsc">입금 확인이 되었나요?</p>
+            <form method="post" action="{% url 'support:support_dtl' pk=artist.pk spt_pk=support.pk %}">
+                {% csrf_token %}
+                <input type="hidden" name="form_type" value="wait_status">
+                <input type="hidden" name="form_pk" value="{{ form.pk }}">
+                <div style="display: flex; align-items: center; margin-left: 50px;"> 
+                    <input type="submit" class="btn_yes" value="네" style="color:blue; outline:none;">
+                    <button type="button" class="btn_no" onclick="hidePopup('{{ form.pk }}')" style="margin-left: 10px;">아니요</button>
+                </div>
+            </form>
+        </div>
+        
+        </div>
+        {% endif %}
+
+        {% if not form.status == '대기' %}
+        <div style="color:blue; margin: -30px 0px 20px 280px; font-size:20px;">{{form.status}}</div>
+        {% endif %}               
+     </div>
+</div>
+{% endfor %}
+
     </div>
         {% endif %}
 {% endif %}
@@ -104,10 +106,10 @@
   {% for bank in banks %}
   <div style="margin-bottom:10px; border: 1px solid #333333; filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)); border-radius: 16px; padding: 5px; ">
     <div style="display:flex; position:row;">
-    <input style="font-size:17px;" type="text" class="form-input" value="{{ bank.depositor }}" readonly><br>
-    <input style="font-size:17px; margin-top:10px;" type="text" class="form-input" value="{{ bank.credit }} 출금" readonly><br>
+    <input style="font-size:20px;" type="text" class="form-input" value="{{ bank.depositor }}" readonly><br>
+    <input style="font-size:18px; margin-top:10px; margin-left:-20px;" type="text" class="form-input" value="{{ bank.credit }} 출금" readonly><br>
     </div>
-    <input style="color: #949494" type="text" class="form-input" value="{{ bank.creditTime|date:"Y-m-d A h:i" }}" readonly><br>
+    <input style="color: #949494; font-size:18px;" type="text" class="form-input" value="{{ bank.creditTime|date:"Y-m-d A h:i" }}" readonly><br>
   </div>
   {% endfor %}
 </div>
@@ -127,18 +129,15 @@
   }
   calcPercent();
 
-    function showPopup() {
-      const popup = document.getElementById('pop_info_1');
-      popup.style.display = 'block';
-      const waitingText = document.querySelector('.info-text > div > div > div');
-    
-  }
+  function showPopup(formId) {
+    const popup = document.getElementById(`pop_info_${formId}`);
+    popup.style.display = 'block';
+}
 
-  function hidePopup() {
-      const popup = document.getElementById('pop_info_1');
-      popup.style.display = 'none';
-     
-  }
+function hidePopup(formId) {
+    const popup = document.getElementById(`pop_info_${formId}`);
+    popup.style.display = 'none';
+}
 
   //계좌 복사
   document.getElementById("copyButton").addEventListener("click", function () {

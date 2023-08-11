@@ -4,13 +4,13 @@
 {% block content %}
 {% load custom_filters %}
 
-<div style="margin-bottom:5px;" class="support_list_category">
-    <button class="allsupport" style="width:160px; margin-left:15px; font-size:20px;" onclick="location.href='{% url 'support:support_list' pk=artist.pk %}'">서포트 전체</button>
-    <button class="mysupport" style="width:160px; margin-left:15px; font-size:20px;" onclick="location.href='{% url 'support:my_support_list' pk=artist.pk %}'">참여한 서포트</button>
+<div style="margin-bottom:5px; display:flex; align-items:center;" class="support_list_category">
+    <button class="allsupport" id="all"style="width:160px; margin-left:15px; font-size:20px;" onclick="location.href='{% url 'support:support_list' pk=artist.pk %}'">서포트 전체</button>
+    <button class="mysupport" id="my" style="width:160px; margin-left:22px; font-size:20px;" onclick="location.href='{% url 'support:my_support_list' pk=artist.pk %}'">참여 서포트</button>
 </div>
 <div class="support_button">
-    <button class="all_button" onclick="location.href='{% url 'support:support_list' pk=artist.pk %}'">진행중</button>
-    <button class="end_button" onclick="location.href='{% url 'support:support_list_complete' pk=artist.pk %}'">종료</button>
+    <button class="all_button" id="11" onclick="location.href='{% url 'support:support_list' pk=artist.pk %}'">진행중</button>
+    <button class="end_button" id="22" onclick="location.href='{% url 'support:support_list_complete' pk=artist.pk %}'">종료</button>
     <div  style="margin-left:285px; margin-top:-25px;" >
         <a href="#;" onClick="zoomIn();"><img style="width:20px; height:20px;"src="{% static 'images/zoomin.png'%}" alt="확대"></a>
           <a href="#;" onClick="zoomOut();"><img style="width:20px; height:20px;"src="{% static 'images/zoomout.png'%}" alt="축소"></a>
@@ -39,7 +39,18 @@
     </div>
     {% endfor %}
 </div>
-<button class="start-Button" style="background: #bc67ff; margin-top:200px;" onclick="location.href='{% url 'support:create_support' pk=artist.pk %}'">작성</button>
+<button class="start-Button" style="margin-left: 27px;background: #bc67ff; margin-top:430px;font-size:22px;" onclick="location.href='{% url 'support:create_support' pk=artist.pk %}'">서포트 작성하기</button>
+
+<script>
+    const allButton = document.getElementById("#11");
+    const endButton = document.getElementById("#22");
+
+  
+
+    allButton.addEventListener("click", function () {
+        allButton.classList.add("purple-round");
+    });
+</script>
 
 {% endblock %}
 {% endwith %}
