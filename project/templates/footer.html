@@ -10,11 +10,11 @@
       <div class="label">게시글</div>
     </div>
     <div class="group"  onclick="location.href='{% url 'meeting:MeetingList' artist_id=artist.id %}'">
-        <img id="group-img" src="{% static 'images/group.png'%}" alt="그룹 이미지" ></img>
+        <img id="group-img"src="{% static 'images/group.png'%}" alt="그룹 이미지" ></img>
       <div class="label">모임</div>
     </div>
     <div class="support" onclick="location.href='{% url 'support:support_list' pk=artist.pk %}'">
-        <img id="support-img" src="{% static 'images/support.png'%}" alt="그룹 이미지" ></img>
+        <img id="support-img" src="{% static 'images/support.png'%}" alt="서포트 이미지" ></img>
       <div class="label">서포트</div>
     </div>
 

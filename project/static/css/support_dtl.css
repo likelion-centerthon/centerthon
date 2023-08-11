@@ -85,7 +85,7 @@
   margin: 10px 0px 0px 55px;
 }
 .text {
-  width: 200px;
+  display: flex; justify-content: center;  
   font-family: "Poppins";
   font-style: normal;
   font-weight: 500;

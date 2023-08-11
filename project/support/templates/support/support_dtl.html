@@ -5,7 +5,7 @@
 {% load custom_filters %}
 
 <div style="  justify-content:row;  display: flex; ">
-<img class="back" src="{% static 'images/back.png'%}" alt="이전" ></img>
+<img class="back" src="{% static 'images/back.png'%}" alt="이전"  onclick="goBack()"></img>
     <h1 class="support_dtl_h1" style=" margin-left:-15px;">상세조회</h1>
 </div>
     <span id="percent-content" style="display:none;">{{support.balanceAmt|avg:support.fundraising}}</span>
@@ -15,7 +15,7 @@
 
     <!--일반 사용자일 때-->
     {% if support.user == request.user %}
-    <button style="margin-left:20px;"class="modify_button" onclick="location.href='{% url 'support:update_support' pk=artist.pk spt_pk=support.pk %}'">수정</button>
+    <button style="margin-left:285px; "class="modify_button" onclick="location.href='{% url 'support:update_support' pk=artist.pk spt_pk=support.pk %}'">수정</button>
     {% endif %}
 
     <div class="detail-container">
@@ -55,7 +55,7 @@
         </form>
         <div class="line"></div>
 
-        <p class="text"style="margin-left:125px;" >모금자 정보</p>
+        <p class="text" >모금자 정보</p>
         <div class="supportinfo-container">
             {% for form in support_form %}
             <div class="info-text">
@@ -66,16 +66,18 @@
                     {% if form.status == '대기' %}
                     <div  onclick="showPopup()" style="color:red; margin: -30px 0px 20px 280px;font-size:20px; ">대기 </div>
                     <div id="pop_info_1" class="pop_wrap" style="display: none">
-                        <div class="pop_inner">
-                          <p class="dsc">입금 확인이 되었나요?</p>
-                          <form method="post" action="{% url 'support:support_dtl' pk=artist.pk spt_pk=support.pk %}">
+                      <div class="pop_inner">
+                        <p class="dsc">입금 확인이 되었나요?</p>
+                        <form method="post" action="{% url 'support:support_dtl' pk=artist.pk spt_pk=support.pk %}">
                             {% csrf_token %}
                             <input type="hidden" name="form_type" value="wait_status">
                             <input type="hidden" name="form_pk" value="{{form.pk}}">
-                            <input type="submit"  class="btn_yes"  value="네" style="color:blue; outline:none;">
+                            <div style="display: flex; align-items: center; margin-left: 50px;"> 
+                                <input type="submit" class="btn_yes" value="네" style="color:blue; outline:none;">
+                                <button type="button" class="btn_no" onclick="hidePopup()" style="margin-left: 10px;">아니요</button>
+                            </div>
                         </form>
-                          <button type="button" class="btn_no" onclick="hidePopup()">아니요</button>
-                        </div>
+                    </div>
                     
                     </div>
                     {% endif %}
@@ -94,9 +96,9 @@
 {% if support.status == '완료' %}
   <button style="margin-top:20px;"class="start-Button">완료된 서포트입니다</button>
   <div class="line"></div>
-        <p class="text"style="margin-left:125px;" >출금 내역</p>
+  <p class="text" >출금 내역</p>
   {% if not banks %}
-  <div style="  margin:-10px 0px 20px 90px;">출금 내역이 없습니다.</div>
+  <div style=" display: flex; justify-content: center;  ">출금 내역이 없습니다.</div>
   {% endif %}
   <div class="supportinfo-container">
   {% for bank in banks %}
@@ -135,8 +137,7 @@
   function hidePopup() {
       const popup = document.getElementById('pop_info_1');
       popup.style.display = 'none';
-      const waitingText = document.querySelector('.info-text > div > div > div');
-      waitingText.style.color = 'blue';
+     
   }
 
   //계좌 복사
@@ -151,6 +152,9 @@
     alert("계좌 정보가 복사되었습니다.");
   });
 
+  function goBack() {
+    window.history.back();
+  }
   </script>
 {% endblock %}
 {% endwith %}

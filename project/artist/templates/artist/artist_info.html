@@ -6,13 +6,18 @@
 <div class="category">
     <form method="post" action="{% url 'artist:select_artist' pk=artist.pk %}">
         {% csrf_token %}
-        <button class="all">아티스트 정보</button>
+        <button class="all" style="width:160px; margin-left:15px; font-size:20px;">아티스트 정보</button>
     </form>
-
     <form method="post" action="{% url 'artist:artist_sns' pk=artist.pk %}">
         {% csrf_token %}
-        <button class="mysupport">SNS 보기</button>
+    <button class="mysupport" style="width:160px; margin-left:20px; font-size:20px;">SNS 보기</button>
     </form>
+</div>
+<div class="support_button">
+    <div  style="margin-left:285px; margin-top:15px;" >
+        <a href="#;" onClick="zoomIn();"><img style="width:20px; height:20px;"src="{% static 'images/zoomin.png'%}" alt="확대"></a>
+          <a href="#;" onClick="zoomOut();"><img style="width:20px; height:20px;"src="{% static 'images/zoomout.png'%}" alt="축소"></a>
+        </div>
 </div>
 <div class="artist_name"> 아티스트  {{ artist.artistName }}</div>
 <div class="artist_image">

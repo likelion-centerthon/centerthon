@@ -58,7 +58,7 @@
 <form method="post" action="{% url 'post:create_comment' pk=post.pk %}">
     {% csrf_token %}
    
-    <div style="display: flex; margin-left:20px;">
+    <div style="display: flex; margin-left:20px; margin-top:-150px; ">
         <input class="post-dtl-input" type="text" name="contents" value="{{ comment.contents }}" placeholder="클릭하여 댓글 작성하기">
         <button class="post-dtl-button" type="submit">작성</button>
     </div>

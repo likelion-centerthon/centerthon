@@ -2,6 +2,8 @@
 {% load static %}
 {% with artist=artist alerts=alerts %}
 {% block content %}
+<img class="back" src="{% static 'images/back.png'%}" alt="이전" onclick="goBack()"></img>
+
     <h2 class="detail-title-meeting">{{ meeting.title }}</h2>
 
     <div class="meeting-image">
@@ -45,6 +47,10 @@
     {% endif %}
     </div>
     
-
+<script>
+    function goBack() {
+        window.history.back();
+      }
+</script>
 {% endblock %}
 {% endwith %}
