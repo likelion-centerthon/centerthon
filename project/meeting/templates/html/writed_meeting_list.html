@@ -3,9 +3,9 @@
 {% with artist=artist alerts=alerts %}
 {% block content %}
 
-    <div class="category">
-        <button onclick="location.href='{% url 'meeting:MeetingList' artist_id=artist.id %}'">모임 전체</button>
-        <button onclick="location.href='{%url 'meeting:writedMeetingList' artist_id=artist_id  %}'">나의 모임</button>
+    <div style="margin-bottom:5px;" class="support_list_category">
+        <button class ="allsupport" style="width:160px; margin-left:15px; font-size:19px;"onclick="location.href='{% url 'meeting:MeetingList' artist_id=artist.id %}'">모임 전체</button>
+        <button class ="mysupport" style="width:160px; margin-left:10px; font-size:19px;" onclick="location.href='{%url 'meeting:writedMeetingList' artist_id=artist_id  %}'">나의 모임</button>
     </div>
 
     <div class="meeting-button">
