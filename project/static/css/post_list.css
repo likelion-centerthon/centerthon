@@ -1,49 +1,24 @@
-.post-button {
-  width: 312px;
-  height: 60px;
-  background: #bc67ff;
-  border-radius: 30.5px;
-  font-family: "Poppins";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 180%;
-  text-align: center;
-  color: #ffffff;
-  border: none;
-  margin-left:30px;
-  margin-top:400px;
- 
-}
+
 .post-title {
   width: 40px;
   height: 22px;
-overflow: hidden;
-  font-size: 20px;
+  overflow: hidden;
+  font-size: 24px;
   line-height: 22px;
   font-family: "Poppins";
   font-style: normal;
-  font-weight: 450;
+  font-weight: 600;
   color: #000000;
+  margin: 5px 0px 0px 10px;
+  text-decoration: underline;
 }
 .post-img {
   position: absolute;
   width: 56px;
   height: 56px;
-  left:240px;
+  left:270px;
   top:20px;
   object-fit: cover; 
-}
-.post-modify,
-.post-delete {
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 17px;
-  color: #fff;
-  border-radius: 10px;
-  background-color: #858585;
 }
 
 
@@ -58,9 +33,18 @@ overflow: hidden;
   font-size: 18px;
   line-height: 17px;
   color: #858585;
+  margin-left:10px;
+
+}
+.post-name{
+  color: #000000;
+ 
 }
 .post-time{
   width: 200px;
+  margin-left:20px;
+
+
 }
 .post-list {
  
@@ -71,7 +55,9 @@ overflow: hidden;
   margin-bottom: 16px;
   padding: 10px;
   margin: 10px 20px;
-  width:333px;
+  width:340px;
+  padding-top:20px;
+
 }
 .post-list-container {
  
@@ -80,4 +66,5 @@ overflow: hidden;
   flex-direction: column;
   align-items:center;
   margin-top:20px;
+  
 }

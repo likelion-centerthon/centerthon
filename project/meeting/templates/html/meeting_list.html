@@ -5,11 +5,15 @@
 
     <div style="margin-bottom:5px;" class="support_list_category">
         <button class ="allsupport" style="width:160px; margin-left:15px; font-size:19px;" onclick="location.href='{% url 'meeting:MeetingList' artist_id=artist.id %}'">모임 전체</button>
-        <button class ="mysupport" style="width:160px; margin-left:10px; font-size:19px;" onclick="location.href='{% url 'meeting:writedMeetingList' artist_id=artist_id  %}'">나의 모임</button>
+        <button class ="mysupport" style="width:160px; margin-left:22px; font-size:20px;" onclick="location.href='{% url 'meeting:writedMeetingList' artist_id=artist_id  %}'">나의 모임</button>
     </div>
     <div class="meeting-button">
         <button onclick="location.href='{% url 'meeting:MeetingList' artist_id=artist.id   %}'">진행중</button>
         <button onclick="location.href='{%url 'meeting:MeetingCloseList' artist_id=artist_id  %}'">종료</button>
+        <div  style="margin-left:285px; margin-top:-25px;" >
+            <a href="#;" onClick="zoomIn();"><img style="width:20px; height:20px;"src="{% static 'images/zoomin.png'%}" alt="확대"></a>
+              <a href="#;" onClick="zoomOut();"><img style="width:20px; height:20px;"src="{% static 'images/zoomout.png'%}" alt="축소"></a>
+            </div>
     </div>
 
 
@@ -41,10 +45,10 @@
                 </div>
             {% endfor %}
         </div>
-        <div class="create-button-container">
-            <a href="{% url 'meeting:createMeeting' artist_id=artist_id %}" class="create-button">
+        <div class="create-button-container" style="margin-top:205px; margin-left:6px;">
+            <a href="{% url 'meeting:createMeeting' artist_id=artist_id %}" class="create-button" style="width:327px;">
                 <div class="button-rectangle"></div>
-                <p class="button-text">모임 작성하기</p>
+                <p class="button-text" style="font-size:22px; ">모임 작성하기</p>
             </a>
         </div>
 

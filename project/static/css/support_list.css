@@ -1,6 +1,6 @@
 /*스크롤바 커스텀*/
 ::-webkit-scrollbar {
-  width: 2px;
+  width: 0.1px;
 }
 
 ::-webkit-scrollbar-track {
@@ -8,12 +8,12 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 6px;
+  background: #fff;
+  border-radius: 1px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: #fff;
 }
 /*서포트 전체, 내가 참여한 서포트*/
 .support_list_category {
@@ -70,6 +70,7 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  
 
 }
 /*서포트 리스트 각각 div*/
@@ -84,10 +85,11 @@
   font-family: "Poppins";
   font-style: normal;
   font-weight: 500;
+  width:340px;
 }
 /*서포트 제목*/
 .spt_list_h1 {
-  font-size: 24px;
+  font-size:24px;
   line-height: 100%;
   color: #333333;
   margin-top: -5px;
@@ -121,5 +123,15 @@
   font-size: 50px;
   line-height: 150%;
   color: #000000;
+
+}
+
+.support_list_category button .line {
+  border-bottom: 3px solid #000000;
+
+}
+
+.purple-round{
+  border: 1px solid #bc67ff;
 
 }
