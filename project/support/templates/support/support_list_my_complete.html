@@ -10,7 +10,7 @@
 </div>
 <div class="support_button">
     <button class="all_button" onclick="location.href='{% url 'support:support_list' pk=artist.pk %}'">진행중</button>
-    <button class="end_button" onclick="location.href='{% url 'support:support_list_complete' pk=artist.pk %}'">종료</button>
+    <button class="end_button"style="  border: 1px solid #bc67ff;color:#bc67ff;" onclick="location.href='{% url 'support:support_list_complete' pk=artist.pk %}'">종료</button>
   <div  style="margin-left:285px; margin-top:-25px;" >
         <a href="#;" onClick="zoomIn();"><img style="width:20px; height:20px;"src="{% static 'images/zoomin.png'%}" alt="확대"></a>
           <a href="#;" onClick="zoomOut();"><img style="width:20px; height:20px;"src="{% static 'images/zoomout.png'%}" alt="축소"></a>

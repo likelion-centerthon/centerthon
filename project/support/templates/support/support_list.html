@@ -1,50 +1,49 @@
 {% extends 'support_base.html' %}
-{%load static%}
+{% load static %}
 {% with artist=artist alerts=alerts %}
 {% block content %}
 {% load custom_filters %}
 
-
-<div style="margin-bottom:5px; display:flex; align-items:center;" class="support_list_category">
-    <button class="allsupport" style="width:160px; margin-left:15px; font-size:20px;border-bottom:3px solid #000000;" onclick="location.href='{% url 'support:support_list' pk=artist.pk %}'">서포트 전체</button>
-    <button class="mysupport" style="width:160px; margin-left:22px; font-size:20px;" onclick="location.href='{% url 'support:my_support_list' pk=artist.pk %}'">참여 서포트</button>
+<div style="margin-bottom: 5px; display: flex; align-items: center;" class="support_list_category">
+    <button class="allsupport" style="width: 160px; margin-left: 15px; font-size: 20px; border-bottom: 3px solid #000000;" onclick="location.href='{% url 'support:support_list' pk=artist.pk %}'">서포트 전체</button>
+    <button class="mysupport" style="width: 160px; margin-left: 22px; font-size: 20px;" onclick="location.href='{% url 'support:my_support_list' pk=artist.pk %}'">참여 서포트</button>
 </div>
 <div class="support_button">
-    <button class="all_button" id="ing" onclick="location.href='{% url 'support:support_list' pk=artist.pk %}'" >진행중</button>
+    <button class="all_button" style="border: 1px solid #bc67ff; color: #bc67ff;" id="ing" onclick="location.href='{% url 'support:support_list' pk=artist.pk %}'">진행중</button>
     <button class="end_button" id="end" onclick="location.href='{% url 'support:support_list_complete' pk=artist.pk %}'">종료</button>
-    <div  style="margin-left:285px; margin-top:-25px;" >
-        <a href="#;" onClick="zoomIn();"><img style="width:20px; height:20px;"src="{% static 'images/zoomin.png'%}" alt="확대"></a>
-          <a href="#;" onClick="zoomOut();"><img style="width:20px; height:20px;"src="{% static 'images/zoomout.png'%}" alt="축소"></a>
-        </div>
-</div>
-
-
-<div class="supporting">
-    {% for support in supports %}
-    <div class="support_list_box" onclick="location.href='{% url 'support:support_dtl' pk=artist.pk spt_pk=support.pk %}'">
-        {%with goal=support.fundraising%}
-        <div style="width: 70%;">
-            <h1 class="spt_list_h1"> {{support.title}}</h1>
-            <h3 class="spt_list_h3"> 목표: {{support.fundraising}}</h3>
-            <h3 class="spt_list_h3"> 종료: {{support.deadline|date:"Y/m/d Ah:i"}}</h3>
-            <h2 class="spt_list_h2">{{support.bank}} {{support.account}}</h2>
-               <div id="amt" style="display:none;">{{support.balanceAmt}}</div>
-        </div>
-        <div class="support_percent_box" id="completionBox" >
-
-
-            <span style="font-size:30px;">{{support.balanceAmt|avg:support.fundraising}}</span><span style="font-size: 17px; ">%</span>
-
-       
-        </div>
-        {%endwith%}
+    <div style="margin-left: 285px; margin-top: -25px;">
+        <a href="#;" onClick="zoomIn();"><img style="width: 20px; height: 20px;" src="{% static 'images/zoomin.png' %}" alt="확대"></a>
+        <a href="#;" onClick="zoomOut();"><img style="width: 20px; height: 20px;" src="{% static 'images/zoomout.png' %}" alt="축소"></a>
     </div>
-    {% endfor %}
 </div>
-<button class="start-Button" style="margin-left: 27px;background: #bc67ff; margin-top:430px;font-size:22px;" onclick="location.href='{% url 'support:create_support' pk=artist.pk %}'">서포트 작성하기</button>
 
+<div class="supporting-container">
+    <div class="supporting" style="height: 440px; width: 375px; overflow-y: auto; overflow-x:hidden;">
+        {% for support in supports %}
+        <div class="support_list_box" onclick="location.href='{% url 'support:support_dtl' pk=artist.pk spt_pk=support.pk %}'">
+            {% with goal=support.fundraising %}
+            <div style="width: 70%;">
+                <h1 class="spt_list_h1"> {{ support.title }}</h1>
+                <h3 class="spt_list_h3"> 목표: {{ support.fundraising }}</h3>
+                <h3 class="spt_list_h3"> 종료: {{ support.deadline|date:"Y/m/d Ah:i" }}</h3>
+                <h2 class="spt_list_h2">{{ support.bank }} {{ support.account }}</h2>
+                <div id="amt" style="display: none;">{{ support.balanceAmt }}</div>
+            </div>
+            <div class="support_percent_box" id="completionBox">
+                <span style="font-size: 30px;">{{ support.balanceAmt|avg:support.fundraising }}</span><span style="font-size: 17px;">%</span>
+            </div>
+            {% endwith %}
+        </div>
+        {% endfor %}
+    </div>
+</div>
 
+<button class="start-Button" style="margin-left: 27px; background: #bc67ff;  font-size: 22px;" onclick="location.href='{% url 'support:create_support' pk=artist.pk %}'">서포트 작성하기</button>
 
 {% endblock %}
 {% endwith %}
+
+
+
+
 
