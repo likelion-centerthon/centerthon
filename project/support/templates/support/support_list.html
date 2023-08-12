@@ -6,8 +6,8 @@
 
 
 <div style="margin-bottom:5px; display:flex; align-items:center;" class="support_list_category">
-    <button class="allsupport" id="all"style="width:160px; margin-left:15px; font-size:20px;" ><p>서포트 전체</button>
-    <button class="mysupport" id="my" style="width:160px; margin-left:22px; font-size:20px;">참여 서포트</button>
+    <button class="allsupport" style="width:160px; margin-left:15px; font-size:20px;border-bottom:3px solid #000000;" onclick="location.href='{% url 'support:support_list' pk=artist.pk %}'">서포트 전체</button>
+    <button class="mysupport" style="width:160px; margin-left:22px; font-size:20px;" onclick="location.href='{% url 'support:my_support_list' pk=artist.pk %}'">참여 서포트</button>
 </div>
 <div class="support_button">
     <button class="all_button" id="ing" onclick="location.href='{% url 'support:support_list' pk=artist.pk %}'" >진행중</button>
@@ -43,72 +43,8 @@
 </div>
 <button class="start-Button" style="margin-left: 27px;background: #bc67ff; margin-top:430px;font-size:22px;" onclick="location.href='{% url 'support:create_support' pk=artist.pk %}'">서포트 작성하기</button>
 
-<script>
-    
-    const allButton = document.getElementById("all");
-    const myButton = document.getElementById("my");
-
-    // 밑줄 스타일 설정
-    const underlineStyle = "3px solid #000000";
-    const noUnderlineStyle = "none";
-
-    // 모든 버튼 밑줄 초기화
-    allButton.style.borderBottom = noUnderlineStyle;
-    myButton.style.borderBottom = noUnderlineStyle;
-
- 
-
-    allButton.addEventListener("mousedown", function () {
-        allButton.style.borderBottom = underlineStyle;
-        myButton.style.borderBottom = noUnderlineStyle;
-        window.location.href = '{% url 'support:support_list' pk=artist.pk %}';
-
-      });
-      myButton.addEventListener("mousedown", function () {
-        myButton.style.borderBottom = underlineStyle;
-        allButton.style.borderBottom = noUnderlineStyle;
-        window.location.href = '{% url 'support:my_support_list' pk=artist.pk %}';
-
-      });
-   
-
-</script>
 
 
 {% endblock %}
 {% endwith %}
 
-<script type="text/javascript">
-    const allbutton=document.getElementById('all');
-    const endbutton=document.getElementById('my');
-    const writebutton=document.querySelector('.write_button');
-    const allsupportButton = document.querySelector('.allsupport');
-    const mysupportButton = document.querySelector('.mysupport');
-
-    allButton.addEventListener('click', function(){
-        allButton.style.border = '1px solid #bc67ff';
-        endButton.style.border = 'none';
-        writeButton.style.border = 'none';
-    });
-    
-    endButton.addEventListener('click',function(){
-        allButton.style.border = 'none';
-        endButton.style.border = '1px solid #bc67ff';
-        writeButton.style.border = 'none';
-    });
-    
-    writeButton.addEventListener('click',function(){
-        allButton.style.border = 'none';
-        endButton.style.border = 'none';
-        writeButton.style.border = '1px solid #bc67ff';
-    });
-    allsupportButton.addEventListener('click', function(){
-        allsupportButton.style.borderBottom = '2px solid #bc67ff';
-        mysupportButton.style.borderBottom = 'none';
-    });
-
-    mysupportButton.addEventListener('click', function(){
-        allsupportButton.style.borderBottom = 'none';
-        mysupportButton.style.borderBottom = '2px solid #bc67ff';
-    });
-</script>
