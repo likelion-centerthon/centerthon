@@ -1,10 +1,10 @@
-{% extends 'base.html' %}
+{% extends 'support_base.html' %}
 {%load static%}
 {% with artist=artist alerts=alerts %}
 {% block content %}
 
 <div style="  justify-content: row;  display: flex; ">
-    <img class="back" src="{% static 'images/back.png'%}" alt="이전" ></img>
+    <img class="back" src="{% static 'images/back.png'%}" alt="이전" onclick="goBack()"></img>
     <h1 class="spt_crt_h1"  style="margin-left:-30px;">서포트 수정하기</h1>
 </div>
 <h2 class="spt_crt_h2">수정할 정보를 모두 입력해 주세요.</h2>
@@ -71,6 +71,10 @@
   inputs.forEach(function (input) {
     input.addEventListener("input", checkInputs);
   });
+  function goBack() {
+    window.history.back();
+  }
+  
 </script>
 {% endblock %}
 {% endwith %}

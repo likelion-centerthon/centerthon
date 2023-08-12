@@ -53,14 +53,13 @@
 }
 input::placeholder,
 textarea::placeholder {
+  text-indent: 10px;
   font-family: "Poppins";
   font-style: normal;
   font-weight: 500;
-  font-size: 18px;
-  line-height: 150%;
-  text-align: center;
-  text-align: left;
-  color: #b3b1b0;
+  font-size: 20px;
+  line-height: 200%;
+  color: #333333;
 }
 textarea::placeholder {
   padding-top: 2px;
@@ -80,7 +79,6 @@ textarea {
 
 .account {
   width: 218px;
-
   height: 52px;
   box-sizing: border-box;
   mix-blend-mode: normal;
@@ -141,12 +139,12 @@ textarea {
   font-family: "Poppins";
   font-style: normal;
   font-weight: 700;
-  font-size: 20px;
+  font-size: 22px;
   line-height: 180%;
   text-align: center;
   color: #ffffff;
   border: none;
-  margin: 3px 0px 3px 20px;
+  margin: 3px 0px 3px 21px;
 }
 /*input 마우스 효과*/
 input:focus,

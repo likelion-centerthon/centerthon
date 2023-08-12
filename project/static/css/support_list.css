@@ -1,6 +1,10 @@
+.selected {
+  border-bottom: 3px solid #000000;
+}
+
 /*스크롤바 커스텀*/
 ::-webkit-scrollbar {
-  width: 2px;
+  width: 0.1px;
 }
 
 ::-webkit-scrollbar-track {
@@ -8,12 +12,12 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 6px;
+  background: #fff;
+  border-radius: 1px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: #fff;
 }
 /*서포트 전체, 내가 참여한 서포트*/
 .support_list_category {
@@ -28,25 +32,19 @@
 .mysupport {
   font-family: "Inter";
   font-style: normal;
-  font-weight: 700;
-  font-size: 18px;
+  font-weight: 1000;
+
   line-height: 22px;
   text-align: center;
   color: #000000;
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 700;;
   box-sizing: border-box;
-  width: 150px;
+
   height: 60px;
   background: #ffffff;
   border: none;
-  margin-left:15px;
+
 }
 
-.mysupport {
-  width: 170px;
-}
 
 .support_list_category button:hover {
   border-bottom: 3px solid #000000;
@@ -76,33 +74,38 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  height: 550px;
+  
+
 }
 /*서포트 리스트 각각 div*/
 .support_list_box{
   display: flex;
   margin: 10px 20px;
-  border: 1px solid #333333;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  box-sizing: border-box;
+  background: #ffffff;
   border-radius: 16px;
   padding: 20px;
   font-family: "Poppins";
   font-style: normal;
   font-weight: 500;
+  width:340px;
 }
 /*서포트 제목*/
 .spt_list_h1 {
-  font-size: 24px;
+  font-size:24px;
   line-height: 100%;
-  color: #333333;
+  color: #8a8a8a;
   margin-top: -5px;
   text-decoration: underline;
 }
+.spt_list_h1:hover{
+  color: #000000;
+
+}
 /*서포트 목표, 종료*/
 .spt_list_h3 {
-  font-size: 16px;
+  font-size: 18px;
   line-height: 100%;
   color: black;
   margin-top: -5px;
@@ -112,7 +115,7 @@
 .spt_list_h2 {
   font-size: 20px;
   line-height: 150%;
-  color: #00a9ff;
+  color: #bc67ff;
   margin-top: -10px;
 }
 /*서포트 퍼센트 박스*/
@@ -128,5 +131,15 @@
   font-size: 50px;
   line-height: 150%;
   color: #000000;
+
+}
+
+.support_list_category button .line {
+  border-bottom: 3px solid #000000;
+
+}
+
+.purple-round{
+  border: 1px solid #bc67ff;
 
 }

@@ -1,15 +1,20 @@
 {% load static %}
+
+
 <div class="header">
+
+  
   <form
     method="get"
     action="{% url 'artist:subscribe_list' category='none' %}"
   >
     {% csrf_token %}
     <button class="btn-select" type="submit">
-      {{ artist.artistName }}
+      &nbsp;  &nbsp;{{ artist.artistName }} •••
     </button>
   </form>
           <div class="icon">
+           
             <form
               method="post"
               action="{% url 'userWorking:show_userWorking' pk=artist.pk %}"
@@ -29,8 +34,9 @@
               </button>
             </form>
           </div>
+         
         </div>
-
+      
 
       {% if unread_alerts %}
         <!-- 안 읽은 알림이 있을 때의 코드 작성해주시면 됩니다. -->
@@ -53,9 +59,7 @@
         </div>
 
       </div>
-        <a href="#;" onClick="zoomIn();">확대</a>		
-        <a href="#;" onClick="zoomOut();">축소</a>		
-        <a href="#;" onClick="zoomReset();">원래</a>		
+       
         <script type="text/javascript">
           var nowZoom = 100;
           
