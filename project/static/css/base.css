@@ -4,7 +4,7 @@ body {
   min-height:100%;
   margin: 0;
   overflow: hidden;
-
+  !important; touch-action:none;
 }
 .container {
   width: 375px;

@@ -89,7 +89,7 @@ def support_dtl(request, pk, spt_pk):
         if form_type=='wait_status':
             form_pk=request.POST.get('form_pk')
             form=SupportForm.objects.get(pk=form_pk)
-            user_working = UserWorking.objects.get(user=form.user, artist=artist)
+            user_working = UserWorking.objects.get(user=form.user, artist = artist)
 
             form.status=SupportFormStatus.self_check.value
             support.balanceAmt+=form.credit

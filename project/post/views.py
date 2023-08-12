@@ -18,9 +18,7 @@ def post_list(request, artist_pk, category):
     artist = Artist.objects.get(pk=artist_pk)
     posts = Post.objects.filter(category=category, artist=artist)
 
-
-    return render(request, 'post/post_list.html', context={'posts':posts, 'artist':artist, 'alerts':alerts,'category':category})
-
+    return render(request, 'post/post_list.html', context={'posts':posts, 'artist':artist, 'alerts':alerts, 'category':category})
 
 # 게시글 상세 조회
 def post_detail(request, pk):
