@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'support_base.html' %}
 {%load static%}
 {% with artist=artist alerts=alerts %}
 {% block content %}
@@ -39,6 +39,8 @@
     {% endfor %}
 </div>
 <button class="start-Button" style="margin-left: 27px;background: #bc67ff; margin-top:430px;font-size:22px;" onclick="location.href='{% url 'support:create_support' pk=artist.pk %}'">서포트 작성하기</button>
+
+<script  src="{% static 'js/line.js' %}"></script>
 
 {% endblock %}
 {% endwith %}

@@ -8,9 +8,13 @@
   font-family: "Poppins";
   font-style: normal;
   font-weight: 600;
-  color: #000000;
+  color: #8a8a8a;
   margin: 5px 0px 0px 10px;
   text-decoration: underline;
+}
+.post-title:hover{
+  color: #000000;
+
 }
 .post-img {
   position: absolute;

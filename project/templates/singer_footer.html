@@ -2,8 +2,8 @@
 
 <div class="footer">
     <div class="singer" onclick="location.href='{% url 'artist:select_artist' pk=artist.pk %}'">
-        <img id="singer-img" src="{% static 'images/singer.png'%}" alt="가수 이미지"></img>
-      <div class="label" style="top:20px;">내 가수</div>
+        <img id="singer-img" src="{% static 'images/purplesinger.png'%}" alt="가수 이미지"></img>
+      <div class="label" style="color:#BC67FF">내 가수</div>
     </div>
     <div class="list"  onclick="location.href='{% url 'post:post_list' artist_pk=artist.pk category='가수' %}'">
         <img id="list-img" src="{% static 'images/list.png'%}" alt="게시글 이미지"></img>
@@ -27,20 +27,12 @@
       imgElement.src = "{% static 'images/' %}" + newImageSrc;
   }
 
-  const singerImg = document.getElementById("singer-img");
+ 
   const listImg = document.getElementById("list-img");
   const groupImg = document.getElementById("group-img");
   const supportImg = document.getElementById("support-img");
 
 
-  singerImg.addEventListener("mouseenter", function () {
-    handleImageHover("singer-img", "purplesinger.png");
-  });
-
-  singerImg.addEventListener("mouseleave", function () {
-    handleImageHover("singer-img", "singer.png");
-  });
-  
   listImg.addEventListener("mouseenter", function () {
     handleImageHover("list-img", "purplelist.png");
   });
@@ -66,13 +58,7 @@
   });
 
 //하단바 h3 색상 변경
-document.getElementById("singer-img").addEventListener("mouseover", function () {
-  document.querySelector(".singer .label").classList.add("colored");
-});
 
-document.getElementById("singer-img").addEventListener("mouseout", function () {
-document.querySelector(".singer .label").classList.remove("colored");
-});
 
 document.getElementById("list-img").addEventListener("mouseover", function () {
 document.querySelector(".list .label").classList.add("colored");
@@ -98,25 +84,5 @@ document.getElementById("support-img").addEventListener("mouseover", function ()
   document.getElementById("support-img").addEventListener("mouseout", function () {
   document.querySelector(".support .label").classList.remove("colored");
   });
-  const pageStyles = [
-  { page: "support_list.html", img: "purplesupport.png", labelColor: "#BC67FF" },
-  { page: "meeting", img: "purplegroup.png", labelColor: "#BC67FF" },
-  { page: "post_list", img: "purplelist.png", labelColor: "#BC67FF" },
-  { page: "artist", img: "purplesinger.png", labelColor: "#BC67FF" }
-];
-
-function getPageStyle(page) {
-  const defaultStyle = { img: "default.png", labelColor: "#000000" };
-  const style = pageStyles.find(style => style.page === page);
-  return style ? style : defaultStyle;
-}
-
-function applyPageStyle(page) {
-  const style = getPageStyle(page);
-  const imgElement = document.getElementById("singer-img");
-  const labelElement = document.querySelector(".singer .label");
-
-  imgElement.src = `{% static 'images/' %}${style.img}`;
-  labelElement.style.color = style.labelColor;
-}
+  
 </script>
