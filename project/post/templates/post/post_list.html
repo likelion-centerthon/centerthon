@@ -3,28 +3,54 @@
 {% with artist=artist alerts=alerts %} 
 {% block content %}
 
+{% if category == '가수' %}
 <div class="support_list_category">
+
   <button
     class="allsupport"
-     id="artist"
+
      type="submit"
-     onclick="'{% url 'post:post_list' artist_pk=artist.pk category='가수' %}'"
-    style="width:160px; margin-left:15px; font-size:20px;"
+     id="all"
+     style="width:160px; margin-left:15px; font-size:20px; border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: black;"
     >
 
     아티스트 이야기
-  
+
   </button>
   <button
-    class="mysupport"
-    type="submit"
-    id="daily"
-    onclick="'{% url 'post:post_list' artist_pk=artist.pk category='자유' %}'";
-    style="width:160px; margin-left:15px; font-size:20px;"
-    >
-    일상 이야기
-  </button>
+  class="mysupport"
+  type="submit"
+
+  id="my"
+  style="width:160px; margin-left:15px; font-size:20px;"
+  >
+  일상 이야기
+</button>
 </div>
+{% endif %}
+
+{% if category == '자유' %}
+<div class="support_list_category">
+
+  <button
+    class="allsupport"
+
+    >
+    아티스트 이야기
+
+  </button>
+  <button
+  class="mysupport"
+  type="submit"
+
+  id="my"
+  style="width:160px; margin-left:15px; font-size:20px; border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: black;"
+  >
+  일상 이야기
+</button>
+</div>
+{% endif %}
+
 <div class="support_button">
   <div  style="margin-left:285px; margin-top:16px;" >
       <a href="#;" onClick="zoomIn();"><img style="width:20px; height:20px;"src="{% static 'images/zoomin.png'%}" alt="확대"></a>
@@ -52,7 +78,6 @@
   <button class="start-Button" style="margin-left: 27px;background: #bc67ff; font-size:22px;" onclick="location.href='{% url 'support:create_support' pk=artist.pk %}'">게시글 작성하기</button>
 
 </form>
-
 
 
 {% endblock %}
