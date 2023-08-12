@@ -3,17 +3,19 @@
 {% with artist=artist alerts=alerts %} 
 {% block content %}
 
+{% if category == '가수' %}
 <div class="support_list_category">
+
   <button
     class="allsupport"
 
      type="submit"
-    id="all"
-    style="width:160px; margin-left:15px; font-size:20px;"
+     id="all"
+     style="width:160px; margin-left:15px; font-size:20px; border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: black;"
     >
 
     아티스트 이야기
-  
+
   </button>
   <button
     class="mysupport"
@@ -25,6 +27,35 @@
     일상 이야기
   </button>
 </div>
+{% endif %}
+
+{% if category == '자유' %}
+<div class="support_list_category">
+
+  <button
+    class="allsupport"
+
+     type="submit"
+    id="all"
+    style="width:160px; margin-left:15px; font-size:20px;"
+    >
+
+    아티스트 이야기
+
+  </button>
+
+  <button
+    class="mysupport"
+    type="submit"
+
+    id="my"
+    style="width:160px; margin-left:15px; font-size:20px; border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: black;"
+    >
+    일상 이야기
+  </button>
+</div>
+{% endif %}
+
 <div class="support_button">
   <div  style="margin-left:285px; margin-top:16px;" >
       <a href="#;" onClick="zoomIn();"><img style="width:20px; height:20px;"src="{% static 'images/zoomin.png'%}" alt="확대"></a>
@@ -54,33 +85,21 @@
 </form>
 
 <script  >
-  
+
     const allButton = document.getElementById("all");
     const myButton = document.getElementById("my");
 
-    // 밑줄 스타일 설정
-    const underlineStyle = "3px solid #000000";
-    const noUnderlineStyle = "none";
 
-    // 모든 버튼 밑줄 초기화
-    allButton.style.borderBottom = noUnderlineStyle;
-    myButton.style.borderBottom = noUnderlineStyle;
-
- 
 
     allButton.addEventListener("click", function () {
-        allButton.style.borderBottom = underlineStyle;
-        myButton.style.borderBottom = noUnderlineStyle;
         window.location.href = '{% url 'post:post_list' artist_pk=artist.pk category='가수' %}';
 
       });
       myButton.addEventListener("click", function () {
-        myButton.style.borderBottom = underlineStyle;
-        allButton.style.borderBottom = noUnderlineStyle;
         window.location.href = '{% url 'post:post_list' artist_pk=artist.pk category='자유' %}';
 
       });
-   
+
 </script>
 
 {% endblock %}
