@@ -35,7 +35,7 @@ style="width:160px; margin-left:15px; font-size:20px;"
     class="allsupport"
     onclick="location.href='{% url 'post:post_list' artist_pk=artist.pk category='가수' %}'"
 
-     type="submit"
+    type="submit"
     id="all"
     style="width:160px; margin-left:15px; font-size:20px;"
     >
@@ -67,9 +67,9 @@ style="width:160px; margin-left:15px; font-size:20px;"
 </div>
 <div class="post-list-container" style="height: 480px; width: 375px; overflow-y: auto; overflow-x:hidden;">
 {% for post in posts %}
-  <div class="post-list">
-    <a class="post-title" style=" font-size: 20px;" href="{% url 'post:post_detail' pk=post.pk%}"
-      >{{ post.title }}</a
+  <div class="post-list" onclick="location.href='{% url 'post:post_detail' pk=post.pk%}'">
+    <div class="post-title" style=" font-size: 20px;"
+      >{{ post.title }}</div
     >
     {% if post.image %}
     <img class="post-img" src="{{ post.image.url }}" />

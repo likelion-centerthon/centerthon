@@ -154,8 +154,7 @@ def create_comment(request, pk):
         userWorking.commentRecord += 1
         userWorking.save()
 
-        comments = Comment.objects.filter(post=post)
-        return render(request, 'post/post_detail.html', context={'post':post, 'comments':comments,'artist':post.artist})
+        return redirect('post:post_detail', pk=post.pk)
 
 # 댓글 삭제
 def delete_comment(request, pk):
