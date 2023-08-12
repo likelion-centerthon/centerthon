@@ -42,7 +42,7 @@ def support_list_complete(request, pk):
     artist = Artist.objects.get(pk=pk)
     supports = Support.objects.filter(artist=artist, status='완료')
     alert = Alert.objects.filter(user=request.user)
-    return render(request, './support/support_list.html', {"supports": supports, "artist": artist, "alerts": alert})
+    return render(request, './support/support_list_complete.html', {"supports": supports, "artist": artist, "alerts": alert})
 
 # 내가 참여한 서포트(진행 중)
 def my_support_list(request, pk):
@@ -60,7 +60,7 @@ def my_support_list_complete(request, pk):
         Q(artist=artist, user=request.user, status='완료') | Q(artist=artist, form__user=request.user,
                                                               status='완료')).distinct()
     alert = Alert.objects.filter(user=request.user)
-    return render(request, './support/support_list_my.html',
+    return render(request, './support/support_list_my_complete.html',
                   {"supports": supports, "artist": artist, "alerts": alert})
 
 # 상세조회(미완성)
