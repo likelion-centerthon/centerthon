@@ -73,6 +73,9 @@ def support_dtl(request, pk, spt_pk):
     if request.method=='GET':
         try:
             banks=Bank.objects.filter(support=support, inoutType='출금').order_by('creditTime')
+            blocks=Block.objects.filter(support=support, inoutType='출금').order_by('creditTime')
+            banks = zip(banks,blocks)
+            print(banks)
             return render(request, './support/support_dtl.html',
                           {"support": support, "artist": artist, "support_form": support_form, "alerts": alerts,
                            "banks": banks})
@@ -111,6 +114,9 @@ def support_dtl(request, pk, spt_pk):
                     support.save()
                     for bank in banks:
                         create_new_block(support, bank, '출금')
+
+                    blocks=Bank.objects.filter(support=support, inoutType='출금').order_by('creditTime')
+                    banks=zip(banks,blocks)
                     return render(request, './support/support_dtl.html',
                                     {"support": support, "artist": artist, "support_form": support_form, "alerts": alerts,
                                     "banks": banks})
