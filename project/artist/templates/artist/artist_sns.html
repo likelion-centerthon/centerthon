@@ -1,15 +1,24 @@
-{% extends 'base_meeting.html' %}
+{% extends 'singer_base.html' %}
+{% load static%}
 {% with artist=artist alerts=alerts %}
 {% block content %}
 
-<div class="support_list_category">
+<div style="margin-bottom:5px; display:flex; align-items:center;" class="support_list_category">
   <form method="post" action="{% url 'artist:select_artist' pk=artist.pk %}">
       {% csrf_token %}
-  <button class="allsupport"  style="width:160px;font-weight: 1000;margin-left: 15px;">아티스트 정보</button>
+      <button class="allsupport" style="width:160px; margin-left:15px; font-size:20px;">아티스트 정보</button>
+  </form>
+  <form method="post" action="{% url 'artist:artist_sns' pk=artist.pk %}">
+      {% csrf_token %}
+  <button class="mysupport"style="width:160px; margin-left:22px; font-size:20px;">SNS 보기</button>
+  </form>
+</div>
+<div class="support_button">
+  <div  style="margin-left:285px; margin-top:16px;" >
+      <a href="#;" onClick="zoomIn();"><img style="width:20px; height:20px;"src="{% static 'images/zoomin.png'%}" alt="확대"></a>
+        <a href="#;" onClick="zoomOut();"><img style="width:20px; height:20px;"src="{% static 'images/zoomout.png'%}" alt="축소"></a>
+      </div>
 
-<form method="post" action="{% url 'artist:artist_sns' pk=artist.pk %}">
-  {% csrf_token %}
-  <button class="mysupport"  style="width:160px;font-weight: 1000;margin-left: 15px;">SNS 보기</button>
 </div>
 
 <h1>{{ artist.name }}의 아티스트 정보</h1>

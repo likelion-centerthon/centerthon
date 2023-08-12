@@ -1,28 +1,38 @@
-{% extends 'base.html' %} 
+{% extends 'list_base.html' %}
+{% load static%}
 {% with artist=artist alerts=alerts %} 
 {% block content %}
 
 <div class="support_list_category">
   <button
     class="allsupport"
-    type="submit"
-    onclick="location.href='{% url 'post:post_list' artist_pk=artist.pk category='가수' %}'"
-    style="width:160px;font-weight: 1000;margin-left: 15px;"
+
+     type="submit"
+    id="all"
+    style="width:160px; margin-left:15px; font-size:20px;"
     >
+
     아티스트 이야기
+  
   </button>
   <button
     class="mysupport"
     type="submit"
-    onclick="location.href='{% url 'post:post_list' artist_pk=artist.pk category='자유' %}'"
-    style="width:160px;font-weight: 1000;margin-left: 15px;"
+
+    id="my"
+    style="width:160px; margin-left:15px; font-size:20px;"
     >
     일상 이야기
   </button>
 </div>
-
-<div class="post-list-container">
-  {% for post in posts %}
+<div class="support_button">
+  <div  style="margin-left:285px; margin-top:16px;" >
+      <a href="#;" onClick="zoomIn();"><img style="width:20px; height:20px;"src="{% static 'images/zoomin.png'%}" alt="확대"></a>
+        <a href="#;" onClick="zoomOut();"><img style="width:20px; height:20px;"src="{% static 'images/zoomout.png'%}" alt="축소"></a>
+      </div>
+</div>
+<div class="post-list-container" >
+{% for post in posts %}
   <div class="post-list">
     <a class="post-title" style=" font-size: 20px;" href="{% url 'post:post_detail' pk=post.pk%}"
       >{{ post.title }}</a
@@ -31,17 +41,47 @@
     <img class="post-img" src="{{ post.image.url }}" />
     {% endif %}
     <div style="display: flex; position: row">
-      <h2 class="post-name">{{ post.author.userName }}</h2>
-      <h2 class="post-time">{{ post.regTime|date:"Y.m.d H:i" }}</h2>
+      <h2 class="post-name" style="font-size:18px;">{{ post.author.userName }}</h2>
+      <h2 class="post-time" style="font-size:18px;">{{ post.regTime|date:"Y.m.d H:i" }}</h2>
     </div>
   </div>
   {% endfor %}
 </div>
 <form method="get" action="{% url 'post:create_post' artist_pk=artist.pk %}">
   {% csrf_token %}
-  <button class="post-button" type="submit" style="top:500px;" >
-    게시글 작성하기
-  </button>
+  <button class="start-Button" style="margin-left: 27px;background: #bc67ff; margin-top:419px;font-size:22px;" onclick="location.href='{% url 'support:create_support' pk=artist.pk %}'">게시글 작성하기</button>
+
 </form>
+
+<script  >
+  
+    const allButton = document.getElementById("all");
+    const myButton = document.getElementById("my");
+
+    // 밑줄 스타일 설정
+    const underlineStyle = "3px solid #000000";
+    const noUnderlineStyle = "none";
+
+    // 모든 버튼 밑줄 초기화
+    allButton.style.borderBottom = noUnderlineStyle;
+    myButton.style.borderBottom = noUnderlineStyle;
+
+ 
+
+    allButton.addEventListener("click", function () {
+        allButton.style.borderBottom = underlineStyle;
+        myButton.style.borderBottom = noUnderlineStyle;
+        window.location.href = '{% url 'post:post_list' artist_pk=artist.pk category='가수' %}';
+
+      });
+      myButton.addEventListener("click", function () {
+        myButton.style.borderBottom = underlineStyle;
+        allButton.style.borderBottom = noUnderlineStyle;
+        window.location.href = '{% url 'post:post_list' artist_pk=artist.pk category='자유' %}';
+
+      });
+   
+</script>
+
 {% endblock %}
- {% endwith %}
+{% endwith %}  

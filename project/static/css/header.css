@@ -31,19 +31,14 @@
     /* 아티스트 선택 */
     font-family: "Inter";
     font-style: normal;
-    font-weight: 400;
-    font-size: 17px;
+    font-weight: 1000;
+    font-size: 18px;
     line-height: 22px;
     text-align: center;
     color: #545454;
     line-height: 10px;
   }
- 
-  .btn-select:active{
-    box-shadow: 1px 1px 0 rgb(0,0,0,0.5);
-    position: relative;
-    top:2px;
-  }
+
 
   .btn-select:active{
     box-shadow: 1px 1px 0 rgb(0,0,0,0.5);
