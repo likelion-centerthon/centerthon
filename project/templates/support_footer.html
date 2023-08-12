@@ -14,8 +14,8 @@
       <div class="label" style="margin-top:-1px;" >모임</div>
     </div>
     <div class="support" onclick="location.href='{% url 'support:support_list' pk=artist.pk %}'">
-        <img id="support-img" style="width:60px; height:60px;margin-top:-5px;"src="{% static 'images/support.png'%}" alt="서포트 이미지" ></img>
-      <div class="label"style="margin-top:-3px;">서포트</div>
+        <img id="support-img" style="width:60px; height:60px;margin-top:-5px;"src="{% static 'images/purplesupport.png'%}" alt="서포트 이미지" ></img>
+      <div class="label"style="margin-top:-3px; color:#BC67FF">서포트</div>
     </div>
 
   </div>
@@ -30,7 +30,6 @@
   const singerImg = document.getElementById("singer-img");
   const listImg = document.getElementById("list-img");
   const groupImg = document.getElementById("group-img");
-  const supportImg = document.getElementById("support-img");
 
 
   singerImg.addEventListener("mouseenter", function () {
@@ -57,13 +56,7 @@
     handleImageHover("group-img", "group.png");
   });
 
-  supportImg.addEventListener("mouseenter", function () {
-    handleImageHover("support-img", "purplesupport.png");
-  });
 
-  supportImg.addEventListener("mouseleave", function () {
-    handleImageHover("support-img", "support.png");
-  });
 
 //하단바 h3 색상 변경
 document.getElementById("singer-img").addEventListener("mouseover", function () {
@@ -91,32 +84,6 @@ document.querySelector(".group .label").classList.remove("colored");
 });
 
 
-document.getElementById("support-img").addEventListener("mouseover", function () {
-  document.querySelector(".support .label").classList.add("colored");
-  });
 
-  document.getElementById("support-img").addEventListener("mouseout", function () {
-  document.querySelector(".support .label").classList.remove("colored");
-  });
-  const pageStyles = [
-  { page: "support_list.html", img: "purplesupport.png", labelColor: "#BC67FF" },
-  { page: "meeting", img: "purplegroup.png", labelColor: "#BC67FF" },
-  { page: "post_list", img: "purplelist.png", labelColor: "#BC67FF" },
-  { page: "artist", img: "purplesinger.png", labelColor: "#BC67FF" }
-];
-
-function getPageStyle(page) {
-  const defaultStyle = { img: "default.png", labelColor: "#000000" };
-  const style = pageStyles.find(style => style.page === page);
-  return style ? style : defaultStyle;
-}
-
-function applyPageStyle(page) {
-  const style = getPageStyle(page);
-  const imgElement = document.getElementById("singer-img");
-  const labelElement = document.querySelector(".singer .label");
-
-  imgElement.src = `{% static 'images/' %}${style.img}`;
-  labelElement.style.color = style.labelColor;
-}
+  
 </script>

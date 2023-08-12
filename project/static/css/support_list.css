@@ -1,3 +1,7 @@
+.selected {
+  border-bottom: 3px solid #000000;
+}
+
 /*스크롤바 커스텀*/
 ::-webkit-scrollbar {
   width: 0.1px;
@@ -91,9 +95,13 @@
 .spt_list_h1 {
   font-size:24px;
   line-height: 100%;
-  color: #333333;
+  color: #8a8a8a;
   margin-top: -5px;
   text-decoration: underline;
+}
+.spt_list_h1:hover{
+  color: #000000;
+
 }
 /*서포트 목표, 종료*/
 .spt_list_h3 {
