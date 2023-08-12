@@ -2,7 +2,7 @@
   .footer {
     box-sizing: border-box;
     width: 375px;
-    height: 100px;
+    height: 85px;
     background: #ffffff;
     display: flex;
     justify-content: space-around;
