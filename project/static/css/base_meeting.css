@@ -17,4 +17,20 @@ body {
   .icon {
     background-color: white; /* 배경색을 흰색으로 변경 */
   }
-  
+  /*스크롤바 커스텀*/
+::-webkit-scrollbar {
+  width: 2px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

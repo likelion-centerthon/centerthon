@@ -4,6 +4,7 @@
 {% block content %}
 {% load custom_filters %}
 
+
 <div style="margin-bottom:5px; display:flex; align-items:center;" class="support_list_category">
     <button class="allsupport" id="all"style="width:160px; margin-left:15px; font-size:20px;" ><p>서포트 전체</button>
     <button class="mysupport" id="my" style="width:160px; margin-left:22px; font-size:20px;">참여 서포트</button>
@@ -30,6 +31,7 @@
                <div id="amt" style="display:none;">{{support.balanceAmt}}</div>
         </div>
         <div class="support_percent_box" id="completionBox" >
+
 
             <span style="font-size:30px;">{{support.balanceAmt|avg:support.fundraising}}</span><span style="font-size: 17px; ">%</span>
 
@@ -76,3 +78,37 @@
 {% endblock %}
 {% endwith %}
 
+<script type="text/javascript">
+    const allbutton=document.getElementById('all');
+    const endbutton=document.getElementById('my');
+    const writebutton=document.querySelector('.write_button');
+    const allsupportButton = document.querySelector('.allsupport');
+    const mysupportButton = document.querySelector('.mysupport');
+
+    allButton.addEventListener('click', function(){
+        allButton.style.border = '1px solid #bc67ff';
+        endButton.style.border = 'none';
+        writeButton.style.border = 'none';
+    });
+    
+    endButton.addEventListener('click',function(){
+        allButton.style.border = 'none';
+        endButton.style.border = '1px solid #bc67ff';
+        writeButton.style.border = 'none';
+    });
+    
+    writeButton.addEventListener('click',function(){
+        allButton.style.border = 'none';
+        endButton.style.border = 'none';
+        writeButton.style.border = '1px solid #bc67ff';
+    });
+    allsupportButton.addEventListener('click', function(){
+        allsupportButton.style.borderBottom = '2px solid #bc67ff';
+        mysupportButton.style.borderBottom = 'none';
+    });
+
+    mysupportButton.addEventListener('click', function(){
+        allsupportButton.style.borderBottom = 'none';
+        mysupportButton.style.borderBottom = '2px solid #bc67ff';
+    });
+</script>

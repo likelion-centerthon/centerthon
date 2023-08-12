@@ -3,6 +3,7 @@
 {% with artist=artist alerts=alerts %}
 {% block content %}
 
+
 <div style="margin-bottom:5px; display:flex; align-items:center;" class="support_list_category">
     <form method="post" action="{% url 'artist:select_artist' pk=artist.pk %}">
         {% csrf_token %}
@@ -19,6 +20,7 @@
           <a href="#;" onClick="zoomOut();"><img style="width:20px; height:20px;"src="{% static 'images/zoomout.png'%}" alt="축소"></a>
         </div>
 </div>
+
 <div class="artist_name"> 아티스트  {{ artist.artistName }}</div>
 <div class="artist_image">
     <img src="{{ artist.artistImage.url }}">

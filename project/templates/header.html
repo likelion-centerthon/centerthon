@@ -3,13 +3,13 @@
 
 <div class="header">
 
-  
   <form
     method="get"
     action="{% url 'artist:subscribe_list' category='none' %}"
   >
     {% csrf_token %}
     <button class="btn-select" type="submit">
+
       &nbsp;  &nbsp;{{ artist.artistName }} •••
     </button>
   </form>
