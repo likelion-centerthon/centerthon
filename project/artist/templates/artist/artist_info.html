@@ -4,10 +4,10 @@
 {% block content %}
 
 
-<div style="margin-bottom:5px; display:flex; align-items:center;" class="support_list_category">
+<div style="margin-bottom:5px; display:flex; align-items:center; " class="support_list_category">
     <form method="post" action="{% url 'artist:select_artist' pk=artist.pk %}">
         {% csrf_token %}
-        <button class="allsupport" style="width:160px; margin-left:15px; font-size:20px;">아티스트 정보</button>
+        <button class="allsupport" style="width:160px; margin-left:15px; font-size:20px;border-bottom:3px solid #000000;">아티스트 정보</button>
     </form>
     <form method="post" action="{% url 'artist:artist_sns' pk=artist.pk %}">
         {% csrf_token %}
