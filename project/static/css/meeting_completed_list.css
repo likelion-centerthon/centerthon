@@ -62,6 +62,66 @@
 .meeting-item p {
     margin: 5px 0; 
 }
-.searchInput::placeholder{
-    font-size:12px;
+
+
+.create-button-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.create-button {
+    width: 312px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #BC67FF;
+    border-radius: 30.5px;
+    margin-top: 50px;
+}
+
+.button-rectangle {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    border-radius: 30.5px;
+}
+
+.button-text {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 55%;
+    bottom: 0;
+    margin: auto;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 180%;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.meeting-button {
+    height: 26px;
+    margin: 80px 0 15px 22px;
+  }
+  .meeting-button button:hover{
+    border: 1px solid #bc67ff;
+  }
+  .meeting-button button{
+    box-sizing: border-box;
+    width: 58px;
+    height: 26px;
+    background: #ffffff;
+    border: 1px solid #b3b1b0;
+    border-radius: 30px;
+  }
+
+  #searchInput::placeholder{
+    font-size:13px;
   }

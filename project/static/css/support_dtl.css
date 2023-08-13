@@ -216,7 +216,7 @@
 }
 /*블록체인 아코디언*/
 .blockchain {
-  border: 2px solid #333333;
+  border: 2px solid #b3b1b0;
   padding: 5px;
   margin-bottom: 20px;
   border-top: none;
@@ -261,7 +261,7 @@
 
 
 .block-chain-container {
-  border: 1px solid #333333;
+  border: 1px solid #b3b1b0;
   border-radius: 16px;
   padding: 5px;
   width: 304px;

@@ -8,22 +8,26 @@
         <div class="artist-buttons">
             <form method="post" action="{% url 'artist:subscribe_list' category='KPOP' %}">
                 {% csrf_token %}
-                <button type="submit">K-POP</button>
+                <button type="submit"
+                    class="artist-btn {% if selected_category == 'KPOP' %}selected{% endif %}">K-POP</button>
             </form>
 
             <form method="post" action="{% url 'artist:subscribe_list' category='트로트' %}">
                 {% csrf_token %}
-                <button type="submit">트로트</button>
+                <button type="submit"
+                    class="artist-btn {% if selected_category == '트로트' %}selected{% endif %}">트로트</button>
             </form>
 
             <form method="post" action="{% url 'artist:subscribe_list' category='발라드' %}">
                 {% csrf_token %}
-                <button type="submit">발라드</button>
+                <button type="submit"
+                    class="artist-btn {% if selected_category == '발라드' %}selected{% endif %}">발라드</button>
             </form>
 
             <form method="post" action="{% url 'artist:subscribe_list' category='기타' %}">
                 {% csrf_token %}
-                <button type="submit">기타</button>
+                <button type="submit"
+                    class="artist-btn {% if selected_category == '기타' %}selected{% endif %}">기타</button>
             </form>
         </div>
 
