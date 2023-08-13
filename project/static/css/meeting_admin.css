@@ -1,4 +1,5 @@
 body {
+    font-family: 'Noto Sans KR', sans-serif;
     margin: 0;
     padding: 0;
 }
@@ -37,6 +38,7 @@ body {
     justify-content: center;
     align-items: center;
     color: rgba(84, 84, 84, 1);
+    font-family: 'Noto Sans KR', sans-serif;
     font-size: 18px;
     letter-spacing: 0;
 }
@@ -58,6 +60,7 @@ body {
     width: 37px;
     height: 25.92px;
     position: absolute;
+    font-family: 'Noto Sans KR', sans-serif;
     font-size: 20px;
     letter-spacing: 0;
 }
@@ -74,6 +77,7 @@ body {
 /* 입력 필드 스타일 */
 .input-field {
     color: rgba(84, 84, 84, 1);
+    font-family: 'Noto Sans KR', sans-serif;
     font-size: 20px;
     letter-spacing: 0;
     width: 250px;
@@ -111,6 +115,7 @@ body {
       /* 등록 버튼 텍스트 스타일 */
       .submit-button-text {
         color: rgba(255, 255, 255, 1);
+        font-family: 'Noto Sans KR', sans-serif;
         font-size: 20px;
         letter-spacing: 0;
     }

@@ -21,7 +21,7 @@ def artist_list(request, category):
 
                 artists = Artist.objects.filter(category=category)
 
-        return render(request, 'artist/artist_list.html', context={'artists': artists})
+        return render(request, 'artist/artist_list.html', context={'artists': artists, 'selected_category':category})
 
     return redirect('user:login')
 
@@ -36,7 +36,7 @@ def subscribe_list(request, category):
         if request.method == 'POST': # 필터링 시 post 요청
             artists = user.artists.all().filter(category=category)
 
-        return render(request, 'artist/subscribe_list.html', context={'artists': artists})
+        return render(request, 'artist/subscribe_list.html', context={'artists': artists, 'selected_category':category})
 
     return redirect('user:login')
 

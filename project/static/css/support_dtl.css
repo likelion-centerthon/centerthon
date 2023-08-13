@@ -41,6 +41,7 @@
   border: 1px solid #b3b1b0;
   border-radius: 16px;
   text-indent: 10px;
+  font-family: 'Noto Sans KR', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 20px;
@@ -83,8 +84,9 @@
 .text {
   display: flex;
   justify-content: center;
+  font-family: 'Noto Sans KR', sans-serif;
   font-style: normal;
-  font-weight: 700;
+  font-weight: 500;
   font-size: 20px;
   line-height: 150%;
   color: #333333;
@@ -97,6 +99,7 @@
   margin-left: 10px;
 }
 .info-text p {
+  font-family: 'Noto Sans KR', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
@@ -179,8 +182,9 @@
   height: 60px;
   background: #bc67ff;
   border-radius: 30.5px;
+  font-family: 'Noto Sans KR', sans-serif;
   font-style: normal;
-  font-weight: 700;
+  font-weight: 500;
   font-size: 20px;
   line-height: 180%;
   text-align: center;
@@ -213,7 +217,7 @@
 }
 /*블록체인 아코디언*/
 .blockchain {
-  border: 2px solid #333333;
+  border: 2px solid #b3b1b0;
   padding: 5px;
   margin-bottom: 20px;
   border-top: none;
@@ -224,6 +228,7 @@
   padding-bottom: 10px;
 }
 .hash {
+  font-family: 'Noto Sans KR', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
@@ -244,6 +249,7 @@
 .credit,
 .depositor,
 .creditTime {
+  font-family: 'Noto Sans KR', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 17px;
@@ -256,7 +262,7 @@
 
 
 .block-chain-container {
-  border: 1px solid #333333;
+  border: 1px solid #b3b1b0;
   border-radius: 16px;
   padding: 5px;
   width: 304px;

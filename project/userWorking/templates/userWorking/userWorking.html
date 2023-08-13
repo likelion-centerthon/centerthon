@@ -11,11 +11,11 @@
     </div>
 </div>
     <h2 class="use_working_startday">구독 시작일: <span style="font-size: 18px;">{{ userWorking.startDay|date:"Y년 m월 d일" }}</span></h2>
-    <h2 class="use_working_likeday">지금까지 <span style="color: #1D2968; font-weight: 1000;">{{ userWorking.likeDays }}</span>일 동안 활동 중</h2>
+    <h2 class="use_working_likeday">지금까지 <span style="color: #1D2968; font-weight: 500;">{{ userWorking.likeDays }}</span>일 동안 활동 중</h2>
 
     <div class="user_working_line"></div>
     <h2 class="user_h2">나의 활동</h2>
-    <div class="user_activity">
+    <div class="user_activity" style="margin-left:6px">
         <div class="use_working_post">게시글 작성 횟수<span>{{ userWorking.postRecord }}회</span></div>
         <div class="use_working_comment">댓글 작성 횟수&nbsp;&nbsp;&nbsp;<span>{{ userWorking.commentRecord }}회</span></div>
         <div class="use_working_meeting">모임 주최 횟수&nbsp;&nbsp;&nbsp;<span>{{ userWorking.meetingHost }}회</span></div>
@@ -23,7 +23,7 @@
     </div>
     <div class="user_working_line"></div>
     <h2 class="user_h2">서포터즈</h2>
-    <div class="user_support">
+    <div class="user_support" style="margin-left:6px">
         <div class="use_working_supporthost">서포트 주최 횟수<span>{{ userWorking.supportHost }}회</span></div>
         <div class="use_working_supportguest">서포트 참여 횟수<span>{{ userWorking.supportGuest }}회</span>
         </div>

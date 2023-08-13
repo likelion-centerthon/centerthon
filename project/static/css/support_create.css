@@ -1,8 +1,9 @@
 .spt_crt_h1 {
   width: 300px;
   height: 35px;
+  font-family: 'Noto Sans KR', sans-serif;
   font-style: normal;
-  font-weight: 700;
+  font-weight: 500;
   font-size: 24px;
   line-height: 147%;
   text-align: center;
@@ -13,6 +14,7 @@
 .spt_crt_h2 {
   width: 345px;
   height: 44px;
+  font-family: 'Noto Sans KR', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
@@ -48,6 +50,7 @@
 input::placeholder,
 textarea::placeholder {
   text-indent: 10px;
+  font-family: 'Noto Sans KR', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
@@ -61,6 +64,7 @@ textarea::placeholder {
 input,
 textarea {
   text-indent: 10px;
+  font-family: 'Noto Sans KR', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
@@ -89,6 +93,7 @@ textarea {
   border-radius: 30px;
   padding: 6px 0px 6px 0;
   cursor: pointer;
+  font-family: 'Noto Sans KR', sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -106,6 +111,7 @@ textarea {
   cursor: pointer;
   padding: 6px 20px;
   margin-bottom: 1px;
+  font-family: 'Noto Sans KR', sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -130,6 +136,7 @@ textarea {
   border: 1px solid #b3b1b0;
   border-radius: 16px;
   padding: 15px;
+  font-family: 'Noto Sans KR', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
@@ -143,8 +150,9 @@ textarea {
   height: 60px;
   background: #b3b1b0;
   border-radius: 30.5px;
+  font-family: 'Noto Sans KR', sans-serif;
   font-style: normal;
-  font-weight: 700;
+  font-weight: 500;
   font-size: 22px;
   line-height: 180%;
   text-align: center;

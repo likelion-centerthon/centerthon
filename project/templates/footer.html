@@ -7,15 +7,15 @@
     </div>
     <div class="list"  onclick="location.href='{% url 'post:post_list' artist_pk=artist.pk category='가수' %}'">
         <img id="list-img" src="{% static 'images/list.png'%}" alt="게시글 이미지"></img>
-        <div class="label">게시글</div>
+        <div class="label">게시판</div>
     </div>
     <div class="group"  onclick="location.href='{% url 'meeting:MeetingList' artist_id=artist.id %}'">
         <img id="group-img" style="width:58px; height:58px; margin-top:-6px;"src="{% static 'images/group.png'%}" alt="그룹 이미지" ></img>
       <div class="label" style="margin-top:-1px;" >모임</div>
     </div>
     <div class="support" onclick="location.href='{% url 'support:support_list' pk=artist.pk %}'">
-        <img id="support-img" style="width:60px; height:60px;margin-top:-5px;"src="{% static 'images/support.png'%}" alt="서포트 이미지" ></img>
-      <div class="label"style="margin-top:-3px;">서포트</div>
+        <img id="support-img" style="width:60px; height:60px;margin-top:-5px;margin-left:-14px;"src="{% static 'images/support.png'%}" alt="서포트 이미지" ></img>
+      <div class="label"style="margin-top:-3px;margin-left:-15px;">서포트</div>
     </div>
 
   </div>

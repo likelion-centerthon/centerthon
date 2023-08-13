@@ -13,8 +13,9 @@ input{
 }
 
 .category button {
+  font-family: 'Noto Sans KR', sans-serif;
   font-style: normal;
-  font-weight: 700;
+  font-weight: 500;
   font-size: 18px;
   line-height: 22px;
   text-align: center;
@@ -53,6 +54,7 @@ input{
 }
 
 .meeting-search-form label {
+  font-family: 'Noto Sans KR', sans-serif;
   font-weight: 500;
   font-size: 14px;
   color: #B3B1B0;
@@ -73,6 +75,7 @@ input{
   border: none;
   border-radius: 8px;
   cursor: pointer;
+  font-family: 'Noto Sans KR', sans-serif;
   font-weight: 500;
   font-size: 14px;
 }
