@@ -28,7 +28,7 @@
         input::placeholder,
         textarea::placeholder,
         .post-crt-select {
-          font-family: "Inter";
+          font-family: 'Nanum Gothic', sans-serif;
           font-style: normal;
           font-weight: 400;
           font-size: 15px;
