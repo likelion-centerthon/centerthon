@@ -8,7 +8,6 @@
 .support_form_h1 {
   width: 260px;
   height: 35px;
-  font-family: "Poppins";
   font-style: normal;
   font-weight: 700;
   font-size: 24px;
@@ -20,7 +19,7 @@
 .support_form_h2 {
   width: 345px;
   height: 44px;
-  font-family: "Inter";
+
   font-style: normal;
   font-weight: 300;
   font-size: 18px;
@@ -38,7 +37,6 @@
   border: 1px solid #b3b1b0;
   border-radius: 16px;
   padding: 15px;
-  font-family: "Poppins";
   font-style: normal;
   font-weight: 500;
   font-size: 20px;
@@ -55,7 +53,6 @@
 }
 
 input::placeholder {
-  font-family: "Poppins";
   font-style: normal;
   font-weight: 500;
   font-size: 20px;
@@ -74,7 +71,6 @@ input {
 
   background: #b3b1b0;
   border-radius: 30.5px;
-  font-family: "Poppins";
   font-style: normal;
   font-weight: 700;
   font-size: 20px;

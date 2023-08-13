@@ -9,7 +9,6 @@
 }
 
 .category button {
-  font-family: "Inter";
   font-style: normal;
   font-weight: 1000;
   font-size: 19px;
@@ -65,7 +64,6 @@
 
 .artist_name {
   width: 100%;
-  font-family: 'Inter';
   font-style: normal;
   font-weight: 500;
   font-size: 27px;

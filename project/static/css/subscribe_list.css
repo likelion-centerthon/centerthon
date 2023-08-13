@@ -68,7 +68,6 @@
 }
 
 .artist-name {
-    font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
@@ -89,7 +88,6 @@
     color: #BC67FF; 
     box-shadow: 0px 0px 4px #BC67FF;
     border-radius: 50px;
-    font-family: 'Inter';
     font-style: normal;
     font-weight: 700;
     font-size: 20px;

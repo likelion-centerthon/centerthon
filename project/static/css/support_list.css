@@ -29,7 +29,6 @@
 
 .allsupport,
 .mysupport {
-  font-family: "Inter";
   font-style: normal;
 
   font-weight: 1000;
@@ -88,7 +87,6 @@
   border-radius: 16px;
   margin-bottom: 16px;
   padding: 20px;
-  font-family: "Poppins";
   font-style: normal;
   font-weight: 500;
   width:340px;
@@ -126,7 +124,6 @@
   background: #d9d9d9;
   border-radius: 20px;
   text-align: center;
-  font-family: "Poppins";
   font-style: normal;
   font-weight: 500;
   font-size: 50px;

@@ -4,6 +4,7 @@ body {
     min-height:100%;
     margin: 0; 
     overflow: hidden;
+    font-family: 'Noto Sans KR', sans-serif;
   }
   .container {
     width: 375px;
@@ -16,10 +17,9 @@ body {
   .content{
     height: 100vh;
     overflow: auto;
-    
 }
 
   .icon {
-    background-color: white; /* 배경색을 흰색으로 변경 */
+    background-color: white; 
   }
   

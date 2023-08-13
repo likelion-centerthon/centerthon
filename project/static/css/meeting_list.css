@@ -8,10 +8,6 @@
 }
 
 .artist_image_2 {
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/main
     width: 140px;
     height: 140px;
     border-radius: 50%; 
@@ -101,7 +97,6 @@
     top: 55%;
     bottom: 0;
     margin: auto;
-    font-family: 'Poppins';
     font-style: normal;
     font-weight: 700;
     font-size: 24px;

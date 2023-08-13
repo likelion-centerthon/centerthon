@@ -13,7 +13,6 @@ input{
 }
 
 .category button {
-  font-family: "Inter";
   font-style: normal;
   font-weight: 700;
   font-size: 18px;
@@ -54,7 +53,6 @@ input{
 }
 
 .meeting-search-form label {
-  font-family: 'Poppins';
   font-weight: 500;
   font-size: 14px;
   color: #B3B1B0;
@@ -75,7 +73,6 @@ input{
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  font-family: 'Poppins';
   font-weight: 500;
   font-size: 14px;
 }

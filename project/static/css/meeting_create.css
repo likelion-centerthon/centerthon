@@ -1,7 +1,6 @@
 .h1-meeting {
   width: 300px;
   height: 35px;
-  font-family: "Inter";
   font-style: normal;
   font-weight: 700;
   font-size: 24px;
@@ -16,7 +15,6 @@
 .h3-meeting {
   width: 345px;
   height: 44px;
-  font-family: "Inter";
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
@@ -28,13 +26,13 @@
 
 /* 모임 등록 폼 */
 .register input {
-  width: 300px;
-  height: 53px;
+  width: 327px;
+  height: 52px;
   box-sizing: border-box;
   mix-blend-mode: normal;
   border: 1px solid #b3b1b0;
   border-radius: 16px;
-  margin: 5px 10px 6px 35px;
+  margin: 10px 3px 3px 19px;
 }
 
 .date-placeholder {
@@ -43,7 +41,6 @@
   border: 1px solid #b3b1b0;
   border-radius: 17px;
   padding: 15px;
-  font-family: "Poppins";
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
@@ -60,7 +57,7 @@
   mix-blend-mode: normal;
   border: 1px solid #b3b1b0;
   border-radius: 16px;
-  margin: 3px 0px 3px 35px;
+  margin: 10px 3px 3px 19px;
   font-weight: 500;
   padding: 1px;
 }
@@ -72,9 +69,8 @@
   border: 1px solid #b3b1b0;
   border-radius: 30px;
   cursor: pointer;
-  padding: 6px 20px;
+  padding: 7px 18px;
   margin-bottom: 1px;
-  font-family: "Inter";
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -84,29 +80,24 @@
 
 /* 모임 등록하기 버튼 */
 .register-Button {
-  width: 334px;
-  height: 51px;
-  background: #BC67FF;
-  border-radius: 15px;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-  font-family: "Inter";
+  width: 320px;
+  height: 60px;
+  background: #bc67ff;
+  border-radius: 30.5px;
   font-style: normal;
-  font-weight: 300;
-  font-size: 18px;
-  line-height: 24px;
-  color: #ffffff;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 180%;
   text-align: center;
+  color: #ffffff;
   border: none;
-  margin: 20px auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  margin-top: 10px;
+  margin-left: 25px;
 }
 
 input::placeholder,
 textarea::placeholder {
   text-indent: 10px;
-  font-family: "Poppins";
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
@@ -120,7 +111,6 @@ textarea::placeholder {
 input,
 textarea {
   text-indent: 10px;
-  font-family: "Poppins";
   font-style: normal;
   font-weight: 500;
   font-size: 18px;

@@ -42,7 +42,6 @@
 }
 
 .custom-box2 p {
-    font-family: 'Arial', sans-serif;
     font-size: 18px;
     color: #333;
     text-align: center;
@@ -69,7 +68,6 @@
 
 /* 일정 날짜, 장소, 나이 등*/
 .meetdate {
-    font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
     font-size: 20px;
@@ -86,7 +84,6 @@
 .artist_fanName,
 .meeting-body,
 .meetingstate {
-    font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
     font-size: 20px;

@@ -2,6 +2,7 @@ body {
     background-color: rgb(230, 230, 230);
     height: 812px;
     margin: 0;
+    font-family: 'Noto Sans KR', sans-serif;
   }
   .container {
     width: 375px;
@@ -13,7 +14,7 @@ body {
   .content{
     height: calc(100vh - 165px);
     overflow-y: auto;
-    overflow-x:hidden;
+    overflow-x: hidden;
   }
   .icon {
     background-color: white; 

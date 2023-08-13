@@ -8,7 +8,6 @@
 
 }
 .use_working_startday {
-  font-family: "Inter";
   font-style: normal;
   font-weight: 600;
   font-size: 20px;
@@ -20,7 +19,6 @@
 
 .use_working_likeday {
 
-  font-family: "Inter";
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
@@ -40,7 +38,6 @@
   .user_support div {
     width: 350px;
     height: 24px;
-    font-family: "Inter";
     font-style: normal;
     font-weight: 400;
     font-size: 20px;
