@@ -1,0 +1,54 @@
+.content-1 {
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.e0_804 { 
+    border-radius: 500px;
+    background-color: rgba(217, 217, 217, 1);
+    width: 119px;
+    height: 119px;
+    margin-top: 250px;
+}
+/* .e0_807 { 
+    width: 37px;
+    height: 38px;
+    background-image: url(images/kakaologo.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+} */
+
+.e0_805 { 
+    color: rgba(0, 0, 0, 1);
+    background-color: rgba(254, 220, 64, 1); /* 노란 배경 색상 추가 */
+    box-shadow: 0px 6px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    opacity: 0.9;
+    border: 1px solid rgba(254, 220, 64, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 295px;
+    height: 60px;
+    font-family: Inter;
+    font-size: 24px;
+    letter-spacing: 0;
+    margin-top: 40px;
+    text-decoration-line: none;
+}
+
+
+
+.e0_808 { 
+    color: rgba(84, 84, 84, 1);
+    width: 200px;
+    height: 26px;
+    font-family: Inter;
+    text-align: left;
+    font-size: 14px;
+    letter-spacing: 0;
+    margin-top: 20px;
+}

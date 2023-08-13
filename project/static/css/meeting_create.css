@@ -1,50 +1,47 @@
-
-#meetingForm {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-h1 {
-  width: 170px;
+.h1-meeting {
+  width: 300px;
   height: 35px;
-  margin: 50px auto 0;
-  font-family: "Poppins";
+  font-family: "Inter";
   font-style: normal;
   font-weight: 700;
   font-size: 24px;
+  line-height: 147%;
   text-align: center;
-  color: #000000;
+  color: #bc67ff;
+  margin-top: 10px;
+  margin-left: -55px;
+  margin-bottom: 10px;
 }
 
-h3 {
-
+.h3-meeting {
+  width: 345px;
+  height: 44px;
   font-family: "Inter";
   font-style: normal;
-  font-weight: 300;
-  font-size: 14px;
-  line-height: 17px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
   display: flex;
-  margin-left: 30px;
-  align-items: center;
-  color: #545454;
+  color: #221d1d;
+  margin: 0px 0px 10px 30px;
 }
 
 /* 모임 등록 폼 */
 .register input {
-  width: 327px;
-  height: 52px;
+  width: 300px;
+  height: 53px;
   box-sizing: border-box;
-  margin: 10px auto;
   mix-blend-mode: normal;
   border: 1px solid #b3b1b0;
   border-radius: 16px;
+  margin: 5px 10px 6px 35px;
 }
 
-.custom-date {
+.date-placeholder {
   box-sizing: border-box;
-  width: 327px;
-  height: 52px;
+  mix-blend-mode: normal;
+  border: 1px solid #b3b1b0;
+  border-radius: 17px;
   padding: 15px;
   font-family: "Poppins";
   font-style: normal;
@@ -53,40 +50,36 @@ h3 {
   line-height: 150%;
   color: #b3b1b0;
   text-indent: 0px;
-  margin: 10px auto;
-  mix-blend-mode: normal;
-  border: 1px solid #b3b1b0;
-  border-radius: 16px;
-}
-
-.detail1-container {
-  width: 327px;
-  margin: 10px auto;
-  display: flex;
-  flex-direction: column;
 }
 
 .detail1 {
   width: 327px;
   height: 150px;
   box-sizing: border-box;
-  margin: 10px auto;
   resize: none;
   mix-blend-mode: normal;
   border: 1px solid #b3b1b0;
   border-radius: 16px;
+  margin: 3px 0px 3px 35px;
+  font-weight: 500;
+  padding: 1px;
 }
 
 /* 사진 추가 버튼 */
 .addImg-Button {
-  box-sizing: border-box;
-  width: 68px;
-  height: 34px;
+  display: inline-block;
   background: #ffffff;
   border: 1px solid #b3b1b0;
   border-radius: 30px;
-  margin-bottom: 10px;
-  margin-left: auto;
+  cursor: pointer;
+  padding: 6px 20px;
+  margin-bottom: 1px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: #333333;
 }
 
 /* 모임 등록하기 버튼 */
@@ -108,4 +101,41 @@ h3 {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+input::placeholder,
+textarea::placeholder {
+  text-indent: 10px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 200%;
+  color: #b3b1b0;
+  text-indent: 13px;
+}
+textarea::placeholder {
+  padding-top: 2px;
+}
+input,
+textarea {
+  text-indent: 10px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 200%;
+  color: #000000;
+  text-indent: 13px;
+}
+.select-wrapper {
+  position: absolute;
+  margin: 12px 0px 0px 265px;
+  z-index: 1;
+  
+}
+
+input[type="datetime-local"]::before {
+  content: attr(data-placeholder);
+  width: 100%;
 }

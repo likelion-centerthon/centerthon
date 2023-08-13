@@ -1,11 +1,11 @@
-{% extends 'base_no_nav.html' %}
+{% extends 'base_artistlist.html' %}
 {% block content %}
 
 
           <!-- 페이지 제목 추가 -->
           <h2 class="page-title">구독한 아티스트 목록</h2>
 
-        <div class="category-buttons">
+        <div class="artist-buttons">
             <form method="post" action="{% url 'artist:subscribe_list' category='KPOP' %}">
                 {% csrf_token %}
                 <button type="submit">K-POP</button>

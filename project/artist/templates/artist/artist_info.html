@@ -3,40 +3,47 @@
 {% with artist=artist alerts=alerts %}
 {% block content %}
 
-
+<div class="artist-background" style="background-color: {{ artist.color }};">
 <div style="margin-bottom:5px; display:flex; align-items:center; " class="support_list_category">
     <form method="post" action="{% url 'artist:select_artist' pk=artist.pk %}">
         {% csrf_token %}
-        <button class="allsupport" style="width:160px; margin-left:15px; font-size:20px;border-bottom:3px solid #000000;">아티스트 정보</button>
+        <button class="allsupport"
+            style="width:160px; margin-left:15px; font-size:20px;border-bottom:3px solid #000000;">아티스트 정보</button>
     </form>
     <form method="post" action="{% url 'artist:artist_sns' pk=artist.pk %}">
         {% csrf_token %}
-    <button class="mysupport"style="width:160px; margin-left:22px; font-size:20px;">SNS 보기</button>
+        <button class="mysupport" style="width:160px; margin-left:22px; font-size:20px;">SNS 보기</button>
     </form>
 </div>
 <div class="support_button">
-    <div  style="margin-left:285px; margin-top:16px;" >
-        <a href="#;" onClick="zoomIn();"><img style="width:20px; height:20px;"src="{% static 'images/zoomin.png'%}" alt="확대"></a>
-          <a href="#;" onClick="zoomOut();"><img style="width:20px; height:20px;"src="{% static 'images/zoomout.png'%}" alt="축소"></a>
-        </div>
+    <div style="margin-left:285px; margin-top:16px;">
+        <a href="#;" onClick="zoomIn();"><img style="width:20px; height:20px;" src="{% static 'images/zoomin.png'%}"
+                alt="확대"></a>
+        <a href="#;" onClick="zoomOut();"><img style="width:20px; height:20px;" src="{% static 'images/zoomout.png'%}"
+                alt="축소"></a>
+    </div>
 </div>
 
-<div class="artist_name"> 아티스트  {{ artist.artistName }}</div>
+<div class="artist_name"> 아티스트 {{ artist.artistName }}</div>
 <div class="artist_image">
     <img src="{{ artist.artistImage.url }}">
 </div>
-<div class="custom-box" >
+<div class="custom-box">
     <div class="artist_info">
-        <div class="artist_members"> <strong>멤버</strong>  {{ artist.members }}</div>
+        <div class="artist_members"> <strong>멤버</strong> {{ artist.members }}</div>
         <div class="artist_debuteDate"> <strong>데뷔</strong> {{ artist.debutDate }}</div>
         <div class="artist_fanName"> <strong>팬덤</strong> {{ artist.fanName }}</div>
         <div class="artist_agency"> <strong>회사</strong> {{ artist.agency }}</div>
-            <div class="social_icon">
-                <div><strong>인스타</strong></div><a href="{{ artist.instagram }}" target="_blank"><img src="{% static 'images/instagram_icon.png' %}" alt="인스타그램"></a>
-                <div><strong>트위터</strong></div><a href="{{ artist.twitter }}" target="_blank"><img src="{% static 'images/twitter_icon.png' %}" alt="트위터"></a>
-                <div><strong>유튜브</strong></div><a href="{{ artist.youtube }}" target="_blank"><img src="{% static 'images/youtube_icon.png' %}" alt="유튜브"></a>
-            </div>
+        <div class="social_icon">
+            <div><strong>인스타</strong></div><a href="{{ artist.instagram }}" target="_blank"><img class="insta"
+                    src="{% static 'images/insta.png' %}" alt="인스타그램"></a>
+            <div><strong>트위터</strong></div><a href="{{ artist.twitter }}" target="_blank"><img class="twitter"
+                    src="{% static 'images/twitter_icon.png' %}" alt="트위터"></a>
+            <div><strong>유튜브</strong></div><a href="{{ artist.youtube }}" target="_blank"><img class="youtube"
+                    src="{% static 'images/youtube_icon.png' %}" alt="유튜브"></a>
+        </div>
     </div>
+</div>
 </div>
 {% endblock %}
 {% endwith %}
