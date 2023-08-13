@@ -12,7 +12,8 @@ body {
   }
   .content{
       height: calc(100vh - 165px);
-      overflow: auto;
+      overflow-y: auto;
+    overflow-x:hidden;
   }
   .icon {
     background-color: white; /* 배경색을 흰색으로 변경 */
