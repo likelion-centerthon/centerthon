@@ -7,7 +7,7 @@
     </div>
     <div class="list"  onclick="location.href='{% url 'post:post_list' artist_pk=artist.pk category='가수' %}'">
         <img id="list-img" src="{% static 'images/list.png'%}" alt="게시글 이미지"></img>
-        <div class="label">게시글</div>
+        <div class="label">게시판</div>
     </div>
     <div class="group"  onclick="location.href='{% url 'meeting:MeetingList' artist_id=artist.id %}'">
         <img id="group-img" style="width:58px; height:58px; margin-top:-6px;"src="{% static 'images/group.png'%}" alt="그룹 이미지" ></img>
