@@ -28,7 +28,7 @@
 
     <div class="artist_image_2">
         {% if artist.artistImage %}
-            <img src="{{ artist.artistImage.url }}" alt="{{ artist.artistName }} Image" width="200">
+            <img src="{{ artist.artistImage.url }}" alt="{{ artist.artistName }} Image" width="150">
         {% endif %}
     </div>
 
@@ -49,7 +49,7 @@
             {% endfor %}
         </div>
     </div>
-  <button class="start-Button" style="margin-left: 27px; margin-top:53px;background: #bc67ff;font-size: 22px;" onclick="location.href='{% url 'meeting:createMeeting' artist_id=artist_id %}'">모임 작성하기</button>
+  <button class="start-Button" style="margin-left: 27px; margin-top:-40px;background: #bc67ff;font-size: 22px;" onclick="location.href='{% url 'meeting:createMeeting' artist_id=artist_id %}'">모임 작성하기</button>
 
 
 {% endblock %}

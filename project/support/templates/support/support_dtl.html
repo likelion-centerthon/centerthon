@@ -16,16 +16,19 @@
 
     <!--일반 사용자일 때-->
     {% if support.user == request.user %}
-    <button style="margin-left:285px; "class="modify_button" onclick="location.href='{% url 'support:update_support' pk=artist.pk spt_pk=support.pk %}'">수정</button>
+    <button style="margin-left:290px; "class="modify_button" onclick="location.href='{% url 'support:update_support' pk=artist.pk spt_pk=support.pk %}'">수정</button>
     {% endif %}
 
     <div class="detail-container">
     <div class="title">{{support.title}}</div>
     <div class="goal">{{support.fundraising}}</div>
-    <div class="detail">{{support.body}}</div>
-    {% if support.image %}
-    <img src={{support.image.url}} style="width:1000px height:500px;"  alt="Support Image">
+    <div class="detail" style="height:auto;">
+      <p style="word-break:break-all;">{{support.body}}</p>
+      {% if support.image %}
+    <img src={{support.image.url}} style=" margin:0px 0px 10px 70px;width:170px; height:170px;"  alt="Support Image">
     {% endif %}
+    </div>
+    
   <div  style="position: relative; border:none; margin:-1px 0px -55px 0px;">
     <div class="account">{{support.bank}} {{support.account}}</div>
     <div class="select-wrapper " style="border:none; ">
@@ -61,12 +64,13 @@
          <!-- 모금자 정보 for문 -->
 {% for form in support_form %}
 <div class="info-text">
-    <div style="margin-bottom:10px; border: 1px solid #333333; filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)); border-radius: 16px; padding: 5px; ">
+    <div style="margin-bottom:10px; border: 1px solid #333333; filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)); border-radius: 16px; padding: 5px;  width: 308px;
+    margin: 3px 0px 10px 20px;">
         <p style="font-size:20px;" >{{form.depositor}} | {{form.credit}}원</p>
         <p style="color: #949494; font-size:18px;">{{ form.creditTime|date:"Y.m.d H:i" }}</p>
 
         {% if form.status == '대기' %}
-        <div  onclick="showPopup('{{ form.pk }}')" style="color:red; margin: -35px 0px 20px 280px;font-size:20px; cursor: pointer;">대기 </div>
+        <div  onclick="showPopup('{{ form.pk }}')" style="color:red; margin: -40px 0px 20px 240px;font-size:20px; cursor: pointer;">대기 </div>
         <div id="pop_info_{{ form.pk }}" class="pop_wrap" style="display: none">
           <div class="pop_inner">
             <p class="dsc">입금 확인이 되었나요?</p>
@@ -85,7 +89,7 @@
         {% endif %}
 
         {% if not form.status == '대기' %}
-        <div style="color:blue; margin: -30px 0px 20px 280px; font-size:20px;">{{form.status}}</div>
+        <div style="color:blue; margin: -40px  0px 20px 240px; font-size:20px;">{{form.status}}</div>
         {% endif %}               
      </div>
 </div>
@@ -102,21 +106,22 @@
   {% if not banks %}
   <div style=" display: flex; justify-content: center;  ">출금 내역이 없습니다.</div>
   {% endif %}
+
   <div class="supportinfo-container">
   {% for bank, block in banks %}
-  <div style="margin-bottom:10px; border: 1px solid #333333; filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)); border-radius: 16px; padding: 5px; ">
-    <div style="display:flex; position:row;">
+  <div  class="block-chain-container"  id="blockchain-{{ bank.pk}}" onclick="toggleBlockchain({{ bank.pk }})">
+    <div style="display:flex; position:row;text-align: center;">
     <input style="font-size:20px;" type="text" class="form-input" value="{{ bank.depositor }}" readonly><br>
-    <input style="font-size:18px; margin-top:10px; margin-left:-20px;" type="text" class="form-input" value="{{ bank.credit }} 출금" readonly><br>
+    <input style="font-size:18px; margin-top:10px; margin-left:-25px;" type="text" class="form-input" value="-{{ bank.credit }} " readonly><br>
     </div>
     <input style="color: #949494; font-size:18px;" type="text" class="form-input" value="{{ bank.creditTime|date:"Y-m-d A h:i" }}" readonly><br>
   </div>
-  <div>
-      <div>블록체인 해시: {{block.hash}}</div>
-      <div>서포트 마감 시간: {{block.timestamp}}</div>
-      <div>블록체인 출금액: {{block.credit}}</div>
-      <div>블록체인 출금자 정보: {{block.depositor}}</div>
-      <div>블록체인 출금 시간: {{block.creditTime}}</div>
+  <div class="blockchain" id="blockchain-content-{{ bank.pk}}" style="display: none;">
+    <div class="hash">&nbsp;&nbsp;{{block.hash}}</div>
+      <div class="timestamp">서포트 마감 시간: {{block.timestamp|date:"Y.m.d H:i"}}</div>
+      <div class="credit">블록체인 출금액: {{block.credit}}</div>
+      <div class="depositor">블록체인 출금자 정보: {{block.depositor}}</div>
+      <div class="creditTime">블록체인 출금 시간: {{block.creditTime |date:"Y.m.d H:i"}}</div>
   </div>
   {% endfor %}
 </div>
@@ -160,6 +165,24 @@ function hidePopup(formId) {
 
   function goBack() {
     window.history.back();
+  }
+
+  /*블록체인 아코디언*/
+  function toggleBlockchain(formId) {
+    const blockchainContent = document.getElementById(`blockchain-content-${formId}`);
+    const blockchain = document.getElementById(`blockchain-${formId}`);
+
+    
+    if (blockchainContent.style.display === 'none') {
+      blockchainContent.style.display = 'block';
+      blockchain.style.border='2px solid black'
+
+  
+    } else {
+      blockchainContent.style.display = 'none';
+      blockchain.style.border = '1px solid black';
+
+    }
   }
   </script>
 {% endblock %}

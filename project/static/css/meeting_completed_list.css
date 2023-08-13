@@ -37,8 +37,8 @@
 }
 
 .artist_image_2 {
-    width: 150px;
-    height: 150px;
+    width: 140px;
+    height: 140px;
     border-radius: 50%; 
     overflow: hidden; 
     margin-left: 55%; 
@@ -59,7 +59,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 50px 0;
+    margin: 40px 0;
     width:375px;
     
    
@@ -69,7 +69,7 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 10px; 
     justify-content: center; 
-    height:220px;
+    height:335px;
   
     overflow-y:auto;
 }
