@@ -69,7 +69,7 @@
 
 /* 일정 날짜, 장소, 나이 등*/
 .meetdate {
-    font-family: 'Inter';
+    font-family: 'Noto Sans KR', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 20px;
@@ -86,7 +86,7 @@
 .artist_fanName,
 .meeting-body,
 .meetingstate {
-    font-family: 'Inter';
+    font-family: 'Noto Sans KR', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 20px;

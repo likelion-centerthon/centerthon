@@ -5,7 +5,7 @@ body {
   min-height:100%;
   margin: 0;
   overflow: hidden;
-  font-family: 'Nanum Gothic', sans-serif;
+  font-family: 'Noto Sans KR', sans-serif;
 }
 .container {
   width: 375px;

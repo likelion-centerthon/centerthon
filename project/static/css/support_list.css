@@ -29,10 +29,10 @@
 
 .allsupport,
 .mysupport {
-  font-family: 'Nanum Gothic', sans-serif;
+  font-family: 'Noto Sans KR', sans-serif;
   font-style: normal;
 
-  font-weight: 1000;
+  font-weight: 500;
 
   line-height: 22px;
   text-align: center;
@@ -88,7 +88,7 @@
   border-radius: 16px;
   margin-bottom: 16px;
   padding: 20px;
-  font-family: "Poppins";
+  font-family: 'Noto Sans KR', sans-serif;
   font-style: normal;
   font-weight: 500;
   width:340px;
@@ -126,7 +126,7 @@
   background: #d9d9d9;
   border-radius: 20px;
   text-align: center;
-  font-family: "Poppins";
+  font-family: 'Noto Sans KR', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 50px;

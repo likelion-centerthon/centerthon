@@ -8,9 +8,9 @@
 .support_form_h1 {
   width: 260px;
   height: 35px;
-  font-family: "Poppins";
+  font-family: 'Noto Sans KR', sans-serif;
   font-style: normal;
-  font-weight: 700;
+  font-weight: 500;
   font-size: 24px;
   line-height: 147%;
   text-align: center;
@@ -20,7 +20,7 @@
 .support_form_h2 {
   width: 345px;
   height: 44px;
-  font-family: 'Nanum Gothic', sans-serif;
+  font-family: 'Noto Sans KR', sans-serif;
   font-style: normal;
   font-weight: 300;
   font-size: 18px;
@@ -38,7 +38,7 @@
   border: 1px solid #b3b1b0;
   border-radius: 16px;
   padding: 15px;
-  font-family: "Poppins";
+  font-family: 'Noto Sans KR', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 20px;
@@ -55,7 +55,7 @@
 }
 
 input::placeholder {
-  font-family: "Poppins";
+  font-family: 'Noto Sans KR', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 20px;
@@ -74,9 +74,9 @@ input {
 
   background: #b3b1b0;
   border-radius: 30.5px;
-  font-family: "Poppins";
+  font-family: 'Noto Sans KR', sans-serif;
   font-style: normal;
-  font-weight: 700;
+  font-weight: 500;
   font-size: 20px;
   line-height: 180%;
   text-align: center;

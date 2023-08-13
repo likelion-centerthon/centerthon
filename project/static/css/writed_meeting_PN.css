@@ -9,9 +9,9 @@
   }
   
   .category button {
-    font-family: 'Nanum Gothic', sans-serif;
+    font-family: 'Noto Sans KR', sans-serif;
     font-style: normal;
-    font-weight: 700;
+    font-weight: 500;
     font-size: 18px;
     line-height: 22px;
     text-align: center;
@@ -50,7 +50,7 @@
   }
   
   .meeting-search-form label {
-    font-family: 'Poppins';
+    font-family: 'Noto Sans KR', sans-serif;
     font-weight: 500;
     font-size: 14px;
     color: #B3B1B0;
@@ -71,7 +71,7 @@
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    font-family: 'Poppins';
+    font-family: 'Noto Sans KR', sans-serif;
     font-weight: 500;
     font-size: 14px;
   }
