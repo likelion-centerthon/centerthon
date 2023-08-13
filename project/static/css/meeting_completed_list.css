@@ -157,3 +157,6 @@
     border: 1px solid #b3b1b0;
     border-radius: 30px;
   }
+  #searchInput::placeholder{
+    font-size:13px;
+  }
