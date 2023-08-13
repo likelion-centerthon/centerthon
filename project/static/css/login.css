@@ -4,6 +4,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    height: 500px;
 }
 
 .e0_804 { 
@@ -13,13 +14,6 @@
     height: 119px;
     margin-top: 250px;
 }
-/* .e0_807 { 
-    width: 37px;
-    height: 38px;
-    background-image: url(images/kakaologo.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-} */
 
 .e0_805 { 
     color: rgba(0, 0, 0, 1);
@@ -33,20 +27,18 @@
     justify-content: center;
     width: 295px;
     height: 60px;
-    font-family: Inter;
+    font-family: 'Noto Sans KR', sans-serif;
     font-size: 24px;
     letter-spacing: 0;
     margin-top: 40px;
     text-decoration-line: none;
 }
 
-
-
 .e0_808 { 
     color: rgba(84, 84, 84, 1);
     width: 200px;
     height: 26px;
-    font-family: Inter;
+    font-family: 'Noto Sans KR', sans-serif;
     text-align: left;
     font-size: 14px;
     letter-spacing: 0;

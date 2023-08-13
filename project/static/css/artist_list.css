@@ -25,7 +25,7 @@
     }
 
     .artist-buttons button.selected {
-        font-weight: 700;
+        font-weight: 500;
         color: #BC67FF;
     }
 
@@ -63,7 +63,7 @@
     }
 
     .artist-name {
-        font-family: 'Inter';
+        font-family: 'Noto Sans KR', sans-serif;
         font-style: normal;
         font-weight: 400;
         font-size: 18px;

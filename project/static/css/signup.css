@@ -44,7 +44,7 @@ input[type="submit"] {
     background-color: rgba(188, 103, 255, 1);
     color: white;
     cursor: pointer;
-    font-family: Inter;
+    font-family: 'Noto Sans KR', sans-serif;
     font-size: 20px;
     border: none;
     transition: background-color 0.3s;

@@ -58,7 +58,7 @@
 	position:absolute;
 	left:49px;
 	top:323px;
-	font-family:Inter;
+	font-family: 'Noto Sans KR', sans-serif;
 	text-align:left;
 	font-size:14px;
 	letter-spacing:0;
@@ -109,7 +109,7 @@
 	position:absolute;
 	left:175px;
 	top:319px;
-	font-family:Inter;
+	font-family: 'Noto Sans KR', sans-serif;
 	text-align:right;
 	font-size:14px;
 	letter-spacing:0;
@@ -165,7 +165,7 @@
 	position:absolute;
 	left:49px;
 	top:323px;
-	font-family:Inter;
+	font-family: 'Noto Sans KR', sans-serif;
 	text-align:left;
 	font-size:14px;
 	letter-spacing:0;
@@ -216,7 +216,7 @@
 	position:absolute;
 	left:175px;
 	top:319px;
-	font-family:Inter;
+	font-family: 'Noto Sans KR', sans-serif;
 	text-align:right;
 	font-size:14px;
 	letter-spacing:0;

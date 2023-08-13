@@ -5,7 +5,7 @@
   overflow: hidden;
 
   line-height: 22px;
-  font-family: "Poppins";
+  font-family: 'Noto Sans KR', sans-serif;
   font-style: normal;
   font-weight: 600;
   color: #8a8a8a;
@@ -30,7 +30,7 @@
  
   width: 62px;
   height: 17px;
-  font-family: "Inter";
+  font-family: 'Noto Sans KR', sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 18px;

@@ -1,7 +1,7 @@
 .post-dtl-title {
   width: 272px;
   height: 26px;
-  font-family: "Inter";
+  font-family: 'Noto Sans KR', sans-serif;
   font-style: normal;
   font-weight: 550;
   font-size: 20px;
@@ -12,7 +12,7 @@
 .post-dtl-name {
   width: 78px;
   height: 18px;
-  font-family: "Inter";
+  font-family: 'Noto Sans KR', sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -26,7 +26,7 @@
 .post-dtl-regTime {
   width: 170px;
   height: 18px;
-  font-family: "Inter";
+  font-family: 'Noto Sans KR', sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -38,7 +38,7 @@
 .post-dtl-contents {
   width: 204px;
   height: 19px;
-  font-family: "Inter";
+  font-family: 'Noto Sans KR', sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
@@ -111,7 +111,7 @@
 }
 .post-modify,
 .post-delete {
-  font-family: "Inter";
+  font-family: 'Noto Sans KR', sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 15px;
