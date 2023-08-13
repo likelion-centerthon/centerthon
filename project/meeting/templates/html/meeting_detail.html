@@ -12,7 +12,6 @@
     {% endif %}
     </div>
 
-    <div class="parent-container">
         <div class="custom-box2">
             <div class="meetdate"> 일시: {{ meeting.meetDate|date:"Y/m/d" }}</div>
             <div class="meetlocation"> 장소: {{ meeting.location }}</div>
@@ -20,7 +19,6 @@
             <div class="peoplename"> 작성자: {{ meeting.peopleNm }}</div>
             <div class="meeting-body"> 내용: {{ meeting.body }}</div>
             <div class="meetingstate"> 모임 상태: {{ meeting.meetingState }}</div>
-        </div>
     </div>
     <div class="buttons">
     {% if request.user != meeting.writeUser %}

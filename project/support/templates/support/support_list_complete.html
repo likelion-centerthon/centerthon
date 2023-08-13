@@ -18,7 +18,7 @@
 </div>
 
 
-<div class="supporting" style="height: 480px; width: 375px; overflow-y: auto; overflow-x:hidden;">
+<div class="supporting" style="height: 500px; width: 375px; overflow-y: auto; overflow-x:hidden;">
     {% for support in supports %}
     <div class="support_list_box" onclick="location.href='{% url 'support:support_dtl' pk=artist.pk spt_pk=support.pk %}'">
         {%with goal=support.fundraising%}

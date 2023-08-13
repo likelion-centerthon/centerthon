@@ -1,79 +1,73 @@
-.list-box {
-    
-}
-.page-title {
-    margin: 100px 0 0;
-    text-align: center ;
-}
 
-/* 카테고리 버튼 스타일 */
-.artist-buttons {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 80px;
-    
-}
+    .page-title {
+        margin: 100px 0 0;
+        text-align: center;
+    }
 
-.artist-buttons button {
-    width: 79px;
-    height: 47px;
-    background: #FFFFFF;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
-    border-radius: 15px;
-    border-color: #FFFFFF;
-    font-size: 18px;
-    font-weight: 400; /* 기본 글꼴 굵기 설정 */
-    color: #000000; /* 기본 색상 설정 */
-    transition: all 0.3s; /* 부드러운 전환을 위해 추가 */
-}
+    /* 카테고리 버튼 스타일 */
+    .artist-buttons {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 80px;
+    }
 
-.artist-buttons button.selected {
-    font-weight: 700; /* 더 굵은 글꼴 굵기로 변경 */
-    color: #BC67FF; /* 원하는 색상으로 변경 */
-}
+    .artist-buttons button {
+        width: 79px;
+        height: 47px;
+        background: #FFFFFF;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 15px;
+        border-color: #FFFFFF;
+        font-size: 18px;
+        font-weight: 400;
+        color: #000000;
+        transition: all 0.3s;
+    }
 
+    .artist-buttons button.selected {
+        font-weight: 700;
+        color: #BC67FF;
+    }
 
-.artist-buttons button:hover {
-    background-color: #c5c5c5;
-}
+    .artist-buttons button:hover {
+        background-color: #c5c5c5;
+    }
 
+    /* 아티스트 목록 스타일 */
+    .artist-list {
+        margin-top: 20px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        justify-items: center;
+    }
 
-/* 아티스트 목록 스타일 */
-.artist-list {
-    margin-top: 20px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); 
-    justify-items: center;
-}
+    .artist-list button {
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
 
-.artist-list button {
-    background: none;
-    border: none;
-    cursor: pointer;
-}
+    .image-wrapper {
+        width: 100px;
+        height: 100px;
+        overflow: hidden;
+        border-radius: 50%;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        margin-top: 20px;
+    }
 
-.image-wrapper {
-    width: 100px;
-    height: 100px;
-    overflow: hidden;
-    border-radius: 50%;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    margin-top: 20px;
-}
+    .artist-list img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
 
-.artist-list img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; 
-}
-
-.artist-name {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 22px;
-    color: #000000;
-    margin-top: 10px;
-}
-
+    .artist-name {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 22px;
+        color: #000000;
+        margin-top: 10px;
+    }

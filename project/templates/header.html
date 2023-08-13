@@ -97,26 +97,35 @@
             }
           }
         
-// "알람" 버튼 클릭 이벤트 처리 함수
-document.getElementById("alarm-button").addEventListener("click", function () {
-    toggleNotificationPopup();
-  });
+ // "알람" 버튼 클릭 이벤트 처리 함수
+ document.addEventListener("DOMContentLoaded", function () {
+        var alarmButton = document.getElementById("alarm-button");
+        if (alarmButton) {
+            alarmButton.addEventListener("click", function () {
+                toggleNotificationPopup();
+            });
+        }
+    });
 
-  // 알림 팝업 토글 함수
-  function toggleNotificationPopup() {
-    var popup = document.getElementById("notification-popup");
-    if (popup.style.display === "none") {
-      popup.style.display = "flex";
-    } else {
-      popup.style.display = "none";
+    // 알림 팝업 토글 함수
+    function toggleNotificationPopup() {
+        var popup = document.getElementById("notification-popup");
+        if (popup) {
+            if (popup.style.display === "none" || popup.style.display === "") {
+                popup.style.display = "flex";
+            } else {
+                popup.style.display = "none";
+            }
+        }
     }
-  }
-// 팝업 외부 클릭 시 팝업 닫기
-window.addEventListener("click", function(event) {
-  if (event.target === document.getElementById("notification-popup")) {
-    toggleNotificationPopup();
-  }
-});
+
+    // 팝업 외부 클릭 시 팝업 닫기
+    window.addEventListener("click", function (event) {
+        var popup = document.getElementById("notification-popup");
+        if (popup && event.target === popup) {
+            toggleNotificationPopup();
+        }
+    });
   
   
 

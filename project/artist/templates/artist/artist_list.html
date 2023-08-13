@@ -41,15 +41,14 @@
         </form>
         {% endfor %}
     </div>
-
-     <script>
+    
+    <script>
         const artistButtons = document.querySelectorAll('.artist-btn');
 
         artistButtons.forEach(button => {
-            button.addEventListener('click', (event) => {
-                // 선택된 버튼에 selected 클래스 추가
+            button.addEventListener('click', () => {
                 artistButtons.forEach(btn => btn.classList.remove('selected'));
-                event.target.classList.add('selected');
+                button.classList.add('selected');
             });
         });
     </script>

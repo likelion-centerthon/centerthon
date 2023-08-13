@@ -11,27 +11,10 @@ body {
     box-shadow: 2px 2px 9px rgba(0, 0, 0, 0.25);
   }
   .content{
-      height: calc(100vh - 165px);
-      overflow: auto;
-      margin-top: 10px;
+    height: calc(100vh - 165px);
+    overflow-y: auto;
+    overflow-x:hidden;
   }
   .icon {
-    background-color: white; /* 배경색을 흰색으로 변경 */
+    background-color: white; 
   }
-  /*스크롤바 커스텀*/
-/* ::-webkit-scrollbar {
-  width: 2px;
-}
-
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 6px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
-} */

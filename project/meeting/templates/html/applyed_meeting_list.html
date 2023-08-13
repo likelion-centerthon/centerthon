@@ -20,7 +20,7 @@
 
     <form class="meeting-search-form" method="get" action="{% url 'meeting:applyedMeetingList' artist_id=artist_id %}">
         <label for="searchInput">모임 검색:</label>
-        <input type="text" id="searchInput" name="search" placeholder="내가 신청한 모임명을 검색할 수 있어요">
+        <input type="text" id="searchInput" name="search" placeholder="신청자명을 검색할 수 있어요" style="text-indent:0px;">
         <button type="submit">검색</button>
     </form>
 
