@@ -53,7 +53,7 @@
             <button class="start-Button" type="submit">마감하기</button>
             {% endif %}
             {% if warning %}
-            <button class="start-Button" type="submit">{{warning}}</button>
+            <button class="start-Button" type="submit" style="background:#d9d9d9">{{warning}}</button>
             {% endif %}
         </form>
         <div class="line"></div>
@@ -79,7 +79,7 @@
                 <input type="hidden" name="form_pk" value="{{ form.pk }}">
                 <div style="display: flex; align-items: center; margin-left: 50px;"> 
                     <input type="submit" class="btn_yes" value="네" style="color:blue; outline:none;">
-                    <button type="button" class="btn_no" onclick="hidePopup('{{ form.pk }}')" style="margin-left: 10px;">아니요</button>
+                    <button type="button" class="btn_no" onclick="hidePopup('{{ form.pk }}')" style="margin-left: 14px; margin-top:6px">아니요</button>
                 </div>
             </form>
         </div>
@@ -174,12 +174,12 @@ function hidePopup(formId) {
     
     if (blockchainContent.style.display === 'none') {
       blockchainContent.style.display = 'block';
-      blockchain.style.border='2px solid black'
+      blockchain.style.border='2px solid #b3b1b0'
 
   
     } else {
       blockchainContent.style.display = 'none';
-      blockchain.style.border = '1px solid black';
+      blockchain.style.border = '1px solid #b3b1b0';
 
     }
   }
