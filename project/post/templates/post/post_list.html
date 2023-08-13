@@ -4,43 +4,44 @@
 {% block content %}
 
 {% if category == '가수' %}
-<div class="support_list_category">
-
+<div style="margin-bottom: 5px; display: flex; align-items: center;" class="support_list_category">
   <button
-    class="allsupport"
+  class="allsupport"
+    onclick="location.href='{% url 'post:post_list' artist_pk=artist.pk category='가수' %}'"
+   type="submit"
+   id="all"
+   style="width:160px; margin-left:15px; font-size:20px; border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: black;"
+  >
 
-     type="submit"
-     id="all"
-     style="width:160px; margin-left:15px; font-size:20px; border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: black;"
-    >
+  아티스트 이야기
 
-    아티스트 이야기
-
-  </button>
-  <button
-    class="mysupport"
-    type="submit"
-
-    id="my"
-    style="width:160px; margin-left:15px; font-size:20px;"
-    >
-    일상 이야기
-  </button>
+</button>
+<button
+class="mysupport"
+type="submit"
+onclick="location.href='{% url 'post:post_list' artist_pk=artist.pk category='자유' %}'"
+id="my"
+style="width:160px; margin-left:15px; font-size:20px;"
+>
+일상 이야기
+</button>
 </div>
 {% endif %}
 
 {% if category == '자유' %}
-<div class="support_list_category">
+<div style="margin-bottom: 5px; display: flex; align-items: center;" class="support_list_category">
 
   <button
     class="allsupport"
+    onclick="location.href='{% url 'post:post_list' artist_pk=artist.pk category='가수' %}'"
 
-     type="submit"
+    type="submit"
     id="all"
     style="width:160px; margin-left:15px; font-size:20px;"
     >
 
     아티스트 이야기
+  
 
   </button>
 
@@ -49,6 +50,8 @@
     type="submit"
 
     id="my"
+    onclick="location.href='{% url 'post:post_list' artist_pk=artist.pk category='자유' %}'"
+
     style="width:160px; margin-left:15px; font-size:20px; border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: black;"
     >
     일상 이야기
@@ -62,11 +65,11 @@
         <a href="#;" onClick="zoomOut();"><img style="width:20px; height:20px;"src="{% static 'images/zoomout.png'%}" alt="축소"></a>
       </div>
 </div>
-<div class="post-list-container" >
+<div class="post-list-container" style="height: 480px; width: 375px; overflow-y: auto; overflow-x:hidden;">
 {% for post in posts %}
-  <div class="post-list">
-    <a class="post-title" style=" font-size: 20px;" href="{% url 'post:post_detail' pk=post.pk%}"
-      >{{ post.title }}</a
+  <div class="post-list" onclick="location.href='{% url 'post:post_detail' pk=post.pk%}'">
+    <div class="post-title" style=" font-size: 20px;"
+      >{{ post.title }}</div
     >
     {% if post.image %}
     <img class="post-img" src="{{ post.image.url }}" />
@@ -80,27 +83,10 @@
 </div>
 <form method="get" action="{% url 'post:create_post' artist_pk=artist.pk %}">
   {% csrf_token %}
-  <button class="start-Button" style="margin-left: 27px;background: #bc67ff; margin-top:419px;font-size:22px;" onclick="location.href='{% url 'support:create_support' pk=artist.pk %}'">게시글 작성하기</button>
+  <button class="start-Button" style="margin-left: 27px;background: #bc67ff; margin-top:19px; font-size:22px;" onclick="location.href='{% url 'support:create_support' pk=artist.pk %}'">게시글 작성하기</button>
 
 </form>
 
-<script  >
-
-    const allButton = document.getElementById("all");
-    const myButton = document.getElementById("my");
-
-
-
-    allButton.addEventListener("click", function () {
-        window.location.href = '{% url 'post:post_list' artist_pk=artist.pk category='가수' %}';
-
-      });
-      myButton.addEventListener("click", function () {
-        window.location.href = '{% url 'post:post_list' artist_pk=artist.pk category='자유' %}';
-
-      });
-
-</script>
 
 {% endblock %}
 {% endwith %}  

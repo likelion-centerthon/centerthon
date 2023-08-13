@@ -18,7 +18,9 @@ def post_list(request, artist_pk, category):
     artist = Artist.objects.get(pk=artist_pk)
     posts = Post.objects.filter(category=category, artist=artist)
 
-    return render(request, 'post/post_list.html', context={'posts':posts, 'artist':artist, 'alerts':alerts, 'category':category})
+
+    return render(request, 'post/post_list.html', context={'posts':posts, 'artist':artist, 'alerts':alerts,'category':category})
+
 
 # 게시글 상세 조회
 def post_detail(request, pk):
@@ -152,8 +154,7 @@ def create_comment(request, pk):
         userWorking.commentRecord += 1
         userWorking.save()
 
-        comments = Comment.objects.filter(post=post)
-        return render(request, 'post/post_detail.html', context={'post':post, 'comments':comments,'artist':post.artist})
+        return redirect('post:post_detail', pk=post.pk)
 
 # 댓글 삭제
 def delete_comment(request, pk):
