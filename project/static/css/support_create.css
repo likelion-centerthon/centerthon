@@ -1,33 +1,27 @@
-/*서포트 시작하기*/
 .spt_crt_h1 {
   width: 300px;
-
   height: 35px;
-
-  font-family: "Poppins";
+  font-family: "Inter";
   font-style: normal;
   font-weight: 700;
   font-size: 24px;
   line-height: 147%;
   text-align: center;
-  color: #000000;
-
+  color: #bc67ff;
+  margin-top: 10px;
   margin-left: -45px;
 }
 .spt_crt_h2 {
   width: 345px;
   height: 44px;
-
   font-family: "Inter";
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
   line-height: 22px;
   display: flex;
-
   color: #221d1d;
-
-  margin: -3px 0px 10px 25px;
+  margin: 7px 0px 10px 30px;
 }
 /*서포트 등록 폼*/
 .register input {
@@ -37,7 +31,7 @@
   mix-blend-mode: normal;
   border: 1px solid #b3b1b0;
   border-radius: 16px;
-  margin: 3px 0px 3px 20px;
+  margin: 3px 10px 6px 23px;
 }
 
 /*내용*/
@@ -49,7 +43,9 @@
   mix-blend-mode: normal;
   border: 1px solid #b3b1b0;
   border-radius: 16px;
-  margin: 3px 0px 3px 20px;
+  margin: 3px 0px 3px 25px;
+  font-weight: 500;
+  padding: 1px;
 }
 input::placeholder,
 textarea::placeholder {
@@ -57,24 +53,24 @@ textarea::placeholder {
   font-family: "Poppins";
   font-style: normal;
   font-weight: 500;
-  font-size: 20px;
+  font-size: 18px;
   line-height: 200%;
-  color: #333333;
+  color: #b3b1b0;
+  text-indent: 13px;
 }
 textarea::placeholder {
   padding-top: 2px;
 }
 input,
 textarea {
-  text-indent: 15px;
-}
-.addImg-Butoon label {
-  font-family: "Inter";
+  text-indent: 10px;
+  font-family: "Poppins";
   font-style: normal;
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 19px;
-  color: #333333;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 200%;
+  color: #000000;
+  text-indent: 13px;
 }
 
 .account {
@@ -84,26 +80,46 @@ textarea {
   mix-blend-mode: normal;
   border: 1px solid #b3b1b0;
   border-radius: 16px;
-  margin: 3px 0px 3px 20px;
+  margin: 0px 0px 3px 20px;
   float: left;
 }
 
-.select-wrapper {
-  position: absolute;
-  margin: 5px 0px 0px 250px;
-  z-index: 1;
+.account-Button{
+  box-sizing: border-box;
+  width: 69.69px;
+  height: 33px;
+  background: #ffffff;
+  border: 1px solid #b3b1b0;
+  border-radius: 30px;
+  padding: 6px 0px 6px 0;
+  cursor: pointer;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: #333333;
+  margin-top: 7px;
+  margin-left: 15px;
 }
 
-.account-Button,
-.addImg-Button {
-  box-sizing: border-box;
-  width: 80px;
-  height: 34px;
+.custom-addImg-Button {
+  display: inline-block;
   background: #ffffff;
   border: 1px solid #b3b1b0;
   border-radius: 30px;
   cursor: pointer;
+  padding: 6px 20px;
+  margin-bottom: 1px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: #333333;
+  margin-left: 15px;
 }
+
 /*버튼 마우스 효과*/
 .addImg-Button:hover,
 .addImg-Button:focus,
@@ -116,7 +132,6 @@ textarea {
 /*서포트 마감일*/
 .custom-date {
   box-sizing: border-box;
-
   mix-blend-mode: normal;
   border: 1px solid #b3b1b0;
   border-radius: 16px;
@@ -133,7 +148,6 @@ textarea {
 .start-Button {
   width: 327px;
   height: 60px;
-
   background: #b3b1b0;
   border-radius: 30.5px;
   font-family: "Poppins";
@@ -158,4 +172,11 @@ input[type="datetime-local"]::before {
 input[type="datetime-local"]:focus::before,
 input[type="datetime-local"]:valid::before {
   display: none;
+}
+
+.select-wrapper {
+  position: absolute;
+  margin: 12px 0px 0px -240px;
+  z-index: 1;
+  
 }

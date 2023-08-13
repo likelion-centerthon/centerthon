@@ -2,9 +2,9 @@
 {% load static %}
 {% with artist=artist alerts=alerts %}
 {% block content %}
-<img class="back" src="{% static 'images/back.png'%}" alt="이전" onclick="goBack()"></img>
+<img class="back" src="{% static 'images/back.png'%}" alt="이전" onclick="goBack()" ></img>
 
-    <h2 class="detail-title-meeting">{{ meeting.title }}</h2>
+    <h2 class="detail-title-meeting">모임명 : {{ meeting.title }}</h2>
 
     <div class="meeting-image">
     {% if meeting.image %}
@@ -14,7 +14,6 @@
 
     <div class="parent-container">
         <div class="custom-box2">
-
             <div class="meetdate"> 일시: {{ meeting.meetDate|date:"Y/m/d" }}</div>
             <div class="meetlocation"> 장소: {{ meeting.location }}</div>
             <div class="age"> 나이제한: {{ meeting.age }}</div>

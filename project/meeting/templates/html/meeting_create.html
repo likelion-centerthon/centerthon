@@ -1,13 +1,13 @@
-{% extends 'base_no_nav.html' %}
+{% extends 'base_form.html' %}
 {% load static %}
 {% with artist=artist alerts=alerts %}
 {% block content %}
 
-    <img class="back" src="{% static 'images/back.png'%}" onclick="goBack()"></img>
-    <h1 class="h1-meeting">모임 작성하기</h1>
-    <h3 class="h2-meeting">등록하고 싶은 모임 세부 사항을 작성해요!</h3>
+    <img class="back" src="{% static 'images/back.png'%}" alt="이전" onclick="goBack()"></img>
+      <h1 class="h1-meeting">모임 작성하기</h1>
+      <h3 class="h3-meeting">등록하고 싶은 모임 세부 사항을 작성해요!</h3>
 
-    <form class="register input" id="meetingForm" method="post" enctype="multipart/form-data">
+      <form class="register input" id="meetingForm" method="post" enctype="multipart/form-data">
         {% csrf_token %}
 
         <label for="id_title" class="name" ></label>
@@ -17,7 +17,7 @@
         <input type="text" name="location" id="id_location" placeholder="장소" required>
 
         <label for="id_meetDate" ></label>
-        <input type="date" name="meetDate" id="id_meetDate" placeholder="일시" required>
+        <input data-placeholder="모금 종료 기간" class="date-placeholder" type="date" name="meetDate" id="id_meetDate" placeholder="일시" required>
 
         <label for="id_age" class="age"></label>
         <input type="text" name="age" id="id_age" placeholder="나이제한" required>
@@ -28,16 +28,18 @@
         <label for="id_kakaoLink" class="openkakao"></label>
         <input type="text" name="kakaoLink" id="id_kakaoLink" placeholder="오픈 채팅방 링크" required>
 
-        <div class="detail1-container">
+        <div style="position: relative; border:none;">
         <label for="id_body"></label>
         <textarea class="detail1" name="body" id="id_body" placeholder="내용"required></textarea>
-        </div>
+        <div class="select-wrapper " style="border:none; margin-top:-50px;">
 
         <label for="id_image" class="addImg-Button">사진</label>
         <input type="file" name="image" id="id_image" required>
+        </div>
+        </div>
 
-        <input type="submit" value="Submit" class="register-Button">
-    </form>
+        <input type="submit" value="작성하기" class="register-Button">
+        </form>
 
     <script>
         function goBack() {

@@ -13,12 +13,13 @@ body {
   .content{
       height: calc(100vh - 165px);
       overflow: auto;
+      margin-top: 10px;
   }
   .icon {
     background-color: white; /* 배경색을 흰색으로 변경 */
   }
   /*스크롤바 커스텀*/
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
   width: 2px;
 }
 
@@ -33,4 +34,4 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
-}
+} */

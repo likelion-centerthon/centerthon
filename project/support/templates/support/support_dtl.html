@@ -1,14 +1,12 @@
-{% extends 'support_base.html' %}
+{% extends 'base_artistlist.html' %}
 {% load static %}
 {% with artist=artist alerts=alerts %}
 {% block content %}
 {% load custom_filters %}
 
-<div style="  justify-content:row;  display: flex; ">
 <img class="back" src="{% static 'images/back.png'%}" alt="이전"  onclick="goBack()"></img>
-    <h1 class="support_dtl_h1" style=" margin-left:-17px;">상세조회</h1>
+    <h1 class="support_dtl_h1">상세조회</h1>
   
-  </div>
     <span id="percent-content" style="display:none;">{{support.balanceAmt|avg:support.fundraising}}</span>
     <div class="percent">
         <div class="percent-bar" id="percent-bar-content"></div>
@@ -29,8 +27,8 @@
   <div  style="position: relative; border:none; margin:-1px 0px -55px 0px;">
     <div class="account">{{support.bank}} {{support.account}}</div>
     <div class="select-wrapper " style="border:none; ">
-    <button class="account-Button" id="copyButton" style="margin:10px 0px 0px 220px;">복사</button>
-  </select>
+    <button class="coppy-Button" id="copyButton" >복사</button>
+
 </div>
 </div>
     <div class="enddate">{{support.deadline|date:"Y/m/d Ah:i"}}</div>
@@ -48,10 +46,10 @@
             {% csrf_token %}
             <input type="hidden" name="form_type" value="closing">
             {% if not warning %}
-            <button style=" margin-top: 10px;"class="start-Button" style="background:#bc67ff; margin-left:10px;"  type="submit">마감하기</button>
+            <button class="start-Button" type="submit">마감하기</button>
             {% endif %}
             {% if warning %}
-            <button style=" margin-top: 10px;" class="start-Button" style=" margin-top: 200px;margin-left:10px;"  type="submit">{{warning}}</button>
+            <button class="start-Button" type="submit">{{warning}}</button>
             {% endif %}
         </form>
         <div class="line"></div>
