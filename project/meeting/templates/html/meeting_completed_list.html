@@ -11,7 +11,7 @@
 <div class="meeting-button">
     <button onclick="location.href='{% url 'meeting:MeetingList' artist_id=artist.id   %}'">진행중</button>
     <button style="  border: 1px solid #bc67ff;color:#bc67ff;" onclick="location.href='{%url 'meeting:MeetingCloseList' artist_id=artist_id  %}'">종료</button>
-<div  style="margin-left:285px; margin-top:-25px;" >
+<div style="margin-left:285px; margin-top:-25px;" >
             <a href="#;" onClick="zoomIn();"><img style="width:20px; height:20px;"src="{% static 'images/zoomin.png'%}" alt="확대"></a>
               <a href="#;" onClick="zoomOut();"><img style="width:20px; height:20px;"src="{% static 'images/zoomout.png'%}" alt="축소"></a>
             </div>
@@ -25,7 +25,7 @@
 
     <div class="artist_image_2">
         {% if artist.artistImage %}
-            <img src="{{ artist.artistImage.url }}" alt="{{ artist.artistName }} Image" width="200">
+            <img src="{{ artist.artistImage.url }}" alt="{{ artist.artistName }} Image" width="150">
         {% endif %}
     </div>
 
@@ -46,7 +46,6 @@
     {% endfor %}
     </div>
 </div>
-    <!-- <a href="{% url 'meeting:createMeeting' artist_id=artist_id %}"><p><strong>모임 작성하기</strong></p></a> -->
 
     
 {% endblock %}
