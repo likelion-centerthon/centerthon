@@ -24,18 +24,18 @@
 
 
       <title>중앙톤 프로젝트</title>
-    {% include 'head.html' %}
-   </head>
-  <body>
-    <div class="container" style="overflow-x:hidden;" >
-      {% include 'header.html' %}
-         
-          <div class="content">
-              {% block content %}
-              {% endblock %}
-          </div>
-         {% include 'support_footer.html' %}
-      </div>
-
-  </body>
-</html>m
+      {% include 'head.html' %}
+    </head>
+   <body>
+       <div class="container" >
+           {% include 'header.html' %}
+          
+           <div class="content">
+               {% block content %}
+               {% endblock %}
+           </div>
+          {% include 'support_footer.html' %}
+       </div>
+ 
+   </body>
+</html>

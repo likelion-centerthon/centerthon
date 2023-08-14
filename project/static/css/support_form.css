@@ -37,14 +37,14 @@
   mix-blend-mode: normal;
   border: 1px solid #b3b1b0;
   border-radius: 16px;
-  padding: 15px;
+ 
   font-family: 'Noto Sans KR', sans-serif;
   font-style: normal;
   font-weight: 500;
-  font-size: 20px;
+  font-size: 18px;
   line-height: 150%;
   color: #b3b1b0;
-  text-indent: 0px;
+  
   width: 327px;
   height: 52px;
 }
@@ -60,7 +60,6 @@ input::placeholder {
   font-weight: 500;
   font-size: 20px;
   line-height: 150%;
-  text-align: center;
   text-align: left;
   color: #b3b1b0;
 }
@@ -89,11 +88,13 @@ input {
     border: 1px solid #bc67ff; 
     color: #ffffff; 
 }
-input[type="datetime-local"]::before {
+
+input[type='datetime-local']::before {
   content: attr(data-placeholder);
   width: 100%;
 }
-input[type="datetime-local"]:focus::before,
-input[type="datetime-local"]:valid::before {
+
+input[type='datetime-local']:focus::before,
+input[type='datetime-local']:valid::before {
   display: none;
 }
