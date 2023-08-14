@@ -21,7 +21,11 @@
     <form method="post" action="{% url 'alert:check_alert' pk=artist.pk %}">
       {% csrf_token %}
       <button id="alarm-button">
-        <img class="alarm" src="{% static 'images/alarm.png'%}" alt="알람">
+        {% if unread_alerts %}
+          <img class="alarm" src="{% static 'images/alarm_red.png'%}" alt="알람">
+        {% else %}
+          <img class="alarm" src="{% static 'images/alarm.png'%}" alt="알람">
+        {% endif %}
       </button>
     </form>
   </div>
@@ -46,6 +50,7 @@
       <div class="alert-openchat">{{ alert.openChatURL }}</div>
       {% endif %}
       <div class="alert-time">{{ alert.regTime|date:"Y.m.d H:i" }}</div>
+      {{ alert.is_read }}
     </div>
     {% endfor %}
   </div>

@@ -9,6 +9,7 @@ from userWorking.models import UserWorking
 # 게시글 전체 조회, 카테고리 분류
 def post_list(request, artist_pk, category):
     user = request.user
+    unread_alerts = Alert.objects.filter(user=user, is_read=False).order_by('-regTime')
     alerts = Alert.objects.filter(user=user)
 
     if not user.is_authenticated:
@@ -19,12 +20,13 @@ def post_list(request, artist_pk, category):
     posts = Post.objects.filter(category=category, artist=artist)
 
 
-    return render(request, 'post/post_list.html', context={'posts':posts, 'artist':artist, 'alerts':alerts,'category':category})
+    return render(request, 'post/post_list.html', context={'posts':posts, 'artist':artist, 'alerts':alerts, 'unread_alerts':unread_alerts,'category':category})
 
 
 # 게시글 상세 조회
 def post_detail(request, pk):
     user = request.user
+    unread_alerts = Alert.objects.filter(user=user, is_read=False).order_by('-regTime')
     alerts = Alert.objects.filter(user=user)
 
     if not user.is_authenticated:
@@ -34,12 +36,13 @@ def post_detail(request, pk):
         post = Post.objects.get(pk=pk)
         comments = Comment.objects.filter(post=post)
 
-        return render(request, 'post/post_detail.html', context={'post':post, 'comments':comments, 'artist':post.artist, 'alerts':alerts})
+        return render(request, 'post/post_detail.html', context={'post':post, 'comments':comments, 'artist':post.artist, 'alerts':alerts, 'unread_alerts':unread_alerts})
 
 # 게시글 생성
 def create_post(request, artist_pk):
     user = request.user
     artist = Artist.objects.get(pk=artist_pk)
+    unread_alerts = Alert.objects.filter(user=user, is_read=False).order_by('-regTime')
     alerts = Alert.objects.filter(user=user)
 
     if not user.is_authenticated:
@@ -60,6 +63,13 @@ def create_post(request, artist_pk):
             contents=contents,
         )
 
+        # 게시글 작성 시 알림 생성
+        Alert.objects.create(
+            user=user,
+            artist=artist,
+            message=F'<{title}> 게시글이 등록되었습니다!'
+        )
+
         # 이용행보 수정
         userWorking = UserWorking.objects.get(user=user, artist=artist)
         userWorking.postRecord += 1
@@ -67,12 +77,13 @@ def create_post(request, artist_pk):
 
         return redirect('post:post_list', artist_pk=artist.pk, category=category)
 
-    return render(request, 'post/create_post.html', context={'artist':artist, 'alerts':alerts})
+    return render(request, 'post/create_post.html', context={'artist':artist, 'alerts':alerts, 'unread_alerts':unread_alerts})
 
 
 # 게시글 수정
 def edit_post(request, pk):
     user = request.user
+    unread_alerts = Alert.objects.filter(user=user, is_read=False).order_by('-regTime')
     alerts = Alert.objects.filter(user=user)
 
     if not user.is_authenticated:
@@ -101,7 +112,7 @@ def edit_post(request, pk):
         return redirect('post:post_list', artist_pk=post.artist.pk, category=category)
 
     else:
-        return render(request, 'post/create_post.html', context={'post': post, 'artist':post.artist, 'alerts':alerts})
+        return render(request, 'post/create_post.html', context={'post': post, 'artist':post.artist, 'alerts':alerts, 'unread_alerts':unread_alerts})
 
 # 게시글 삭제
 def delete_post(request, pk):
