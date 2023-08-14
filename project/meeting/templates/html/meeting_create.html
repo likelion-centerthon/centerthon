@@ -34,18 +34,42 @@
         <div class="select-wrapper " style="border:none; margin-top:-50px;">
 
         <label for="id_image" class="addImg-Button">사진</label>
-        <input type="file" name="image" id="id_image" style="display:none;" required>
+        <input type="file" name="image" id="id_image" style="display:none" required>
         </div>
         </div>
-
-        <input type="submit" value="작성하기" class="register-Button">
+        <input type="submit" value="작성하기" class="register-Button" style="border-radius: 30.5px;">
         </form>
 
     <script>
-        function goBack() {
-          window.history.back();
-        }
-        </script>
+    let inputs = document.querySelectorAll("input");
+    let startButton = document.querySelector(".start-Button");
+    startButton.disabled = true;
+
+    function checkInputs() {
+    let allFilled = true;
+    inputs.forEach(function(input){
+    if (input.value === "") {
+      allFilled = false;
+      return;
+    }
+    });
+
+    if (allFilled) {
+    startButton.disabled = false;
+    startButton.style.backgroundColor = "#BC67FF";
+    startButton.innerHTML="제출"
+    } else {
+    startButton.disabled = true;
+
+    }
+    }
+    inputs.forEach(function(input){
+    input.addEventListener("input", checkInputs);
+    });
+    function goBack() {
+      window.history.back();
+     }
+     </script>
 
 {% endblock %}
 {% endwith %}

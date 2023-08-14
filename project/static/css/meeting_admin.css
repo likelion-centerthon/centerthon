@@ -106,7 +106,7 @@ body {
     position: absolute;
     left: 16px;
     top: 795px;
-    backgrounssdius: 15px;
+    /* backgrounssdius: 15px; */
     display: flex;
     justify-content: center;
     align-items: center;

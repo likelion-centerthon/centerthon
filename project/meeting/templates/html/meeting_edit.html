@@ -1,4 +1,4 @@
-{% extends 'base_no_nav.html' %}
+{% extends 'base_form.html' %}
 {% load static %}
 {% with artist=artist alerts=alerts %}
 {% block content %}
@@ -27,9 +27,10 @@
         <label for="kakaoLink"></label>
         <input type="url" id="kakaoLink" name="kakaoLink" value="{{ meeting.kakaoLink }}" placeholder="오픈채팅방"required>
 
+
         <div class="detail1-container">
         <label for="body"></label>
-        <textarea class="detail1" id="body" name="body" rows="4" required>{{ meeting.body }}</textarea>
+        <textarea class="detail1" id="body" name="body" rows="4" required>{{ meeting.body }}
 
         {% if meeting.image %}
             <img src="{{ meeting.image.url }}" alt="{{ meeting.title }} Image" width="200">
@@ -38,6 +39,7 @@
             <p>No image available</p>
             <br>
         {% endif %}
+    </textarea>
         </div>
  
         <label for="image"></label>

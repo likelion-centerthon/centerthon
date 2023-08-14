@@ -56,7 +56,7 @@ button{
     background-color: #fff;
 }
   /*알람 아이콘*/
-  .alram,
+  .alarm,
   .user {
     width: 29px;
     height: 29px;
@@ -66,6 +66,9 @@ button{
  a{
   text-decoration: none;
  }
+
+
+
  .notification-popup {
   position: fixed;
   top: 0;
@@ -76,7 +79,7 @@ button{
   display: none;
   align-items: center;
   justify-content: center;
-  z-index: 9999; 
+  z-index: 15000;
 }
 
 .notification-content {
@@ -87,7 +90,7 @@ button{
   overflow: auto;
   border-radius: 10px;
   box-shadow: 0px 8px 25px -4px rgba(13, 10, 44, 0.06);
-  z-index: 10000; 
+  z-index: 15000;
 }
 
 
@@ -117,11 +120,5 @@ button{
 .alert-time {
   font-size: 12px;
   color: #999;
-  margin-top: 5px;
-}
-
-.alert-read {
-  font-size: 12px;
-  color: #f44336; 
   margin-top: 5px;
 }

@@ -1,4 +1,4 @@
-.spt_crt_h1 {
+.support_h1 {
   width: 300px;
   height: 35px;
   font-family: 'Noto Sans KR', sans-serif;
@@ -8,42 +8,51 @@
   line-height: 147%;
   text-align: center;
   color: #bc67ff;
-  margin-top: 10px;
-  margin-left: -45px;
+  margin-top: 5px;
+  margin-left: -40px;
+  margin-bottom: 4px;
 }
-.spt_crt_h2 {
+.support_h2 {
   width: 345px;
   height: 44px;
   font-family: 'Noto Sans KR', sans-serif;
-  font-style: normal;
   font-weight: 500;
   font-size: 18px;
   line-height: 22px;
   display: flex;
   color: #221d1d;
-  margin: 7px 0px 10px 30px;
+  margin: 0px 0px 0px 30px;
 }
-/*서포트 등록 폼*/
-.register input {
+.title{
   width: 327px;
   height: 52px;
   box-sizing: border-box;
   mix-blend-mode: normal;
   border: 1px solid #b3b1b0;
   border-radius: 16px;
-  margin: 3px 10px 6px 23px;
+  margin: 0px 10px 6px 23px;
+
+}
+.goal,.custom-date{
+  width: 327px;
+  height: 52px;
+  box-sizing: border-box;
+  mix-blend-mode: normal;
+  border: 1px solid #b3b1b0;
+  border-radius: 16px;
+  margin: 10px 10px 6px 23px;
 }
 
 /*내용*/
 .detail {
   width: 327px;
-  height: 150px;
+  height: 170px;
   box-sizing: border-box;
   resize: none;
   mix-blend-mode: normal;
   border: 1px solid #b3b1b0;
   border-radius: 16px;
-  margin: 3px 0px 3px 25px;
+  margin: 10px 0px 16px 23px;
   font-weight: 500;
   padding: 1px;
 }
@@ -74,33 +83,29 @@ textarea {
 }
 
 .account {
-  width: 218px;
+  width: 250px;
   height: 52px;
   box-sizing: border-box;
   mix-blend-mode: normal;
   border: 1px solid #b3b1b0;
   border-radius: 16px;
-  margin: 0px 0px 3px 20px;
+  margin: 0px 0px 6px 23px;
   float: left;
 }
 
 .account-Button{
-  box-sizing: border-box;
-  width: 69.69px;
-  height: 33px;
+  width: 68px;
+  height: 52px;
   background: #ffffff;
   border: 1px solid #b3b1b0;
-  border-radius: 30px;
-  padding: 6px 0px 6px 0;
+  border-radius: 16px;
   cursor: pointer;
-  font-family: 'Noto Sans KR', sans-serif;
-  font-style: normal;
   font-weight: 400;
   font-size: 16px;
   line-height: 19px;
   color: #333333;
-  margin-top: 7px;
-  margin-left: 15px;
+  margin-left: 10px;
+  margin-bottom: 6px;
 }
 
 .custom-addImg-Button {
@@ -109,7 +114,7 @@ textarea {
   border: 1px solid #b3b1b0;
   border-radius: 30px;
   cursor: pointer;
-  padding: 6px 20px;
+  padding: 8px 20px;
   margin-bottom: 1px;
   font-family: 'Noto Sans KR', sans-serif;
   font-style: normal;
@@ -118,6 +123,7 @@ textarea {
   line-height: 19px;
   color: #333333;
   margin-left: 15px;
+  margin-bottom: 30px;
 }
 
 /*버튼 마우스 효과*/
@@ -175,8 +181,7 @@ input[type="datetime-local"]:valid::before {
 }
 
 .select-wrapper {
-  position: absolute;
-  margin: 12px 0px 0px -240px;
+  margin: 0px 0px 0px 250px;
   z-index: 1;
   
 }
