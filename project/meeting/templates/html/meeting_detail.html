@@ -2,53 +2,59 @@
 {% load static %}
 {% with artist=artist alerts=alerts %}
 {% block content %}
-<img class="back" src="{% static 'images/back.png'%}" alt="이전" onclick="goBack()" ></img>
+<img class="back" src="{% static 'images/back.png'%}" alt="이전" onclick="goBack()"></img>
 
-    <h2 class="detail-title-meeting">모임명 : {{ meeting.title }}</h2>
+<h2 class="detail-title-meeting">모임명 : {{ meeting.title }}</h2>
 
-    <div class="meeting-image">
+<div class="meeting-image">
     {% if meeting.image %}
-        <img  src="{{ meeting.image.url }}" alt="{{ meeting.title }} Image">
+    <img src="{{ meeting.image.url }}" alt="{{ meeting.title }} Image">
     {% endif %}
-    </div>
+</div>
 
-        <div class="custom-box2">
-            <div class="meetdate"> 일시: {{ meeting.meetDate|date:"Y/m/d" }}</div>
-            <div class="meetlocation"> 장소: {{ meeting.location }}</div>
-            <div class="age"> 나이제한: {{ meeting.age }}</div>
-            <div class="peoplename"> 작성자: {{ meeting.peopleNm }}</div>
-            <div class="meeting-body"> 내용: {{ meeting.body }}</div>
-            <div class="meetingstate"> 모임 상태: {{ meeting.meetingState }}</div>
-    </div>
-    <div class="buttons">
-    {% if request.user != meeting.writeUser %}
-        <form method="post" action="{% url 'meeting:applyMeeting' artist_id=artist.id meeting_id=meeting.id %}">
-            {% csrf_token %}
-            <button class="submit-button" type="submit">신청하기</button>
-        </form>
-    {% endif %}
+<div class="custom-box2">
+    <div class="meetdate"> 일시: {{ meeting.meetDate|date:"Y/m/d" }}</div>
+    <div class="meetlocation"> 장소: {{ meeting.location }}</div>
+    <div class="age"> 나이제한: {{ meeting.age }}</div>
+    <div class="peoplename"> 모집인원: {{ meeting.peopleNm }}</div>
+    <div class="meeting-body"> 내용: {{ meeting.body }}</div>
+    <div class="meetingstate"> 모임 상태: {{ meeting.meetingState }}</div>
+</div>
 
+<div class="buttons">
     {% if request.user == meeting.writeUser %}
-        
-            <form method="post" action="{% url 'meeting:editMeeting' artist_id=artist.id meeting_id=meeting.id %}">
-                {% csrf_token %}
-                <button class="edit-button" type="submit">수정하기</button>
-            </form>
+    <!-- Display edit and close buttons for the meeting writeUser -->
+    <form method="post" action="{% url 'meeting:editMeeting' artist_id=artist.id meeting_id=meeting.id %}">
+        {% csrf_token %}
+        <button class="edit-button" type="submit">수정하기</button>
+    </form>
 
-            <form method="post" action="{% url 'meeting:closeMeeting' artist_id=artist.id meeting_id=meeting.id %}">
-                {% csrf_token %}
-                <button class="done-button" type="submit">마감하기</button>
-            </form>
-       
-    
+    {% if meeting.meetingState != '모집완료' %}
+    <form method="post" action="{% url 'meeting:closeMeeting' artist_id=artist.id meeting_id=meeting.id %}">
+        {% csrf_token %}
+        <button class="done-button" type="submit">마감하기</button>
+    </form>
     {% endif %}
-    </div>
-    
+    {% else %}
+    {% if not has_applied and request.user != meeting.writeUser %}
+    <!-- Check if the meeting's writeUser is different from the request user -->
+    <form method="post" action="{% url 'meeting:applyMeeting' artist_id=artist.id meeting_id=meeting.id %}">
+        {% csrf_token %}
+        <button class="submit-button" type="submit">신청하기</button>
+    </form>
+    {% elif has_applied %}
+    <button class="submit-button">이미 신청한 모임</button>
+    {% else %}
+    <!-- Display the apply button when no conditions match -->
+    <button class="submit-button" type="submit">신청하기</button>
+    {% endif %}
+{% endif %}
+</div>
+
 <script>
-    function goBack() {
-        window.history.back();
-      }
-      
+function goBack() {
+    window.history.back();
+}
 </script>
 {% endblock %}
 {% endwith %}

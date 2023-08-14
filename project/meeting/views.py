@@ -40,9 +40,12 @@ def MeetingDtl(request, artist_id, meeting_id):
     user = request.user
     alerts = Alert.objects.filter(user=user)
     meeting = get_object_or_404(Meeting, pk=meeting_id)
-    # if meeting.writeUser == request.user:
-    #     return render(request, "html/meeting_detail_admin.html", {'meeting': meeting, 'alerts':alerts, 'artist': artist})
-    return render(request, "html/meeting_detail.html", {'meeting': meeting, 'alerts': alerts, 'artist': artist})
+    if meeting.writeUser != request.user:
+        has_applied = MeetingMember.objects.filter(User=user, Meeting=meeting).exists()
+    else :
+        has_applied = 'false'
+
+    return render(request, "html/meeting_detail.html", {'meeting': meeting, 'alerts': alerts, 'artist': artist, 'has_applied': has_applied})
 
 #모집 중인 모임 목록
 def MeetingList(reqeust, artist_id):
@@ -93,22 +96,38 @@ def closeMeeting(request, meeting_id, artist_id):
     return redirect('meeting:meeting_detail', meeting_id=meeting_id, artist_id=artist_id)
 
 #모임 신청
+
 def applyMeeting(request, meeting_id, artist_id):
     user = request.user
     alerts = Alert.objects.filter(user=user)
     artist = get_object_or_404(Artist, pk=artist_id)
     meeting = get_object_or_404(Meeting, id=meeting_id)
-    meetingMember=MeetingMember.objects.create(User=user, Meeting = meeting)
-    meeting_members = meeting.members.all()
-    meetingMember.save()
-    meeting.save()
-    Alert.objects.create(user=user, artist=artist,
-                         message=F'<{meeting.title}> 모임을 신청했습니다!')
+
+    # Check if the user has already applied for the meeting
+    has_applied = MeetingMember.objects.filter(User=user, Meeting=meeting).exists()
+    print(has_applied)
+
+    if not has_applied:
+        # Create a MeetingMember object for the user
+        meetingMember = MeetingMember.objects.create(User=user, Meeting=meeting)
+        meetingMember.save()
+
+        # Update the meeting members and save the meeting
+        meeting.members.add(meetingMember)
+        meeting.save()
+
+        # Create an alert for the user
+        Alert.objects.create(user=user, artist=artist, message=F'<{meeting.title}> 모임을 신청했습니다!')
+
+    # Pass the 'has_applied' variable to the template
     context = {
         'meeting_id': meeting_id,
-        'alerts' : alerts,
-        'artist' : artist
+        'meeting': meeting,
+        'alerts': alerts,
+        'artist': artist,
+        'has_applied': has_applied,  # Add this line
     }
+
     return redirect('meeting:meeting_detail', meeting_id=meeting_id, artist_id=artist_id)
 
 #수정 기능
