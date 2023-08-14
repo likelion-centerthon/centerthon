@@ -19,3 +19,19 @@ body {
   .icon {
     background-color: white; 
   }
+  ::-webkit-scrollbar {
+    width: 0.1px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #fff;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #fff;
+    border-radius: 1px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #fff;
+  }

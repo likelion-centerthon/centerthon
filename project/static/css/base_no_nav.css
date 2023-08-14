@@ -16,10 +16,27 @@ body {
   }
   .content{
     height: 100vh;
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
   .icon {
     background-color: white; 
   }
-  
+  /*스크롤바 커스텀*/
+::-webkit-scrollbar {
+  width: 0.1px;
+}
+
+::-webkit-scrollbar-track {
+  background: #fff;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #fff;
+  border-radius: 1px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #fff;
+}

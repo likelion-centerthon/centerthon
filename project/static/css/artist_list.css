@@ -27,6 +27,8 @@
     .artist-buttons button.selected {
         font-weight: 500;
         color: #BC67FF;
+        border-color: #BC67FF;
+
     }
 
     .artist-buttons button:hover {

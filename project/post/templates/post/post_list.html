@@ -65,7 +65,7 @@ style="width:160px; margin-left:24px; font-size:20px;"
         <a href="#;" onClick="zoomOut();"><img style="width:20px; height:20px;"src="{% static 'images/zoomout.png'%}" alt="축소"></a>
       </div>
 </div>
-<div class="post-list-container" style="height: 500px; width: 375px; overflow-y: auto; overflow-x:hidden;">
+<div class="post-list-container" style="height: 360px; width: 375px; overflow-y: auto; overflow-x:hidden;">
 {% for post in posts %}
   <div class="post-list" onclick="location.href='{% url 'post:post_detail' pk=post.pk%}'">
     <div class="post-title" style=" font-size: 20px;"

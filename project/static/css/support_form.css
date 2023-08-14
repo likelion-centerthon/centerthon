@@ -83,6 +83,12 @@ input {
   color: #ffffff;
   border: none;
 }
+
+.start-Button:hover {
+    background-color: #ffffff; 
+    border: 1px solid #bc67ff; 
+    color: #ffffff; 
+}
 input[type="datetime-local"]::before {
   content: attr(data-placeholder);
   width: 100%;

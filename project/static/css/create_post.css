@@ -34,7 +34,7 @@
   }
 
 /*제목 작성*/
-.post-crt-title,.post-crt-select  {
+.post-crt-title {
 width: 327px;
 height: 52px;
 box-sizing: border-box;
@@ -132,7 +132,7 @@ line-height: 180%;
 text-align: center;
 color: #ffffff;
 border: none;
-margin-top: 10px;
+margin-top: 30px;
 margin-left: 25px;
 }
 /*사진 추가 버튼 마우스 효과*/
