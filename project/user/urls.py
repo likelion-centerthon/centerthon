@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import oauth_login, Kakao, KakaoCallback, sign_up, tutorial
+from .views import oauth_login, Kakao, KakaoCallback, sign_up, tutorial,tutorial_next
 
 app_name = "user"
 
@@ -9,4 +9,5 @@ urlpatterns = [
     path("oauth/", Kakao.as_view(), name='oauth'),
     path("oauth/callback/", KakaoCallback.as_view()),
     path("tutorial/", tutorial, name='tutorial'),
+    path('tutorial/next', tutorial_next, name='tutorial_next'),
 ]

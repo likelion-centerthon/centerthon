@@ -35,14 +35,14 @@
     <div class="meeting-grid-container">
         <div class="meeting-grid">
             {% for meeting in meetings_recruiting %}
-                <div class="meeting-item">
+                <div class="meeting-item"onclick="location.href='{% url 'meeting:meeting_detail' meeting_id=meeting.id artist_id=artist_id%}'">
                     {% if meeting.image %}
                         <img src="{{ meeting.image.url }}" alt="{{ meeting.title }} Image" width="200">
                     {% else %}
                         <p>No image available</p>
                     {% endif %}
                     <div>
-                        <p><a href="{% url 'meeting:meeting_detail' meeting_id=meeting.id artist_id=artist_id %}">{{ meeting.title }}</a></p>
+                        <p>{{ meeting.title }}</p>
                         <p>{{ meeting.peopleNm }}명</p>
                     </div>
                 </div>

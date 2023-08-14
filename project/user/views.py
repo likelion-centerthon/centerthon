@@ -34,6 +34,8 @@ def sign_up(request, pk):
 def tutorial(request):
     return render(request, './user/tutorial.html')
 
+
+
 # 인가 코드 요청
 class Kakao(View):
     def get(self, request):
@@ -82,3 +84,5 @@ class KakaoCallback(View):
         else: # 첫 사용자라면 아티스트 전체조회로 이동
             return redirect('user:signup', pk=user.pk)
 
+def tutorial_next(request):
+    return render(request, 'user/tutorial_next.html')
