@@ -12,16 +12,15 @@
     {% endif %}
 </div>
 
-<div class="custom-box2">
-    <div class="meetdate"> 일시: {{ meeting.meetDate|date:"Y/m/d" }}</div>
-    <div class="meetlocation"> 장소: {{ meeting.location }}</div>
-    <div class="age"> 나이제한: {{ meeting.age }}</div>
-    <div class="peoplename"> 모집인원: {{ meeting.peopleNm }}</div>
-    <div class="meeting-body"> 내용: {{ meeting.body }}</div>
-    <div class="meetingstate"> 모임 상태: {{ meeting.meetingState }}</div>
-</div>
-
-<div class="buttons">
+        <div class="custom-box2">
+            <div class="meetdate"> <strong>일시</strong> {{ meeting.meetDate|date:"Y/m/d" }}</div>
+            <div class="meetlocation"> <strong>장소</strong> {{ meeting.location }}</div>
+            <div class="age"> <strong>나이제한</strong> {{ meeting.age }}</div>
+            <div class="peoplename"> <strong>모집인원</strong> {{ meeting.peopleNm }}</div>
+            <div class="meeting-body"> <strong>내용</strong> {{ meeting.body }}</div>
+            <div class="meetingstate"> <strong>모임 상태</strong> {{ meeting.meetingState }}</div>
+    </div>
+    <div class="buttons">
     {% if request.user == meeting.writeUser %}
     <!-- Display edit and close buttons for the meeting writeUser -->
     <form method="post" action="{% url 'meeting:editMeeting' artist_id=artist.id meeting_id=meeting.id %}">

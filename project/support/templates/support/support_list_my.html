@@ -19,13 +19,13 @@
         </div>  
 </div>
 
-<div class="supporting" style="height: 500px; width: 375px; overflow-y: auto; overflow-x:hidden;">
+<div class="supporting" style="height: 360px; width: 375px; overflow-y: auto; overflow-x:hidden;">
     {% for support in supports %}
     <div class="support_list_box" onclick="location.href='{% url 'support:support_dtl' pk=artist.pk spt_pk=support.pk %}'">
         {%with goal=support.fundraising%}
         <div style="width: 70%;">
             <h1 class="spt_list_h1"> {{support.title}}</h1>
-            <h3 class="spt_list_h3" style="width:300px"> 목표: {{support.fundraising}}</h3>
+            <h3 class="spt_list_h3" style="width:300px"> 목표: {{support.fundraising}}원</h3>
             <h3 class="spt_list_h3"> 종료: {{support.deadline|date:"Y/m/d Ah:i"}}</h3>
             <h2 class="spt_list_h2">{{support.bank}} {{support.account}}</h2>
         </div>

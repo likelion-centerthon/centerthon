@@ -9,6 +9,7 @@ from meeting.models import MeetingMember
 def show_userWorking(request, pk):
     user = request.user
     artist = Artist.objects.get(pk=pk)
+    unread_alerts = Alert.objects.filter(user=user, is_read=False).order_by('-regTime')
     alerts = Alert.objects.filter(user=user)
 
     if user.is_authenticated:
@@ -51,7 +52,7 @@ def show_userWorking(request, pk):
 
             request_userWorking.save()
 
-            return render(request, 'userWorking/userWorking.html', context={'userWorking':request_userWorking, 'artist':artist, 'alerts':alerts})
+            return render(request, 'userWorking/userWorking.html', context={'userWorking':request_userWorking, 'artist':artist, 'alerts':alerts, 'unread_alerts':unread_alerts})
 
     return redirect('user:login')
 
@@ -59,6 +60,7 @@ def show_userWorking_guest(request, pk, meetingMember_id):
     member = MeetingMember.objects.get(id=meetingMember_id)
     user = member.User
     artist = Artist.objects.get(pk=pk)
+    unread_alerts = Alert.objects.filter(user=user, is_read=False).order_by('-regTime')
     alerts = Alert.objects.filter(user=user)
 
     if user.is_authenticated:
@@ -70,6 +72,6 @@ def show_userWorking_guest(request, pk, meetingMember_id):
             userWorking.likeDays = likeDays.days  # 올바른 방법: likeDays.days
             userWorking.save()
 
-            return render(request, 'userWorking/userWorking.html', context={'userWorking':userWorking, 'artist':artist, 'alerts':alerts})
+            return render(request, 'userWorking/userWorking.html', context={'userWorking':userWorking, 'artist':artist, 'alerts':alerts, 'unread_alerts':unread_alerts, 'member':user})
 
     return redirect('user:login')

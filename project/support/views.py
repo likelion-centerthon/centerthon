@@ -34,15 +34,17 @@ def create_new_block(support, supportForm, inoutType):
 def support_list(request, pk):
     artist = Artist.objects.get(pk=pk)
     supports = Support.objects.filter(artist=artist, status='진행중')
+    unread_alerts = Alert.objects.filter(user=request.user, is_read=False).order_by('-regTime')
     alert = Alert.objects.filter(user=request.user)
-    return render(request, './support/support_list.html', {"supports":supports, "artist":artist, "alerts":alert})
+    return render(request, './support/support_list.html', {"supports":supports, "artist":artist, "alerts":alert, 'unread_alerts':unread_alerts})
 
 # 전체조회(완료)
 def support_list_complete(request, pk):
     artist = Artist.objects.get(pk=pk)
     supports = Support.objects.filter(artist=artist, status='완료')
+    unread_alerts = Alert.objects.filter(user=request.user, is_read=False).order_by('-regTime')
     alert = Alert.objects.filter(user=request.user)
-    return render(request, './support/support_list_complete.html', {"supports": supports, "artist": artist, "alerts": alert})
+    return render(request, './support/support_list_complete.html', {"supports": supports, "artist": artist, "alerts": alert, 'unread_alerts':unread_alerts})
 
 # 내가 참여한 서포트(진행 중)
 def my_support_list(request, pk):
@@ -50,8 +52,9 @@ def my_support_list(request, pk):
     supports = Support.objects.filter(
         Q(artist=artist, user=request.user, status='진행중')| Q(artist=artist, form__user=request.user,
                                                                status='진행중')).distinct()
+    unread_alerts = Alert.objects.filter(user=request.user, is_read=False).order_by('-regTime')
     alert = Alert.objects.filter(user=request.user)
-    return render(request, './support/support_list_my.html', {"supports":supports, "artist":artist, "alerts":alert})
+    return render(request, './support/support_list_my.html', {"supports":supports, "artist":artist, "alerts":alert, 'unread_alerts':unread_alerts})
 
 # 내가 참여한 서포트(완료)
 def my_support_list_complete(request, pk):
@@ -59,15 +62,17 @@ def my_support_list_complete(request, pk):
     supports = Support.objects.filter(
         Q(artist=artist, user=request.user, status='완료') | Q(artist=artist, form__user=request.user,
                                                               status='완료')).distinct()
+    unread_alerts = Alert.objects.filter(user=request.user, is_read=False).order_by('-regTime')
     alert = Alert.objects.filter(user=request.user)
     return render(request, './support/support_list_my_complete.html',
-                  {"supports": supports, "artist": artist, "alerts": alert})
+                  {"supports": supports, "artist": artist, "alerts": alert, 'unread_alerts':unread_alerts})
 
 # 상세조회(미완성)
 def support_dtl(request, pk, spt_pk):
     artist=Artist.objects.get(pk=pk)
     support=Support.objects.get(pk=spt_pk)
     support_form=SupportForm.objects.filter(support=support)
+    unread_alerts = Alert.objects.filter(user=request.user, is_read=False).order_by('-regTime')
     alerts=Alert.objects.filter(user=request.user)
 
     if request.method=='GET':
@@ -80,7 +85,7 @@ def support_dtl(request, pk, spt_pk):
                           {"support": support, "artist": artist, "support_form": support_form, "alerts": alerts,
                            "banks": banks})
         except Bank.DoesNotExist:
-            return render(request, './support/support_dtl.html', {"support":support, "artist":artist, "support_form":support_form, "alerts":alerts, "banks":None})
+            return render(request, './support/support_dtl.html', {"support":support, "artist":artist, "support_form":support_form, "alerts":alerts, 'unread_alerts':unread_alerts, "banks":None})
 
     if request.method=='POST':
         form_type=request.POST.get('form_type')
@@ -98,13 +103,13 @@ def support_dtl(request, pk, spt_pk):
             support.save()
             user_working.save()
             create_new_block(support, form, '입금')
-            return render(request, './support/support_dtl.html', {"support": support, "artist": artist, "support_form": support_form, "alerts": alerts})
+            return render(request, './support/support_dtl.html', {"support": support, "artist": artist, "support_form": support_form, "alerts": alerts, 'unread_alerts':unread_alerts})
 
         # 서포트 마감하기
         elif form_type=='closing':
             if SupportForm.objects.filter(support=support, status=SupportFormStatus.waiting.value).exists():
                 return render(request, './support/support_dtl.html',
-                              {"support": support, "artist": artist, "support_form": support_form, "alerts": alerts, "warning":"모든 입금 내역을 확인해주세요."})
+                              {"support": support, "artist": artist, "support_form": support_form, "alerts": alerts,'unread_alerts':unread_alerts, "warning":"모든 입금 내역을 확인해주세요."})
             else:
                 try:
                     banks=Bank.objects.filter(support=support, inoutType='출금').order_by('creditTime')
@@ -118,11 +123,11 @@ def support_dtl(request, pk, spt_pk):
                     blocks=Bank.objects.filter(support=support, inoutType='출금').order_by('creditTime')
                     banks=zip(banks,blocks)
                     return render(request, './support/support_dtl.html',
-                                    {"support": support, "artist": artist, "support_form": support_form, "alerts": alerts,
+                                    {"support": support, "artist": artist, "support_form": support_form, "alerts": alerts, 'unread_alerts':unread_alerts,
                                     "banks": banks})
                 except Bank.DoesNotExist:
                     return render(request, './support/support_dtl.html',
-                                  {"support": support, "artist": artist, "support_form": support_form, "alerts": alerts,
+                                  {"support": support, "artist": artist, "support_form": support_form, "alerts": alerts, 'unerad_alerts':unread_alerts,
                                    "banks": None})
 
 # 서포트 참여 폼 입력
@@ -130,10 +135,11 @@ def create_support_form(request, pk, spt_pk):
     artist = Artist.objects.get(pk=pk)
     user = request.user
     support = Support.objects.get(pk=spt_pk)
+    unread_alerts = Alert.objects.filter(user=user, is_read=False).order_by('-regTime')
     alert = Alert.objects.filter(user=user)
 
     if request.method=='GET':
-        return render(request, './support/support_form.html', {"support":support, "artist":artist, "alerts": alert})
+        return render(request, './support/support_form.html', {"support":support, "artist":artist, "alerts": alert, 'unread_alerts':unread_alerts})
 
     # 제출 로직
     if request.method=='POST':
@@ -191,10 +197,11 @@ def create_support_form(request, pk, spt_pk):
 def create_support(request, pk):
     user=request.user
     artist=Artist.objects.get(pk=pk)
+    unread_alerts = Alert.objects.filter(user=user, is_read=False).order_by('-regTime')
     alert = Alert.objects.filter(user=user)
 
     if request.method == 'GET':
-        return render(request, './support/support_create.html', {"artist":artist, "alerts":alert})
+        return render(request, './support/support_create.html', {"artist":artist, "alerts":alert, 'unread_alerts':unread_alerts})
 
     if request.method == "POST":
         title = request.POST.get('title')
@@ -238,13 +245,14 @@ def create_support(request, pk):
 def update_support(request, pk, spt_pk):
     artist = Artist.objects.get(pk=pk)
     support = Support.objects.get(pk=spt_pk)
+    unread_alerts = Alert.objects.filter(user=request.user, is_read=False).order_by('-regTime')
     alert = Alert.objects.filter(user=request.user)
 
     if not request.user == support.user:
         return redirect('support:support_dtl', pk=artist.pk, spt_pk=support.pk)
 
     if request.method == 'GET':
-        return render(request, './support/support_update.html', {"support":support, "artist":artist, "alerts":alert})
+        return render(request, './support/support_update.html', {"support":support, "artist":artist, "alerts":alert, 'unread_alerts':unread_alerts})
 
     if request.method == 'POST':
         title=request.POST.get('title')

@@ -73,3 +73,5 @@ def artist_sns(request, pk):
 
     if request.method == 'POST':
         return render(request, 'artist/artist_sns.html', context={'artist':artist, 'alerts':alerts})
+
+

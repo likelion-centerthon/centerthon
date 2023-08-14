@@ -3,131 +3,120 @@
 
 <div class="header">
 
-  <form
-    method="get"
-    action="{% url 'artist:subscribe_list' category='none' %}"
-  >
+  <form method="get" action="{% url 'artist:subscribe_list' category='none' %}">
     {% csrf_token %}
     <button class="btn-select" type="submit">
 
-      &nbsp;  &nbsp;{{ artist.artistName }} •••
+      &nbsp; &nbsp;{{ artist.artistName }} •••
     </button>
   </form>
-          <div class="icon">
-           
-            <form
-              method="post"
-              action="{% url 'userWorking:show_userWorking' pk=artist.pk %}"
-            >
-              {% csrf_token %}
-              <button type="submit">
-                <img class="user" src="{% static 'images/user.png'%}" alt="이용행보">
-              </button>
-            </form>
-            <form
-              method="post"
-              action="{% url 'alert:check_alert' pk=artist.pk %}"
-            >
-              {% csrf_token %}
-              <button id="alarm-button">
-                  <img class="alram" src="{% static 'images/alram.png'%}" alt="알람">
-              </button>
-            </form>
-          </div>
-         
-        </div>
-      
+  <div class="icon">
 
-      {% if unread_alerts %}
-        <!-- 안 읽은 알림이 있을 때의 코드 작성해주시면 됩니다. -->
+    <form method="post" action="{% url 'userWorking:show_userWorking' pk=artist.pk %}">
+      {% csrf_token %}
+      <button type="submit">
+        <img class="user" src="{% static 'images/user.png'%}" alt="이용행보">
+      </button>
+    </form>
+    <form method="post" action="{% url 'alert:check_alert' pk=artist.pk %}">
+      {% csrf_token %}
+      <button id="alarm-button">
+        {% if unread_alerts %}
+          <img class="alarm" src="{% static 'images/alarm_red.png'%}" alt="알람">
+        {% else %}
+          <img class="alarm" src="{% static 'images/alarm.png'%}" alt="알람">
+        {% endif %}
+      </button>
+    </form>
+  </div>
+
+</div>
+
+
+{% if unread_alerts %}
+<!-- 안 읽은 알림이 있을 때의 코드 작성해주시면 됩니다. -->
+{% endif %}
+
+
+<div class="notification-popup" id="notification-popup">
+  <div class="notification-content">
+
+    <h1>알림창</h1>
+    {% for alert in alerts %}
+    <div class="notification-item">
+      <div class="alert-name">{{ alert.artist.artistName }}</div>
+      <div class="alert-message">{{ alert.message }}</div>
+      {% if alert.openChatURL %}
+      <div class="alert-openchat">{{ alert.openChatURL }}</div>
       {% endif %}
+      <div class="alert-time">{{ alert.regTime|date:"Y.m.d H:i" }}</div>
+      {{ alert.is_read }}
+    </div>
+    {% endfor %}
+  </div>
+
+</div>
+
+<script type="text/javascript">
+  var nowZoom = 100;
+
+  function zoomOut() {                                                                       //화면크기축소
+    nowZoom = nowZoom - 10;
+
+    if (nowZoom <= 70) nowZoom = 70;            //화면크기 최대 축소율 70% 
+    zooms();
+  }
 
 
-      <div class="notification-popup" id="notification-popup">
-        <div class="notification-content">
-          <h1>알림창</h1>
-          {% for alert in alerts %}
-            <div class="notification-item">
-              <div class="alert-name">{{ alert.artist.artistName }}</div>
-              <div  class="alert-message">{{ alert.message }}</div>
-              {% if alert.openChatURL %}
-                <div class="alert-openchat">{{ alert.openChatURL }}</div>
-              {% endif %}
-              <div class="alert-time">{{ alert.regTime|date:"Y.m.d H:i" }}</div>
-            </div>
-          {% endfor %}
-        </div>
+  function zoomIn() {                                                                         //화면크기확대
+    nowZoom = nowZoom + 20;
 
-      </div>
-       
-        <script type="text/javascript">
-          var nowZoom = 100;
-          
-          function zoomOut(){                                                                       //화면크기축소
-            nowZoom = nowZoom - 20;
-          
-            if(nowZoom <= 70) nowZoom = 70;            //화면크기 최대 축소율 70% 
-            zooms();
-          }
-          
-          
-          function zoomIn(){                                                                         //화면크기확대
-            nowZoom = nowZoom + 20;
-          
-            if(nowZoom >=200) nowZoom = 200;          //화면크기 최대 확대율 200%
-            zooms();
-          }
-          
-          
-          function zoomReset(){                                                                   //원래 화면크기로 되돌아가기
-            nowZoom = 100;
-            zooms();
-          }
-          
-          
-          function zooms(){
-            document.body.style.zoom = nowZoom + '%';
-          
-            if(nowZoom == 70){
-              alert ("더 이상 축소할 수 없습니다.");                       //화면 축소율이 70% 이하일 경우 경고창
-            }
-          
-            if(nowZoom == 200){
-              alert ("더 이상 확대할 수 없습니다.");                       //화면 확대율이 200% 이상일 경우 경고창
-            }
-          }
-        
- // "알람" 버튼 클릭 이벤트 처리 함수
- document.addEventListener("DOMContentLoaded", function () {
-        var alarmButton = document.getElementById("alarm-button");
-        if (alarmButton) {
-            alarmButton.addEventListener("click", function () {
-                toggleNotificationPopup();
-            });
-        }
-    });
+    if (nowZoom >= 200) nowZoom = 200;          //화면크기 최대 확대율 200%
+    zooms();
+  }
 
-    // 알림 팝업 토글 함수
-    function toggleNotificationPopup() {
-        var popup = document.getElementById("notification-popup");
-        if (popup) {
-            if (popup.style.display === "none" || popup.style.display === "") {
-                popup.style.display = "flex";
-            } else {
-                popup.style.display = "none";
-            }
-        }
+
+  function zoomReset() {                                                                   //원래 화면크기로 되돌아가기
+    nowZoom = 100;
+    zooms();
+  }
+
+
+  function zooms() {
+    document.body.style.zoom = nowZoom + '%';
+
+    if (nowZoom == 70) {
+      alert("더 이상 축소할 수 없습니다.");                       //화면 축소율이 70% 이하일 경우 경고창
     }
 
-    // 팝업 외부 클릭 시 팝업 닫기
-    window.addEventListener("click", function (event) {
-        var popup = document.getElementById("notification-popup");
-        if (popup && event.target === popup) {
-            toggleNotificationPopup();
-        }
-    });
-  
-  
+    if (nowZoom == 200) {
+      alert("더 이상 확대할 수 없습니다.");                       //화면 확대율이 200% 이상일 경우 경고창
+    }
+  }
 
-  
-    </script>
+   var alarmImage = document.getElementById("alarm-image");
+
+  function toggleAlarmIcon(hasUnreadAlerts) {
+    if (hasUnreadAlerts) {
+      alarmImage.src = "{% static 'images/alarmred.png' %}";
+    } else {
+      alarmImage.src = "{% static 'images/alarm.png' %}";
+    }
+  }
+
+  // "알람" 버튼 클릭 이벤트 처리 함수
+  document.addEventListener("DOMContentLoaded", function () {
+    var alarmButton = document.getElementById("alarm-button");
+    if (alarmButton) {
+      alarmButton.addEventListener("click", function () {
+        toggleNotificationPopup();
+      });
+    }
+
+    // 서버에서 읽지 않은 알림 여부 가져오기 (예시)
+    var hasUnreadAlerts = true; // 여기에 실제 값 가져오기
+
+    // 알림 아이콘 상태 변경
+    toggleAlarmIcon(hasUnreadAlerts);
+  });
+</script>

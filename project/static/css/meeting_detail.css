@@ -1,15 +1,15 @@
 
 .meeting-image {
-    width: 223px;
+width: 223px;
   height: 223px;
-  border-radius: 50%; 
-  overflow: hidden; 
-  position: relative; 
-  top: 0; 
-  left: 50%; 
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  top: 0;
+  left: 50%;
   transform: translate(-50%, 0);
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-  z-index: 2; 
+  z-index: 2;
 }
 
 .detail-title-meeting {
@@ -42,20 +42,19 @@
 }
 
 .custom-box2 p {
-    font-family: 'Noto Sans KR', sans-serif;
     font-size: 18px;
     color: #333;
     text-align: center;
     margin: 10px;
 }
 
-/* 수정하기, 마감하기 버튼 */
+/* �섏젙�섍린, 留덇컧�섍린 踰꾪듉 */
 .button-container {
     display: flex;
     justify-content: center;
     margin-top: 30px;
     position: relative;
-    top: 30px; 
+    top: 30px;
 }
 
 .button-container button {
@@ -67,9 +66,8 @@
     margin-bottom: 10px;
 }
 
-/* 일정 날짜, 장소, 나이 등*/
+/* �쇱젙 �좎쭨, �μ냼, �섏씠 ��*/
 .meetdate {
-    font-family: 'Noto Sans KR', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 20px;
@@ -86,7 +84,6 @@
 .artist_fanName,
 .meeting-body,
 .meetingstate {
-    font-family: 'Noto Sans KR', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 20px;
@@ -107,57 +104,57 @@
 
 .submit-button {
     box-sizing: border-box;
-    width: 300px; 
-    height: 55px; 
-    background-color: #bc67ff; 
+    width: 300px;
+    height: 55px;
+    background-color: #bc67ff;
     border: 1px solid #b3b1b0;
-    border-radius: 30px; 
+    border-radius: 30px;
     color: #ffffff;
-    font-size: 20px; 
-    font-weight: bold; 
-    cursor: pointer; 
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
     margin: 20px 5px 5px 5px;
- 
+
 }
 
 .submit-button:hover {
-    background-color: #ffffff; 
-    border: 1px solid #bc67ff; 
-    color: #bc67ff; 
+    background-color: #ffffff;
+    border: 1px solid #bc67ff;
+    color: #bc67ff;
 }
 
 .edit-button {
     box-sizing: border-box;
     width: 150px;
     height: 50px;
-    background-color: #bc67ff; 
-    border: 1px solid #b3b1b0; 
-    border-radius: 30px; 
-    color: #ffffff; 
-    font-size: 20px; 
+    background-color: #bc67ff;
+    border: 1px solid #b3b1b0;
+    border-radius: 30px;
+    color: #ffffff;
+    font-size: 20px;
     font-weight: bold;
-    cursor: pointer; 
-    margin: 5px; 
+    cursor: pointer;
+    margin: 5px;
 }
 
 
 .done-button {
     box-sizing: border-box;
     width: 150px;
-    height: 50px; 
+    height: 50px;
     background-color: #bc67ff;
-    border: 1px solid #b3b1b0; 
-    border-radius: 30px; 
-    color: #ffffff; 
-    font-size: 20px; 
-    font-weight: bold; 
-    cursor: pointer; 
-    margin: 5px; 
+    border: 1px solid #b3b1b0;
+    border-radius: 30px;
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 5px;
 
 }
 
 .edit-button:hover,.done-button:hover {
-    background-color: #ffffff; 
-    border: 1px solid #bc67ff; 
-    color: #bc67ff; 
+    background-color: #ffffff;
+    border: 1px solid #bc67ff;
+    color: #bc67ff;
 }
