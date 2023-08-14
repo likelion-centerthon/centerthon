@@ -22,10 +22,11 @@
       {% csrf_token %}
       <button id="alarm-button">
         {% if unread_alerts %}
-          <img class="alarm" src="{% static 'images/alarm_red.png' %}" alt="알람">
+          <img class="alarm" src="{% static 'images/alarm_red.png'%}" alt="알람">
         {% else %}
-        <img class="alarm" src="{% static 'images/alarm.png' %}" alt="알람">
+          <img class="alarm" src="{% static 'images/alarm.png'%}" alt="알람">
         {% endif %}
+      </button>
     </form>
   </div>
 </div>
@@ -44,6 +45,7 @@
       <div class="alert-openchat">{{ alert.openChatURL }}</div>
       {% endif %}
       <div class="alert-time">{{ alert.regTime|date:"Y.m.d H:i" }}</div>
+      {{ alert.is_read }}
     </div>
     {% endfor %}
   </div>
