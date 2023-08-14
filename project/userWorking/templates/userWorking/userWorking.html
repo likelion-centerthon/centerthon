@@ -3,7 +3,7 @@
 {% with artist=artist alerts=alerts %}
 {% block content %}
 <div style="display: flex; align-items: center; justify-content: center; flex-direction: column;">
-    <h1 class="support_form_h1" style="margin-bottom: 20px;">나의 활동 내역</h1>
+    <h1 class="support_form_h1" style="margin-bottom: 20px;">{% if member %}{{ member.userName }}{% else %}{{ request.user.userName }}{% endif %}의 활동 내역</h1>
      
     <div style="display: flex; align-items: center;">
         <img class="use_working_img" src="{{ userWorking.artist.artistImage.url }}">

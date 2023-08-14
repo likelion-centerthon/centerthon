@@ -31,7 +31,7 @@
 <div class="custom-box">
     <div class="artist_info">
         <div class="artist_members"> <strong>멤버</strong> {{ artist.members }}</div>
-        <div class="artist_debuteDate"> <strong>데뷔</strong> {{ artist.debutDate }}</div>
+        <div class="artist_debuteDate"> <strong>데뷔</strong> {{ artist.debutDate|date:"Y년 m월 d일" }}</div>
         <div class="artist_fanName"> <strong>팬덤</strong> {{ artist.fanName }}</div>
         <div class="artist_agency"> <strong>회사</strong> {{ artist.agency }}</div>
         <div class="social_icon">
