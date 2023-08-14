@@ -70,6 +70,6 @@ def show_userWorking_guest(request, pk, meetingMember_id):
             userWorking.likeDays = likeDays.days  # 올바른 방법: likeDays.days
             userWorking.save()
 
-            return render(request, 'userWorking/userWorking.html', context={'userWorking':userWorking, 'artist':artist, 'alerts':alerts})
+            return render(request, 'userWorking/userWorking.html', context={'userWorking':userWorking, 'artist':artist, 'alerts':alerts, 'member':user})
 
     return redirect('user:login')

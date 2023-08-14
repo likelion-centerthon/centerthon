@@ -10,10 +10,10 @@ class Category(Enum):
 
 
 class Artist(models.Model):
-    category = models.CharField(max_length=10, choices=[(status.value, status.name) for status in Category])
-    artistName = models.CharField(max_length=50)
+    category = models.CharField(max_length=10, choices=[(status.value, status.name) for status in Category], default=Category.기타.value)
+    artistName = models.CharField(max_length=50, null=False)
     members = models.CharField(max_length=200, null=True)
-    artistImage = models.ImageField()
+    artistImage = models.ImageField(null=False)
 
     instagram = models.URLField()
     twitter = models.URLField()

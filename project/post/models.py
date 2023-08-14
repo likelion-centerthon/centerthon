@@ -18,8 +18,8 @@ class Post(models.Model):
     category = models.CharField(max_length=10, choices=[(status.value, status.name) for status in Category], default=Category.가수.value)
 
     image = models.ImageField(null=True)
-    title = models.CharField(max_length=50)
-    contents = models.TextField(max_length=1000)
+    title = models.CharField(max_length=50, null=False)
+    contents = models.TextField(max_length=1000, null=False)
     regTime = models.DateTimeField(auto_now=True)
 
     def __str__(self):
@@ -28,7 +28,7 @@ class Post(models.Model):
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    contents = models.TextField(max_length=200)
+    contents = models.TextField(max_length=200, null=False)
     regTime = models.DateTimeField(auto_now=True)
 
     def __str__(self):
