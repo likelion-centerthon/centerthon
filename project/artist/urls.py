@@ -1,6 +1,7 @@
 from django.urls import path
 
 from artist.views import artist_list, select_artist, artist_sns, subscribe_list
+
 app_name = "artist"
 
 urlpatterns = [
