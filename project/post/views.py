@@ -1,3 +1,5 @@
+from django.utils import timezone
+
 from alert.models import Alert
 from django.shortcuts import render, redirect, get_object_or_404
 
@@ -67,7 +69,8 @@ def create_post(request, artist_pk):
         Alert.objects.create(
             user=user,
             artist=artist,
-            message=F'<{title}> 게시글이 등록되었습니다!'
+            message=F'<{title}> 게시글이 등록되었습니다!',
+            regTime=timezone.now()
         )
 
         # 이용행보 수정

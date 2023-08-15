@@ -32,12 +32,6 @@
 
 </div>
 
-
-{% if unread_alerts %}
-<!-- 안 읽은 알림이 있을 때의 코드 작성해주시면 됩니다. -->
-{% endif %}
-
-
 <div class="notification-popup" id="notification-popup">
   <div class="notification-content">
 
@@ -50,7 +44,6 @@
       <div class="alert-openchat">{{ alert.openChatURL }}</div>
       {% endif %}
       <div class="alert-time">{{ alert.regTime|date:"Y.m.d H:i" }}</div>
-      {{ alert.is_read }}
     </div>
     {% endfor %}
   </div>
