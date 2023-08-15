@@ -3,7 +3,8 @@ from .views import oauth_login, Kakao, KakaoCallback, sign_up, tutorial, tutoria
     tutorial_artist_info, tutorial_subscribe_artist, tutorial_artist_list, tutorial_meeting_start, \
     tutorial_meeting_manage, tutorial_support_start, tutorial_meeting, \
     tutorial_support, tutorial_support_join_list, tutorial_support_join_form, tutorial_support_join_detail_1, \
-    tutorial_support_join_detail_2, tutorial_support_manage
+    tutorial_support_join_detail_2, tutorial_support_manage, tutorial_support_manage_detail_1, \
+    tutorial_support_manage_detail_2, tutorial_support_manage_detail_3
 
 app_name = "user"
 
@@ -39,4 +40,7 @@ urlpatterns = [
     path('tutorial/support-start', tutorial_support_start, name='tutorial_support_start'),
     # 서포트 관리
     path('tutorial/support-manage', tutorial_support_manage, name='tutorial_support_manage'),
+    path('tutorial/support-manage-detail-1', tutorial_support_manage_detail_1, name='tutorial_support_manage_detail_1'),
+    path('tutorial/support-manage-detail-2', tutorial_support_manage_detail_2, name='tutorial_support_manage_detail_2'),
+
 ]

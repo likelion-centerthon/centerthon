@@ -136,3 +136,7 @@ def tutorial_support_start(request):
     return render(request, 'tutorial_support/tutorial_support_start.html')
 def tutorial_support_manage(request):
     return render(request, 'tutorial_support/tutorial_support_manage.html')
+def tutorial_support_manage_detail_1(request):
+    return render(request, 'tutorial_support/tutorial_support_manage_detail_1.html')
+def tutorial_support_manage_detail_2(request):
+    return render(request, 'tutorial_support/tutorial_support_manage_detail_2.html')
