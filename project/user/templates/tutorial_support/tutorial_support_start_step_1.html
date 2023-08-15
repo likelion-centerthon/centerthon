@@ -1,0 +1,85 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"
+    />
+    <link rel="stylesheet" href="{% static 'css/base_artistlist.css' %}" />
+    <link
+      rel="stylesheet"
+      href="{% static 'css/tutorial_support_start_step_1.css' %}"
+    />
+    <link rel="stylesheet" href="{% static 'css/artist_list.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/subscribe_list.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/create_post.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/support_create.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/create_post.css' %}" />
+
+    <title>별너울</title>
+    {% include 'head.html' %}
+  </head>
+  <body>
+    <div class="container">
+      <div class="content">
+        <div style="margin: 60px 0">
+          <h1 class="support_h1">서포트 계좌 인증</h1>
+          <h2 style="font-size: 24px; font-weight: 400; margin-left: 25px">
+            1원을 보냈습니다.
+          </h2>
+          <p style="margin: 0 25px; word-break: break-all">
+            본인의 계좌인지 확인하기 위해서 입력하신 계좌로 1원을 입금했습니다.
+          </p>
+          <div
+            style="
+              width: 300px;
+              margin: 0 auto;
+              text-align: center;
+              padding: 100px 0;
+            "
+          >
+            <img
+              src="{% static 'images/coin.png' %}"
+              class="tutorial-support-step1-coin"
+              alt="coin"
+              width="100px"
+            />
+            <div style="margin-top: 50px; color: #8a8a8a">
+              <span id="countdown">7</span>초 뒤 페이지가 자동으로 넘어갑니다.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const countdownElement = document.getElementById("countdown");
+        let seconds = 7;
+
+        function updateCountdown() {
+          countdownElement.textContent = seconds;
+          seconds--;
+
+          if (seconds < 0) {
+            clearInterval(interval);
+            countdownElement.textContent = "0";
+            setTimeout(function() {
+              window.location.href = "{% url 'user:tutorial_support_start_step_2' %}";
+          }, 1000);
+            
+          }
+        }
+        updateCountdown();
+        const interval = setInterval(updateCountdown, 1000);
+      });
+    </script>
+  </body>
+</html>
