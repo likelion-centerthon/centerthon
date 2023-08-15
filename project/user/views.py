@@ -121,16 +121,18 @@ def tutorial_meeting_start(request):
     return render(request, 'tutorial_meeting/tutorial_meeting_start.html')
 
 # 서포트 참여 튜토리얼
-def tutorial_support_manage_list(request):
-    return render(request, 'tutorial_support/tutorial_support_manage_list.html')
-def tutorial_support_manage_form(request):
-    return render(request, 'tutorial_support/tutorial_support_manage_form.html')
-def tutorial_support_manage_detail_1(request):
-    return render(request, 'tutorial_support/tutorial_support_manage_detail_01.html')
-def tutorial_support_manage_detail_2(request):
-    return render(request, 'tutorial_support/tutorial_support_manage_detail_02.html')
+def tutorial_support_join_list(request):
+    return render(request, 'tutorial_support/tutorial_support_join_list.html')
+def tutorial_support_join_form(request):
+    return render(request, 'tutorial_support/tutorial_support_join_form.html')
+def tutorial_support_join_detail_1(request):
+    return render(request, 'tutorial_support/tutorial_support_join_detail_01.html')
+def tutorial_support_join_detail_2(request):
+    return render(request, 'tutorial_support/tutorial_support_join_detail_02.html')
 
 
 # 서포트 작성 및 관리 튜토리얼
 def tutorial_support_start(request):
     return render(request, 'tutorial_support/tutorial_support_start.html')
+def tutorial_support_manage(request):
+    return render(request, 'tutorial_support/tutorial_support_manage.html')
