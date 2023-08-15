@@ -1,10 +1,122 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base_artistlist.html' %}
+{% block content %}
+{% load static %}
+<div > 
+    <h2 class="page-title">나의 아티스트 선택하기</h2>
+        <div class="artist-buttons">
 
-</body>
-</html>
+        <button type="button" class="artist-btn" data-category="K-POP">K-POP</button>
+        <button type="button" class="artist-btn" data-category="트로트">트로트</button>
+        <button type="button" class="artist-btn" data-category="발라드">발라드</button>
+        <button type="button" class="artist-btn" data-category="기타">기타</button>
+
+    </div>
+ 
+
+    <div class="artist-list">
+        <!-- 이미지 리스트들 추가될 영역 -->
+    </div>
+    
+</div>
+    <style>
+        .artist-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .image-wrapper {
+            text-align: center;
+            margin: 10px;
+        }
+
+        .artist-name {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+    </style>
+
+    <script>
+        const artistButtons = document.querySelectorAll('.artist-btn');
+        const artistList = document.querySelector('.artist-list');
+
+        const artistData = {
+            'K-POP': [
+                { name: "임영웅", image: "{% static 'images/supportimg.png' %}" }, 
+                { name: "아이유", image: "{% static 'images/artist2.jpg' %}" },
+                { name: "방탄소년단", image: "{% static 'images/artist3.jpg' %}" },
+                { name: "임영웅", image: "{% static 'images/artist1.jpg' %}" }, 
+                { name: "아이유", image: "{% static 'images/artist2.jpg' %}" },
+                { name: "방탄소년단", image: "{% static 'images/artist3.jpg' %}" },
+                { name: "임영웅", image: "{% static 'images/artist1.jpg' %}" }, 
+                { name: "아이유", image: "{% static 'images/artist2.jpg' %}" },
+                { name: "방탄소년단", image: "{% static 'images/artist3.jpg' %}" }
+            ],
+            '트로트': [
+            { name: "임영웅", image: "{% static 'images/supportimg.png' %}" }, 
+            { name: "아이유", image: "{% static 'images/artist2.jpg' %}" },
+            { name: "방탄소년단", image: "{% static 'images/artist3.jpg' %}" },
+            { name: "임영웅", image: "{% static 'images/artist1.jpg' %}" }, 
+            { name: "아이유", image: "{% static 'images/artist2.jpg' %}" },
+            { name: "방탄소년단", image: "{% static 'images/artist3.jpg' %}" },
+            { name: "임영웅", image: "{% static 'images/artist1.jpg' %}" }, 
+            { name: "아이유", image: "{% static 'images/artist2.jpg' %}" },
+            { name: "방탄소년단", image: "{% static 'images/artist3.jpg' %}" }
+            ],
+            '발라드': [
+            { name: "임영웅", image: "{% static 'images/supportimg.png' %}" }, 
+            { name: "아이유", image: "{% static 'images/artist2.jpg' %}" },
+            { name: "방탄소년단", image: "{% static 'images/artist3.jpg' %}" },
+            { name: "임영웅", image: "{% static 'images/artist1.jpg' %}" }, 
+            { name: "아이유", image: "{% static 'images/artist2.jpg' %}" },
+            { name: "방탄소년단", image: "{% static 'images/artist3.jpg' %}" },
+            { name: "임영웅", image: "{% static 'images/artist1.jpg' %}" }, 
+            { name: "아이유", image: "{% static 'images/artist2.jpg' %}" },
+            { name: "방탄소년단", image: "{% static 'images/artist3.jpg' %}" }
+            ],
+            '기타': [
+            { name: "임영웅", image: "{% static 'images/supportimg.png' %}" }, 
+            { name: "아이유", image: "{% static 'images/artist2.jpg' %}" },
+            { name: "방탄소년단", image: "{% static 'images/artist3.jpg' %}" },
+            { name: "임영웅", image: "{% static 'images/artist1.jpg' %}" }, 
+            { name: "아이유", image: "{% static 'images/artist2.jpg' %}" },
+            { name: "방탄소년단", image: "{% static 'images/artist3.jpg' %}" },
+            { name: "임영웅", image: "{% static 'images/artist1.jpg' %}" }, 
+            { name: "아이유", image: "{% static 'images/artist2.jpg' %}" },
+            { name: "방탄소년단", image: "{% static 'images/artist3.jpg' %}" }
+            ],
+        };
+     
+        artistButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const category = button.getAttribute('data-category');
+                artistList.innerHTML = '';
+
+                const selectedArtists = artistData[category] || [];
+
+                selectedArtists.forEach(artist => {
+                    const imgDiv = document.createElement('div');
+                    imgDiv.className = 'image-wrapper';
+                    imgDiv.innerHTML = `<img src="${artist.image}" alt="${artist.name} 이미지">`;
+
+                    const artistNameDiv = document.createElement('div');
+                    artistNameDiv.className = 'artist-name';
+                    artistNameDiv.textContent = artist.name;
+
+                    const wrapperDiv = document.createElement('div');
+                    wrapperDiv.appendChild(imgDiv);
+                    wrapperDiv.appendChild(artistNameDiv);
+
+                    artistList.appendChild(wrapperDiv);
+                });
+
+                artistButtons.forEach(btn => btn.classList.remove('selected'));
+                button.classList.add('selected');
+            });
+        });
+
+
+    </script>
+
+{% endblock %}
