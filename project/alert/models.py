@@ -8,7 +8,7 @@ class Alert(models.Model):
     artist = models.ForeignKey(Artist, on_delete=models.CASCADE)
     message = models.CharField(max_length=300, null=True)
     openChatURL = models.URLField(null=True)
-    regTime = models.DateTimeField(auto_now=True)
+    regTime = models.DateTimeField()
     is_read = models.BooleanField(default=False)
 
     def __str__(self):
