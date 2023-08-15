@@ -1,0 +1,371 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, height=device-height, initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"
+    />
+    <link rel="stylesheet" href="{% static 'css/base.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/header.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/support_form.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/support_create.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/support_list.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/support_dtl.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/post_list.css' %}" />
+
+    <link rel="stylesheet" href="{% static 'css/post_detail.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/create_post.css' %}" />
+
+    <link rel="stylesheet" href="{% static 'css/artist_info.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/use_working.css' %}" />
+
+    <title>서포트 참여</title>
+    {% include 'head.html' %}
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <form>
+          <button class="btn-select" type="submit">
+            &nbsp; &nbsp;임영웅 •••
+          </button>
+        </form>
+        <div class="icon">
+          <form>
+            <button type="submit">
+              <img
+                class="user"
+                src="{% static 'images/user.png'%}"
+                alt="이용행보"
+              />
+            </button>
+          </form>
+          <form>
+            <button id="alarm-button">
+              <img
+                class="alarm"
+                src="{% static 'images/alarm.png'%}"
+                alt="알람"
+              />
+            </button>
+          </form>
+        </div>
+      </div>
+      <div class="content">
+        <div style="justify-content: row; display: flex; margin-bottom: 10px">
+          <img
+            class="back"
+            src="{% static 'images/back.png'%}"
+            alt="이전"
+            onclick="goBack()"
+          />
+          <h1 class="support_dtl_h1" style="margin: 22px 0px 0px -120px">
+            상세조회
+          </h1>
+        </div>
+        <span id="percent-content" style="display: none">36</span>
+        <div class="percent">
+          <div class="percent-bar" id="percent-bar-content"></div>
+        </div>
+
+        <button style="margin-left: 290px" class="modify_button">수정</button>
+        <div class="detail-container">
+          <div class="title">임영웅 생일 카페 후원</div>
+          <div class="goal">1,000,000원</div>
+          <div class="detail" style="height: auto">
+            <p style="word-break: break-all">
+              임영웅군 생일을 맞아 8월 19일 OO역 앞 OO카페에서 생일카페를
+              엽니다. 장소 대관 및 스탭 후원받습니다!🌼
+            </p>
+            <img
+              src="{% static 'images/tutorial_support_detail.png'%}"
+              style="margin: 0px 0px 0 10px; width: 300px"
+              alt="Support Image"
+            />
+          </div>
+
+          <div
+            style="position: relative; border: none; margin: -1px 0px -55px 0px"
+          >
+            <div class="account">농협 20406578234712</div>
+            <div class="select-wrapper" style="border: none">
+              <button class="coppy-Button" id="copyButton">복사</button>
+            </div>
+          </div>
+          <div class="enddate">2023/8/18 PM11:59</div>
+        </div>
+
+        <form>
+          <input type="hidden" name="form_type" value="closing" />
+          <button
+            class="start-Button"
+            type="submit"
+            style="background: #b3b1b0"
+          >
+            모든 입금 내역을 확인해주세요.
+          </button>
+        </form>
+        <div class="line"></div>
+
+        <p class="text">모금자 정보</p>
+        <div class="supportinfo-container">
+          <!-- 모금자 정보 for문 -->
+          <div class="info-text">
+            <div
+              style="
+                margin-bottom: 10px;
+                border: 1px solid #333333;
+                filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+                border-radius: 16px;
+                padding: 5px;
+                width: 308px;
+                margin: 3px 0px 10px 20px;
+              "
+            >
+              <p style="font-size: 20px">아무개 | 20,000원</p>
+              <p style="color: #949494; font-size: 18px">2023.08.14 17:50</p>
+              <div
+                style="
+                  color: blue;
+                  margin: -40px 0px 20px 240px;
+                  font-size: 20px;
+                  cursor: pointer;
+                "
+              >
+                확인
+              </div>
+            </div>
+          </div>
+          <div class="info-text">
+            <div
+              style="
+                margin-bottom: 10px;
+                border: 1px solid #333333;
+                filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+                border-radius: 16px;
+                padding: 5px;
+                width: 308px;
+                margin: 3px 0px 10px 20px;
+              "
+            >
+              <p style="font-size: 20px">홍길동 | 10,000원</p>
+              <p style="color: #949494; font-size: 18px">2023.08.15 20:50</p>
+              <div
+                onclick="showPopup('10')"
+                style="
+                  color: red;
+                  margin: -40px 0px 20px 240px;
+                  font-size: 20px;
+                  cursor: pointer;
+                "
+              >
+                대기
+              </div>
+              <div
+                id="pop_info_10"
+                class="pop_wrap"
+                style="display: none"
+              >
+                <div class="pop_inner">
+                  <p class="dsc">입금 확인이 되었나요?</p>
+                  <div>
+                    <input type="hidden" name="form_type" value="wait_status" />
+                    <input type="hidden" name="form_pk" value="10" />
+                    <div
+                      style="
+                        display: flex;
+                        align-items: center;
+                        margin-left: 50px;
+                      "
+                    >
+                      <input
+                        type="submit"
+                        class="btn_yes"
+                        value="네"
+                        onclick="location.href='{% url 'user:tutorial_support_manage_detail_2' %}'"
+                        style="color: blue; outline: none"
+                      />
+                      <button
+                        type="button"
+                        class="btn_no"
+                        onclick="hidePopup('10')"
+                        style="margin-left: 14px; margin-top: 6px"
+                      >
+                        아니요
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <script>
+          function calcPercent() {
+            let values = document.getElementById("percent-content").innerText;
+            const percent = document.getElementById("percent-bar-content");
+            if (parseInt(values) / 100 == 0) percent.style.width = "20px";
+            else if (parseInt(values) / 100 > 1) percent.style.width = "320px";
+            else percent.style.width = (parseInt(values) / 100) * 320 + "px";
+          }
+          calcPercent();
+
+          function showPopup(formId) {
+            const popup = document.getElementById(`pop_info_${formId}`);
+            popup.style.display = "block";
+          }
+
+          function hidePopup(formId) {
+            const popup = document.getElementById(`pop_info_${formId}`);
+            popup.style.display = "none";
+          }
+
+          //계좌 복사
+          document
+            .getElementById("copyButton")
+            .addEventListener("click", function () {
+              const accountInfo = document.querySelector(".account");
+              const tempTextArea = document.createElement("textarea");
+              tempTextArea.value = accountInfo.textContent;
+              document.body.appendChild(tempTextArea);
+              tempTextArea.select();
+              document.execCommand("copy");
+              document.body.removeChild(tempTextArea);
+              alert("계좌 정보가 복사되었습니다.");
+            });
+
+          function goBack() {
+            window.history.back();
+          }
+
+          /*블록체인 아코디언*/
+          function toggleBlockchain(formId) {
+            const blockchainContent = document.getElementById(
+              `blockchain-content-${formId}`
+            );
+            const blockchain = document.getElementById(`blockchain-${formId}`);
+
+            if (blockchainContent.style.display === "none") {
+              blockchainContent.style.display = "block";
+              blockchain.style.border = "2px solid #b3b1b0";
+            } else {
+              blockchainContent.style.display = "none";
+              blockchain.style.border = "1px solid #b3b1b0";
+            }
+          }
+        </script>
+      </div>
+      <div class="footer">
+        <div class="singer">
+          <img
+            id="singer-img"
+            src="{% static 'images/singer.png'%}"
+            alt="가수 이미지"
+          />
+          <div class="label" style="top: 20px">내 가수</div>
+        </div>
+        <div class="list">
+          <img
+            id="list-img"
+            src="{% static 'images/list.png'%}"
+            alt="게시글 이미지"
+          />
+          <div class="label">게시판</div>
+        </div>
+        <div class="group">
+          <img
+            id="group-img"
+            style="width: 58px; height: 58px; margin-top: -6px"
+            src="{% static 'images/group.png'%}"
+            alt="그룹 이미지"
+          />
+          <div class="label" style="margin-top: -1px">모임</div>
+        </div>
+        <div class="support">
+          <img
+            id="support-img"
+            style="
+              width: 60px;
+              height: 60px;
+              margin-top: -5px;
+              margin-left: -14px;
+            "
+            src="{% static 'images/purplesupport.png'%}"
+            alt="서포트 이미지"
+          />
+          <div
+            class="label"
+            style="margin-top: -3px; color: #bc67ff; margin-left: -15px"
+          >
+            서포트
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function calcPercent() {
+        let values = document.getElementById("percent-content").innerText;
+        const percent = document.getElementById("percent-bar-content");
+        if (parseInt(values) / 100 == 0) percent.style.width = "20px";
+        else if (parseInt(values) / 100 > 1) percent.style.width = "320px";
+        else percent.style.width = (parseInt(values) / 100) * 320 + "px";
+      }
+      calcPercent();
+
+      function showPopup(formId) {
+        const popup = document.getElementById(`pop_info_${formId}`);
+        popup.style.display = "block";
+      }
+
+      function hidePopup(formId) {
+        const popup = document.getElementById(`pop_info_${formId}`);
+        popup.style.display = "none";
+      }
+
+      //계좌 복사
+      document
+        .getElementById("copyButton")
+        .addEventListener("click", function () {
+          const accountInfo = document.querySelector(".account");
+          const tempTextArea = document.createElement("textarea");
+          tempTextArea.value = accountInfo.textContent;
+          document.body.appendChild(tempTextArea);
+          tempTextArea.select();
+          document.execCommand("copy");
+          document.body.removeChild(tempTextArea);
+          alert("계좌 정보가 복사되었습니다.");
+        });
+
+      function goBack() {
+        window.history.back();
+      }
+
+      /*블록체인 아코디언*/
+      function toggleBlockchain(formId) {
+        const blockchainContent = document.getElementById(
+          `blockchain-content-${formId}`
+        );
+        const blockchain = document.getElementById(`blockchain-${formId}`);
+
+        if (blockchainContent.style.display === "none") {
+          blockchainContent.style.display = "block";
+          blockchain.style.border = "2px solid #b3b1b0";
+        } else {
+          blockchainContent.style.display = "none";
+          blockchain.style.border = "1px solid #b3b1b0";
+        }
+      }
+    </script>
+  </body>
+</html>

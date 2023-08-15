@@ -1,0 +1,8 @@
+.tutorial-support-step1-coin{
+    transition: transform 0.3s ease-in-out;
+}
+
+.tutorial-support-step1-coin:hover{
+    transform: translateY(-10px);
+}
+
