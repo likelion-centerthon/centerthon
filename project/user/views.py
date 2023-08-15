@@ -112,13 +112,33 @@ def tutorial_subscribe_artist(request):
 def tutorial_artist_list(request):
     return render(request, 'tutorial_artist/tutorial_artist_list.html')
 
+#모임 리스트 튜토리얼
+def tutorial_meeting_list(request):
+    return render(request, 'tutorial_meeting/tutorial_meeting_list.html')
+
+#모임 리스트 튜토리얼2
+def tutorial_meeting_list2(request):
+    return render(request, 'tutorial_meeting/tutorial_meeting_list2.html')
+
 # 모임 참여 튜토리얼
 def tutorial_meeting_manage(request):
     return render(request, 'tutorial_meeting/tutorial_meeting_manage.html')
 
-# 모임 작성 및 관리 튜토리얼
+# 모임 작성
 def tutorial_meeting_start(request):
     return render(request, 'tutorial_meeting/tutorial_meeting_start.html')
+
+#모임 관리 튜토리얼-작성
+def tutorial_meeting_writed(request):
+    return render(request, 'tutorial_meeting/tutorial_meeting_writed.html')
+
+#모임 관리 튜토리얼-신청
+def tutorial_meeting_apply(request):
+    return render(request, 'tutorial_meeting/tutorial_meeting_apply.html')
+
+#모임 관리 튜토리얼-보호자
+def tutorial_meeting_pn(request):
+    return render(request, 'tutorial_meeting/tutorial_meeting_pn.html')
 
 # 서포트 참여 튜토리얼
 def tutorial_support_manage_list(request):

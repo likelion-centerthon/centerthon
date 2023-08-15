@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from .views import CreateMeeting, MeetingDtl,MeetingList,closeMeeting,MeetingCloseList,applyMeeting,editMeeting,writedMeetingList,memberStateAccept, memberStateRefusal,applyedMeetingList,subPNList
+from .views import CreateMeeting, MeetingDtl,MeetingList,closeMeeting,MeetingCloseList,applyMeeting,editMeeting,writedMeetingList,memberStateAccept, memberStateRefusal,applyedMeetingList,subPNList, MeetingList_tutorial
 
 app_name = "meeting"
 
@@ -17,5 +17,6 @@ urlpatterns = [
     path('<int:artist_id>/write/<int:meetingMember_id>/refusal', memberStateRefusal, name='memberStateRefusal'),
     path('<int:artist_id>/apply/', applyedMeetingList, name='applyedMeetingList'),
     path('<int:artist_id>/phone/', subPNList, name='subPNList'),
+    path('<int:artist_id>/tutorial/', MeetingList_tutorial, name =' MeetingList_tutorial'),
 
 ]
