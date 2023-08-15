@@ -38,7 +38,7 @@ input{
 .meeting-button button:hover{
   border: 1px solid #bc67ff;
 }
-.meeting-button button{
+.meeting-button button{ 
     box-sizing: border-box;
   width: 58px;
   height: 26px;
@@ -58,7 +58,7 @@ input{
   font-weight: 500;
   font-size: 14px;
   color: #B3B1B0;
-  margin:10px;
+  margin:5px;
 }
 
 .meeting-search-form input[type="text"] {
@@ -106,6 +106,7 @@ input{
 }
 .accept:hover {
   background-color: #218838;
+  color: #ffffff;
 }
 
 
@@ -121,6 +122,7 @@ input{
 
 .refuse:hover {
   background-color: #c82333; 
+  color: #ffffff;
 }
 
 
@@ -142,6 +144,7 @@ input{
   border: 1px solid #ccc;
   margin-bottom: 10px;
   background-color: white;
+  border-radius: 16px;
 }
 
 h2 {

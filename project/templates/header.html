@@ -9,7 +9,7 @@
     </button>
   </form>
 
-  <div class="icon">
+  <!-- <div class="icon">
     <form method="post" action="{% url 'userWorking:show_userWorking' pk=artist.pk %}">
       {% csrf_token %}
       <button type="submit">
@@ -28,8 +28,23 @@
       </button>
     </form>
   </div>
+</div> -->
+<div class="icon">
+  <form method="post" action="{% url 'userWorking:show_userWorking' pk=artist.pk %}">
+    {% csrf_token %}
+    <button type="submit">
+      <img class="user" src="{% static 'images/user.png'%}" alt="이용행보">
+    </button>
+  </form>
+  <button type="submit" id="alarm-button" onclick="location.href='{% url 'alert:check_alert' pk=artist.pk %}'">
+    {% if unread_alerts %}
+      <img class="alarm" src="{% static 'images/alarm_red.png'%}" alt="알람">
+    {% else %}
+      <img class="alarm" src="{% static 'images/alarm.png'%}" alt="알람">
+    {% endif %}
+  </button>
 </div>
-
+</div>
 
 <div class="notification-popup" id="notification-popup">
   <div class="notification-content">

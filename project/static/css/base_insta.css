@@ -12,30 +12,31 @@ body {
     margin: 0 auto;
     background-color: #ffffff;
     box-shadow: 2px 2px 9px rgba(0, 0, 0, 0.25);
+    
   }
   .content{
     height: 100vh;
-    overflow-y: auto;
-    overflow-x: hidden;
+    overflow: auto;
+    
 }
 
-  .icon {
+.icon {
     background-color: white; 
   }
-  /*스크롤바 커스텀*/
-::-webkit-scrollbar {
-  width: 0.1px;
-}
+  ::-webkit-scrollbar {
+    width: 0.1px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #fff;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #fff;
+    border-radius: 1px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #fff;
+  }
 
-::-webkit-scrollbar-track {
-  background: #fff;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #fff;
-  border-radius: 1px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #fff;
-}
