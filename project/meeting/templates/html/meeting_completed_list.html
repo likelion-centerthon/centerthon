@@ -34,7 +34,7 @@
     <div class="meeting-grid-container" >
     <div class="meeting-grid" style="height:auto;">
     {% for meeting in meetings_completed %}
-        <div class="meeting-item">
+        <div class="meeting-item"onclick="location.href='{% url 'meeting:meeting_detail' meeting_id=meeting.id artist_id=artist_id%}'">
             {% if meeting.image %}
             <img src="{{ meeting.image.url }}" alt="{{ meeting.title }} Image" width="200">
             {% else %}

@@ -3,10 +3,9 @@
 {% with artist=artist alerts=alerts %}
 {% block content %}
 
-<div style="  justify-content: row;  display: flex; ">
     <img class="back" src="{% static 'images/back.png'%}" alt="이전" onclick="goBack()"></img>
-    <h1 class="spt_crt_h1"  style="margin-left:-30px;">서포트 수정하기</h1>
-</div>
+    <h1 class="support_h1" >서포트 수정하기</h1>
+
 <h2 class="spt_crt_h2">수정할 정보를 모두 입력해 주세요.</h2>
 <form class="register" method="post" action="{% url 'support:update_support' pk=artist.pk spt_pk=support.pk %}">
     {% csrf_token %}
@@ -16,17 +15,14 @@
     aria-required="true"
     className={styles.selectDay}
     onChange={StartDateValueHandler}  class="custom-date" type="datetime-local" name="deadline" id="dead" value="{{support.deadline}}">
-    <div  style="position: relative; border:none;">
-
+    <div style="position: relative; border:none; margin-bottom: 26px;">
       <textarea class="detail" placeholder="내용" name="body" id="body"></textarea>
-      <div class="select-wrapper " style="border:none; margin-top:-50px;">
+      <div class="select-wrapper " style="border:none; margin-top:-65px;">
   
-      <div class="addImg-Button">
       <label for="image" class="custom-addImg-Button" >사진</label>
       <input  style="display:none" type="file" name="image" value="{{ support.image }}" id="image">
-      </div>
-    </div>
-    </div>
+     </div>
+     </div>
      <article>
         <div  style="position: relative; border:none;">
           <input class="account" placeholder="계좌번호" type="text" name="account" id="account">

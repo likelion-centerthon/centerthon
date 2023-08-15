@@ -3,6 +3,7 @@
 {% with artist=artist alerts=alerts %}
 {% block content %}
 
+<link rel="stylesheet" href="{% static 'css/artist_sns.css' %}" />
 <div style="margin-bottom:5px; display:flex; align-items:center;" class="support_list_category">
   <form method="post" action="{% url 'artist:select_artist' pk=artist.pk %}">
       {% csrf_token %}
@@ -18,61 +19,221 @@
       <a href="#;" onClick="zoomIn();"><img style="width:20px; height:20px;"src="{% static 'images/zoomin.png'%}" alt="확대"></a>
         <a href="#;" onClick="zoomOut();"><img style="width:20px; height:20px;"src="{% static 'images/zoomout.png'%}" alt="축소"></a>
       </div>
-
 </div>
 
 <!-- <h1>{{ artist.name }}의 아티스트 정보</h1> -->
 
-<!-- 인스타그램 피드 렌더링 -->
-<!-- <h2>인스타그램 피드</h2> -->
 
-<div class="main_left">
-  <section class="card_section">
-      <div class="card">
-          <header>
-              <img src="" alt="">
-              <div class="user_name">username</div>
-          </header>
-          <div class="card_image">
-              <img src="" alt="">
-          </div>
-          <div class="info">
-              <div class="info_left">
-                  <i class="far fa-heart"></i>
-                  <i class="far fa-comment"></i>
-                  <i class="fas fa-upload"></i>
-              </div>
-              <div class="info_right">
-                  <i class="far fa-bookmark"></i>
-              </div>
-          </div>
-          <div class="comment">
-              comment1<br>
-              comment2<br>
-          </div>
-          <div class="comment_form">
-              <form action="">
-                  <input type="text" placeholder="댓글 입력..">
-              </form>
-          </div>
-      </div>
-  </section>
-</div>
+ 
+        <div class="header-container mobile">
+            <img class="header-items" src="{% static 'images/camera@3x.png'%}" alt="">
+            <img class="insta-logo" src="{% static 'images/insta-logo.png'%}" alt="">
+            <img class="header-items" src="{% static 'images/dm@3x.png'%}" alt="">
+        </div>
+
+        <!-- <div class="content-container mobile">
+            <div class="content-story-wrapper">
+                <div class="story-items">
+                    <img class="story-photos read" src="{% static 'images/hero.png'%}" alt="">
+                    <span>임영웅</span>
+                </div>
+                <div class="story-items">
+                    <img class="story-photos" src="{% static 'images/hero.png'%}" alt="">
+                    <span>임영웅</span>
+                </div>
+                <div class="story-items">
+                    <img class="story-photos read" src="{% static 'images/hero.png'%}" alt="">
+                    <span>임영웅</span>
+                </div>
+                <div class="story-items">
+                    <img class="story-photos" src="{% static 'images/hero.png'%}" alt="">
+                    <span>임영웅</span>
+                </div>
+                <div class="story-items">
+                    <img class="story-photos" src="{% static 'images/hero.png'%}" alt="">
+                    <span>임영웅</span>
+                </div>
+                <div class="story-items">
+                    <img class="story-photos" src="{% static 'images/hero.png'%}" alt="">
+                    <span>임영웅</span>
+                </div>
+                <div class="story-items">
+                    <img class="story-photos" src="{% static 'images/hero.png'%}" alt="">
+                    <span>임영웅</span>
+                </div>
+            </div> -->
+            <div class="content-post-wrapper">
+                <div class="posts">
+                    <div class="post-id">
+                        <div class="post-id-left">
+                            <img class="post-id-photo" src="{% static 'images/hero_dog.jpg'%}" alt="">
+                            <b>임영웅</b>
+                        </div>
+                        <div class="post-id-right">
+                            <img src="{% static 'images/more@3x.png'%}" alt="" style="margin-left: 325px;">
+                        </div>
+                    </div>
+                    <div class="post-photo">
+                        <img src="{% static 'images/hero_football.jpg'%}" style="width: 200px; margin-left: 20px;" alt="">
+                    </div>
+                    <div class="post-buttons">
+                        <div class="post-buttons-left">
+                            <img src="{% static 'images/like@3x.png'%}" alt="">
+                            <img src="{% static 'images/comment@3x.png'%}" alt="">
+                            <img src="{% static 'images/dm@3x.png'%}" alt="">
+                        </div>
+                        <div class="post-buttons-right">
+                            <img src="{% static 'images/favorite@3x.png'%}" alt="">
+                        </div>
+                    </div>
+                    <div class="post-like-msg">
+                        <div class="post-like-msg-wrapper">
+                            <img class="post-id-photo" src="{% static 'images/hero_dog.jpg'%}" alt="">
+                            <span><b>영웅바라기</b>님 <b>외 10명</b>이 좋아합니다</span>
+                        </div>
+                    </div>
+                    <div class="post-comment">
+                        <p><b>영웅바라기</b><span class="friends-comment">영웅이는 언제부터 잘생겼나?</span></p>
+                        <p><b>히어로짱</b><span class="friends-comment">오늘 엠카 잘봤어요!!</span></p>
+                        <div class="post-time">
+                            <p >3분 전</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="posts">
+                    <div class="post-id">
+                        <div class="post-id-left">
+                            <img class="post-id-photo" src="{% static 'images/hero_dog.jpg'%}" alt="">
+                            <b>임영웅</b>
+                        </div>
+                        <div class="post-id-right">
+                            <img src="{% static 'images/more@3x.png'%}" alt="" style="margin-left: 325px;" >
+                        </div>
+                    </div>
+                    <div class="post-photo">
+                        <img src="{% static 'images/hero_award.jpg'%}" style="width: 200px; margin-left: 20px;" alt="">
+                    </div>
+                    <div class="post-buttons">
+                        <div class="post-buttons-left">
+                            <img src="{% static 'images/like@3x.png'%}" alt="">
+                            <img src="{% static 'images/comment@3x.png'%}" alt="">
+                            <img src="{% static 'images/dm@3x.png'%}" alt="">
+                        </div>
+                        <div class="post-buttons-right">
+                            <img src="{% static 'images/favorite@3x.png'%}" alt="">
+                        </div>
+                    </div>
+                    <div class="post-like-msg">
+                        <div class="post-like-msg-wrapper">
+                            <img class="post-id-photo" src="{% static 'images/hero_dog.jpg'%}" alt="">
+                            <span><b>영웅바라기</b>님 <b>외 10명</b>이 좋아합니다</span>
+                        </div>
+                    </div>
+                    <div class="post-comment">
+                        <p><b>영웅바라기</b><span class="friends-comment">영웅이는 언제부터 잘생겼나?</span></p>
+                        <p><b>히어로짱</b><span class="friends-comment">오늘 엠카 잘봤어요!!</span></p>
+                        <div class="post-time">
+                            <p>3분 전</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="posts">
+                    <div class="post-id">
+                        <div class="post-id-left">
+                            <img class="post-id-photo" src="{% static 'images/hero_dog.jpg'%}" alt="">
+                            <b>임영웅</b>
+                        </div>
+                        <div class="post-id-right">
+                            <img src="{% static 'images/more@3x.png'%}" alt="" style="margin-left: 325px;">
+                        </div>
+                    </div>
+                    <div class="post-photo">
+                        <img src="{% static 'images/hero.png'%}" style="width: 200px; margin-left: 20px;" alt="">
+                    </div>
+                    <div class="post-buttons">
+                        <div class="post-buttons-left">
+                            <img src="{% static 'images/like@3x.png'%}" alt="">
+                            <img src="{% static 'images/comment@3x.png'%}" alt="">
+                            <img src="{% static 'images/dm@3x.png'%}" alt="">
+                        </div>
+                        <div class="post-buttons-right">
+                            <img src="{% static 'images/favorite@3x.png'%}" alt="">
+                        </div>
+                    </div>
+                    <div class="post-like-msg">
+                        <div class="post-like-msg-wrapper">
+                            <img class="post-id-photo" src="{% static 'images/hero_dog.jpg'%}" alt="">
+                            <span><b>영웅바라기</b>님 <b>외 10명</b>이 좋아합니다</span>
+                        </div>
+                    </div>
+                    <div class="post-comment">
+                        <p><b>영웅바라기</b><span class="friends-comment">영웅이는 언제부터 잘생겼나?</span></p>
+                        <p><b>히어로짱</b><span class="friends-comment">오늘 엠카 잘봤어요!!</span></p>
+                        <div class="post-time">
+                            <p>3분 전</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="posts">
+                    <div class="post-id">
+                        <div class="post-id-left">
+                            <img class="post-id-photo" src="{% static 'images/hero_dog.jpg'%}" alt="">
+                            <b>임영웅</b>
+                        </div>
+                        <div class="post-id-right" >
+                            <img src="{% static 'images/more@3x.png'%}" alt="" style="margin-left: 325px;">
+                        </div>
+                    </div>
+                    <div class="post-photo">
+                        <img src="{% static 'images/hero_v.jpg'%}" style="width: 200px; margin-left: 20px;" alt="">
+                    </div>
+                    <div class="post-buttons">
+                        <div class="post-buttons-left">
+                            <img src="{% static 'images/like@3x.png'%}" alt="">
+                            <img src="{% static 'images/comment@3x.png'%}" alt="">
+                            <img src="{% static 'images/dm@3x.png'%}" alt="">
+                        </div>
+                        <div class="post-buttons-right">
+                            <img src="{% static 'images/favorite@3x.png'%}" alt="">
+                        </div>
+                    </div>
+                    <div class="post-like-msg">
+                        <div class="post-like-msg-wrapper">
+                            <img class="post-id-photo" src="{% static 'images/hero_dog.jpg'%}" alt="">
+                            <span><b>영웅바라기</b>님 <b>외 10명</b>이 좋아합니다</span>
+                        </div>
+                    </div>
+                    <div class="post-comment">
+                        <p><b>영웅바라기</b><span class="friends-comment">영웅이는 언제부터 잘생겼나?</span></p>
+                        <p><b>히어로짱</b><span class="friends-comment">오늘 엠카 잘봤어요!!</span></p>
+                        <div class="post-time">
+                            <p>3분 전</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="footer-container">
+            <img class="footer-items" src="project/{% static 'images/home@3x.png'%}" alt="">
+            <img class="footer-items" src="project/{% static 'images/search@3x.png'%}" alt="">
+            <img class="footer-items" src="project/{% static 'images/trending@3x.png'%}" alt="">
+            <img class="footer-items" src="project/{% static 'images/like@3x.png'%}" alt="">
+            <img class="footer-items" src="project/{% static 'images/home@3x.png'%}" alt="">
+        </div>
+    </div>
+</body>
+</html>
 
 
 
 
 
-
-
-
-
-
+<!-- 
 <div>
     {% for image_url in feed_data %}
         <img src="{{ image_url }}" alt="인스타그램 이미지">
     {% endfor %}
-</div>
+</div> -->
 
 {% endblock %}
 {% endwith %}
