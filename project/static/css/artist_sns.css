@@ -1,7 +1,4 @@
 
-body {
-        margin: 0;
-}
 
 @media (max-width:375px) {
 
@@ -11,6 +8,7 @@ body {
     .content-container.desktop {
         display: none;
     } */
+ 
     .header-container.mobile{
         top:0;
         position:fixed;

@@ -4,7 +4,7 @@
 {% block content %}
 <div style="  justify-content:row;  display: flex; margin-top: 10px; ">
     <img class="back" src="{% static 'images/back.png'%}" onclick="goBack()"></img>
-    <h1>미팅 수정</h1>
+    <h1 class="meeting-h1" style=" margin: 30px 0px 0px 60px;">모임 수정</h1>
     </div>
 
     <form class="edit input" method="post" enctype="multipart/form-data">
@@ -16,11 +16,11 @@
         <label for="location"></label>
         <input type="text" id="location" name="location" value="{{ meeting.location }}" placeholder="장소"required>
    
-        <label for="meetDate"></label>
-        <input type="date" id="meetDate" name="meetDate" value="{{ meeting.meetDate }}" placeholder="일시"required>
+        <label for="meetDate" data-placeholder="모임 종료 기간"></label>
+        <input type="date" id="meetDate" name="meetDate" value="{{ meeting.meetDate }}" class="custom-date" placeholder="일시"required>
 
         <label for="age" class="age"></label>
-        <input type="text" id="age" name="age" value="{{ meeting.age }}" placeholder="나이제한" required>
+        <input type="text" id="age" name="age" value="{{ meeting.age }}" placeholder="나이제한" class="custom-date" required>
   
         <label for="peopleNm"></label>
         <input type="number" id="peopleNm" name="peopleNm" value="{{ meeting.peopleNm }}" placeholder="인원"required>
@@ -29,15 +29,14 @@
         <input type="url" id="kakaoLink" name="kakaoLink" value="{{ meeting.kakaoLink }}" placeholder="오픈채팅방"required>
 
         
-        <div class="detail1-container">
+    <div class="detail1-container">
         <label for="body"></label>
         <textarea class="detail1" id="body" name="body" rows="4" required>{{ meeting.body }}</textarea>
         <div class="select-wrapper1 " style="border:none;">
-        <label for="id_image" class="addImg-Button">사진</label>
+        <label for="id_image" class="custom-addImg-Button">사진</label>
         <input type="file" name="image" id="id_image" style="display:none" required>
-        </div>
-     
-        </div>
+        </div> 
+    </div>
         <button class="submit-button" type="submit">저장</button>
     </form>
 <!--         
