@@ -131,7 +131,6 @@ def tutorial_support_manage_detail_2(request):
     return render(request, 'tutorial_support/tutorial_support_manage_detail_02.html')
 
 
-
 # 서포트 작성 및 관리 튜토리얼
 def tutorial_support_start(request):
     return render(request, 'tutorial_support/tutorial_support_start.html')
