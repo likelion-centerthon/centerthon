@@ -238,3 +238,21 @@ def subPNList(request, artist_id):
 
     return render(request, 'html/writed_meeting_PN.html', {'meetings': meetings, 'artist_id': artist_id,'artists' : artists,'artist' : artist, 'search': search, 'alerts':alerts, 'unread_alerts':unread_alerts})
 
+def MeetingList_tutorial(reqeust,artist_id):
+    user = reqeust.user
+    artists = user.artists.all()
+    artist =get_object_or_404(Artist, pk=artist_id)
+    meetings = artist.artist_meetings.all()
+    meetings_recruiting = meetings.filter(meetingState=MeetingState.모집중.value)
+    unread_alerts = Alert.objects.filter(user=user, is_read=False).order_by('-regTime')
+    alerts = Alert.objects.filter(user=user)
+
+    context = {
+        'meetings_recruiting': meetings_recruiting,
+        'artist_id': artist_id,
+        'artist': artist,
+        'artists' : artists,
+        'alerts' : alerts,
+        'unread_alerts':unread_alerts
+    }
+    return render(reqeust, "html/meeting_list_tutorial.html", context)

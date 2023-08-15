@@ -61,6 +61,7 @@
             <p id="step-description">원하는 아티스트 카테고리 버튼을 클릭하세요.</p>
         </div>
 
+<<<<<<< HEAD
     <div class="artist-list">
         <!-- 이미지 리스트들 추가될 영역 -->
     </div>
@@ -68,6 +69,29 @@
 </div>     
 </div>
    
+=======
+        <div class="artist-list">
+            <form method="get" action="{% url 'user:tutorial_artist_info' %}">
+                <button>
+                    <div class="image-wrapper">
+                        <img src="{% static 'images/hero.png' %}" width="100" height="100">
+                    </div>
+                    <div class="artist-name">임영웅</div>
+                </button>
+            </form>
+            <button>
+                <div class="image-wrapper">
+                    <img src="{% static 'images/hero.png' %}" width="100" height="100">
+                </div>
+                <div class="artist-name">이찬원</div>
+            </button>
+            <button>
+                <div class="image-wrapper">
+                    <img src="{% static 'images/hero.png' %}" width="100" height="100">
+                </div>
+                <div class="artist-name">송가인</div>
+            </button>
+>>>>>>> db9221efb1070f86d12d3a9e724fbdc19141b487
 
     <script>
         const artistButtons = document.querySelectorAll('.artist-btn');
