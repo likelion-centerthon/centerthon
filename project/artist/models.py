@@ -29,8 +29,3 @@ class Artist(models.Model):
     def __str__(self):
         return self.artistName
 
-class Music(models.Model):
-    title = models.TextField()
-    artist = models.TextField()
-    def __str__(self):
-        return f'{self.title} - {self.artist}'
