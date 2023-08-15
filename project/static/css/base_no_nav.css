@@ -12,10 +12,9 @@ body {
     margin: 0 auto;
     background-color: #ffffff;
     box-shadow: 2px 2px 9px rgba(0, 0, 0, 0.25);
-    
   }
   .content{
-    height: 100vh;
+    height: calc(100vh - 165px);
     overflow-y: auto;
     overflow-x: hidden;
 }

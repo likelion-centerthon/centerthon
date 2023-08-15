@@ -74,10 +74,10 @@ style="width:160px; margin-left:24px; font-size:20px;"
     {% if post.image %}
     <img class="post-img" src="{{ post.image.url }}" />
     {% endif %}
-    <div style="display: flex; position: row">
-      <h2 class="post-name" style="font-size:18px;">{{ post.author.userName }}</h2>
-      <h2 class="post-time" style="font-size:18px;">{{ post.regTime|date:"Y.m.d H:i" }}</h2>
-    </div>
+  
+      <h2 class="post-name" style="font-size:18px;">작성자 : {{ post.author.userName }}</h2>
+      <h1 class="post-time" style="font-size:15px;">{{ post.regTime|date:"Y.m.d H:i" }}</h1>
+
   </div>
   {% endfor %}
 </div>

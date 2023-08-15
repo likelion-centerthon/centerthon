@@ -154,7 +154,6 @@
   .start-Button {
     width: 327px;
     height: 60px;
-    background: #b3b1b0;
     border-radius: 30.5px;
     font-family: 'Noto Sans KR', sans-serif;
     font-style: normal;
@@ -165,6 +164,7 @@
     color: #ffffff;
     border: none;
     margin: 3px 0px 3px 21px;
+    cursor: pointer;
   }
   /*input 마우스 효과*/
   input:focus,
