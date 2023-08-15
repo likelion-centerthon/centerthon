@@ -160,7 +160,8 @@ def create_comment(request, pk):
         Alert.objects.create(
             user=post.author,
             artist=post.artist,
-            message=user.userName + '님이 ' + post.title + ' 게시글에 댓글을 남겼습니다.'
+            message=user.userName + '님이 <' + post.title + '> 게시글에 댓글을 남겼습니다.',
+            regTime = timezone.now()
         )
 
         # 이용행보 수정

@@ -180,7 +180,8 @@ def create_support_form(request, pk, spt_pk):
                 Alert.objects.create(
                     artist=artist,
                     user=user,
-                    message=F'{support.title}의 모금 내역이 자동 확인 되었습니다! 🎉',
+                    message=F'{support.title}의 모금 내역이 자동 확인 되었습니다!',
+                    regTime=timezone.now()
                 )
 
         except Bank.DoesNotExist:
@@ -189,6 +190,7 @@ def create_support_form(request, pk, spt_pk):
                 artist=artist,
                 user=user,
                 message=F'{support.title}의 모금 내역이 확인되지 않았습니다. 입력 정보를 확인해 주세요.',
+                regTime=timezone.now()
             )
 
         return redirect('support:support_dtl', pk=artist.pk, spt_pk=support.pk)
@@ -235,6 +237,7 @@ def create_support(request, pk):
             artist=artist,
             user=user,
             message=F'<{support.title}> 서포트가 등록되었습니다!',
+            regTime=timezone.now()
         )
         userWorking=UserWorking.objects.get(user=user, artist=artist)
         userWorking.supportHost += 1
