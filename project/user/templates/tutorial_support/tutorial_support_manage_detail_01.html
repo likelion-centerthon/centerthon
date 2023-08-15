@@ -30,11 +30,28 @@
 
     <title>서포트 참여</title>
     {% include 'head.html' %}
+    <style>
+      .dark-background {
+          background-color: rgba(0, 0, 0, 0.6); /* Use a semi-transparent black color */
+          position: absolute;
+          
+          width: 375px;
+          height: 100vh;
+          z-index: 2;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          overflow-y:auto;
+      }
+  </style>
   </head>
   <body>
-    <div class="container">
+    <div class="container" style="position:relative; " >
+      <div class="dark-background" id="popup" style="display: none; overflow-y: auto;">
+      </div>
       <div class="header">
         <form>
+          
           <button class="btn-select" type="submit">
             &nbsp; &nbsp;임영웅 •••
           </button>
@@ -212,6 +229,16 @@
           blockchain.style.border = "1px solid #b3b1b0";
         }
       }
-    </script>
+     
+      const popup = document.getElementById("popup");
+      const percent = document.querySelector('.percent');
+    
+      setTimeout(function () {
+        popup.style.display = "block"; 
+        percent.style.zIndex = "9999";
+      }, 4000); 
+    
+        
+      </script>
   </body>
 </html>

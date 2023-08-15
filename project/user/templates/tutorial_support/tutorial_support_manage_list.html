@@ -2,7 +2,20 @@
 <!DOCTYPE html>
 <html lang="ko">
   <head>
-  
+    <style>
+      .dark-background {
+          background-color: rgba(0, 0, 0, 0.6); /* Use a semi-transparent black color */
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 375px;
+          height: 100%;
+          z-index: 2;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+      }
+  </style>
     <meta charset="UTF-8" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -31,10 +44,13 @@
 
     <title>서포트 참여</title>
     {% include 'head.html' %}
+   
   </head>
   <body>
-    <div class="container">
-      <div class="header">
+    <div class="container" style="position:relative">
+      <div class="dark-background" id="popup" style="display:none;">
+       </div>
+      <div class="header ">
         <form>
           <button class="btn-select" type="submit">
             &nbsp; &nbsp;임영웅 •••
@@ -78,8 +94,7 @@
         <div class="supporting-container">
           
             <div class="supporting" style="height: 360px; width: 375px; overflow-y: auto; overflow-x:hidden;">
-              <div class="supporting dimmed-background">  
-              <div class="support_list_box">
+              <div class="support_list_box" >
                     <div style="width: 70%;">
                         <h1 class="spt_list_h1"> 임영웅 생카 후원</h1>
                         <h3 class="spt_list_h3"> 목표: 1,000,000원</h3>
@@ -92,7 +107,7 @@
                     </div>
                 </div>
             </div>
-          </div>
+        
 
         </div>
 
@@ -100,7 +115,7 @@
 
 
     </div>
-      <div class="footer">
+      <div class="footer ">
         <div class="singer">
           <img
             id="singer-img"
@@ -146,6 +161,20 @@
           </div>
         </div>
       </div>
-    </div>
+   
+      <script>
+       
+        const popup = document.getElementById("popup");
+        const supportbox = document.querySelector('.support_list_box');
+      
+        setTimeout(function () {
+          popup.style.display = "block"; 
+          supportbox.style.zIndex = "9999";
+        }, 4000); 
+      
+      
+        
+      </script>
   </body>
+
 </html>
