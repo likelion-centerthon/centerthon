@@ -6,6 +6,7 @@ from artist.models import Artist
 from userWorking.models import UserWorking
 
 
+
 # 아티스트 조회
 def artist_list(request, category):
     user = request.user
