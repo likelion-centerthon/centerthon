@@ -1,10 +1,215 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>서포트 작성 및 관리</title>
-</head>
-<body>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, height=device-height, initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"
+    />
+    <link rel="stylesheet" href="{% static 'css/base.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/header.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/support_form.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/support_create.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/support_list.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/support_dtl.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/post_list.css' %}" />
 
-</body>
+    <link rel="stylesheet" href="{% static 'css/post_detail.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/create_post.css' %}" />
+
+    <link rel="stylesheet" href="{% static 'css/artist_info.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/use_working.css' %}" />
+
+    <title>별너울</title>
+    {% include 'head.html' %}
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <form>
+          <button class="btn-select" type="submit">
+            &nbsp; &nbsp;임영웅 •••
+          </button>
+        </form>
+        <div class="icon">
+          <form>
+            <button type="submit">
+              <img
+                class="user"
+                src="{% static 'images/user.png'%}"
+                alt="이용행보"
+              />
+            </button>
+          </form>
+          <form>
+            <button id="alarm-button">
+              <img
+                class="alarm"
+                src="{% static 'images/alarm.png'%}"
+                alt="알람"
+              />
+            </button>
+          </form>
+        </div>
+      </div>
+      <div class="content">
+        <div
+          style="margin-bottom: 5px; display: flex; align-items: center"
+          class="support_list_category"
+        >
+          <button
+            class="allsupport"
+            style="
+              width: 160px;
+              margin-left: 15px;
+              font-size: 20px;
+              border-bottom: 3px solid #000000;
+            "
+          >
+            서포트 전체
+          </button>
+          <button
+            class="mysupport"
+            style="width: 160px; margin-left: 22px; font-size: 20px"
+          >
+            참여 서포트
+          </button>
+        </div>
+        <div class="support_button">
+          <button
+            class="all_button"
+            style="border: 1px solid #bc67ff; color: #bc67ff"
+          >
+            진행중
+          </button>
+          <button class="end_button" id="end">종료</button>
+          <div style="margin-left: 285px; margin-top: -25px">
+            <a href="#;" onClick="zoomIn();"
+              ><img
+                style="width: 20px; height: 20px"
+                src="{% static 'images/zoomin.png' %}"
+                alt="확대"
+            /></a>
+            <a href="#;" onClick="zoomOut();"
+              ><img
+                style="width: 20px; height: 20px"
+                src="{% static 'images/zoomout.png' %}"
+                alt="축소"
+            /></a>
+          </div>
+        </div>
+
+        <div class="supporting-container">
+          <div
+            class="supporting"
+            style="
+              height: 360px;
+              width: 375px;
+              overflow-y: auto;
+              overflow-x: hidden;
+            "
+          >
+            <div
+              class="support_list_box"
+              onclick="location.href='{% url 'user:tutorial_support_join_detail_1' %}'"
+            >
+              <div style="width: 70%">
+                <h1 class="spt_list_h1">임영웅 생카 후원</h1>
+                <h3 class="spt_list_h3">목표: 1,000,000원</h3>
+                <h3 class="spt_list_h3">종료: 2023/8/18 PM11:59</h3>
+                <h2 class="spt_list_h2">농협 20406578234712</h2>
+                <div id="amt" style="display: none">360000</div>
+              </div>
+              <div class="support_percent_box" id="completionBox">
+                <span style="font-size: 30px">36</span
+                ><span style="font-size: 17px">%</span>
+              </div>
+            </div>
+            <div
+              class="support_list_box"
+              onclick="location.href='{% url 'user:tutorial_support_join_detail_1' %}'"
+            >
+              <div style="width: 70%">
+                <h1 class="spt_list_h1">임영웅 밥차 서포트</h1>
+                <h3 class="spt_list_h3">목표: 1,500,000원</h3>
+                <h3 class="spt_list_h3">종료: 2023/8/30 PM11:59</h3>
+                <h2 class="spt_list_h2">우리 021236578234954</h2>
+              </div>
+              <div class="support_percent_box" id="completionBox">
+                <span style="font-size: 30px">55</span
+                ><span style="font-size: 17px">%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button
+          class="start-Button"
+          style="
+            margin-left: 27px;
+            margin-top: 20px;
+            background: #bc67ff;
+            font-size: 22px;
+          "
+          onclick="location.href='{% url 'user:tutorial_support_start_form' %}'"
+        >
+          서포트 작성하기
+        </button>
+      </div>
+      <div class="footer">
+        <div class="singer">
+          <img
+            id="singer-img"
+            src="{% static 'images/singer.png'%}"
+            alt="가수 이미지"
+          />
+          <div class="label" style="top: 20px">내 가수</div>
+        </div>
+        <div class="list">
+          <img
+            id="list-img"
+            src="{% static 'images/list.png'%}"
+            alt="게시글 이미지"
+          />
+          <div class="label">게시판</div>
+        </div>
+        <div class="group">
+          <img
+            id="group-img"
+            style="width: 58px; height: 58px; margin-top: -6px"
+            src="{% static 'images/group.png'%}"
+            alt="그룹 이미지"
+          />
+          <div class="label" style="margin-top: -1px">모임</div>
+        </div>
+        <div class="support">
+          <img
+            id="support-img"
+            style="
+              width: 60px;
+              height: 60px;
+              margin-top: -5px;
+              margin-left: -14px;
+            "
+            src="{% static 'images/purplesupport.png'%}"
+            alt="서포트 이미지"
+          />
+          <div
+            class="label"
+            style="margin-top: -3px; color: #bc67ff; margin-left: -15px"
+          >
+            서포트
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>

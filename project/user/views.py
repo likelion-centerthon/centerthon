@@ -131,9 +131,21 @@ def tutorial_support_join_detail_2(request):
     return render(request, 'tutorial_support/tutorial_support_join_detail_02.html')
 
 
-# 서포트 작성 및 관리 튜토리얼
+# 서포트 작성 튜토리얼
 def tutorial_support_start(request):
     return render(request, 'tutorial_support/tutorial_support_start.html')
+def tutorial_support_start_form(request):
+    return render(request, 'tutorial_support/tutorial_support_start_form.html')
+def tutorial_support_start_step_1(request):
+    return render(request, 'tutorial_support/tutorial_support_start_step_1.html')
+def tutorial_support_start_step_2(request):
+    return render(request, 'tutorial_support/tutorial_support_start_step_2.html')
+def tutorial_support_start_step_3(request):
+    return render(request, 'tutorial_support/tutorial_support_start_step_3.html')
+def tutorial_support_start_step_4(request):
+    return render(request, 'tutorial_support/tutorial_support_start_step_4.html')
+
+# 서포트 관리 튜토리얼
 def tutorial_support_manage(request):
     return render(request, 'tutorial_support/tutorial_support_manage.html')
 def tutorial_support_manage_detail_1(request):

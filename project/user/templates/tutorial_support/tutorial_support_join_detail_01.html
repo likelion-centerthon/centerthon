@@ -30,11 +30,28 @@
 
     <title>서포트 참여</title>
     {% include 'head.html' %}
+    <style>
+      .dark-background {
+          background-color: rgba(0, 0, 0, 0.6); /* Use a semi-transparent black color */
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 375px;
+          height: 100%;
+          z-index: 2;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+      }
+  </style>
   </head>
   <body>
-    <div class="container">
+    <div class="container" style="position:relative">
+      <div class="dark-background" id="popup" style="display:none;">
+      </div>
       <div class="header">
         <form>
+
           <button class="btn-select" type="submit">
             &nbsp; &nbsp;임영웅 •••
           </button>
@@ -105,6 +122,11 @@
         >
           모금 정보 작성하기
         </button>
+        {% if not form.status == '대기' %}
+        <div style="color: blue; margin: -40px 0px 20px 240px; font-size: 20px">
+          {{form.status}}
+        </div>
+        {% endif %}
       </div>
       <div class="footer">
         <div class="singer">
@@ -154,7 +176,7 @@
       </div>
     </div>
     {% endif %}
-    
+
     <script>
       function calcPercent() {
         let values = document.getElementById("percent-content").innerText;
@@ -208,6 +230,16 @@
           blockchain.style.border = "1px solid #b3b1b0";
         }
       }
-    </script>
+
+      const popup = document.getElementById("popup");
+      const percent = document.querySelector('.percent');
+
+      setTimeout(function () {
+        popup.style.display = "block";
+        percent.style.zIndex = "9999";
+      }, 4000);
+
+
+      </script>
   </body>
 </html>

@@ -4,7 +4,8 @@ from .views import oauth_login, Kakao, KakaoCallback, sign_up, tutorial, tutoria
     tutorial_meeting_manage, tutorial_support_start, tutorial_meeting, \
     tutorial_support, tutorial_support_join_list, tutorial_support_join_form, tutorial_support_join_detail_1, \
     tutorial_support_join_detail_2, tutorial_support_manage, tutorial_support_manage_detail_1, \
-    tutorial_support_manage_detail_2
+    tutorial_support_manage_detail_2, tutorial_support_start_form, tutorial_support_start_step_1, \
+    tutorial_support_start_step_2, tutorial_support_start_step_3, tutorial_support_start_step_4
 
 app_name = "user"
 
@@ -38,6 +39,11 @@ urlpatterns = [
     path('tutorial/support-join-detail-2', tutorial_support_join_detail_2, name='tutorial_support_join_detail_2'),
     # 서포트 생성
     path('tutorial/support-start', tutorial_support_start, name='tutorial_support_start'),
+    path('tutorial/support-start-form', tutorial_support_start_form, name='tutorial_support_start_form'),
+    path('tutorial/support-start-step-1', tutorial_support_start_step_1, name='tutorial_support_start_step_1'),
+    path('tutorial/support-start-step-2', tutorial_support_start_step_2, name='tutorial_support_start_step_2'),
+    path('tutorial/support-start-step-3', tutorial_support_start_step_3, name='tutorial_support_start_step_3'),
+    path('tutorial/support-start-step-4', tutorial_support_start_step_4, name='tutorial_support_start_step_4'),
     # 서포트 관리
     path('tutorial/support-manage', tutorial_support_manage, name='tutorial_support_manage'),
     path('tutorial/support-manage-detail-1', tutorial_support_manage_detail_1, name='tutorial_support_manage_detail_1'),
