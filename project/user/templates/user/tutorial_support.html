@@ -4,9 +4,9 @@
 <img class="back" style="  left: 3px;top: 50px;"src="{% static 'images/back.png'%}" alt="이전" onclick="goBack()" style="margin-left:-45px;"></img>
 
 <div class="button-container" style="margin-top:200px;">
-    <a class="button" href="{% url 'user:tutorial_support_manage' %}">서포트 참여</a>
+    <a class="button" href="{% url 'user:tutorial_support_join' %}">서포트 참여</a>
     <a class="button" href="{% url 'user:tutorial_support_start' %}">서포트 작성</a>
-    <a class="button" href="{% url 'user:tutorial_support_start' %}">서포트 관리</a>
+    <a class="button" href="{% url 'user:tutorial_support_manage' %}">서포트 관리</a>
 </div>
 <script>
     function goBack() {
