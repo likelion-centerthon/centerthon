@@ -17,9 +17,8 @@ def post_list(request, artist_pk, category):
     if not user.is_authenticated:
         return redirect('user:login')
 
-
     artist = Artist.objects.get(pk=artist_pk)
-    posts = Post.objects.filter(category=category, artist=artist)
+    posts = Post.objects.filter(category=category, artist=artist).order_by('-regTime')
 
 
     return render(request, 'post/post_list.html', context={'posts':posts, 'artist':artist, 'alerts':alerts, 'unread_alerts':unread_alerts,'category':category})
@@ -106,6 +105,7 @@ def edit_post(request, pk):
             image = post.image
 
         # 데이터 변경
+        post.category = category
         post.title = title
         post.contents = contents
         post.image = image
@@ -115,7 +115,7 @@ def edit_post(request, pk):
         return redirect('post:post_list', artist_pk=post.artist.pk, category=category)
 
     else:
-        return render(request, 'post/create_post.html', context={'post': post, 'artist':post.artist, 'alerts':alerts, 'unread_alerts':unread_alerts})
+        return render(request, 'post/modify_post.html', context={'post': post, 'artist':post.artist, 'alerts':alerts, 'unread_alerts':unread_alerts})
 
 # 게시글 삭제
 def delete_post(request, pk):
@@ -193,5 +193,3 @@ def delete_comment(request, pk):
         userWorking.save()
 
         return render(request, 'post/post_detail.html', context={'post':comment.post, 'comments':comments, 'artist':artist})
-
-    return render(request, 'post/failDelete.html')
