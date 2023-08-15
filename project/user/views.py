@@ -84,48 +84,70 @@ class KakaoCallback(View):
         else: # 첫 사용자라면 아티스트 전체조회로 이동
             return redirect('user:signup', pk=user.pk)
 
-# 튜토리얼 분기 페이지
+# 튜토리얼 분기 페이지 1 (튜토리얼 진행하기 / 아티스트 선택하기)
 def tutorial_next(request):
     return render(request, 'user/tutorial_next.html')
+
+# 튜토리얼 분기 페이지 - 아티스트
+def tutorial_artist_info(request):
+    return render(request, 'tutorial_artist/tutorial_artist_info.html')
+
+# 튜토리얼 분기 페이지 - 모임
+def tutorial_meeting(request):
+    return render(request, 'user/tutorial_meeting.html')
+
+# 튜토리얼 분기 페이지 - 서포트
+def tutorial_support(request):
+    return render(request, 'user/tutorial_support.html')
 
 # 전체 튜토리얼 진행
 def tutorial_all(request):
     return render(request, 'user/tutorial_all.html')
 
-# 아티스트 선택 튜토리얼
-def tutorial_artist(request):
-    return render(request, 'user/tutorial_artist.html')
+# 구독한 아티스트 확인 튜토리얼
+def tutorial_subscribe_artist(request):
+    return render(request, 'tutorial_artist/tutorial_subscribe_artist.html')
+
+# 추가 구독 튜토리얼
+def tutorial_artist_list(request):
+    return render(request, 'tutorial_artist/tutorial_artist_list.html')
 
 #모임 리스트 튜토리얼
 def tutorial_meeting_list(request):
-    return render(request, 'user/tutorial_meeting_list.html')
+    return render(request, 'tutorial_meeting/tutorial_meeting_list.html')
 
 # 모임 참여 튜토리얼
 def tutorial_meeting_manage(request):
-    return render(request, 'user/tutorial_meeting_manage.html')
+    return render(request, 'tutorial_meeting/tutorial_meeting_manage.html')
 
 # 모임 작성
 def tutorial_meeting_start(request):
-    return render(request, 'user/tutorial_meeting_start.html')
+    return render(request, 'tutorial_meeting/tutorial_meeting_start.html')
 
 #모임 관리 튜토리얼-작성
 def tutorial_meeting_writed(request):
-    return render(request, 'user/tutorial_meeting_writed.html')
+    return render(request, 'tutorial_meeting/tutorial_meeting_writed.html')
 
 #모임 관리 튜토리얼-신청
 def tutorial_meeting_apply(request):
-    return render(request, 'user/tutorial_meeting_apply.html')
+    return render(request, 'tutorial_meeting/tutorial_meeting_apply.html')
 
 #모임 관리 튜토리얼-보호자
 def tutorial_meeting_pn(request):
-    return render(request, 'user/tutorial_meeting_pn.html')
+    return render(request, 'tutorial_meeting/tutorial_meeting_pn.html')
 
 # 서포트 참여 튜토리얼
-def tutorial_support_manage(request):
-    return render(request, 'user/tutorial_support_manage.html')
+def tutorial_support_manage_list(request):
+    return render(request, 'tutorial_support/tutorial_support_manage_list.html')
+def tutorial_support_manage_form(request):
+    return render(request, 'tutorial_support/tutorial_support_manage_form.html')
+def tutorial_support_manage_detail_1(request):
+    return render(request, 'tutorial_support/tutorial_support_manage_detail_01.html')
+def tutorial_support_manage_detail_2(request):
+    return render(request, 'tutorial_support/tutorial_support_manage_detail_02.html')
+
+
 
 # 서포트 작성 및 관리 튜토리얼
 def tutorial_support_start(request):
-    return render(request, 'user/tutorial_support_start.html')
-
-
+    return render(request, 'tutorial_support/tutorial_support_start.html')
