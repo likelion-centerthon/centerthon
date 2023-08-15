@@ -22,7 +22,7 @@ urlpatterns = [
 
     # 튜토리얼 아티스트
     path('tutorial/artist-info', tutorial_artist_info, name='tutorial_artist_info'),
-    path('tutorial/subscribe-list', tutorial_subscribe_artist, name='tutorial_subscribe_artist'),
+    path('tutorial/subscribe-artist', tutorial_subscribe_artist, name='tutorial_subscribe_artist'),
     path('tutorial/artist-list', tutorial_artist_list, name='tutorial_artist_list'),
 
     # 튜토리얼 모임

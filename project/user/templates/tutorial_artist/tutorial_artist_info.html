@@ -1,10 +1,134 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, height=device-height, initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"
+    />
+    <link rel="stylesheet" href="{% static 'css/base.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/header.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/support_form.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/support_create.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/support_list.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/support_dtl.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/post_list.css' %}" />
 
-</body>
+    <link rel="stylesheet" href="{% static 'css/post_detail.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/create_post.css' %}" />
+
+    <link rel="stylesheet" href="{% static 'css/artist_info.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/use_working.css' %}" />
+
+    <title>아티스트 정보</title>
+    {% include 'head.html' %}
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <form action="{% url 'user:tutorial_subscribe_artist' %}" method="get">
+          <button class="btn-select">
+            &nbsp; &nbsp;임영웅 •••
+          </button>
+        </form>
+        <div class="icon">
+          <form>
+            <button type="submit">
+              <img
+                class="user"
+                src="{% static 'images/user.png'%}"
+                alt="이용행보"
+              />
+            </button>
+          </form>
+          <form>
+            <button id="alarm-button">
+              <img
+                class="alarm"
+                src="{% static 'images/alarm.png'%}"
+                alt="알람"
+              />
+            </button>
+          </form>
+        </div>
+      </div>
+      <div class="content">
+        <div class="artist_name" style="color:black"> 아티스트 임영웅</div>
+      <div class="artist_image">
+          <img src="{% static 'images/hero.png'%}">
+      </div>
+      <div class="custom-box">
+          <div class="artist_info">
+              <div class="artist_members"> <strong>멤버</strong> 솔로</div>
+              <div class="artist_debuteDate"> <strong>데뷔</strong> 2016년 8월 16일</div>
+              <div class="artist_fanName"> <strong>팬덤</strong> 영웅시대</div>
+              <div class="artist_agency"> <strong>회사</strong> 물고기 컴퍼니</div>
+              <div class="social_icon">
+                  <div><strong>인스타</strong></div><a href="https://www.instagram.com/im_hero____/" target="_blank"><img class="insta"
+                          src="{% static 'images/insta.png' %}" alt="인스타그램"></a>
+                  <div><strong>트위터</strong></div><a href="https://twitter.com/i/flow/login?redirect_after_login=%2Flimyoungwoong" target="_blank"><img class="twitter"
+                          src="{% static 'images/twitter_icon.png' %}" alt="트위터"></a>
+                  <div><strong>유튜브</strong></div><a href="https://www.youtube.com/user/mulgogimusiclable" target="_blank"><img class="youtube"
+                          src="{% static 'images/youtube_icon.png' %}" alt="유튜브"></a>
+              </div>
+          </div>
+      </div>
+    </div>
+      <div class="footer">
+        <div class="singer">
+          <img
+            id="singer-img"
+            src="{% static 'images/purplesinger.png'%}"
+            alt="가수 이미지"
+          />
+          <div class="label" style="top: 20px color: #bc67ff;" >내 가수</div>
+        </div>
+        <div class="list">
+          <img
+            id="list-img"
+            src="{% static 'images/list.png'%}"
+            alt="게시글 이미지"
+          />
+          <div class="label">게시판</div>
+        </div>
+        <div class="group">
+          <img
+            id="group-img"
+            style="width: 58px; height: 58px; margin-top: -6px"
+            src="{% static 'images/group.png'%}"
+            alt="그룹 이미지"
+          />
+          <div class="label" style="margin-top: -1px">모임</div>
+        </div>
+        <div class="support">
+          <img
+            id="support-img"
+            style="
+              width: 60px;
+              height: 60px;
+              margin-top: -5px;
+              margin-left: -14px;
+            "
+            src="{% static 'images/support.png'%}"
+            alt="서포트 이미지"
+          />
+          <div
+            class="label"
+            style="margin-top: -3px; margin-left: -15px"
+          >
+            서포트
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
+
