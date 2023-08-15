@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Music Chart</title>
+<style>
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+<h1>Top Music Chart</h1>
+<table>
+<tr>
+<th>Title</th>
+<th>Artist</th>
+</tr>
+{% for music in music_data %}
+<tr>
+<td>{{ music.title }}</td>
+<td>{{ music.artist }}</td>
+</tr>
+{% endfor %}
+</table>
+</body>
+</html>
