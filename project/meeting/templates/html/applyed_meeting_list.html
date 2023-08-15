@@ -29,18 +29,18 @@
         {% for applyedMeeting in applyedMeetings %}
         <div class="writed-lost">
             <div class="member-info">
-                <h3><a href="{% url 'meeting:meeting_detail' meeting_id=applyedMeeting.Meeting.id artist_id=artist_id %}">{{ applyedMeeting.Meeting.title }}</a></h3>
-                <p>{{ applyedMeeting.writeDate|date:"Y/m/d" }}에 신청했습니다.</p>
+                <h3><a href="{% url 'meeting:meeting_detail' meeting_id=applyedMeeting.Meeting.id artist_id=artist_id %}">미팅명 : {{ applyedMeeting.Meeting.title }}</a></h3>
+            </div>
+                <p> <span class="date-color">  {{ applyedMeeting.writeDate|date:"Y/m/d" }}</span>에 신청했습니다.</p>
                 {% if applyedMeeting.memberState == "대기" %}
-                    <p>현재 대기 상태입니다.</p>
+                    <p>현재<span class = "wait"> 대기 </span>상태입니다.</p>
                 {% endif %}
                 {% if applyedMeeting.memberState == "승인" %}
-                    <p>현재 승인 상태입니다. 알림을 확인하세요</p>
+                    <p>현재<span class = "approval"> 승인 </span>상태입니다. 알림을 확인하세요</p>
                 {% endif %}
                 {% if applyedMeeting.memberState == "거부" %}
-                    <p>현재 거부 상태입니다. 다른 모임을 찾아보세요</p>
+                    <p>현재<span class = "reject"> 거부 </span>상태입니다. 다른 모임을 찾아보세요</p>
                 {% endif %}
-            </div>
             </div>
         {% empty %}
         {% endfor %}
