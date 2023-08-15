@@ -1,0 +1,22 @@
+{% extends 'base_no_nav.html' %}
+{% load static %}
+{% block content %}
+<img class="back" style="  left: 3px;top: 50px;"src="{% static 'images/back.png'%}" alt="이전" onclick="goBack()" style="margin-left:-45px;"></img>
+
+<div class="button-container" style="margin-top:200px;">
+
+       <a class="button" href="{% url 'artist:artist_list' category='none' %}">전체 튜토리얼 진행</a>
+        <a class="button" href="{% url 'artist:artist_list' category='none' %}">아티스트 선택</a>
+         <a class="button" href="{% url 'artist:artist_list' category='none' %}">모임참여</a>
+        <a class="button" href="{% url 'artist:artist_list' category='none' %}">모임 작성, 보호자 </a>
+       <a class="button" href="{% url 'artist:artist_list' category='none' %}">서포트 참여</a>
+       <a class="button" href="{% url 'artist:artist_list' category='none' %}">서포트 작성</a>
+</div>
+<script>
+    function goBack() {
+        window.history.back();
+        }
+</script>
+
+       {% endblock %}
+

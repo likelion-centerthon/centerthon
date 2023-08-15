@@ -32,12 +32,6 @@
 
 </div>
 
-
-{% if unread_alerts %}
-<!-- 안 읽은 알림이 있을 때의 코드 작성해주시면 됩니다. -->
-{% endif %}
-
-
 <div class="notification-popup" id="notification-popup">
   <div class="notification-content">
 
@@ -61,7 +55,7 @@
   var nowZoom = 100;
 
   function zoomOut() {                                                                       //화면크기축소
-    nowZoom = nowZoom - 10;
+    nowZoom = nowZoom - 20;
 
     if (nowZoom <= 70) nowZoom = 70;            //화면크기 최대 축소율 70% 
     zooms();

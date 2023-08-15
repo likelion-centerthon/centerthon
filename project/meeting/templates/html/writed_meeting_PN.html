@@ -7,47 +7,42 @@
     <button class ="mysupport" style="width:160px; margin-left:24px; font-size:20px;border-bottom:3px solid #000000;" onclick="location.href='{% url 'meeting:writedMeetingList' artist_id=artist_id  %}'">나의 모임</button>
 </div>
 
-    <div class="meeting-button">
-        <button onclick="location.href='{%url 'meeting:writedMeetingList' artist_id=artist_id  %}'">작성</button>
-        <button onclick="location.href='{%url 'meeting:applyedMeetingList' artist_id=artist_id  %}'">신청</button>
-        <button style="  border: 1px solid #bc67ff; color:#bc67ff;" onclick="location.href='{%url 'meeting:subPNList' artist_id=artist_id  %}'">보호자</button>
-        <div  style="margin-left:285px; margin-top:-25px;" >
-            <a href="#;" onClick="zoomIn();"><img style="width:20px; height:20px;"src="{% static 'images/zoomin.png'%}" alt="확대"></a>
-              <a href="#;" onClick="zoomOut();"><img style="width:20px; height:20px;"src="{% static 'images/zoomout.png'%}" alt="축소"></a>
-            </div>
+<div class="meeting-button">
+    <button onclick="location.href='{%url 'meeting:writedMeetingList' artist_id=artist_id  %}'">작성</button>
+    <button onclick="location.href='{%url 'meeting:applyedMeetingList' artist_id=artist_id  %}'">신청</button>
+    <button style="  border: 1px solid #bc67ff; color:#bc67ff;" onclick="location.href='{%url 'meeting:subPNList' artist_id=artist_id  %}'">보호자</button>
+    <div  style="margin-left:285px; margin-top:-25px;" >
+        <a href="#;" onClick="zoomIn();"><img style="width:20px; height:20px;"src="{% static 'images/zoomin.png'%}" alt="확대"></a>
+        <a href="#;" onClick="zoomOut();"><img style="width:20px; height:20px;"src="{% static 'images/zoomout.png'%}" alt="축소"></a>
     </div>
+</div>
 
-    <form class="meeting-search-form" method="get" action="{% url 'meeting:subPNList' artist_id=artist_id %}">
+<form class="meeting-search-form" method="get" action="{% url 'meeting:subPNList' artist_id=artist_id %}">
+    <label for="searchInput" style="font-size:17px;">보호자 검색:</label>
+    <input type="text" id="searchInput" name="search" placeholder="참석자명을 검색하세요"style="text-indent:0px;">
+    <button type="submit">검색</button>
+</form>
 
-        <label for="searchInput" style="font-size:17px;">보호자 검색:</label>
-        <input type="text" id="searchInput" name="search" placeholder="참석자명을 검색하세요"style="text-indent:0px;">
-        <button type="submit">검색</button>
-    </form>
-    
-    <div class="meeting-writed">
-        {% for meeting in meetings %}
-        <div class="writed-lost">
-                <h2><a href="{% url 'meeting:meeting_detail' meeting_id=meeting.id artist_id=artist_id%}">{{ meeting.title }}</a></h2>
-                {% if meeting.members.exists %}
-                <div class="member-info">
-                        {% for meetingMember in meeting.members.all %}
-                            {% if meetingMember.memberState == "승인" %}
-                                {% if not search or search in meetingMember.User.userName %}
-                    <div>
-                                        <h3>{{ meetingMember }}</h3>
-                                        <p>{{ meetingMember.User.subPhoneNumber }}</p>
+<div class="meeting-writed">
+    {% for meeting in meetings %}
+    {% if meeting.members.exists %}
+        {% for meetingMember in meeting.members.all %}
+            {% if meetingMember.memberState == "승인" %}
+                {% if not search or search in meetingMember.User.userName %}
+                    <div class="writed-lost">
+                        <h2><a href="{% url 'meeting:meeting_detail' meeting_id=meeting.id artist_id=artist_id%}">{{ meeting.title }}</a></h2>
+                        <div class="member-info">
+                            <h3>{{ meetingMember }}</h3>
+                            <p>{{ meetingMember.User.subPhoneNumber }}</p>
+                        </div>
                     </div>
-                                {% endif %}
-                            {% endif %}
-                        {% endfor %}
-                    </div>
-                {% else %}
                 {% endif %}
-                </div>
-        {% empty %}
-            <p>작성한 미팅이 없습니다.</p>
+            {% endif %}
         {% endfor %}
-        </div>
+    {% endif %}
+    {% empty %}
+    {% endfor %}
+</div>
 
 {% endblock %}
 {% endwith %}
