@@ -2,6 +2,20 @@
 <!DOCTYPE html>
 <html lang="ko">
   <head>
+    <style>
+      .dark-background {
+          background-color: rgba(0, 0, 0, 0.6); /* Use a semi-transparent black color */
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 375px;
+          height: 100%;
+          z-index: 2;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+      }
+  </style>
     <meta charset="UTF-8" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,10 +44,13 @@
 
     <title>서포트 참여</title>
     {% include 'head.html' %}
+   
   </head>
   <body>
-    <div class="container">
-      <div class="header">
+    <div class="container" style="position:relative">
+      <div class="dark-background" id="popup" style="display:none;">
+       </div>
+      <div class="header ">
         <form>
           <button class="btn-select" type="submit">
             &nbsp; &nbsp;임영웅 •••
@@ -61,28 +78,44 @@
         </div>
       </div>
       <div class="content">
-          <img class="back" src="{% static 'images/back.png'%}" alt="이전"  onclick="goBack()"></img>
-            <h1 class="support_form_h1" style="margin-left:-15px; ">모금 정보 작성하기</h1>
-            <h2 class="support_form_h2"style="  margin:3px 0px 3px 20px;">입금 후 모금 정보를 작성해주세요</h2>
+        <div style="margin-bottom: 5px; display: flex; align-items: center;" class="support_list_category">
+            <button class="allsupport" style="width: 160px; margin-left: 15px; font-size: 20px; border-bottom: 3px solid #000000;" >서포트 전체</button>
+            <button class="mysupport" style="width: 160px; margin-left: 22px; font-size: 20px;" >참여 서포트</button>
+        </div>
+        <div class="support_button">
+            <button class="all_button" style="border: 1px solid #bc67ff; color: #bc67ff;" >진행중</button>
+            <button class="end_button" id="end" >종료</button>
+            <div style="margin-left: 285px; margin-top: -25px;">
+                <a href="#;" onClick="zoomIn();"><img style="width: 20px; height: 20px;" src="{% static 'images/zoomin.png' %}" alt="확대"></a>
+                <a href="#;" onClick="zoomOut();"><img style="width: 20px; height: 20px;" src="{% static 'images/zoomout.png' %}" alt="축소"></a>
+            </div>
+        </div>
 
-          <form class="register">
-            <input class="fundraisername" placeholder="입금자명" type="text" name="depositor" id="depositor" style="margin-left: 20px; margin-bottom: 10px;"><br>
-            <input  class="fundpay"  placeholder="모금액" type="number" name="credit" id="credit" style="margin-left: 20px; margin-bottom: 10px;"><br>
-            <input data-placeholder="입금 시간"
-            required
-            aria-required="true"
-            value={startDateValue}
-            className={styles.selectDay}
-            onChange={StartDateValueHandler}
-            class="custom-date"
-            type="datetime-local"
-             name="creditTime"
-              id="creditTime"
-              style="margin-left: 20px; margin-bottom: 10px; margin-top:0px;  "/>
-            <button class="start-Button" type="submit" style="margin-top:90px; background: #b3b1b0">항목을 모두 작성해 주세요</button>
-          </form>
-      </div>
-        <div class="footer">
+        <div class="supporting-container">
+          
+            <div class="supporting" style="height: 360px; width: 375px; overflow-y: auto; overflow-x:hidden;">
+              <div class="support_list_box" onclick="location.href='{% url 'user:tutorial_support_join_detail_1' %}'">
+                    <div style="width: 70%;">
+                        <h1 class="spt_list_h1"> 임영웅 생카 후원</h1>
+                        <h3 class="spt_list_h3"> 목표: 1,000,000원</h3>
+                        <h3 class="spt_list_h3"> 종료: 2023/8/18 PM11:59</h3>
+                        <h2 class="spt_list_h2">농협 20406578234712</h2>
+                        <div id="amt" style="display: none;">360000</div>
+                    </div>
+                    <div class="support_percent_box" id="completionBox">
+                        <span style="font-size: 30px;">36</span><span style="font-size: 17px;">%</span>
+                    </div>
+                </div>
+            </div>
+        
+
+        </div>
+
+        <button class="start-Button" style="margin-left: 27px; margin-top:20px;background: #bc67ff;  font-size: 22px;" >서포트 작성하기</button>
+
+
+    </div>
+      <div class="footer ">
         <div class="singer">
           <img
             id="singer-img"
@@ -128,37 +161,20 @@
           </div>
         </div>
       </div>
-    </div>
-
-    <script>
-        let inputs = document.querySelectorAll("input");
-        let startButton = document.querySelector(".start-Button");
-        startButton.disabled = true;
-
-        function checkInputs() {
-        let allFilled = true;
-        inputs.forEach(function(input){
-        if (input.value === "") {
-          allFilled = false;
-          return;
-        }
-        });
-
-        if (allFilled) {
-        startButton.disabled = false;
-        startButton.style.backgroundColor = "#BC67FF";
-        startButton.innerHTML="제출하기"
-        } else {
-        startButton.disabled = true;
-
-        }
-        }
-        inputs.forEach(function(input){
-        input.addEventListener("input", checkInputs);
-        });
-        function goBack() {
-        window.history.back();
-        }
-    </script>
+   
+      <script>
+       
+        const popup = document.getElementById("popup");
+        const supportbox = document.querySelector('.support_list_box');
+      
+        setTimeout(function () {
+          popup.style.display = "block"; 
+          supportbox.style.zIndex = "9999";
+        }, 4000); 
+      
+      
+        
+      </script>
   </body>
+
 </html>
