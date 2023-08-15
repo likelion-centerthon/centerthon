@@ -19,23 +19,23 @@
     <link rel="stylesheet" href="{% static 'css/support_dtl.css' %}?after" />
     <link rel="stylesheet" href="{% static 'css/support_update.css' %}?after" />
 
-    <link rel="stylesheet" href="{% static 'css/use_working.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/use_working.css' %}?after" />
 
 
 
       <title>중앙톤 프로젝트</title>
-    {% include 'head.html' %}
-   </head>
-  <body>
-    <div class="container" style="overflow-x:hidden;" >
-      {% include 'header.html' %}
-         
-          <div class="content">
-              {% block content %}
-              {% endblock %}
-          </div>
-         {% include 'support_footer.html' %}
-      </div>
-
-  </body>
-</html>m
+      {% include 'head.html' %}
+    </head>
+   <body>
+       <div class="container" >
+           {% include 'header.html' %}
+          
+           <div class="content">
+               {% block content %}
+               {% endblock %}
+           </div>
+          {% include 'support_footer.html' %}
+       </div>
+ 
+   </body>
+</html>

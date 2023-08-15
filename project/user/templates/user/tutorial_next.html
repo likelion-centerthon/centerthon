@@ -1,17 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+{% extends 'base_no_nav.html' %}
+{% load static %}
+{% block content %}
+<img class="back" style="  left: 3px;top: 50px;"src="{% static 'images/back.png'%}" alt="이전" onclick="goBack()" style="margin-left:-45px;"></img>
 
-<body>
-<button>  <a class="button" href="{% url 'artist:artist_list' category='none' %}">전체 튜토리얼 진행</a></button>
-<button>  <a class="button" href="{% url 'artist:artist_list' category='none' %}">아티스트 선택</a></button>
-<button>  <a class="button" href="{% url 'artist:artist_list' category='none' %}">모임참여</a></button>
-<button>  <a class="button" href="{% url 'artist:artist_list' category='none' %}">모임 작성, 보호자 </a></button>
-<button>  <a class="button" href="{% url 'artist:artist_list' category='none' %}">서포트 참여</a></button>
-<button>  <a class="button" href="{% url 'artist:artist_list' category='none' %}">서포트 작성</a></button>
+<div class="button-container" style="margin-top:200px;">
+    <a class="button" href="{% url 'user:tutorial_all' %}">전체 튜토리얼 진행</a>
+    <a class="button" href="{% url 'user:tutorial_artist' %}">아티스트 선택</a>
+    <a class="button" href="{% url 'user:tutorial_meeting_manage' %}">모임 참여</a>
+    <a class="button" href="{% url 'user:tutorial_meeting_start' %}">모임 작성 및 관리 </a>
+    <a class="button" href="{% url 'user:tutorial_support_manage' %}">서포트 참여</a>
+    <a class="button" href="{% url 'user:tutorial_support_start' %}">서포트 작성 및 관리</a>
+</div>
+<script>
+    function goBack() {
+        window.history.back();
+        }
+</script>
 
-</body>
-</html>
+{% endblock %}
+
