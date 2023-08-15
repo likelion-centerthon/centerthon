@@ -1,46 +1,78 @@
-{% extends 'base_artistlist.html' %}
-{% block content %}
 {% load static %}
-<div > 
-    <h2 class="page-title">나의 아티스트 선택하기</h2>
-        <div class="artist-buttons">
-
-        <button type="button" class="artist-btn" data-category="K-POP">K-POP</button>
-        <button type="button" class="artist-btn" data-category="트로트">트로트</button>
-        <button type="button" class="artist-btn" data-category="발라드">발라드</button>
-        <button type="button" class="artist-btn" data-category="기타">기타</button>
-
-    </div>
- 
-
-    <div class="artist-list">
-        <!-- 이미지 리스트들 추가될 영역 -->
-    </div>
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+        <link rel="stylesheet" href="{% static 'css/base_artistlist.css' %}" />  
+        <link rel="stylesheet" href="{% static 'css/artist_list.css' %}" />
+        <link rel="stylesheet" href="{% static 'css/subscribe_list.css' %}" />
+        <link rel="stylesheet" href="{% static 'css/create_post.css' %}" />
+        <link rel="stylesheet" href="{% static 'css/support_create.css' %}?after" />
+        <link rel="stylesheet" href="{% static 'css/create_post.css' %}" />
     
-</div>
+    <title>서포트 참여</title>
+    {% include 'head.html' %}
     <style>
-        .artist-list {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .image-wrapper {
-            text-align: center;
-            margin: 10px;
+        .tutorial-box {
+           
+            border: 2px solid #000;
+            padding: 10px;
+            margin-top: 10px;
+            background-color: #d9d9d9;
+            position: absolute;
+            margin-top:20px;
+            left: 20px;
+            width: 100%;
+            border-radius:16px;
+            width: 320px;
         }
 
         .artist-name {
             text-align: center;
             margin-top: 10px;
         }
+        .hidden {
+            display: none;
+        }
 
     </style>
+  </head>
+  <body>
+    <div class="container" style="position:relative;">
+        <div class="content">
+    <h2 class="page-title">나의 아티스트 선택하기</h2>
+    <p style="text-align: center; margin-bottom: -60px; margin-top:30px;font-size:18px;" id="category-text" >4개의 카테고리를 선택해보세요.</p>
+
+        <div class="artist-buttons" style="border:3px solid red; height: 60px; ">
+
+        <button type="button" class="artist-btn" data-category="K-POP">K-POP</button>
+        <button type="button" class="artist-btn" data-category="트로트">트로트</button>
+        <button type="button" class="artist-btn" data-category="발라드">발라드</button>
+        <button type="button" class="artist-btn" data-category="기타">기타</button>
+
+         </div>
+         <div class="tutorial-box">
+            <h3 id="step-title">STEP 1: 아티스트 카테고리 선택하기</h3>
+            <p id="step-description">원하는 아티스트 카테고리 버튼을 클릭하세요.</p>
+        </div>
+
+    <div class="artist-list">
+        <!-- 이미지 리스트들 추가될 영역 -->
+    </div>
+    
+</div>     
+</div>
+   
 
     <script>
         const artistButtons = document.querySelectorAll('.artist-btn');
         const artistList = document.querySelector('.artist-list');
-
+      
+    
         const artistData = {
             'K-POP': [
                 { name: "임영웅", image: "{% static 'images/supportimg.png' %}" }, 
@@ -109,6 +141,7 @@
                     wrapperDiv.appendChild(artistNameDiv);
 
                     artistList.appendChild(wrapperDiv);
+                    
                 });
 
                 artistButtons.forEach(btn => btn.classList.remove('selected'));
@@ -116,7 +149,9 @@
             });
         });
 
+        const categoryText = document.getElementById('category-text');
 
+      
     </script>
-
-{% endblock %}
+</body>
+</html>
