@@ -68,7 +68,7 @@ button{
  }
 
  .notification-popup {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -100,7 +100,7 @@ button{
 .alert-name {
   font-size: 18px;
   font-weight: bold;
-  color: #333;
+  color: #9b51e0;
 }
 
 .alert-message {
@@ -120,3 +120,4 @@ button{
   color: #999;
   margin-top: 5px;
 }
+

@@ -18,7 +18,7 @@
         <img class="user" src="{% static 'images/user.png'%}" alt="이용행보">
       </button>
     </form>
-    <form method="post" action="{% url 'alert:check_alert' pk=artist.pk %}">
+    <!-- <form method="post" action="{% url 'alert:check_alert' pk=artist.pk %}"> -->
       {% csrf_token %}
       <button id="alarm-button">
         {% if unread_alerts %}
@@ -27,10 +27,15 @@
           <img class="alarm" src="{% static 'images/alarm.png'%}" alt="알람">
         {% endif %}
       </button>
-    </form>
+    <!-- </form> -->
   </div>
+
 </div>
 
+
+{% if unread_alerts %}
+<!-- 안 읽은 알림이 있을 때의 코드 작성해주시면 됩니다. -->
+{% endif %}
 
 
 <div class="notification-popup" id="notification-popup">
@@ -45,7 +50,7 @@
       <div class="alert-openchat">{{ alert.openChatURL }}</div>
       {% endif %}
       <div class="alert-time">{{ alert.regTime|date:"Y.m.d H:i" }}</div>
-      {{ alert.is_read }}
+      <!-- {{ alert.is_read }} -->
     </div>
     {% endfor %}
   </div>
@@ -89,9 +94,7 @@
     }
   }
 
-       
- // "알람" 버튼 클릭 이벤트 처리 함수
- document.addEventListener("DOMContentLoaded", function () {
+  document.addEventListener("DOMContentLoaded", function () {
         var alarmButton = document.getElementById("alarm-button");
         if (alarmButton) {
             alarmButton.addEventListener("click", function () {
@@ -119,7 +122,4 @@
             toggleNotificationPopup();
         }
     });
-  
-  
-
 </script>

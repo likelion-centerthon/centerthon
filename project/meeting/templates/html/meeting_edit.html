@@ -30,7 +30,7 @@
 
         <div class="detail1-container">
         <label for="body"></label>
-        <textarea class="detail1" id="body" name="body" rows="4" required>{{ meeting.body }}
+        <textarea class="detail1" id="body" name="body" rows="4" required>{{ meeting.body }}     </textarea>
 
         {% if meeting.image %}
             <img src="{{ meeting.image.url }}" alt="{{ meeting.title }} Image" width="200">
@@ -39,7 +39,6 @@
             <p>No image available</p>
             <br>
         {% endif %}
-    </textarea>
         </div>
  
         <label for="image"></label>
