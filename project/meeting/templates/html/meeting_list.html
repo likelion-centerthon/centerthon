@@ -35,9 +35,9 @@
     <div class="meeting-grid-container">
         <div class="meeting-grid">
             {% for meeting in meetings_recruiting %}
-                <div class="meeting-item"onclick="location.href='{% url 'meeting:meeting_detail' meeting_id=meeting.id artist_id=artist_id%}'">
+            <div class="meeting-item" onmouseover="highlightText(this)" onmouseout="unhighlightText(this)" onclick="location.href='{% url 'meeting:meeting_detail' meeting_id=meeting.id artist_id=artist_id%}'">
                     {% if meeting.image %}
-                        <img src="{{ meeting.image.url }}" alt="{{ meeting.title }} Image" width="200">
+                        <img src="{{ meeting.image.url }}" alt="{{ meeting.title }} Image" style="width: 140px; height: 130px;">
                     {% else %}
                         <p>No image available</p>
                     {% endif %}
@@ -50,6 +50,17 @@
         </div>
     </div>
   <button class="start-Button" style="margin-left: 27px; margin-top:-40px;background: #bc67ff;font-size: 22px;" onclick="location.href='{% url 'meeting:createMeeting' artist_id=artist_id %}'">모임 작성하기</button>
+
+  <script>
+    function highlightText(element) {
+        element.querySelector('p').style.fontWeight = 'bold';
+    }
+
+    function unhighlightText(element) {
+        element.querySelector('p').style.fontWeight = 'normal';
+    }
+</script>
+
 
 {% endblock %}
 {% endwith %}

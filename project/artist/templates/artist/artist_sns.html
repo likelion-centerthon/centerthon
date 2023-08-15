@@ -21,10 +21,53 @@
 
 </div>
 
-<h1>{{ artist.name }}의 아티스트 정보</h1>
+<!-- <h1>{{ artist.name }}의 아티스트 정보</h1> -->
 
 <!-- 인스타그램 피드 렌더링 -->
-<h2>인스타그램 피드</h2>
+<!-- <h2>인스타그램 피드</h2> -->
+
+<div class="main_left">
+  <section class="card_section">
+      <div class="card">
+          <header>
+              <img src="" alt="">
+              <div class="user_name">username</div>
+          </header>
+          <div class="card_image">
+              <img src="" alt="">
+          </div>
+          <div class="info">
+              <div class="info_left">
+                  <i class="far fa-heart"></i>
+                  <i class="far fa-comment"></i>
+                  <i class="fas fa-upload"></i>
+              </div>
+              <div class="info_right">
+                  <i class="far fa-bookmark"></i>
+              </div>
+          </div>
+          <div class="comment">
+              comment1<br>
+              comment2<br>
+          </div>
+          <div class="comment_form">
+              <form action="">
+                  <input type="text" placeholder="댓글 입력..">
+              </form>
+          </div>
+      </div>
+  </section>
+</div>
+
+
+
+
+
+
+
+
+
+
 <div>
     {% for image_url in feed_data %}
         <img src="{{ image_url }}" alt="인스타그램 이미지">

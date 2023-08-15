@@ -70,7 +70,6 @@ input {
 .start-Button {
   width: 327px;
   height: 60px;
-
   background: #b3b1b0;
   border-radius: 30.5px;
   font-family: 'Noto Sans KR', sans-serif;
@@ -81,6 +80,7 @@ input {
   text-align: center;
   color: #ffffff;
   border: none;
+  cursor: pointer;
 }
 
 .start-Button:hover {

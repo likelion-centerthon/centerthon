@@ -25,6 +25,7 @@
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
   width: 377px;
+  cursor: pointer;
 }
 
 .allsupport,
@@ -54,6 +55,7 @@
 .support_button {
   height: 26px;
   margin: 15px 0 10px 22px;
+  cursor: pointer;
 }
 .support_button button:hover{
   border: 1px solid #bc67ff;
@@ -65,9 +67,11 @@
   background: #ffffff;
   border: 1px solid #b3b1b0;
   border-radius: 30px;
+  cursor: pointer;
 }
 .write_button {
   margin-left: 140px;
+  cursor: pointer;
 }
 
 /*서포트 리스트 전체 div*/
@@ -92,6 +96,7 @@
   font-style: normal;
   font-weight: 500;
   width:340px;
+  cursor: pointer;
 }
 /*서포트 제목*/
 .spt_list_h1 {
