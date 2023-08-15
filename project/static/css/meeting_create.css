@@ -130,7 +130,23 @@ textarea {
   
 }
 
-input[type="datetime-local"]::before {
+input[type='date']::before {
   content: attr(data-placeholder);
   width: 100%;
 }
+
+input[type='date']:focus::before,
+input[type='date']:valid::before {
+  display: none;
+}
+
+  /*input 마우스 효과*/
+  input:focus,
+  textarea:focus {
+    outline: 2px solid #bc67ff;
+  }
+
+  .addImg-Button:hover{
+    border: 1px solid #bc67ff;
+    outline: 3px solid #f8e4ff;
+  }

@@ -31,6 +31,13 @@
   border: 1px solid hsl(20, 2%, 70%);
   border-radius: 16px;
   margin: 5px 10px 6px 22px;
+  text-indent: 10px;
+    font-style: bold;
+    font-weight: 550;
+    font-size: 18px;
+    line-height: 200%;
+    color:  hsl(0, 0%, 32%);
+    text-indent: 13px;
   }
 
 /*제목 작성*/
@@ -143,7 +150,7 @@ outline: 3px solid #f8e4ff;
 }
 
 /*input 마우스 효과*/
-input:focus,
+.post-crt-title:focus,
 textarea:focus,
 select:focus {
 outline: 2px solid #bc67ff;

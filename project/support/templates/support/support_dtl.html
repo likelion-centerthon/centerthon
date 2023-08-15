@@ -50,10 +50,10 @@
             {% csrf_token %}
             <input type="hidden" name="form_type" value="closing">
             {% if not warning %}
-            <button class="start-Button" type="submit">마감하기</button>
+            <button class="start-Button" type="submit" style="background:#bc67ff">마감하기</button>
             {% endif %}
             {% if warning %}
-            <button class="start-Button" type="submit" style="background:#d9d9d9">{{warning}}</button>
+            <button class="start-Button" type="submit" style="background:#b3b1b0">{{warning}}</button>
             {% endif %}
         </form>
         <div class="line"></div>
