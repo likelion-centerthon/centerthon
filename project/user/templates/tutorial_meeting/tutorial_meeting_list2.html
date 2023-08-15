@@ -29,7 +29,7 @@
     {% include 'head.html' %}
    </head>
   <body>
- <div class="container" >
+       <div class="container" >
           <div class="header">
         <form>
           <button class="btn-select" type="submit">
@@ -58,48 +58,79 @@
         </div>
       </div>
 
-          <div class="content">
+        <div class="content">
+
 <div style="margin-bottom: 5px; display: flex; align-items: center;" class="support_list_category">
-    <button class ="allsupport" style="width:160px; margin-left:15px; font-size:20px;" >모임 전체</button>
-    <button class ="mysupport" style="width:160px; margin-left:24px; font-size:20px;border-bottom:3px solid #000000;" >나의 모임</button>
-</div>
+    <button class ="allsupport" style="width:160px; margin-left:15px; font-size:20px;border-bottom:3px solid #000000;"> 모임 전체</button>
+        <button class ="mysupport" style="width:160px; margin-left:24px; font-size:20px;" >나의 모임</button>
 
-<div class="meeting-button">
-    <button >작성</button>
-    <button >신청</button>
-    <button style="  border: 1px solid #bc67ff;color:#bc67ff;" >보호자</button>
-    <div  style="margin-left:285px; margin-top:-25px;" >
-        <a href="#;" onClick="zoomIn();"><img style="width:20px; height:20px;"src="{% static 'images/zoomin.png'%}" alt="확대"></a>
-        <a href="#;" onClick="zoomOut();"><img style="width:20px; height:20px;"src="{% static 'images/zoomout.png'%}" alt="축소"></a>
     </div>
-</div>
-<div class="content">
-<div class="meeting-search-form">
-    <label for="searchInput" style="font-size:17px;">보호자 검색:</label>
-    <input type="text" id="searchInput" name="search" placeholder="참석자명을 검색하세요"style="text-indent:0px;">
-    <button type="submit">검색</button>
-</div>
+    <div class="meeting-button">
+        <button style="  border: 1px solid #bc67ff;color:#bc67ff;" >진행중</button>
+        <button >종료</button>
+        <div  style="margin-left:285px; margin-top:-25px;" >
+            <a href="#;" onClick="zoomIn();"><img style="width:20px; height:20px;"src="{% static 'images/zoomin.png'%}" alt="확대"></a>
+              <a href="#;" onClick="zoomOut();"><img style="width:20px; height:20px;"src="{% static 'images/zoomout.png'%}" alt="축소"></a>
+            </div>
+    </div>
 
-<div class="meeting-writed">
-                    <div class="writed-lost">
-                        <h2>내가 작성한 모임명1</h2>
-                        <div class="member-info">
-                            <h3>이멋사</h3>
-                            <p>01012345678</p>
-                        </div>
+
+    <h2 class="title-meeting"> 덕질하기 좋은날 </h2>
+
+    <p class="ment-meeting"> 임영웅을 좋아하는
+        <br/> 사람들과 다양한 이야기를
+        <br/> 나누어보세요!</p>
+
+
+    <div class="artist_image_2">
+            <img src= "{% static 'images/hero.png'%}" width="150">
+    </div>
+
+    <div class="meeting-grid-container">
+        <div class="meeting-grid">
+            <div class="meeting-item" onmouseover="highlightText(this)" onmouseout="unhighlightText(this)" >
+                        <img src= "{% static 'images/hero.png'%}" style="width: 140px; height: 130px;">
+                    <div>
+                        <p>임영웅 생일 카페</p>
+                        <p>5명</p>
                     </div>
-                      <div class="writed-lost">
-                        <h2>내가 작성한 모임명2</h2>
-                        <div class="member-info">
-                            <h3>김멋사</h3>
-                            <p>01012345678</p>
-                        </div>
-                    </div>
+                </div>
+        </div>
+    </div>
+  <button class="start-Button" style="margin-left: 27px; margin-top:-40px;background: #bc67ff;font-size: 22px;" onclick="location.href='{% url 'user:tutorial_meeting_start'  %}'">모임 작성하기</button>
 
-</div>
-</div>
+  <script>
+    function highlightText(element) {
+        element.querySelector('p').style.fontWeight = 'bold';
+    }
+
+    function unhighlightText(element) {
+        element.querySelector('p').style.fontWeight = 'normal';
+    }
+</script>
 
 
+          </div>
+
+<div class="footer">
+    <div class="singer" >
+        <img id="singer-img" src="{% static 'images/singer.png'%}" alt="가수 이미지"></img>
+      <div class="label" >내 가수</div>
+    </div>
+    <div class="list" >
+        <img id="list-img" src="{% static 'images/list.png'%}" alt="게시글 이미지"></img>
+        <div class="label">게시판</div>
+    </div>
+    <div class="group"  >
+        <img id="group-img" style="width:58px; height:58px; margin-top:-6px;"src="{% static 'images/purplegroup.png'%}" alt="그룹 이미지" ></img>
+      <div class="label" style="margin-top:-1px;color:#BC67FF">모임</div>
+    </div>
+    <div class="support" >
+        <img id="support-img" style="width:60px; height:60px;margin-top:-5px;margin-left:-14px;"src="{% static 'images/support.png'%}" alt="서포트 이미지" ></img>
+      <div class="label"style="margin-top:-3px;margin-left:-15px;">서포트</div>
+    </div>
+
+  </div>
 
   <script>
     //하단바 아이콘 변경
@@ -169,24 +200,6 @@ document.getElementById("support-img").addEventListener("mouseover", function ()
 </script>
 
       </div>
-<div class="footer">
-    <div class="singer">
-        <img id="singer-img" src="{% static 'images/singer.png'%}" alt="가수 이미지"></img>
-      <div class="label" >내 가수</div>
-    </div>
-    <div class="list">
-        <img id="list-img" src="{% static 'images/list.png'%}" alt="게시글 이미지"></img>
-        <div class="label">게시판</div>
-    </div>
-    <div class="group" >
-        <img id="group-img" style="width:58px; height:58px; margin-top:-6px;"src="{% static 'images/purplegroup.png'%}" alt="그룹 이미지" ></img>
-      <div class="label" style="margin-top:-1px;color:#BC67FF">모임</div>
-    </div>
-    <div class="support">
-        <img id="support-img" style="width:60px; height:60px;margin-top:-5px;margin-left:-14px;"src="{% static 'images/support.png'%}" alt="서포트 이미지" ></img>
-      <div class="label"style="margin-top:-3px;margin-left:-15px;">서포트</div>
-    </div>
 
-  </div>
   </body>
 </html>

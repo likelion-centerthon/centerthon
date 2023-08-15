@@ -116,6 +116,10 @@ def tutorial_artist_list(request):
 def tutorial_meeting_list(request):
     return render(request, 'tutorial_meeting/tutorial_meeting_list.html')
 
+#모임 리스트 튜토리얼2
+def tutorial_meeting_list2(request):
+    return render(request, 'tutorial_meeting/tutorial_meeting_list2.html')
+
 # 모임 참여 튜토리얼
 def tutorial_meeting_manage(request):
     return render(request, 'tutorial_meeting/tutorial_meeting_manage.html')

@@ -27,6 +27,7 @@ urlpatterns = [
     path('tutorial/meeting-apply', views.tutorial_meeting_apply, name='tutorial_meeting_apply'),
     path('tutorial/meeting-pn', views.tutorial_meeting_pn, name='tutorial_meeting_pn'),
     path('tutorial/meeting-list', views.tutorial_meeting_list, name='tutorial_meeting_list'),
+    path('tutorial/meeting-list-2',views.tutorial_meeting_list2,name='tutorial_meeting_list2'),
 
     # 튜토리얼 서포트
     path('tutorial/support-manage', views.tutorial_support_manage_list, name='tutorial_support_manage'),
