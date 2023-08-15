@@ -31,10 +31,9 @@
                     {% if meetingMember.memberState == "대기" %}
     {% if not search or search in meetingMember.User.userName %}
         <div class="writed-lost">
-            <h2><a href="{% url 'meeting:meeting_detail' meeting_id=meeting.id artist_id=artist_id %}">{{ meeting.title }}</a></h2>
+            <a href="{% url 'meeting:meeting_detail' meeting_id=meeting.id artist_id=artist_id %}" style="font-size:20px; font-weight: 500;">{{ meeting.title }}</a>
             <div class="member-info">
-                <h3>{{ meetingMember.User.userName }}</h3>
-                <h3>{{ meetingMember.memberState }}</h3>
+                <h3> 신청자 : {{ meetingMember.User.userName }}</h3>
                 <form method="post" action="{% url 'userWorking:show_userWorking_guest' pk=artist.id meetingMember_id=meetingMember.id %}">
                     {% csrf_token %}
                     <button class="confirm-button" type="submit">신청자 정보 확인</button>

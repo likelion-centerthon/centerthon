@@ -30,11 +30,12 @@
             {% if meetingMember.memberState == "승인" %}
                 {% if not search or search in meetingMember.User.userName %}
                     <div class="writed-lost">
-                        <h2><a href="{% url 'meeting:meeting_detail' meeting_id=meeting.id artist_id=artist_id%}">{{ meeting.title }}</a></h2>
+                        <h2><a href="{% url 'meeting:meeting_detail' meeting_id=meeting.id artist_id=artist_id%}"><span style="color:#000000">모임명 : </span>{{ meeting.title }}</a></h2>
                         <div class="member-info">
-                            <h3>{{ meetingMember }}</h3>
-                            <p>{{ meetingMember.User.subPhoneNumber }}</p>
+                            <h3>신청자 : {{ meetingMember }}</h3>
                         </div>
+                            <p>번호 : {{ meetingMember.User.subPhoneNumber }}</p>
+                    
                     </div>
                 {% endif %}
             {% endif %}

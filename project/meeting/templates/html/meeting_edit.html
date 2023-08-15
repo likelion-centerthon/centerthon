@@ -2,9 +2,10 @@
 {% load static %}
 {% with artist=artist alerts=alerts %}
 {% block content %}
-
+<div style="  justify-content:row;  display: flex; margin-top: 10px; ">
     <img class="back" src="{% static 'images/back.png'%}" onclick="goBack()"></img>
     <h1>미팅 수정</h1>
+    </div>
 
     <form class="edit input" method="post" enctype="multipart/form-data">
         {% csrf_token %}
@@ -27,26 +28,26 @@
         <label for="kakaoLink"></label>
         <input type="url" id="kakaoLink" name="kakaoLink" value="{{ meeting.kakaoLink }}" placeholder="오픈채팅방"required>
 
-
+        
         <div class="detail1-container">
         <label for="body"></label>
-        <textarea class="detail1" id="body" name="body" rows="4" required>{{ meeting.body }}     </textarea>
-
+        <textarea class="detail1" id="body" name="body" rows="4" required>{{ meeting.body }}</textarea>
+        <div class="select-wrapper1 " style="border:none;">
+        <label for="id_image" class="addImg-Button">사진</label>
+        <input type="file" name="image" id="id_image" style="display:none" required>
+        </div>
+     
+        </div>
+        <button class="submit-button" type="submit">저장</button>
+    </form>
+<!--         
         {% if meeting.image %}
-            <img src="{{ meeting.image.url }}" alt="{{ meeting.title }} Image" width="200">
+            <img src="{{ meeting.image.url }}" alt="{{ meeting.title }} Image" width="55">
             <br>
         {% else %}
             <p>No image available</p>
             <br>
-        {% endif %}
-        </div>
- 
-        <label for="image"></label>
-        <input type="file" id="image" name="image" accept="image/*" >
-    
-        <button class="submit-button" type="submit">저장</button>
-    </form>
-
+        {% endif %} -->
     <script>
         function goBack() {
           window.history.back();
