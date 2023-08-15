@@ -158,3 +158,17 @@ width: 223px;
     border: 1px solid #bc67ff;
     color: #bc67ff;
 }
+
+.already-button{
+    box-sizing: border-box;
+    width: 300px;
+    height: 55px;
+    background-color: #b3b1b0;
+    border: 1px solid #b3b1b0;
+    border-radius: 30px;
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 20px 5px 5px 5px;
+}
