@@ -1,0 +1,55 @@
+{% extends 'base_meeting.html' %}
+{% load static %}
+{% with artist=artist alerts=alerts %}
+{% block content %}
+
+
+<div style="margin-bottom: 5px; display: flex; align-items: center;" class="support_list_category">
+    <button class ="allsupport" style="width:160px; margin-left:15px; font-size:20px;border-bottom:3px solid #000000;" onclick="location.href='{% url 'meeting:MeetingList' artist_id=artist.id %}'">모임 전체</button>
+        <button class ="mysupport" style="width:160px; margin-left:24px; font-size:20px;" onclick="location.href='{% url 'meeting:writedMeetingList' artist_id=artist_id  %}'">나의 모임</button>
+
+    </div>
+    <div class="meeting-button">
+        <button style="  border: 1px solid #bc67ff;color:#bc67ff;" onclick="location.href='{% url 'meeting:MeetingList' artist_id=artist.id   %}'">진행중</button>
+        <button onclick="location.href='{%url 'meeting:MeetingCloseList' artist_id=artist_id  %}'">종료</button>
+        <div  style="margin-left:285px; margin-top:-25px;" >
+            <a href="#;" onClick="zoomIn();"><img style="width:20px; height:20px;"src="{% static 'images/zoomin.png'%}" alt="확대"></a>
+              <a href="#;" onClick="zoomOut();"><img style="width:20px; height:20px;"src="{% static 'images/zoomout.png'%}" alt="축소"></a>
+            </div>
+    </div>
+
+
+    <h2 class="title-meeting"> 덕질하기 좋은날 </h2>
+
+    <p class="ment-meeting"> {{ artist.artistName }}을 좋아하는
+        <br/> 사람들과 다양한 이야기를
+        <br/> 나누어보세요!</p>
+
+
+    <div class="artist_image_2">
+        {% if artist.artistImage %}
+            <img src="{{ artist.artistImage.url }}" alt="{{ artist.artistName }} Image" width="150">
+        {% endif %}
+    </div>
+
+    <div class="meeting-grid-container">
+        <div class="meeting-grid">
+            {% for meeting in meetings_recruiting %}
+                <div class="meeting-item"onclick="location.href='{% url 'meeting:meeting_detail' meeting_id=meeting.id artist_id=artist_id%}'">
+                    {% if meeting.image %}
+                        <img src="{{ meeting.image.url }}" alt="{{ meeting.title }} Image" width="200">
+                    {% else %}
+                        <p>No image available</p>
+                    {% endif %}
+                    <div>
+                        <p>{{ meeting.title }}</p>
+                        <p>{{ meeting.peopleNm }}명</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+  <button class="start-Button" style="margin-left: 27px; margin-top:-40px;background: #bc67ff;font-size: 22px;" onclick="location.href='{% url 'meeting:createMeeting' artist_id=artist_id %}'">모임 작성하기</button>
+
+{% endblock %}
+{% endwith %}

@@ -19,6 +19,8 @@
   font-size: 16px;
   line-height: 17px;
   color: #000000;
+  margin-left:30px;
+  margin-top:10px;
 }
 .post-dtl-regTime {
   width: 170px;
@@ -28,8 +30,10 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 17px;
-
+  margin-left:30px;
   color: #858585;
+  margin-top:10px;
+
 }
 
 .post-dtl-contents {
@@ -111,8 +115,8 @@
   font-style: normal;
   font-weight: 400;
   font-size: 15px;
-  line-height: 17px;
- 
+  line-height: 32px;
+ margin-left: 37px;
  
 }
 .post-modify{
