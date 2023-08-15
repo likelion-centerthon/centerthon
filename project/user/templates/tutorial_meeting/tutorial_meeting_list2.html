@@ -1,0 +1,205 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+
+    <link rel="stylesheet" href="{% static 'css/base_meeting.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/header.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/meeting_list.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/meeting_detail.css' %}?after" />
+    <link rel="stylesheet" href="{% static 'css/writed_meeting_list.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/meeting_completed_list.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/applyed_meeting_list.css' %}" />
+
+
+    <link rel="stylesheet" href="{% static 'css/support_list.css' %}?after" />
+    <link rel="stylesheet" href="{% static 'css/support_form.css' %}?after" />
+
+    <link rel="stylesheet" href="{% static 'css/artist_info.css' %}?after" />
+
+
+
+      <title>중앙톤 프로젝트</title>
+    {% include 'head.html' %}
+   </head>
+  <body>
+       <div class="container" >
+          <div class="header">
+        <form>
+          <button class="btn-select" type="submit">
+            &nbsp; &nbsp;임영웅 •••
+          </button>
+        </form>
+        <div class="icon">
+          <form>
+            <button type="submit">
+              <img
+                class="user"
+                src="{% static 'images/user.png'%}"
+                alt="이용행보"
+              />
+            </button>
+          </form>
+          <form>
+            <button id="alarm-button">
+              <img
+                class="alarm"
+                src="{% static 'images/alarm.png'%}"
+                alt="알람"
+              />
+            </button>
+          </form>
+        </div>
+      </div>
+
+        <div class="content">
+
+<div style="margin-bottom: 5px; display: flex; align-items: center;" class="support_list_category">
+    <button class ="allsupport" style="width:160px; margin-left:15px; font-size:20px;border-bottom:3px solid #000000;"> 모임 전체</button>
+        <button class ="mysupport" style="width:160px; margin-left:24px; font-size:20px;" >나의 모임</button>
+
+    </div>
+    <div class="meeting-button">
+        <button style="  border: 1px solid #bc67ff;color:#bc67ff;" >진행중</button>
+        <button >종료</button>
+        <div  style="margin-left:285px; margin-top:-25px;" >
+            <a href="#;" onClick="zoomIn();"><img style="width:20px; height:20px;"src="{% static 'images/zoomin.png'%}" alt="확대"></a>
+              <a href="#;" onClick="zoomOut();"><img style="width:20px; height:20px;"src="{% static 'images/zoomout.png'%}" alt="축소"></a>
+            </div>
+    </div>
+
+
+    <h2 class="title-meeting"> 덕질하기 좋은날 </h2>
+
+    <p class="ment-meeting"> 임영웅을 좋아하는
+        <br/> 사람들과 다양한 이야기를
+        <br/> 나누어보세요!</p>
+
+
+    <div class="artist_image_2">
+            <img src= "{% static 'images/hero.png'%}" width="150">
+    </div>
+
+    <div class="meeting-grid-container">
+        <div class="meeting-grid">
+            <div class="meeting-item" onmouseover="highlightText(this)" onmouseout="unhighlightText(this)" >
+                        <img src= "{% static 'images/hero.png'%}" style="width: 140px; height: 130px;">
+                    <div>
+                        <p>임영웅 생일 카페</p>
+                        <p>5명</p>
+                    </div>
+                </div>
+        </div>
+    </div>
+  <button class="start-Button" style="margin-left: 27px; margin-top:-40px;background: #bc67ff;font-size: 22px;" onclick="location.href='{% url 'user:tutorial_meeting_start'  %}'">모임 작성하기</button>
+
+  <script>
+    function highlightText(element) {
+        element.querySelector('p').style.fontWeight = 'bold';
+    }
+
+    function unhighlightText(element) {
+        element.querySelector('p').style.fontWeight = 'normal';
+    }
+</script>
+
+
+          </div>
+
+<div class="footer">
+    <div class="singer" >
+        <img id="singer-img" src="{% static 'images/singer.png'%}" alt="가수 이미지"></img>
+      <div class="label" >내 가수</div>
+    </div>
+    <div class="list" >
+        <img id="list-img" src="{% static 'images/list.png'%}" alt="게시글 이미지"></img>
+        <div class="label">게시판</div>
+    </div>
+    <div class="group"  >
+        <img id="group-img" style="width:58px; height:58px; margin-top:-6px;"src="{% static 'images/purplegroup.png'%}" alt="그룹 이미지" ></img>
+      <div class="label" style="margin-top:-1px;color:#BC67FF">모임</div>
+    </div>
+    <div class="support" >
+        <img id="support-img" style="width:60px; height:60px;margin-top:-5px;margin-left:-14px;"src="{% static 'images/support.png'%}" alt="서포트 이미지" ></img>
+      <div class="label"style="margin-top:-3px;margin-left:-15px;">서포트</div>
+    </div>
+
+  </div>
+
+  <script>
+    //하단바 아이콘 변경
+    function handleImageHover(elementId, newImageSrc) {
+      const imgElement = document.getElementById(elementId);
+      imgElement.src = "{% static 'images/' %}" + newImageSrc;
+  }
+
+  const singerImg = document.getElementById("singer-img");
+  const listImg = document.getElementById("list-img");
+
+  const supportImg = document.getElementById("support-img");
+
+
+  singerImg.addEventListener("mouseenter", function () {
+    handleImageHover("singer-img", "purplesinger.png");
+  });
+
+  singerImg.addEventListener("mouseleave", function () {
+    handleImageHover("singer-img", "singer.png");
+  });
+
+  listImg.addEventListener("mouseenter", function () {
+    handleImageHover("list-img", "purplelist.png");
+  });
+
+  listImg.addEventListener("mouseleave", function () {
+    handleImageHover("list-img", "list.png");
+  });
+
+
+
+  supportImg.addEventListener("mouseenter", function () {
+    handleImageHover("support-img", "purplesupport.png");
+  });
+
+  supportImg.addEventListener("mouseleave", function () {
+    handleImageHover("support-img", "support.png");
+  });
+
+//하단바 h3 색상 변경
+document.getElementById("singer-img").addEventListener("mouseover", function () {
+  document.querySelector(".singer .label").classList.add("colored");
+});
+
+document.getElementById("singer-img").addEventListener("mouseout", function () {
+document.querySelector(".singer .label").classList.remove("colored");
+});
+
+document.getElementById("list-img").addEventListener("mouseover", function () {
+document.querySelector(".list .label").classList.add("colored");
+});
+
+document.getElementById("list-img").addEventListener("mouseout", function () {
+document.querySelector(".list .label").classList.remove("colored");
+});
+
+
+document.getElementById("support-img").addEventListener("mouseover", function () {
+  document.querySelector(".support .label").classList.add("colored");
+  });
+
+  document.getElementById("support-img").addEventListener("mouseout", function () {
+  document.querySelector(".support .label").classList.remove("colored");
+  });
+
+</script>
+
+      </div>
+
+  </body>
+</html>
