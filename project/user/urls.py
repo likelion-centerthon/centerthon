@@ -4,7 +4,7 @@ from .views import oauth_login, Kakao, KakaoCallback, sign_up, tutorial, tutoria
     tutorial_meeting_manage, tutorial_support_start, tutorial_meeting, \
     tutorial_support, tutorial_support_join_list, tutorial_support_join_form, tutorial_support_join_detail_1, \
     tutorial_support_join_detail_2, tutorial_support_manage, tutorial_support_manage_detail_1, \
-    tutorial_support_manage_detail_2, tutorial_support_manage_detail_3
+    tutorial_support_manage_detail_2
 
 app_name = "user"
 
