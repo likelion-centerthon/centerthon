@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.utils import timezone
 from .models import Meeting, MeetingMember, MeetingState, MemberState
 from artist.models import Artist
 from .forms import MeetingEditForm
@@ -30,7 +31,8 @@ def CreateMeeting(request, artist_id):
         userWorking.meetingHost += 1
         userWorking.save()
         Alert.objects.create(user=user, artist=artist,
-                             message=F'<{meeting.title}> 모임이 등록되었습니다!')
+                             message=F'<{meeting.title}> 모임이 등록되었습니다!',
+                             regTime=timezone.now())
         return redirect('meeting:MeetingList', artist_id=artist_id)
 
     return render(request, "html/meeting_create.html", {'artist': artist, 'alerts': alerts, 'unread_alerts':unread_alerts})
@@ -47,7 +49,7 @@ def MeetingDtl(request, artist_id, meeting_id):
     else :
         has_applied = 'false'
 
-    return render(request, "html/meeting_detail.html", {'meeting': meeting, 'alerts': alerts, 'artist': artist, 'has_applied': has_applied})
+    return render(request, "html/meeting_detail.html", {'meeting': meeting, 'alerts': alerts, 'unread_alerts':unread_alerts, 'artist': artist, 'has_applied': has_applied})
 
 #모집 중인 모임 목록
 def MeetingList(reqeust, artist_id):
@@ -93,9 +95,6 @@ def MeetingCloseList(reqeust, artist_id):
 
 #모임 상태 모집 완료로 바꾸기
 def closeMeeting(request, meeting_id, artist_id):
-    user = request.user
-    alerts = Alert.objects.filter(user=user)
-    artist = get_object_or_404(Artist, pk=artist_id)
     meeting = get_object_or_404(Meeting, id=meeting_id)
     meeting.meetingState = MeetingState.모집완료.value
     meeting.save()
@@ -123,7 +122,7 @@ def applyMeeting(request, meeting_id, artist_id):
         meeting.save()
 
         # Create an alert for the user
-        Alert.objects.create(user=user, artist=artist, message=F'<{meeting.title}> 모임을 신청했습니다!')
+        Alert.objects.create(user=user, artist=artist, message=F'<{meeting.title}> 모임을 신청했습니다!', regTime=timezone.now())
 
     # Pass the 'has_applied' variable to the template
     context = {
@@ -190,7 +189,8 @@ def memberStateAccept(request, meetingMember_id, artist_id):
     userWorking.save()
     Alert.objects.create(user=member.User, artist=artist,
                          message=F'<{member.Meeting.title}> 모임의 신청이 수락되었습니다!',
-                        openChatURL=F'<{member.Meeting.kakaoLink}> 오픈채팅 링크에 접속하세요!')
+                         openChatURL=F'<{member.Meeting.kakaoLink}> 오픈채팅 링크에 접속하세요!',
+                         regTime=timezone.now())
     return redirect('meeting:writedMeetingList', artist_id = artist_id)
 
 #모임 신청자 거부
@@ -200,7 +200,7 @@ def memberStateRefusal(request, meetingMember_id, artist_id):
     meetingMember.memberState = "거부"
     meetingMember.save()
     Alert.objects.create(user=meetingMember.User, artist=artist,
-                         message=F'<{meetingMember.Meeting.title}> 모임의 신청이 거절되었습니다!')
+                         message=F'<{meetingMember.Meeting.title}> 모임의 신청이 거절되었습니다!', regTime=timezone.now())
     return redirect('meeting:writedMeetingList', artist_id = artist_id)
 
 #내가 신청한 모임 목록
