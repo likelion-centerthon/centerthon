@@ -36,7 +36,7 @@
     font-weight: 550;
     font-size: 18px;
     line-height: 200%;
-    color:  hsl(0, 0%, 32%);
+    color:  #b3b1b0;
     text-indent: 13px;
   }
 
@@ -143,8 +143,7 @@ margin-top: 30px;
 margin-left: 25px;
 }
 /*사진 추가 버튼 마우스 효과*/
-.custom-addImg-Button:hover,
-.custom-addImg-Button:focus {
+.custom-addImg-Button:hover {
 border: 1px solid #9b51e0;
 outline: 3px solid #f8e4ff;
 }
