@@ -19,5 +19,5 @@ def check_alert(request, pk):
         alert.is_read = True
         alert.save()
 
-    return render(request, 'header.html', context={'alerts':alerts, 'artist':artist})
+    return render(request, 'alert/alert_list.html', context={'alerts':alerts, 'artist':artist})
 
