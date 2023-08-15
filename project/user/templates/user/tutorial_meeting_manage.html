@@ -1,10 +1,106 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>모임 참여</title>
-</head>
-<body>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 
-</body>
+    <link rel="stylesheet" href="{% static 'css/base_meeting.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/header.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/meeting_list.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/meeting_detail.css' %}?after" />
+    <link rel="stylesheet" href="{% static 'css/writed_meeting_list.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/meeting_completed_list.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/applyed_meeting_list.css' %}" />
+
+
+    <link rel="stylesheet" href="{% static 'css/support_list.css' %}?after" />
+    <link rel="stylesheet" href="{% static 'css/support_form.css' %}?after" />
+
+    <link rel="stylesheet" href="{% static 'css/artist_info.css' %}?after" />
+
+
+
+      <title>중앙톤 프로젝트</title>
+    {% include 'head.html' %}
+   </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <form>
+          <button class="btn-select" type="submit">
+            &nbsp; &nbsp;임영웅 •••
+          </button>
+        </form>
+        <div class="icon">
+          <form>
+            <button type="submit">
+              <img
+                class="user"
+                src="{% static 'images/user.png'%}"
+                alt="이용행보"
+              />
+            </button>
+          </form>
+          <form>
+            <button id="alarm-button">
+              <img
+                class="alarm"
+                src="{% static 'images/alarm.png'%}"
+                alt="알람"
+              />
+            </button>
+          </form>
+        </div>
+      </div>
+        <img class="back" src="{% static 'images/back.png'%}" alt="이전" onclick="goBack()"></img>
+
+<h2 class="detail-title-meeting">모임명 : 임영웅 생일 카페</h2>
+
+<div class="meeting-image">
+    <img src= "{% static 'images/hero.png'%}">
+</div>
+
+        <div class="custom-box2">
+            <div class="meetdate"> <strong>일시</strong> 2023/8/30</div>
+            <div class="meetlocation"> <strong>장소</strong> 서울 잠실역 공공카페</div>
+            <div class="age"> <strong>나이제한</strong> 40세 이상</div>
+            <div class="peoplename"> <strong>모집인원</strong> 5명</div>
+            <div class="meeting-body"> <strong>내용</strong> 모여서 재미나게 놀 사람 구해요</div>
+            <div class="meetingstate"> <strong>모임 상태</strong> 모집중</div>
+    </div>
+    <div class="buttons">
+        <button class="submit-button" type="submit">신청하기</button>
+</div>
+         <div class="footer">
+    <div class="singer" >
+        <img id="singer-img" src="{% static 'images/singer.png'%}" alt="가수 이미지"></img>
+      <div class="label" >내 가수</div>
+    </div>
+    <div class="list">
+        <img id="list-img" src="{% static 'images/list.png'%}" alt="게시글 이미지"></img>
+        <div class="label">게시판</div>
+    </div>
+    <div class="group" >
+        <img id="group-img" style="width:58px; height:58px; margin-top:-6px;"src="{% static 'images/purplegroup.png'%}" alt="그룹 이미지" ></img>
+      <div class="label" style="margin-top:-1px;color:#BC67FF">모임</div>
+    </div>
+    <div class="support">
+        <img id="support-img" style="width:60px; height:60px;margin-top:-5px;margin-left:-14px;"src="{% static 'images/support.png'%}" alt="서포트 이미지" ></img>
+      <div class="label"style="margin-top:-3px;margin-left:-15px;">서포트</div>
+    </div>
+
+  </div>
+      </div>
+
+<script>
+function goBack() {
+    window.history.back();
+}
+</script>
+  </body>
 </html>
