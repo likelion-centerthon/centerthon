@@ -3,10 +3,10 @@
 {% with artist=artist alerts=alerts %}
 {% block content %}
 {% load custom_filters %}
-
+<div style="  justify-content:row;  display: flex; margin-bottom: 10px; ">
 <img class="back" src="{% static 'images/back.png'%}" alt="이전"  onclick="goBack()"></img>
-    <h1 class="support_dtl_h1">상세조회</h1>
-  
+    <h1 class="support_dtl_h1" style=" margin: 22px 0px 0px -120px;">상세조회</h1>
+  </div>
     <span id="percent-content" style="display:none;">{{support.balanceAmt|avg:support.fundraising}}</span>
     <div class="percent">
         <div class="percent-bar" id="percent-bar-content"></div>
@@ -99,7 +99,7 @@
 {% endif %}
 
 {% if support.status == '완료' %}
-  <button style="margin-top:20px;"class="start-Button">완료된 서포트입니다</button>
+  <button style="margin-top:20px;"class="done-Button">완료된 서포트입니다</button>
   <div class="line"></div>
   <p class="text" >출금 내역</p>
   {% if not banks %}
