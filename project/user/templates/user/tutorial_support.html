@@ -4,10 +4,9 @@
 <img class="back" style="  left: 3px;top: 50px;"src="{% static 'images/back.png'%}" alt="이전" onclick="goBack()" style="margin-left:-45px;"></img>
 
 <div class="button-container" style="margin-top:200px;">
-    <a class="button" href="{% url 'user:tutorial_all' %}">전체 튜토리얼 진행</a>
-    <a class="button" href="{% url 'user:tutorial_artist_info' %}">아티스트 튜토리얼</a>
-    <a class="button" href="{% url 'user:tutorial_meeting' %}">모임 튜토리얼</a>
-    <a class="button" href="{% url 'user:tutorial_support' %}">서포트 튜토리얼 </a>
+    <a class="button" href="{% url 'user:tutorial_support_manage' %}">서포트 참여</a>
+    <a class="button" href="{% url 'user:tutorial_support_start' %}">서포트 작성</a>
+    <a class="button" href="{% url 'user:tutorial_support_start' %}">서포트 관리</a>
 </div>
 <script>
     function goBack() {
