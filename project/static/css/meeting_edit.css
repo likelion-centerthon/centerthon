@@ -23,14 +23,14 @@
     margin: 10px 3px 3px 22px;
   }
   
-  .custom-date {
+  .custom-date{
     width: 327px;
     height: 52px;
     box-sizing: border-box;
     mix-blend-mode: normal;
     border: 1px solid #b3b1b0;
     border-radius: 16px;
-    margin: 10px 3px 3px 19px;
+    margin: 10px 10px 6px 23px;
   }
   
   .detail1-container {
