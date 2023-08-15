@@ -101,14 +101,10 @@
         <button
           style="margin-top: 20px; background: #bc67ff"
           class="start-Button"
+          onclick="location.href='{% url 'user:tutorial_support_manage_form' %}'"
         >
           모금 정보 작성하기
         </button>
-        {% if not form.status == '대기' %}
-        <div style="color: blue; margin: -40px 0px 20px 240px; font-size: 20px">
-          {{form.status}}
-        </div>
-        {% endif %}
       </div>
       <div class="footer">
         <div class="singer">
