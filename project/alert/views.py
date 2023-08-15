@@ -12,14 +12,12 @@ def check_alert(request, pk):
     if not user.is_authenticated:
         redirect('user:login')
 
-    if request.method == 'POST':
+    alerts = Alert.objects.filter(user=user).order_by('-regTime')
 
-        alerts = Alert.objects.filter(user=user).order_by('-regTime')
+    # 읽음 여부 필드 변경
+    for alert in alerts:
+        alert.is_read = True
+        alert.save()
 
-        # 읽음 여부 필드 변경
-        for alert in alerts:
-            alert.is_read = True
-            alert.save()
-
-        return render(request, 'header.html', context={'alerts':alerts, 'artist':artist})
+    return render(request, 'header.html', context={'alerts':alerts, 'artist':artist})
 

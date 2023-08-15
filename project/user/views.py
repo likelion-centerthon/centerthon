@@ -84,5 +84,30 @@ class KakaoCallback(View):
         else: # 첫 사용자라면 아티스트 전체조회로 이동
             return redirect('user:signup', pk=user.pk)
 
+# 튜토리얼 분기 페이지
 def tutorial_next(request):
     return render(request, 'user/tutorial_next.html')
+
+# 전체 튜토리얼 진행
+def tutorial_all(request):
+    return render(request, 'user/tutorial_all.html')
+
+# 아티스트 선택 튜토리얼
+def tutorial_artist(request):
+    return render(request, 'user/tutorial_artist.html')
+
+# 모임 참여 튜토리얼
+def tutorial_meeting_manage(request):
+    return render(request, 'user/tutorial_meeting_manage.html')
+
+# 모임 작성 및 관리 튜토리얼
+def tutorial_meeting_start(request):
+    return render(request, 'user/tutorial_meeting_start.html')
+
+# 서포트 참여 튜토리얼
+def tutorial_support_manage(request):
+    return render(request, 'user/tutorial_support_manage.html')
+
+# 서포트 작성 및 관리 튜토리얼
+def tutorial_support_start(request):
+    return render(request, 'user/tutorial_support_start.html')
