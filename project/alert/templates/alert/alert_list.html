@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>알림창</title>
+</head>
+<body>
+    <div style="  justify-content:row;  display: flex; ">
+      <img class="back" src="{% static 'images/back.png'%}" alt="이전" onclick="goBack()"></img>
+      <h1 class="support_dtl_h1" style=" margin: 18px 0px 0px -120px;">{{ post.title }}</h1>
+    </div>
+
+    {% for alert in alerts %}
+    <div class="notification-item">
+      <div class="alert-name">{{ alert.artist.artistName }}</div>
+      <div class="alert-message">{{ alert.message }}</div>
+      {% if alert.openChatURL %}
+      <div class="alert-openchat">{{ alert.openChatURL }}</div>
+      {% endif %}
+      <div class="alert-time">{{ alert.regTime|date:"Y.m.d H:i" }}</div>
+      <!-- {{ alert.is_read }} -->
+    </div>
+    {% endfor %}
+
+<script>
+  function goBack() {
+    window.history.back();
+}
+</script>
+</body>
+</html>
