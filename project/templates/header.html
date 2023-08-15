@@ -18,8 +18,8 @@
         <img class="user" src="{% static 'images/user.png'%}" alt="이용행보">
       </button>
     </form>
-    <form method="post" action="{% url 'alert:check_alert' pk=artist.pk %}">
-      {% csrf_token %}
+
+
       <button id="alarm-button">
         {% if unread_alerts %}
           <img class="alarm" src="{% static 'images/alarm_red.png'%}" alt="알람">
@@ -27,7 +27,7 @@
           <img class="alarm" src="{% static 'images/alarm.png'%}" alt="알람">
         {% endif %}
       </button>
-    </form>
+
   </div>
 
 </div>
@@ -50,7 +50,7 @@
       <div class="alert-openchat">{{ alert.openChatURL }}</div>
       {% endif %}
       <div class="alert-time">{{ alert.regTime|date:"Y.m.d H:i" }}</div>
-      {{ alert.is_read }}
+
     </div>
     {% endfor %}
   </div>
@@ -63,7 +63,7 @@
   function zoomOut() {                                                                       //화면크기축소
     nowZoom = nowZoom - 10;
 
-    if (nowZoom <= 70) nowZoom = 70;            //화면크기 최대 축소율 70% 
+    if (nowZoom <= 70) nowZoom = 70;            //화면크기 최대 축소율 70%
     zooms();
   }
 
@@ -94,29 +94,36 @@
     }
   }
 
-   var alarmImage = document.getElementById("alarm-image");
+   // "알람" 버튼 클릭 이벤트 처리 함수
+ document.addEventListener("DOMContentLoaded", function () {
+        var alarmButton = document.getElementById("alarm-button");
+        if (alarmButton) {
+            alarmButton.addEventListener("click", function () {
+                toggleNotificationPopup();
+            });
+        }
+    });
 
-  function toggleAlarmIcon(hasUnreadAlerts) {
-    if (hasUnreadAlerts) {
-      alarmImage.src = "{% static 'images/alarmred.png' %}";
-    } else {
-      alarmImage.src = "{% static 'images/alarm.png' %}";
+    // 알림 팝업 토글 함수
+    function toggleNotificationPopup() {
+        var popup = document.getElementById("notification-popup");
+        if (popup) {
+            if (popup.style.display === "none" || popup.style.display === "") {
+                popup.style.display = "flex";
+            } else {
+                popup.style.display = "none";
+            }
+        }
     }
-  }
 
-  // "알람" 버튼 클릭 이벤트 처리 함수
-  document.addEventListener("DOMContentLoaded", function () {
-    var alarmButton = document.getElementById("alarm-button");
-    if (alarmButton) {
-      alarmButton.addEventListener("click", function () {
-        toggleNotificationPopup();
-      });
-    }
+    // 팝업 외부 클릭 시 팝업 닫기
+    window.addEventListener("click", function (event) {
+        var popup = document.getElementById("notification-popup");
+        if (popup && event.target === popup) {
+            toggleNotificationPopup();
+        }
+    });
 
-    // 서버에서 읽지 않은 알림 여부 가져오기 (예시)
-    var hasUnreadAlerts = true; // 여기에 실제 값 가져오기
 
-    // 알림 아이콘 상태 변경
-    toggleAlarmIcon(hasUnreadAlerts);
-  });
+
 </script>
