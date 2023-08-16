@@ -132,6 +132,10 @@ def tutorial_meeting_start(request):
 def tutorial_meeting_writed(request):
     return render(request, 'tutorial_meeting/tutorial_meeting_writed.html')
 
+# 모임 관리 튜토리얼 - 작성 (신청자 이용행보 확인)
+def tutorial_meeting_userWorking(request):
+    return render(request, 'tutorial_meeting/tutorial_meeting_userWorking.html')
+
 #모임 관리 튜토리얼-신청
 def tutorial_meeting_apply(request):
     return render(request, 'tutorial_meeting/tutorial_meeting_apply.html')
