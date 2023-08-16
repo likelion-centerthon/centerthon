@@ -16,11 +16,13 @@ urlpatterns = [
     path('tutorial/support', views.tutorial_support, name='tutorial_support'),
 
     # 튜토리얼 아티스트
+    path('tutorial/artist-first', views.tutorial_artist_first, name='tutorial_artist_first'),
     path('tutorial/artist-info', views.tutorial_artist_info, name='tutorial_artist_info'),
     path('tutorial/subscribe-list', views.tutorial_subscribe_artist, name='tutorial_subscribe_artist'),
     path('tutorial/artist-list', views.tutorial_artist_list, name='tutorial_artist_list'),
 
     # 튜토리얼 모임
+    path('tutorial/meeting-first', views.tutorial_meeting_first, name='tutorial_meeting_first'),
     path('tutorial/meeting-manage', views.tutorial_meeting_manage, name='tutorial_meeting_manage'),
     path('tutorial/meeting-start',views.tutorial_meeting_start, name='tutorial_meeting_start'),
     path('tutorial/meeting-wirte', views.tutorial_meeting_writed, name='tutorial_meeting_writed'),
@@ -30,6 +32,7 @@ urlpatterns = [
     path('tutorial/meeting-list-2',views.tutorial_meeting_list2,name='tutorial_meeting_list2'),
 
     # 튜토리얼 서포트
+    path('tutorial/support-first', views.tutorial_support_first, name='tutorial_support_first'),
     # 서포트 참여
     path('tutorial/support-join', views.tutorial_support_join_list, name='tutorial_support_join'),
     path('tutorial/support-join-form', views.tutorial_support_join_form, name='tutorial_support_join_form'),
@@ -46,4 +49,6 @@ urlpatterns = [
     path('tutorial/support-manage', views.tutorial_support_manage, name='tutorial_support_manage'),
     path('tutorial/support-manage-detail-1', views.tutorial_support_manage_detail_1, name='tutorial_support_manage_detail_1'),
     path('tutorial/support-manage-detail-2', views.tutorial_support_manage_detail_2, name='tutorial_support_manage_detail_2'),
-]
+    path('tutorial/support-start', views.tutorial_support_start, name='tutorial_support_start'),
+
+    ]
