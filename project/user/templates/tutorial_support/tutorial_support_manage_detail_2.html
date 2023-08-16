@@ -43,6 +43,15 @@
           align-items: center;
           justify-content: center;
       }
+      .hand{ animation: motion 0.4s 
+        linear 0s   
+        infinite alternate; 
+
+      }
+      @keyframes motion {
+        0% {margin-top: -440px;} /* 처음 위치 */
+        100% {margin-top: -420px;} /* 마지막 위치 */
+        }
   </style>   
   </head>
   <body>
@@ -89,7 +98,7 @@
             상세조회
           </h1>
         </div>
-        <span id="percent-content" style="display: none">76</span>
+        <span id="percent-content" style="display: none">100</span>
         <div class="percent">
           <div class="percent-bar" id="percent-bar-content"></div>
         </div>
@@ -119,19 +128,26 @@
             <button class="coppy-Button" id="copyButton">복사</button>
           </div>
         </div>
+        <img style="  position: absolute; z-index: 100000;  left: 50%; top: 20%; transform: translate(-50%, -40%);" src="{% static 'images/box_left.png'%}" alt="말풍선" class="speech-bubble2">
+
           <div class="enddate">2023/8/18 PM11:59</div>
         </div>
 
-        <form>
+        <div>
           <input type="hidden" name="form_type" value="closing" />
           <button
             class="start-Button"
             type="submit"
+            onclick="location.href='{% url 'user:tutorial' %}'"
+
             style="background: #bc67ff;position: relative;"
+
           >
             마감하기
           </button>
-        </form>
+          <img style="width:80px; height:80px;z-index:100000; left: 260px; position:absolute;" src="{% static 'images/hand.png'%}" alt="" class="hand">
+
+        </div>
         <div class="line"></div>
 
         <p class="text">모금자 정보</p>
@@ -352,11 +368,13 @@
       const account = document.querySelector('.account-box');
       const boxs = document.querySelectorAll('.info-box');
       const content = document.querySelector('.content');
+      const hand = document.querySelector('.hand');
 
           popup.style.display = "block";
           content.scrollTop = content.scrollHeight; 
           account.style.zIndex = "9999";
           button.style.zIndex = "9999";
+          hand.style.display = "block";
           boxs.forEach(function (box) {
             box.style.zIndex = "9999";
          

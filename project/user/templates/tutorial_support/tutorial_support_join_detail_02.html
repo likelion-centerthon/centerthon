@@ -97,8 +97,10 @@
             상세조회
           </h1>
         </div>
-        <span id="percent-content" style="display: none">80</span>
-        <div class="percent" style="background:#fff">
+
+        <span id="percent-content" style="display: none">100</span>
+        <div class="percent"style="background:#fff">
+
           <div class="percent-bar" id="percent-bar-content"></div>
         </div>
         <img style="  position: absolute; z-index: 100000;  left: 50%; transform: translate(-50%, 10%);display:none;" src="{% static 'images/box_left_up.png'%}" alt="말풍선" class="speech-bubble1">
@@ -113,7 +115,7 @@
             </p>
             <img
               src="{% static 'images/tutorial_support_detail.png'%}"
-              style="margin: 0px 0px 0 10px; width: 300px;"
+              style="margin: 0px 0px 0 10px; width: 300px"
               alt="Support Image"
             />
           </div>
@@ -153,9 +155,9 @@
               <div class="blockchain"  style="position:relative;background:#fff"id="blockchain-content-11" style="display: none;">
                 <div class="hash">&nbsp;&nbsp;5bb46aaf1b30680d70c612378aa...</div>
                   <div class="timestamp">서포트 마감 시간: 2023.08.15 01:19</div>
-                  <div class="credit">블록체인 출금액: 100000</div>
-                  <div class="depositor">블록체인 출금자 정보: OO카페 대관</div>
-                  <div class="creditTime">블록체인 출금 시간: 2023.08.15 01:18</div>
+                  <div class="credit">온 체인 출금액: 100000</div>
+                  <div class="depositor">온 체인 블록 출금자 정보: OO카페 대관</div>
+                  <div class="creditTime">출금 시간: 2023.08.15 01:18</div>
               </div>
               <div  class="block-chain-container"  style="background:#fff"id="blockchain-11" onclick="toggleBlockchain(11)">
                 <div style="display:flex; position:row;text-align: center;">
@@ -165,11 +167,37 @@
                 <input style="color: #949494; font-size:18px;" type="text" class="form-input" value="2023-08-09 AM 05:28" readonly><br>
               </div>
 
-             
-          </div>
+              <form method="get" action="{% url 'user:tutorial' %}">
+                {% csrf_token %}
+                <button
+                class="back-button"
+                  type="submit"
+                  style="
+                    width: 300px;
+                    height: 40px;
+                    box-shadow: 0px 0px 4px #bc67ff;
+                    border-radius: 50px;
+                    text-align: center;
+                    margin: 0 auto;
+                    font-size: 20px;
+                    line-height: 24px;
+                    color: #555555;
+                    font-weight:500;
+                    margin-left:calc(55px / 2);
+                    margin-bottom:10px;
+                    background-color: #fff;
+                    border:2px solid white;
+                    position:relative;
 
-    </div>
-    <div class="footer">
+                  "
+                >
+                  돌아가기
+                </button>
+              </form>
+            </div>
+
+      </div>
+      <div class="footer">
         <div class="singer">
           <img
             id="singer-img"
@@ -280,6 +308,7 @@
       const container = document.querySelector('.block-chain-container');
       const startbutton = document.querySelector('.start-Button');
       const hand = document.querySelector('.hand');
+      const backbutton = document.querySelector('.back-button');
 
       setTimeout(function () {
         percent.style.zIndex = "9999";
@@ -304,15 +333,14 @@
         b1.style.display = "none";
         b2.style.display = "block";
         b2.style.top = "190px";
-        container.addEventListener('click', function() {
-          startbutton.textContent = '돌아가기';
-          startbutton.onclick = function() {
-            location.href='{% url 'user:tutorial_support' %}';
-          }
-        });
+        
       }, 2000);
    
-    
+      container.addEventListener('click', function() {
+      
+        
+        backbutton.style.zIndex="9999";
+      });
     </script>
   </body>
 </html>

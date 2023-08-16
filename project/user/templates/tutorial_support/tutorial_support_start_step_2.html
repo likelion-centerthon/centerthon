@@ -48,6 +48,12 @@
         align-items: center;
         justify-content: center;
     }
+    .in::placeholder{
+      text-align: center;
+      font-size: 30px;
+      letter-spacing: 10px;
+      position:relative;
+    }
 </style>
   </head>
   <body>
@@ -84,7 +90,9 @@
                 letter-spacing: 10px;
                 position:relative;
                 background:#fff;
+             
               "
+              placeholder="1684"
               type="text"
               maxlength="4"
               class="in"
@@ -160,7 +168,7 @@
 
     
       inin.addEventListener("input", function () {
-        if (inin.value.length === 4) {
+        if (inin.value === "1684") {
           nextButton.style.zIndex = "9999";
           nextButton.removeAttribute("disabled");
         } else {

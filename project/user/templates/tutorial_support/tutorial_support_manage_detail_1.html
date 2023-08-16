@@ -43,6 +43,15 @@
           align-items: center;
           justify-content: center;
       }
+      .hand{ animation: motion 0.4s 
+        linear 0s   
+        infinite alternate; 
+
+      }
+      @keyframes motion {
+        0% {margin-top: -110px;} /* 처음 위치 */
+        100% {margin-top: -90px;} /* 마지막 위치 */
+        }
   </style>   
   </head>
   <body>
@@ -117,6 +126,8 @@
               <button class="coppy-Button" id="copyButton">복사</button>
             </div>
           </div>
+          <img style="  position: absolute; z-index: 100000;  left: 50%; top: 20%; transform: translate(-50%, -40%);display:none;" src="{% static 'images/box_left.png'%}" alt="말풍선" class="speech-bubble2">
+
           <div class="enddate">2023/8/18 PM11:59</div>
         </div>
 
@@ -161,6 +172,7 @@
               </div>
             </div>
           </div>
+
           <div class="info-text" >
             <div  class="info-box"
               style="
@@ -187,6 +199,8 @@
               >
                 대기
               </div>
+              <img style="width:80px; height:80px;z-index:100000; left: 260px; position:absolute;" src="{% static 'images/hand.png'%}" alt="" class="hand">
+
               <div
                 id="pop_info_10"
                 class="pop_wrap"
@@ -225,6 +239,7 @@
               </div>
             </div>
           </div>
+
         </div>
 
         <script>
@@ -389,6 +404,8 @@
       const account = document.querySelector('.account-box');
       const boxs = document.querySelectorAll('.info-box');
       const content = document.querySelector('.content');
+      const hand = document.querySelector('.hand');
+      const b2 = document.querySelector('.speech-bubble2');
 
 
       setTimeout(function () {
@@ -396,6 +413,9 @@
           content.scrollTop = content.scrollHeight; 
           account.style.zIndex = "9999";
           button.style.zIndex = "9999";
+          hand.style.display = "block";
+          b2.style.display = "block";
+
           boxs.forEach(function (box) {
             box.style.zIndex = "9999";
          
