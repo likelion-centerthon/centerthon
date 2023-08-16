@@ -61,39 +61,52 @@
         <input type="file" name="image" id="id_image" style="display:none" required>
         </div>
         </div>
-        <input type="submit" value="항목을 모두 작성해 주세요" class="register-Button" disabled style="border-radius: 30.5px; background: #b3b1b0" >
+      </form>
+      <div>
+        <input type="submit" value="항목을 모두 작성해 주세요" class="register-Button" disabled style="border-radius: 30.5px; background: #b3b1b0">
+      </div>
 
+<!-- JavaScript 부분을 아래와 같이 변경합니다 -->
+<script>
+  let inputs = document.querySelectorAll("input");
+  let startButton = document.querySelector(".register-Button");
+  startButton.disabled = true;
 
-    <script>
-    let inputs = document.querySelectorAll("input");
-    let startButton = document.querySelector(".register-Button");
-    startButton.disabled = true;
-
-    function checkInputs() {
+  function checkInputs() {
     let allFilled = true;
-    inputs.forEach(function(input){
-    if (input.value === "") {
-      allFilled = false;
-      return;
-    }
+    inputs.forEach(function (input) {
+      if (input.value === "") {
+        allFilled = false;
+        return;
+      }
     });
 
     if (allFilled) {
-    startButton.disabled = false;
-    startButton.style.backgroundColor = "#BC67FF";
-    startButton.value = "작성하기";
-  } else {
-    startButton.disabled = true;
+      startButton.disabled = false;
+      startButton.style.backgroundColor = "#BC67FF";
+      startButton.value = "작성하기";
+    } else {
+      startButton.disabled = true;
+      startButton.style.backgroundColor = "#b3b1b0";
+      startButton.value = "항목을 모두 작성해 주세요";
+    }
+  }
 
-    }
-    }
-    inputs.forEach(function(input){
+  inputs.forEach(function (input) {
     input.addEventListener("input", checkInputs);
-    });
-    function goBack() {
-      window.history.back();
-     }
-     </script>
+  });
+
+  startButton.addEventListener("click", function () {
+    if (!startButton.disabled) {
+      // 여기서 tutorial_meeting 페이지로 이동하도록 리다이렉션 수행
+      window.location.href = "{% url 'user:tutorial_meeting' %}";
+    }
+  });
+
+  function goBack() {
+    window.history.back();
+  }
+</script>
 
       </div>
 

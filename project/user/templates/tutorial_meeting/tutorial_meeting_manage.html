@@ -75,10 +75,10 @@
         <div class="meetingstate"> <strong>모임 상태</strong> 모집중</div>
     </div>
 <div class="buttons">
-    <button class="submit-button" type="submit">신청하기</button>
+    <button class="submit-button" type="button" onclick="showNextButton()">신청하기</button>
+    <button id="button2" class="submit-button" type="button" style="display: none;" onclick="showNextButton()">이미 신청한 모임</button>
+    <button id="button3" class="submit-button" type="button" style="display: none;" onclick="location.href='{% url 'user:tutorial_meeting' %}'">돌아가기</button>
 </div>
-
-
     </div>
 <div class="footer">
 <div class="singer" >
@@ -102,6 +102,19 @@
 <script>
 function goBack() {
 window.history.back();
+}
+</script>
+
+<script>
+const buttons = document.querySelectorAll('.submit-button');
+let currentIndex = 0;
+
+function showNextButton() {
+  if (currentIndex < buttons.length - 1) {
+    buttons[currentIndex].style.display = 'none';
+    currentIndex++;
+    buttons[currentIndex].style.display = 'block';
+  }
 }
 </script>
 </body>
