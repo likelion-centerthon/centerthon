@@ -21,8 +21,8 @@
 
       }
       @keyframes motion {
-        0% {margin-top: -220px;} /* 처음 위치 */
-        100% {margin-top: -200px;} /* 마지막 위치 */
+        0% {margin-top: -225px;} /* 처음 위치 */
+        100% {margin-top: -215px;} /* 마지막 위치 */
         }
   </style>
     <meta charset="UTF-8" />
@@ -57,6 +57,7 @@
   </head>
   <body>
     <div class="container" style="position:relative">
+
       <div class="dark-background" id="popup" style="display:none;">
        </div>
       <div class="header ">
@@ -120,7 +121,8 @@
 
             </div>
         
-            <img style="width:80px; height:80px;z-index:100000; left: 260px; op:-230px;position:absolute;display:none;" src="{% static 'images/hand.png'%}" alt="축소" class="hand">
+            <img style="width:80px; height:80px;z-index:100000; left: 260px; op:-230px;position:absolute;display:none;" src="{% static 'images/hand.png'%}" alt="손" class="hand">
+            <img style="  position: absolute; z-index: 100000;  left: 50%; transform: translate(-50%, -80%);display:none" src="{% static 'images/box_left_up.png'%}" alt="말풍선" class="speech-bubble">
 
         </div>
 
@@ -180,13 +182,15 @@
         const popup = document.getElementById("popup");
         const supportbox = document.querySelector('.support_list_box');
         const hand = document.querySelector('.hand');
+        const bubble = document.querySelector('.speech-bubble');
 
+       
         setTimeout(function () {
           popup.style.display = "block"; 
           hand.style.display = "block"; 
-
+          bubble.style.display = "block"; 
           supportbox.style.zIndex = "9999";
-        }, 2000); 
+        }, 1000); 
       
       
         

@@ -43,6 +43,15 @@
           align-items: center;
           justify-content: center;
       }
+      .hand{ animation: motion 0.4s 
+        linear 0s   
+        infinite alternate; 
+
+      }
+      @keyframes motion {
+        0% {margin-top: -100px;} /* 처음 위치 */
+        100% {margin-top: -80px;} /* 마지막 위치 */
+        }
   </style>   
 
   </head>
@@ -179,7 +188,11 @@
         >
           서포트 작성하기
         </button>
+        <img style="  position: absolute; z-index: 100000;  left: 50%; top: 50%; transform: translate(-50%, -40%);display:none" src="{% static 'images/box_left.png'%}" alt="말풍선" class="speech-bubble2">
+
       </div>
+      <img style="width:80px; height:80px;z-index:100000; left: 260px; position:absolute;display:none;" src="{% static 'images/hand.png'%}" alt="손" class="hand">
+
       <div class="footer">
         <div class="singer">
           <img
@@ -228,13 +241,17 @@
       </div>
     </div>
     <script>
+      const b2 = document.querySelector(".speech-bubble2");
 
-      const popup = document.getElementById("popup"); //배경 어둡게 
-      const button = document.querySelector('.start-Button'); //보여주고 싶은 영역
-    
-      setTimeout(function () { //4초 뒤에 배경 어둡게 + 영역 보여짐
+      const popup = document.getElementById("popup");
+      const button = document.querySelector('.start-Button'); 
+      const hand = document.querySelector('.hand'); 
+
+      setTimeout(function () { 
         popup.style.display = "block"; 
         button.style.zIndex = "9999";
+        b2.style.display = "block"; 
+        hand.style.display="block";
       }, 2000); 
     
       

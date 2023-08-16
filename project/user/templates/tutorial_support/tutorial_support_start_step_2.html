@@ -26,9 +26,35 @@
     />
     <title>별너울</title>
     {% include 'head.html' %}
+    <style>
+    .hand{ animation: motion 0.4s 
+      linear 0s   
+      infinite alternate; 
+
+    }
+    @keyframes motion {
+      0% {margin-top: -100px;} /* 처음 위치 */
+      100% {margin-top: -80px;} /* 마지막 위치 */
+      }
+      .dark-background {
+        background-color: rgba(0, 0, 0, 0.6); 
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 375px;
+        height: 100%;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+</style>
   </head>
   <body>
-    <div class="container">
+    <div class="container" style="position:relative; ">
+      
+      <div class="dark-background" id="popup" style="display:none;">
+      </div>
       <div class="content">
         <div style="margin: 60px 0">
           <h1 class="support_h1">서포트 계좌 인증</h1>
@@ -56,12 +82,17 @@
                 text-align: center;
                 font-size: 30px;
                 letter-spacing: 10px;
+                position:relative;
+                background:#fff;
               "
               type="text"
               maxlength="4"
+              class="in"
+             
+
             />
           </div>
-          <div
+          <div class=" account-box"
             style="
               width: 290px;
               background-color: rgb(235, 235, 235);
@@ -69,10 +100,12 @@
               margin: 0 auto;
               padding: 15px 20px;
               letter-spacing: 2px;
+           
             "
           >
-            농협 2040345067890
+
           </div>
+
           <div
             style="
               width: 310px;
@@ -81,9 +114,12 @@
               color: rgb(50, 50, 50);
             "
           >
+          <img style="width:80px; height:80px;z-index:100000; left: 260px; top: 370px; position:absolute;display:none" src="{% static 'images/hand.png'%}" alt="손" class="hand">
+
             *입금 내역이 없다면 입력하신 계좌를 다시 한번 확인해주세요.
           </div>
-          <div
+          <div class="start"
+            id="nextButton"
             style="
               width: 327px;
               background:#bc67ff;
@@ -94,12 +130,53 @@
               color: #ffffff;
               margin: 50px auto;
               padding: 10px 0;
+              position:relative;
             "
             onclick="location.href='{% url 'user:tutorial_support_start_step_3' %}'"
           >다음</div>
+          <img style="  position: absolute; z-index: 100000;  left: 50%; transform: translate(-50%, -20%);display:none;" src="{% static 'images/box_left_up.png'%}" alt="말풍선" class="speech-bubble">
+      
         </div>
+
       </div>
     </div>
-    <script></script>
+
+    <script>
+      const storedAccount = localStorage.getItem('account');
+      const storedBank = localStorage.getItem('bank');
+    
+      const accountBox = document.querySelector('.account-box');
+      accountBox.textContent = storedBank + ' ' + storedAccount;
+
+
+
+      const b1 = document.querySelector(".speech-bubble");
+      const inin = document.querySelector(".in");
+      const hand = document.querySelector(".hand");
+      const nextButton = document.getElementById("nextButton");
+
+      const popup = document.getElementById("popup");
+
+
+    
+      inin.addEventListener("input", function () {
+        if (inin.value.length === 4) {
+          nextButton.style.zIndex = "9999";
+          nextButton.removeAttribute("disabled");
+        } else {
+          nextButton.style.zIndex = "1";
+          nextButton.setAttribute("disabled", "true");
+        }
+      });
+      
+      
+      /*퍼센트바 설명*/
+      setTimeout(function () {
+        popup.style.display = "block";
+        b1.style.display="block";
+        inin.style.zIndex = "9999";
+        hand.style.display = "block";
+      }, 1000);
+    </script>
   </body>
 </html>

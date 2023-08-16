@@ -43,6 +43,15 @@
           align-items: center;
           justify-content: center;
       }
+      .hand{ animation: motion 0.4s 
+        linear 0s   
+        infinite alternate; 
+
+      }
+      @keyframes motion {
+        0% {margin-top: -225px;} /* 처음 위치 */
+        100% {margin-top: -215px;} /* 마지막 위치 */
+        }
   </style>   
 
   </head>
@@ -151,6 +160,9 @@
               </div>
             </div>
           </div>
+          <img style="width:80px; height:80px;z-index:100000; left: 260px; op:-230px;position:absolute;display:none;" src="{% static 'images/hand.png'%}" alt="손" class="hand">
+          <img style="  position: absolute; z-index: 100000;  left: 50%; transform: translate(-50%, -80%);display:none" src="{% static 'images/box_left_up.png'%}" alt="말풍선" class="speech-bubble">
+
         </div>
 
         <button
@@ -216,11 +228,14 @@
 
       const popup = document.getElementById("popup"); //배경 어둡게 
       const supportbox = document.querySelector('.support_list_box'); //보여주고 싶은 영역
-    
+      const hand = document.querySelector('.hand');
+      const bubble = document.querySelector('.speech-bubble');
       setTimeout(function () { //4초 뒤에 배경 어둡게 + 영역 보여짐
         popup.style.display = "block"; 
         supportbox.style.zIndex = "9999";
-      }, 4000); 
+        hand.style.display = "block"; 
+        bubble.style.display = "block"; 
+      }, 1000); 
     
       
     </script>

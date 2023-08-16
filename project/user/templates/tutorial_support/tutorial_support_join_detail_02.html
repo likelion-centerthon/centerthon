@@ -101,6 +101,8 @@
         <div class="percent" style="background:#fff">
           <div class="percent-bar" id="percent-bar-content"></div>
         </div>
+        <img style="  position: absolute; z-index: 100000;  left: 50%; transform: translate(-50%, 10%);display:none;" src="{% static 'images/box_left_up.png'%}" alt="말풍선" class="speech-bubble1">
+
         <div class="detail-container">
           <div class="title">임영웅 생일 카페 후원</div>
           <div class="goal">1,000,000원</div>
@@ -126,13 +128,17 @@
           </div>
           <div class="enddate">2023/8/18 PM11:59</div>
         </div>
+        <img style="  position: absolute; z-index: 100000;  left: 50%; transform: translate(-50%, -90%);display:none" src="{% static 'images/box_left.png'%}" alt="말풍선" class="speech-bubble2">
 
         <button
           style="margin-top: 20px; background: #b3b1b0; position:relative;"
           class="start-Button"
+        
+
         >
           완료된 서포트입니다.
         </button>
+       
         <div class="line"></div>
           <p class="text">출금 내역</p>
           <div class="supportinfo-container">
@@ -263,6 +269,8 @@
           blockchain.style.border = "1px solid #b3b1b0";
         }
       }
+      const b1 = document.querySelector(".speech-bubble1");
+      const b2 = document.querySelector(".speech-bubble2");
 
       const popup = document.getElementById("popup");
       const percent = document.querySelector('.percent');
@@ -278,7 +286,11 @@
         popup.style.display = "block";
         container.style.zIndex="3";
         blockchain.style.zIndex="2";
-      }, 2000);
+  
+               b1.style.display = "block";
+
+
+      }, 1000);
     
     
     
@@ -289,10 +301,17 @@
         container.style.border = "2px solid #b3b1b0";
         blockchain.style.zIndex="9997";
         percent.style.zIndex = "1";
-        hand.style.display = "block";
-
-      }, 12000);
-      
+        b1.style.display = "none";
+        b2.style.display = "block";
+        b2.style.top = "190px";
+        container.addEventListener('click', function() {
+          startbutton.textContent = '돌아가기';
+          startbutton.onclick = function() {
+            location.href='{% url 'user:tutorial_support' %}';
+          }
+        });
+      }, 2000);
+   
     
     </script>
   </body>
