@@ -154,3 +154,12 @@ def tutorial_support_manage_detail_2(request):
 # 서포트 작성 및 관리 튜토리얼
 def tutorial_support_start(request):
     return render(request, 'tutorial_support/tutorial_support_start.html')
+
+
+#각각 첫 설명 페이지 뷰함수
+def tutorial_artist_first(request):
+    return render(request, 'tutorial_artist/tutorial_artist_first.html')
+def tutorial_meeting_first(request):
+    return render(request, 'tutorial_meeting/tutorial_meeting_first.html')
+def tutorial_support_first(request):
+    return render(request, 'tutorial_support/tutorial_support_first.html')
