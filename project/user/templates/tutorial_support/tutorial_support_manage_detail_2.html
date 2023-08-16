@@ -72,7 +72,7 @@
             상세조회
           </h1>
         </div>
-        <span id="percent-content" style="display: none">76</span>
+        <span id="percent-content" style="display: none">100</span>
         <div class="percent">
           <div class="percent-bar" id="percent-bar-content"></div>
         </div>
@@ -104,16 +104,17 @@
           <div class="enddate">2023/8/18 PM11:59</div>
         </div>
 
-        <form>
+        <div>
           <input type="hidden" name="form_type" value="closing" />
           <button
             class="start-Button"
             type="submit"
             style="background: #bc67ff"
+            onclick="location.href='{% url 'user:tutorial' %}'"
           >
             마감하기
           </button>
-        </form>
+        </div>
         <div class="line"></div>
 
         <p class="text">모금자 정보</p>

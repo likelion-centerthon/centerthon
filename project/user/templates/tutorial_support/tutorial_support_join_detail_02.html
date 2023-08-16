@@ -67,7 +67,7 @@
             상세조회
           </h1>
         </div>
-        <span id="percent-content" style="display: none">80</span>
+        <span id="percent-content" style="display: none">100</span>
         <div class="percent">
           <div class="percent-bar" id="percent-bar-content"></div>
         </div>
@@ -81,7 +81,7 @@
             </p>
             <img
               src="{% static 'images/tutorial_support_detail.png'%}"
-              style="margin: 0px 0px 0 10px; width: 300px;"
+              style="margin: 0px 0px 0 10px; width: 300px"
               alt="Support Image"
             />
           </div>
@@ -104,26 +104,76 @@
           완료된 서포트입니다.
         </button>
         <div class="line"></div>
-          <p class="text" >출금 내역</p>
-          <div class="supportinfo-container">
-              <div  class="block-chain-container"  id="blockchain-11" onclick="toggleBlockchain(11)">
-                <div style="display:flex; position:row;text-align: center;">
-                <input style="font-size:20px;" type="text" class="form-input" value="OO카페 대관" readonly><br>
-                <input style="font-size:18px; margin-top:10px; margin-left:-25px;" type="text" class="form-input" value="-520,000 " readonly><br>
-                </div>
-                <input style="color: #949494; font-size:18px;" type="text" class="form-input" value="2023-08-15 AM 01:18" readonly><br>
-              </div>
-              <div class="blockchain" id="blockchain-content-11" style="display: none;">
-                <div class="hash">&nbsp;&nbsp;5bb46aaf1b30680d70c612378aa...</div>
-                  <div class="timestamp">서포트 마감 시간: 2023.08.15 01:19</div>
-                  <div class="credit">블록체인 출금액: 100000</div>
-                  <div class="depositor">블록체인 출금자 정보: OO카페 대관</div>
-                  <div class="creditTime">블록체인 출금 시간: 2023.08.15 01:18</div>
-              </div>
+        <p class="text">출금 내역</p>
+        <div class="supportinfo-container">
+          <div
+            class="block-chain-container"
+            id="blockchain-11"
+            onclick="toggleBlockchain(11)"
+          >
+            <div style="display: flex; position: row; text-align: center">
+              <input
+                style="font-size: 20px"
+                type="text"
+                class="form-input"
+                value="OO카페 대관"
+                readonly
+              /><br />
+              <input
+                style="font-size: 18px; margin-top: 10px; margin-left: -25px"
+                type="text"
+                class="form-input"
+                value="-520,000 "
+                readonly
+              /><br />
+            </div>
+            <input
+              style="color: #949494; font-size: 18px"
+              type="text"
+              class="form-input"
+              value="2023-08-15 AM 01:18"
+              readonly
+            /><br />
           </div>
+          <div
+            class="blockchain"
+            id="blockchain-content-11"
+            style="display: none"
+          >
+            <div class="hash">&nbsp;&nbsp;5bb46aaf1b30680d70c612378aa...</div>
+            <div class="timestamp">서포트 마감 시간: 2023.08.15 01:19</div>
+            <div class="credit">온 체인 블록 출금액: 100000</div>
+            <div class="depositor">온 체인 블록 출금자 정보: OO카페 대관</div>
+            <div class="creditTime">출금 시간: 2023.08.15 01:18</div>
+          </div>
+          <form method="get" action="{% url 'user:tutorial' %}">
+            {% csrf_token %}
+            <button
+              type="submit"
+              style="
+                width: 300px;
+                height: 40px;
+                box-shadow: 0px 0px 4px #bc67ff;
+                border-radius: 50px;
+                text-align: center;
+                margin: 0 auto;
+                font-size: 20px;
+                line-height: 24px;
+                color: #555555;
+                font-weight:500;
+                margin-left:calc(55px / 2);
+                margin-bottom:10px;
+                background-color: transparent;
+                border:2px solid white;
+              "
+            >
+              돌아가기
+            </button>
+          </form>
+        </div>
 
-    </div>
-    <div class="footer">
+      </div>
+      <div class="footer">
         <div class="singer">
           <img
             id="singer-img"

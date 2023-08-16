@@ -122,9 +122,9 @@
   <div class="blockchain" id="blockchain-content-{{ bank.pk}}" style="display: none;">
     <div class="hash">&nbsp;&nbsp;{{block.hash}}</div>
       <div class="timestamp">서포트 마감 시간: {{block.timestamp|date:"Y.m.d H:i"}}</div>
-      <div class="credit">블록체인 출금액: {{block.credit}}</div>
-      <div class="depositor">블록체인 출금자 정보: {{block.depositor}}</div>
-      <div class="creditTime">블록체인 출금 시간: {{block.creditTime |date:"Y.m.d H:i"}}</div>
+      <div class="credit">온 체인 블록 출금액: {{block.credit}}</div>
+      <div class="depositor">온 체인 블록 출금자 정보: {{block.depositor}}</div>
+      <div class="creditTime">출금 시간: {{block.creditTime |date:"Y.m.d H:i"}}</div>
   </div>
   {% endfor %}
 </div>
