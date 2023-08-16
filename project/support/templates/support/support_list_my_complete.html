@@ -13,7 +13,28 @@
 
     <button class="all_button"  onclick="location.href='{% url 'support:my_support_list' pk=artist.pk %}'">진행중</button>
     <button class="end_button" style="  border: 1px solid #bc67ff;color:#bc67ff;" onclick="location.href='{% url 'support:my_support_list_complete' pk=artist.pk %}'">종료</button>
-  <div  style="margin-left:285px; margin-top:-25px;" >
+    <div class="tutorial-info-icon-meeting" id="tutorial-icon">
+    <img
+      src="{% static 'images/information.png'%}"
+      alt="info"
+      class="tutorial-image-meeting"
+      id="tutorial-image"
+    />
+    <div class="tutorial-hover-box-meeting" id="myModal">
+      <p>
+        모금이 종료된 서포트에서 후원 계좌의 출금 내역을 확인할 수 있어요. <br>
+      💡사용방법이 낯설다면 서포트 기능을 연습해 보는건 어떠신가요?
+      </p>
+      <button
+        class="tutorial-box-button-meeting"
+        style="width: 150px; height: 40px"
+        onclick="location.href='{% url 'user:tutorial_support' %}'"
+      >
+        연습하러 가기
+      </button>
+    </div>
+  </div>
+    <div  style="margin-left:285px; margin-top:-55px;" >
         <a href="#;" onClick="zoomIn();"><img style="width:20px; height:20px;"src="{% static 'images/zoomin.png'%}" alt="확대"></a>
           <a href="#;" onClick="zoomOut();"><img style="width:20px; height:20px;"src="{% static 'images/zoomout.png'%}" alt="축소"></a>
         </div>  
@@ -42,7 +63,32 @@
 </div>
 <button class="start-Button" style="margin-left: 27px; margin-top:20px;background: #bc67ff;  font-size: 22px;" onclick="location.href='{% url 'support:create_support' pk=artist.pk %}'">서포트 작성하기</button>
 
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const modalIcon = document.getElementById("tutorial-icon");
+      const modal = document.getElementById("myModal");
+      const content = document.querySelector('.content');
+      const supporting = document.querySelector('.supporting');
+      const icon = document.getElementById("tutorial-image");
 
+      modalIcon.addEventListener("click", function () {
+          if (modal.style.display=="block"){
+              document.body.style.overflow = 'auto';
+              content.style.overflow = 'auto';
+              supporting.style.overflow = 'auto';
+              modal.style.display = "none";
+              icon.src = "{% static 'images/information.png'%}";
+          }
+          else {
+              document.body.style.overflow = 'hidden';
+              content.style.overflow = 'hidden';
+              supporting.style.overflow = 'hidden';
+              modal.style.display = "block";
+              icon.src = "{% static 'images/information-hover.png'%}";
+          }
+      });
+    });
+</script>
 {% endblock %}
 {% endwith %}
 
