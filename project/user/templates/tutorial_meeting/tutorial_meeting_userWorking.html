@@ -1,0 +1,149 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, height=device-height, initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"
+    />
+    <link rel="stylesheet" href="{% static 'css/base.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/header.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/support_form.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/support_create.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/support_list.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/support_dtl.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/post_list.css' %}" />
+
+    <link rel="stylesheet" href="{% static 'css/post_detail.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/create_post.css' %}" />
+
+    <link rel="stylesheet" href="{% static 'css/artist_info.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/use_working.css' %}" />
+
+    <title>아티스트 정보</title>
+    {% include 'head.html' %}
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <form action="{% url 'user:tutorial_subscribe_artist' %}" method="get">
+          <button class="btn-select">
+            &nbsp; &nbsp;임영웅 •••
+          </button>
+        </form>
+        <div class="icon">
+          <form>
+            <button type="submit">
+              <img
+                class="user"
+                src="{% static 'images/user.png'%}"
+                alt="이용행보"
+              />
+            </button>
+          </form>
+          <form>
+            <button id="alarm-button">
+              <img
+                class="alarm"
+                src="{% static 'images/alarm.png'%}"
+                alt="알람"
+              />
+            </button>
+          </form>
+        </div>
+      </div>
+    <div style="display: flex; align-items: center; justify-content: center; flex-direction: column;">
+        <div style="display: flex;  flex-direction: row; ">
+            <img class="back" src="{% static 'images/back.png'%}" alt="이전" onclick="goBack()" style="margin-left:-45px;"></img>
+            <h1 class="support_form_h1" style="margin-left: -10px; margin-bottom:20px;">
+                홍길동의 활동 내역
+            </h1>
+        </div>
+        <div style="display: flex; align-items: center;">
+            <img class="use_working_img" src="{% static 'images/likelion_swu_profile.png'%}"">
+            <h2 style="font-size: 20px; margin-left: 30px;">나의 활동 점수는? <br><span style="color:#1D2968; font-size:40px; margin-left: 50px; ">72점</span></h2>
+        </div>
+    </div>
+    <h2 class="use_working_startday">구독 시작일: <span style="font-size: 18px;">2022년 10월 8일</span></h2>
+    <h2 class="use_working_likeday">지금까지 <span style="color: #1D2968; font-weight: 500;">316</span>일 동안 활동 중</h2>
+
+    <div class="user_working_line"></div>
+    <h2 class="user_h2">나의 활동</h2>
+    <div class="user_activity" style="margin-left:6px">
+        <div class="use_working_post">게시글 작성 횟수<span>124회</span></div>
+        <div class="use_working_comment">댓글 작성 횟수&nbsp;&nbsp;&nbsp;<span>243회</span></div>
+        <div class="use_working_meeting">모임 주최 횟수&nbsp;&nbsp;&nbsp;<span>18회</span></div>
+        <div class="use_working_meetinguest">모임 참여 횟수&nbsp;&nbsp;&nbsp;<span>31회</span></div>
+    </div>
+    <div class="user_working_line"></div>
+    <h2 class="user_h2">서포터즈</h2>
+    <div class="user_support" style="margin-left:6px">
+        <div class="use_working_supporthost">서포트 주최 횟수<span>0회</span></div>
+        <div class="use_working_supportguest">서포트 참여 횟수<span>5회</span>
+        </div>
+    </div>
+
+    <script>
+        function goBack() {
+            window.history.back();
+            }
+            </script>
+    </div>
+      <div class="footer">
+        <div class="singer">
+          <img
+            id="singer-img"
+            src="{% static 'images/singer.png'%}"
+            alt="가수 이미지"
+          />
+          <div class="label" style="top: 20px" >내 가수</div>
+        </div>
+        <div class="list">
+          <img
+            id="list-img"
+            src="{% static 'images/list.png'%}"
+            alt="게시글 이미지"
+          />
+          <div class="label">게시판</div>
+        </div>
+        <div class="group">
+          <img
+            id="group-img"
+            style="width: 58px; height: 58px; margin-top: -6px"
+            src="{% static 'images/purplegroup.png'%}"
+            alt="그룹 이미지"
+          />
+          <div class="label" style="margin-top: -1px color:black">모임</div>
+        </div>
+        <div class="support">
+          <img
+            id="support-img"
+            style="
+              width: 60px;
+              height: 60px;
+              margin-top: -5px;
+              margin-left: -14px;
+            "
+            src="{% static 'images/support.png'%}"
+            alt="서포트 이미지"
+          />
+          <div
+            class="label"
+            style="margin-top: -3px; margin-left: -15px"
+          >
+            서포트
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
