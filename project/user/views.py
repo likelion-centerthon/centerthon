@@ -93,6 +93,10 @@ def tutorial_artist_info(request):
     return render(request, 'tutorial_artist/tutorial_artist_info.html')
 
 # 튜토리얼 분기 페이지 - 모임
+def tutorial_artist(request):
+    return render(request, 'user/tutorial_artist.html')
+
+# 튜토리얼 분기 페이지 - 모임
 def tutorial_meeting(request):
     return render(request, 'user/tutorial_meeting.html')
 
@@ -131,6 +135,8 @@ def tutorial_meeting_start(request):
 #모임 관리 튜토리얼-작성
 def tutorial_meeting_writed(request):
     return render(request, 'tutorial_meeting/tutorial_meeting_writed.html')
+def tutorial_meeting_writed_2(request):
+    return render(request, 'tutorial_meeting/tutorial_meeting_writed_2.html')
 
 # 모임 관리 튜토리얼 - 작성 (신청자 이용행보 확인)
 def tutorial_meeting_userWorking(request):

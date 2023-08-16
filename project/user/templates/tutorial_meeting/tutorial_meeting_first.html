@@ -1,11 +1,133 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com%22%3E/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <link rel="stylesheet" href="{% static 'css/base_no_nav.css' %}" />
+
+ <title>별너울</title>
+ {% include 'head.html' %}
+ <style>
+    button {
+        margin: 60px;
+    }
+    .tooltip-link{
+        position: relative;
+       background:#fff;
+        padding: 10px;
+        box-sizing: border-box;
+        margin-top:190px;
+        border:none;
+    }
+    .tooltip-link[data-tooltip]:not([data-tooltip=""])::before {
+        content: attr(data-tooltip);
+        position: absolute;
+        background-color: rgba(0,0,0,0.5);
+        color: #fff;
+        font-size:18px;
+        padding: 10px 7px;
+        border-radius: 10px;
+        max-width: 300px;
+        width: 250%;
+        left: -24%;
+        bottom: 100%;
+        opacity: 0;
+        transition: all 0.5s linear;
+        padding:25px;
+        
+    }
+    .tooltip-link[data-tooltip]:not([data-tooltip=""])::after {
+        content: '';
+        border-width: 6px;
+        border-style: solid;
+        border-color: transparent;
+        border-top-color: rgba(0,0,0,0.5);
+        width: 0;
+        height: 0;
+        display: inline-block;
+        position: absolute;
+        left: 50%;
+        bottom: 90%;
+        transform: translate(-50%, 0);
+        opacity: 0;
+        transition: all 0.5s linear;
+     
+    }
+    .tooltip-link:focus[data-tooltip]:not([data-tooltip=""])::before
+    , .tooltip-link:focus[data-tooltip]:not([data-tooltip=""])::after {
+        opacity: 100;
+    }
+  
+        .hand{
+        width: 100%;
+        height: 120px;
+        text-align: center;
+       
+        
+        animation: up-down 0.5s infinite ease-in-out alternate;
+      }
+      
+      @keyframes up-down{
+        from{
+          transform: translatey(0px);
+        }
+        to{
+          transform: translatey(-20px);
+        }
+      }
+      </style>
+      
+
 </head>
 <body>
- <button onclick="location.href='{% url 'user:tutorial_meeting' %}'">다음</button>
+<div class="container" >
+ <div class="content">
+  <h2 style="margin:80px 30px 40px 30px;" class="ment"> 튜토리얼 들어가기 전에 모임 게시판 설명 보면서 간단한 연습 게임해볼까요?</h2>
+  
+   <button class="tooltip-link"  data-tooltip="
+   
+   모임 페이지에서는 모임 신청 후 참여하여 여러분이 좋아하는 아티스트의 팬들과 이야기하며 친해질 수 있어요">
+    <img src="{% static 'images/star.png'%}" alt="말풍선" class="star"  style="width:180px;height:180px; ">
+</button>
+<img style="width:70px; height:80px;  position:relative; margin-left:60px; margin-top:-450px;" src="{% static 'images/hand.png'%}" alt="" class="hand">
+<button  class="button" style=" width: 300px; 
+height: 40px;
+box-shadow: 0px 0px 4px #bc67ff;
+border-radius: 50px;
+text-align: center;
+margin: 0 auto;
+font-size: 20px;
+line-height: 24px;
+color: #555555;
+font-weight:500;
+margin-left:calc(75px / 2);
+margin-bottom:10px;
+background-color: transparent;
+border:2px solid white;"onclick="location.href='{% url 'user:tutorial_meeting' %}'">넘어가기</button>
 
-</body>
-</html>
+</div>
+    <div>
+     
+    </div>
+
+ </div>
+ </div>
+ 
+<script>
+    const ment=document.querySelector('.ment');
+    const hand=document.querySelector('.hand');
+
+    setTimeout(function(){
+      ment.innerHTML="노란색 손이 가리키는 캐릭터 클릭 후 모임 게시판 설명을 읽어보세요.";
+    },5000)
+    setTimeout(function(){
+        ment.innerHTML="다 읽었다면 모임 튜토리얼 진행하러 넘어가기 버튼을 눌러주세요.";
+        hand.style.top = "120px"; 
+      },15000)
+ </script>
+ </body>
+ </html>

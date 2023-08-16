@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
     <link rel="stylesheet" href="{% static 'css/base_no_nav.css' %}" />
 
- <title>중앙톤 프로젝트</title>
+ <title>별너울</title>
  {% include 'head.html' %}
  <style>
     button {
@@ -33,7 +33,7 @@
         border-radius: 10px;
         max-width: 300px;
         width: 250%;
-        left: -26%;
+        left: -24%;
         bottom: 100%;
         opacity: 0;
         transition: all 0.5s linear;
@@ -86,16 +86,15 @@
 <body>
 <div class="container" >
  <div class="content">
-    <h2 style="margin:80px 30px 40px 30px;" class="ment"> 서포트 게시판 튜토리얼 시작하기 전에 간단한 연습해볼까요?</h2>
+  <h2 style="margin:80px 30px 40px 30px;" class="ment"> 튜토리얼 들어가기 전에 서포트 게시판 설명 보면서 간단한 연습 게임해볼까요?</h2>
   
    <button class="tooltip-link"  data-tooltip="
    
    서포트 페이지에서는 여러분이 좋아하는 아티스트에게 후원할 수 있어요 
-   온체인 블록을 활용하여 출금 내역까지 투명하게 공개되어 안심하고 입금할 수 있어요
-   이제 서포트 게시판 사용법을 배우러 넘어가기 버튼을 눌러보세요">
+   온체인 블록을 활용하여 출금 내역까지 투명하게 공개되어 안심하고 입금할 수 있어요">
     <img src="{% static 'images/star.png'%}" alt="말풍선" class="star"  style="width:180px;height:180px; ">
 </button>
-<img style="width:80px; height:80px;  position:relative; margin-left:60px; margin-top:-450px;" src="{% static 'images/hand.png'%}" alt="" class="box">
+<img style="width:70px; height:80px;  position:relative; margin-left:60px; margin-top:-450px;" src="{% static 'images/hand.png'%}" alt="" class="box">
 <button  class="button" style=" width: 300px; 
 height: 40px;
 box-shadow: 0px 0px 4px #bc67ff;
@@ -122,9 +121,12 @@ border:2px solid white;"onclick="location.href='{% url 'user:tutorial_support' %
 <script>
     const ment=document.querySelector('.ment');
     setTimeout(function(){
-    ment.innerHTML="노란색 손이 가리키는 캐릭터 클릭 후 서포트 게시판 설명을 읽어보세요.";
+      ment.innerHTML="노란색 손이 가리키는 캐릭터 클릭 후 서포트 게시판 설명을 읽어보세요.";
     },3000)
-  
+    setTimeout(function(){
+      ment.innerHTML="이제 서포트 튜토리얼을 하러 넘어가기 버튼을 클릭해볼까요?";
+    }
+    ,13000)
  </script>
  </body>
  </html>
