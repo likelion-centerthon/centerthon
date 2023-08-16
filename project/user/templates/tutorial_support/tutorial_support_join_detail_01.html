@@ -103,9 +103,9 @@
           <div class="percent-bar" id="percent-bar-content"></div>
         </div>
         <div class="detail-container">
-          <div class="title">임영웅 생일 카페 후원</div>
-          <div class="goal">1,000,000원</div>
-          <div class="detail" style="height: auto">
+          <div class="title"  style="position: relative; background:#fff">임영웅 생일 카페 후원</div>
+          <div class="goal"  style="position: relative; background:#fff">1,000,000원</div>
+          <div class="detail" style="height: auto;position: relative; background:#fff">
             <p style="word-break: break-all">
               임영웅군 생일을 맞아 8월 19일 OO역 앞 OO카페에서 생일카페를
               엽니다. 장소 대관 및 스탭 후원받습니다!🌼
@@ -125,7 +125,7 @@
               <button class="coppy-Button" id="copyButton">복사</button>
             </div>
           </div>
-          <div class="enddate">2023/8/18 PM11:59</div>
+          <div class="enddate"   style="position: relative; background:#fff">2023/8/18 PM11:59</div>
         </div>
 
       
@@ -250,22 +250,35 @@
       const startbutton = document.querySelector('.start-Button');
       const hand = document.querySelector('.hand');
 
+      const title = document.querySelector('.title');
+      const goal = document.querySelector('.goal');
+      const detail = document.querySelector('.detail');
+      const enddate= document.querySelector('.enddate');
       setTimeout(function () {
         percent.style.zIndex = "9999";
         popup.style.display = "block";
       }, 2000);
-    
+       setTimeout(function() {
+        title.style.zIndex = "9999";
+        goal.style.zIndex = "9999";
+        detail.style.zIndex = "9999";
+        enddate.style.zIndex = "9999";
+        percent.style.zIndex = "1";
+
+      }, 3000);
       setTimeout(function() {
         content.scrollTop = content.scrollHeight; 
         account.style.zIndex = "9999";
         percent.style.zIndex = "1";
-
+        title.style.zIndex = "1";
+        goal.style.zIndex = "1";
+        detail.style.zIndex = "1";
+        enddate.style.zIndex = "1";
       }, 9000);
     
       setTimeout(function () {
         content.scrollTop = content.scrollHeight; 
         startbutton.style.zIndex = "9999";
-        percent.style.zIndex = "1";
         account.style.zIndex = "1";
         hand.style.display = "block";
 

@@ -109,10 +109,10 @@
             />
           </div>
 
-          <div
+          <div class="account-box"
             style="position: relative; border: none; margin: -1px 0px -55px 0px"
           >
-            <div class="account">농협 20406578234712</div>
+            <div class="account" style="background:#fff">농협 20406578234712</div>
             <div class="select-wrapper" style="border: none">
               <button class="coppy-Button" id="copyButton">복사</button>
             </div>
@@ -125,7 +125,7 @@
           <button
             class="start-Button"
             type="submit"
-            style="background: #b3b1b0"
+            style="background: #b3b1b0; position:relative;"
           >
             모든 입금 내역을 확인해주세요.
           </button>
@@ -135,17 +135,17 @@
         <p class="text">모금자 정보</p>
         <div class="supportinfo-container">
           <!-- 모금자 정보 for문 -->
-          <div class="info-text">
-            <div
-              style="
+          <div class="info-text" >
+            <div class="info-box"
+              style=" background:#fff;
                 margin-bottom: 10px;
                 border: 1px solid #333333;
                 filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
                 border-radius: 16px;
                 padding: 5px;
                 width: 308px;
-                margin: 3px 0px 10px 20px;
-              "
+                margin: 3px 0px 10px 20px;position:relative"
+              
             >
               <p style="font-size: 20px">아무개 | 20,000원</p>
               <p style="color: #949494; font-size: 18px">2023.08.14 17:50</p>
@@ -161,19 +161,20 @@
               </div>
             </div>
           </div>
-          <div class="info-text">
-            <div
+          <div class="info-text" >
+            <div  class="info-box"
               style="
+              background:#fff;
                 margin-bottom: 10px;
                 border: 1px solid #333333;
                 filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
                 border-radius: 16px;
                 padding: 5px;
                 width: 308px;
-                margin: 3px 0px 10px 20px;
+                margin: 3px 0px 10px 20px; position:relative;
               "
             >
-              <p style="font-size: 20px">홍길동 | 10,000원</p>
+              <p style="font-size: 20px;">홍길동 | 10,000원</p>
               <p style="color: #949494; font-size: 18px">2023.08.15 20:50</p>
               <div
                 onclick="showPopup('10')"
@@ -384,17 +385,21 @@
       }
 
       const popup = document.getElementById("popup");
-      let inputs2 = document.querySelectorAll("input");
-      const startbutton = document.querySelector('.start-Button');
+      const button = document.querySelector('.start-Button');
+      const account = document.querySelector('.account-box');
+      const boxs = document.querySelectorAll('.info-box');
+      const content = document.querySelector('.content');
 
 
       setTimeout(function () {
           popup.style.display = "block";
-          inputs2.forEach(function (input) {
-              input.style.zIndex = "9999";
-              startbutton.style.zIndex = "9999";
-
-          });
+          content.scrollTop = content.scrollHeight; 
+          account.style.zIndex = "9999";
+          button.style.zIndex = "9999";
+          boxs.forEach(function (box) {
+            box.style.zIndex = "9999";
+         
+        });
       }, 4000);
     </script>
   </body>
