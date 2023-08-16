@@ -93,6 +93,10 @@ def tutorial_artist_info(request):
     return render(request, 'tutorial_artist/tutorial_artist_info.html')
 
 # 튜토리얼 분기 페이지 - 모임
+def tutorial_artist(request):
+    return render(request, 'user/tutorial_artist.html')
+
+# 튜토리얼 분기 페이지 - 모임
 def tutorial_meeting(request):
     return render(request, 'user/tutorial_meeting.html')
 

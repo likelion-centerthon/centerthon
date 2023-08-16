@@ -4,6 +4,7 @@
 <img class="back" style="  left: 3px;top: 50px;"src="{% static 'images/back.png'%}" alt="이전" onclick="location.href='{% url 'user:tutorial_next' %}'" style="margin-left:-45px;"></img>
 
 <div class="button-container" style="margin-top:200px;">
+    <a class="button" href="{% url 'user:tutorial_meeting_first' %}">모임 설명듣기</a>
     <a class="button" href="{% url 'user:tutorial_meeting_list' %}">모임 참여</a>
     <a class="button" href="{% url 'user:tutorial_meeting_list2' %}">모임 작성</a>
     <a class="button" href="{% url 'user:tutorial_meeting_writed' %}">모임 관리</a>
