@@ -33,8 +33,22 @@ urlpatterns = [
 
     # 튜토리얼 서포트
 path('tutorial/support-first', views.tutorial_support_first, name='tutorial_support_first'),
-    path('tutorial/support-manage', views.tutorial_support_manage_list, name='tutorial_support_manage'),
-    path('tutorial/support-manage-form', views.tutorial_support_manage_form, name='tutorial_support_manage_form'),
+    # path('tutorial/support-manage', views.tutorial_support_manage_list, name='tutorial_support_manage'),
+    # path('tutorial/support-manage-form', views.tutorial_support_manage_form, name='tutorial_support_manage_form'),
+    # 서포트 참여
+    path('tutorial/support-join', views.tutorial_support_join_list, name='tutorial_support_join'),
+    path('tutorial/support-join-form', views.tutorial_support_join_form, name='tutorial_support_join_form'),
+    path('tutorial/support-join-detail-1', views.tutorial_support_join_detail_1, name='tutorial_support_join_detail_1'),
+    path('tutorial/support-join-detail-2', views.tutorial_support_join_detail_2, name='tutorial_support_join_detail_2'),
+    # 서포트 생성
+    path('tutorial/support-start', views.tutorial_support_start, name='tutorial_support_start'),
+    path('tutorial/support-start-form', views.tutorial_support_start_form, name='tutorial_support_start_form'),
+    path('tutorial/support-start-step-1', views.tutorial_support_start_step_1, name='tutorial_support_start_step_1'),
+    path('tutorial/support-start-step-2', views.tutorial_support_start_step_2, name='tutorial_support_start_step_2'),
+    path('tutorial/support-start-step-3', views.tutorial_support_start_step_3, name='tutorial_support_start_step_3'),
+    path('tutorial/support-start-step-4', views.tutorial_support_start_step_4, name='tutorial_support_start_step_4'),
+    # 서포트 관리
+    path('tutorial/support-manage', views.tutorial_support_manage, name='tutorial_support_manage'),
     path('tutorial/support-manage-detail-1', views.tutorial_support_manage_detail_1, name='tutorial_support_manage_detail_1'),
     path('tutorial/support-manage-detail-2', views.tutorial_support_manage_detail_2, name='tutorial_support_manage_detail_2'),
     path('tutorial/support-start', views.tutorial_support_start, name='tutorial_support_start'),

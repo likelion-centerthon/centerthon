@@ -141,19 +141,16 @@ def tutorial_meeting_pn(request):
     return render(request, 'tutorial_meeting/tutorial_meeting_pn.html')
 
 # 서포트 참여 튜토리얼
-def tutorial_support_manage_list(request):
-    return render(request, 'tutorial_support/tutorial_support_manage_list.html')
-def tutorial_support_manage_form(request):
-    return render(request, 'tutorial_support/tutorial_support_manage_form.html')
-def tutorial_support_manage_detail_1(request):
-    return render(request, 'tutorial_support/tutorial_support_manage_detail_01.html')
-def tutorial_support_manage_detail_2(request):
-    return render(request, 'tutorial_support/tutorial_support_manage_detail_02.html')
+def tutorial_support_join_list(request):
+    return render(request, 'tutorial_support/tutorial_support_join_list.html')
+def tutorial_support_join_form(request):
+    return render(request, 'tutorial_support/tutorial_support_join_form.html')
+def tutorial_support_join_detail_1(request):
+    return render(request, 'tutorial_support/tutorial_support_join_detail_01.html')
+def tutorial_support_join_detail_2(request):
+    return render(request, 'tutorial_support/tutorial_support_join_detail_02.html')
 
 
-# 서포트 작성 및 관리 튜토리얼
-def tutorial_support_start(request):
-    return render(request, 'tutorial_support/tutorial_support_start.html')
 
 
 #각각 첫 설명 페이지 뷰함수
@@ -163,3 +160,26 @@ def tutorial_meeting_first(request):
     return render(request, 'tutorial_meeting/tutorial_meeting_first.html')
 def tutorial_support_first(request):
     return render(request, 'tutorial_support/tutorial_support_first.html')
+
+
+# 서포트 작성 튜토리얼
+def tutorial_support_start(request):
+    return render(request, 'tutorial_support/tutorial_support_start.html')
+def tutorial_support_start_form(request):
+    return render(request, 'tutorial_support/tutorial_support_start_form.html')
+def tutorial_support_start_step_1(request):
+    return render(request, 'tutorial_support/tutorial_support_start_step_1.html')
+def tutorial_support_start_step_2(request):
+    return render(request, 'tutorial_support/tutorial_support_start_step_2.html')
+def tutorial_support_start_step_3(request):
+    return render(request, 'tutorial_support/tutorial_support_start_step_3.html')
+def tutorial_support_start_step_4(request):
+    return render(request, 'tutorial_support/tutorial_support_start_step_4.html')
+
+# 서포트 관리 튜토리얼
+def tutorial_support_manage(request):
+    return render(request, 'tutorial_support/tutorial_support_manage.html')
+def tutorial_support_manage_detail_1(request):
+    return render(request, 'tutorial_support/tutorial_support_manage_detail_1.html')
+def tutorial_support_manage_detail_2(request):
+    return render(request, 'tutorial_support/tutorial_support_manage_detail_2.html')

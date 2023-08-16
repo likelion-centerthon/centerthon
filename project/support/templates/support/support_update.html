@@ -11,7 +11,7 @@
     {% csrf_token %}
     <input  class="title" placeholder="제목"  type="text" name="title" id="title" value="{{support.title}}">
     <input class="goal" placeholder="목표 모금액"  type="number" name="fundraising" id="fundraising" value="{{support.fundraising}}">
-    <input   data-placeholder="모금 종료 기간" required
+    <input   data-placeholder="모금 종료 기간" required 
     aria-required="true"
     className={styles.selectDay}
     onChange={StartDateValueHandler}  class="custom-date" type="datetime-local" name="deadline" id="dead" value="{{support.deadline}}">
