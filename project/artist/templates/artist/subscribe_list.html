@@ -1,48 +1,113 @@
-{% extends 'base_artistlist.html' %}
-{% block content %}
-    <h2 class="page-title">구독한 아티스트 목록</h2>
+{% extends 'base_artistlist.html' %} {% block content %} {% load static %}
 
-    <div class="artist-buttons">
-        <form method="post" action="{% url 'artist:subscribe_list' category='KPOP' %}">
-            {% csrf_token %}
-            <button type="submit"
-                class="artist-btn {% if selected_category == 'KPOP' %}selected{% endif %}">K-POP</button>
-        </form>
-
-        <form method="post" action="{% url 'artist:subscribe_list' category='트로트' %}">
-            {% csrf_token %}
-            <button type="submit"
-                class="artist-btn {% if selected_category == '트로트' %}selected{% endif %}">트로트</button>
-        </form>
-
-        <form method="post" action="{% url 'artist:subscribe_list' category='발라드' %}">
-            {% csrf_token %}
-            <button type="submit"
-                class="artist-btn {% if selected_category == '발라드' %}selected{% endif %}">발라드</button>
-        </form>
-
-        <form method="post" action="{% url 'artist:subscribe_list' category='기타' %}">
-            {% csrf_token %}
-            <button type="submit"
-                class="artist-btn {% if selected_category == '기타' %}selected{% endif %}">기타</button>
-        </form>
+<h2 class="page-title" style="display: flex; justify-content: center">
+  구독한 아티스트 목록
+  <div class="tutorial-info-icon" id="tutorial-icon">
+    <img
+      src="{% static 'images/information.png'%}"
+      alt="info"
+      class="tutorial-image"
+      id="tutorial-image"
+    />
+    <div class="tutorial-hover-box" id="myModal">
+      <p>
+        K-POP, 트로트 등 카테고리 버튼을 누르면 해당 카테고리에 속하는 아티스트 목록을 보여줘요. <br>
+        아티스트 사진을 누르면 내 가수 페이지로 이동하여 자세한 정보를 확인할 수 있어요.
+      </p>
+      <button class="tutorial-box-button" onclick="location.href='{% url 'user:tutorial_artist_info' %}'">연습하러 가기</button>
     </div>
+  </div>
+</h2>
+<div class="artist-buttons">
+  <form
+    method="post"
+    action="{% url 'artist:subscribe_list' category='KPOP' %}"
+  >
+    {% csrf_token %}
+    <button
+      type="submit"
+      class="artist-btn {% if selected_category == 'KPOP' %}selected{% endif %}"
+    >
+      K-POP
+    </button>
+  </form>
 
-    <div class="artist-list">
-        {% for artist in artists %}
-            <form method="post" action="{% url 'artist:select_artist' pk=artist.pk %}">
-                {% csrf_token %}
-                <button type="submit">
-                    <div class="image-wrapper">
-                        <img src="{{ artist.artistImage.url }}" width="100" height="100">
-                    </div>
-                    <div class="artist-name">{{ artist.artistName }}</div>
-                </button>
-            </form>
-            {% endfor %}
-        <form method="post" action="{% url 'artist:artist_list' category='none' %}">
-            {% csrf_token %}
-            <button type="submit" class="find-another-artist">다른 아티스트 찾으러 가기</button>
-        </form>
-    </div>
+  <form
+    method="post"
+    action="{% url 'artist:subscribe_list' category='트로트' %}"
+  >
+    {% csrf_token %}
+    <button
+      type="submit"
+      class="artist-btn {% if selected_category == '트로트' %}selected{% endif %}"
+    >
+      트로트
+    </button>
+  </form>
+
+  <form
+    method="post"
+    action="{% url 'artist:subscribe_list' category='발라드' %}"
+  >
+    {% csrf_token %}
+    <button
+      type="submit"
+      class="artist-btn {% if selected_category == '발라드' %}selected{% endif %}"
+    >
+      발라드
+    </button>
+  </form>
+
+  <form
+    method="post"
+    action="{% url 'artist:subscribe_list' category='기타' %}"
+  >
+    {% csrf_token %}
+    <button
+      type="submit"
+      class="artist-btn {% if selected_category == '기타' %}selected{% endif %}"
+    >
+      기타
+    </button>
+  </form>
+</div>
+
+<div class="artist-list">
+  {% for artist in artists %}
+  <form method="post" action="{% url 'artist:select_artist' pk=artist.pk %}">
+    {% csrf_token %}
+    <button type="submit">
+      <div class="image-wrapper">
+        <img src="{{ artist.artistImage.url }}" width="100" height="100" />
+      </div>
+      <div class="artist-name">{{ artist.artistName }}</div>
+    </button>
+  </form>
+  {% endfor %}
+  <form method="post" action="{% url 'artist:artist_list' category='none' %}">
+    {% csrf_token %}
+    <button type="submit" class="find-another-artist">
+      다른 아티스트 찾으러 가기
+    </button>
+  </form>
+</div>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const modalIcon = document.getElementById("tutorial-icon");
+    const modal = document.getElementById("myModal");
+    const icon = document.getElementById("tutorial-image");
+
+    modalIcon.addEventListener("click", function () {
+        if (modal.style.display=="block"){
+            modal.style.display = "none";
+            icon.src = "{% static 'images/information.png'%}";
+        }
+        else {
+            modal.style.display = "block";
+            icon.src = "{% static 'images/information-hover.png'%}";
+        }
+    });
+  });
+</script>
+
 {% endblock %}

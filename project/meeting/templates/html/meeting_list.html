@@ -3,64 +3,168 @@
 {% with artist=artist alerts=alerts %}
 {% block content %}
 
-
-<div style="margin-bottom: 5px; display: flex; align-items: center;" class="support_list_category">
-    <button class ="allsupport" style="width:160px; margin-left:15px; font-size:20px;border-bottom:3px solid #000000;" onclick="location.href='{% url 'meeting:MeetingList' artist_id=artist.id %}'">모임 전체</button>
-        <button class ="mysupport" style="width:160px; margin-left:24px; font-size:20px;" onclick="location.href='{% url 'meeting:writedMeetingList' artist_id=artist_id  %}'">나의 모임</button>
-
+<div
+  style="margin-bottom: 5px; display: flex; align-items: center"
+  class="support_list_category"
+>
+  <button
+    class="allsupport"
+    style="
+      width: 160px;
+      margin-left: 15px;
+      font-size: 20px;
+      border-bottom: 3px solid #000000;
+    "
+    onclick="location.href='{% url 'meeting:MeetingList' artist_id=artist.id %}'"
+  >
+    모임 전체
+  </button>
+  <button
+    class="mysupport"
+    style="width: 160px; margin-left: 24px; font-size: 20px"
+    onclick="location.href='{% url 'meeting:writedMeetingList' artist_id=artist_id  %}'"
+  >
+    나의 모임
+  </button>
+</div>
+<div class="meeting-button">
+  <button
+    style="border: 1px solid #bc67ff; color: #bc67ff"
+    onclick="location.href='{% url 'meeting:MeetingList' artist_id=artist.id   %}'"
+  >
+    진행중
+  </button>
+  <button
+    onclick="location.href='{%url 'meeting:MeetingCloseList' artist_id=artist_id  %}'"
+  >
+    종료
+  </button>
+  <div class="tutorial-info-icon-meeting" id="tutorial-icon">
+    <img
+      src="{% static 'images/information.png'%}"
+      alt="info"
+      class="tutorial-image-meeting"
+      id="tutorial-image"
+    />
+    <div class="tutorial-hover-box-meeting" id="myModal">
+      <p>
+        모임은 팬들 간의 오프라인 만남을 도와주는 서비스예요. <br>
+        💡사용방법이 낯설다면 모임 기능을 연습해 보는건 어떠신가요?
+      </p>
+      <button
+        class="tutorial-box-button-meeting"
+        style="width: 150px; height: 40px"
+        onclick="location.href='{% url 'user:tutorial_meeting' %}'"
+      >
+        연습하러 가기
+      </button>
     </div>
-    <div class="meeting-button">
-        <button style="  border: 1px solid #bc67ff;color:#bc67ff;" onclick="location.href='{% url 'meeting:MeetingList' artist_id=artist.id   %}'">진행중</button>
-        <button onclick="location.href='{%url 'meeting:MeetingCloseList' artist_id=artist_id  %}'">종료</button>
-        <div  style="margin-left:285px; margin-top:-25px;" >
-            <a href="#;" onClick="zoomIn();"><img style="width:20px; height:20px;"src="{% static 'images/zoomin.png'%}" alt="확대"></a>
-              <a href="#;" onClick="zoomOut();"><img style="width:20px; height:20px;"src="{% static 'images/zoomout.png'%}" alt="축소"></a>
-            </div>
+  </div>
+  <div style="margin-left: 285px; margin-top: -55px">
+    <a href="#;" onClick="zoomIn();"
+      ><img
+        style="width: 20px; height: 20px"
+        src="{% static 'images/zoomin.png'%}"
+        alt="확대"
+    /></a>
+    <a href="#;" onClick="zoomOut();"
+      ><img
+        style="width: 20px; height: 20px"
+        src="{% static 'images/zoomout.png'%}"
+        alt="축소"
+    /></a>
+  </div>
+</div>
+
+<h2 class="title-meeting">덕질하기 좋은날</h2>
+
+<p class="ment-meeting">
+  {{ artist.artistName }}을 좋아하는 <br />
+  사람들과 다양한 이야기를 <br />
+  나누어보세요!
+</p>
+
+<div class="artist_image_2">
+  {% if artist.artistImage %}
+  <img
+    src="{{ artist.artistImage.url }}"
+    alt="{{ artist.artistName }} Image"
+    width="150"
+  />
+  {% endif %}
+</div>
+
+<div class="meeting-grid-container">
+  <div class="meeting-grid">
+    {% for meeting in meetings_recruiting %}
+    <div
+      class="meeting-item"
+      onmouseover="highlightText(this)"
+      onmouseout="unhighlightText(this)"
+      onclick="location.href='{% url 'meeting:meeting_detail' meeting_id=meeting.id artist_id=artist_id%}'"
+    >
+      {% if meeting.image %}
+      <img
+        src="{{ meeting.image.url }}"
+        alt="{{ meeting.title }} Image"
+        style="width: 140px; height: 130px"
+      />
+      {% else %}
+      <p>No image available</p>
+      {% endif %}
+      <div>
+        <p>{{ meeting.title }}</p>
+        <p>{{ meeting.peopleNm }}명</p>
+      </div>
     </div>
+    {% endfor %}
+  </div>
+</div>
+<button
+  class="start-Button"
+  style="
+    margin-left: 27px;
+    margin-top: -40px;
+    background: #bc67ff;
+    font-size: 22px;
+  "
+  onclick="location.href='{% url 'meeting:createMeeting' artist_id=artist_id %}'"
+>
+  모임 작성하기
+</button>
 
+<script>
+  function highlightText(element) {
+    element.querySelector("p").style.fontWeight = "bold";
+  }
 
-    <h2 class="title-meeting"> 덕질하기 좋은날 </h2>
-
-    <p class="ment-meeting"> {{ artist.artistName }}을 좋아하는
-        <br/> 사람들과 다양한 이야기를
-        <br/> 나누어보세요!</p>
-
-
-    <div class="artist_image_2">
-        {% if artist.artistImage %}
-            <img src="{{ artist.artistImage.url }}" alt="{{ artist.artistName }} Image" width="150">
-        {% endif %}
-    </div>
-
-    <div class="meeting-grid-container">
-        <div class="meeting-grid">
-            {% for meeting in meetings_recruiting %}
-            <div class="meeting-item" onmouseover="highlightText(this)" onmouseout="unhighlightText(this)" onclick="location.href='{% url 'meeting:meeting_detail' meeting_id=meeting.id artist_id=artist_id%}'">
-                    {% if meeting.image %}
-                        <img src="{{ meeting.image.url }}" alt="{{ meeting.title }} Image" style="width: 140px; height: 130px;">
-                    {% else %}
-                        <p>No image available</p>
-                    {% endif %}
-                    <div>
-                        <p>{{ meeting.title }}</p>
-                        <p>{{ meeting.peopleNm }}명</p>
-                    </div>
-                </div>
-            {% endfor %}
-        </div>
-    </div>
-  <button class="start-Button" style="margin-left: 27px; margin-top:-40px;background: #bc67ff;font-size: 22px;" onclick="location.href='{% url 'meeting:createMeeting' artist_id=artist_id %}'">모임 작성하기</button>
-
-  <script>
-    function highlightText(element) {
-        element.querySelector('p').style.fontWeight = 'bold';
-    }
-
-    function unhighlightText(element) {
-        element.querySelector('p').style.fontWeight = 'normal';
-    }
+  function unhighlightText(element) {
+    element.querySelector("p").style.fontWeight = "normal";
+  }
 </script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const modalIcon = document.getElementById("tutorial-icon");
+      const modal = document.getElementById("myModal");
+      const content = document.querySelector('.content');
+      const icon = document.getElementById("tutorial-image");
 
+      modalIcon.addEventListener("click", function () {
+          if (modal.style.display=="block"){
+              document.body.style.overflow = 'auto';
+              content.style.overflow = 'auto';
+              modal.style.display = "none";
+              icon.src = "{% static 'images/information.png'%}";
+          }
+          else {
+              document.body.style.overflow = 'hidden';
+              content.style.overflow = 'hidden';
+              modal.style.display = "block";
+              icon.src = "{% static 'images/information-hover.png'%}";
+          }
+      });
+    });
+</script>
 
 {% endblock %}
 {% endwith %}

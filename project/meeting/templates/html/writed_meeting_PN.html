@@ -11,7 +11,28 @@
     <button onclick="location.href='{%url 'meeting:writedMeetingList' artist_id=artist_id  %}'">작성</button>
     <button onclick="location.href='{%url 'meeting:applyedMeetingList' artist_id=artist_id  %}'">신청</button>
     <button style="  border: 1px solid #bc67ff; color:#bc67ff;" onclick="location.href='{%url 'meeting:subPNList' artist_id=artist_id  %}'">보호자</button>
-    <div  style="margin-left:285px; margin-top:-25px;" >
+    <div class="tutorial-info-icon-meeting" id="tutorial-icon">
+    <img
+      src="{% static 'images/information.png'%}"
+      alt="info"
+      class="tutorial-image-meeting-2"
+      id="tutorial-image"
+    />
+    <div class="tutorial-hover-box-meeting" id="myModal">
+      <p>
+        보호자 페이지에서 모임 신청자들의 보호자 번호를 확인할 수 있어요! 신청자들과 연락이 닿지 않는다면 보호자에게 연락해보세요<br>
+      💡사용방법이 낯설다면 서포트 기능을 연습해 보는건 어떠신가요?
+      </p>
+      <button
+        class="tutorial-box-button-meeting"
+        style="width: 150px; height: 40px"
+        onclick="location.href='{% url 'user:tutorial_meeting' %}'"
+      >
+        연습하러 가기
+      </button>
+    </div>
+  </div>
+    <div  style="margin-left:285px; margin-top:-55px;" >
         <a href="#;" onClick="zoomIn();"><img style="width:20px; height:20px;"src="{% static 'images/zoomin.png'%}" alt="확대"></a>
         <a href="#;" onClick="zoomOut();"><img style="width:20px; height:20px;"src="{% static 'images/zoomout.png'%}" alt="축소"></a>
     </div>
@@ -44,6 +65,28 @@
     {% empty %}
     {% endfor %}
 </div>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const modalIcon = document.getElementById("tutorial-icon");
+      const modal = document.getElementById("myModal");
+      const content = document.querySelector('.content');
+      const icon = document.getElementById("tutorial-image");
 
+      modalIcon.addEventListener("click", function () {
+          if (modal.style.display=="block"){
+              document.body.style.overflow = 'auto';
+              content.style.overflow = 'auto';
+              modal.style.display = "none";
+              icon.src = "{% static 'images/information.png'%}";
+          }
+          else {
+              document.body.style.overflow = 'hidden';
+              content.style.overflow = 'hidden';
+              modal.style.display = "block";
+              icon.src = "{% static 'images/information-hover.png'%}";
+          }
+      });
+    });
+</script>
 {% endblock %}
 {% endwith %}

@@ -6,12 +6,32 @@
 <div style="margin-bottom: 5px; display: flex; align-items: center;" class="support_list_category">
     <button class ="allsupport" style="width:160px; margin-left:15px; font-size:20px;border-bottom:3px solid #000000;" onclick="location.href='{% url 'meeting:MeetingList' artist_id=artist.id %}'">모임 전체</button>
     <button class ="mysupport" style="width:160px; margin-left:24px; font-size:20px;" onclick="location.href='{% url 'meeting:writedMeetingList' artist_id=artist_id  %}'">나의 모임</button>
-
 </div>
 <div class="meeting-button">
     <button onclick="location.href='{% url 'meeting:MeetingList' artist_id=artist.id   %}'">진행중</button>
     <button style="  border: 1px solid #bc67ff;color:#bc67ff;" onclick="location.href='{%url 'meeting:MeetingCloseList' artist_id=artist_id  %}'">종료</button>
-<div style="margin-left:285px; margin-top:-25px;" >
+    <div class="tutorial-info-icon-meeting" id="tutorial-icon">
+    <img
+      src="{% static 'images/information.png'%}"
+      alt="info"
+      class="tutorial-image-meeting"
+      id="tutorial-image"
+    />
+    <div class="tutorial-hover-box-meeting" id="myModal">
+      <p>
+        모임은 팬들 간의 오프라인 만남을 도와주는 서비스예요. <br>
+        💡사용방법이 낯설다면 모임 기능을 연습해 보는건 어떠신가요?
+      </p>
+      <button
+        class="tutorial-box-button-meeting"
+        style="width: 150px; height: 40px"
+        onclick="location.href='{% url 'user:tutorial_meeting' %}'"
+      >
+        연습하러 가기
+      </button>
+    </div>
+  </div>
+    <div style="margin-left:285px; margin-top:-55px;" >
             <a href="#;" onClick="zoomIn();"><img style="width:20px; height:20px;"src="{% static 'images/zoomin.png'%}" alt="확대"></a>
               <a href="#;" onClick="zoomOut();"><img style="width:20px; height:20px;"src="{% static 'images/zoomout.png'%}" alt="축소"></a>
             </div>
@@ -46,7 +66,29 @@
     {% endfor %}
     </div>
 </div>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const modalIcon = document.getElementById("tutorial-icon");
+      const modal = document.getElementById("myModal");
+      const content = document.querySelector('.content');
+      const icon = document.getElementById("tutorial-image");
 
+      modalIcon.addEventListener("click", function () {
+          if (modal.style.display=="block"){
+              document.body.style.overflow = 'auto';
+              content.style.overflow = 'auto';
+              modal.style.display = "none";
+              icon.src = "{% static 'images/information.png'%}";
+          }
+          else {
+              document.body.style.overflow = 'hidden';
+              content.style.overflow = 'hidden';
+              modal.style.display = "block";
+              icon.src = "{% static 'images/information-hover.png'%}";
+          }
+      });
+    });
+</script>
     
 {% endblock %}
 {% endwith %}
