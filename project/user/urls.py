@@ -32,7 +32,7 @@ urlpatterns = [
     path('tutorial/meeting-list-2',views.tutorial_meeting_list2,name='tutorial_meeting_list2'),
 
     # 튜토리얼 서포트
-    path('tutorial/support-first', views.tutorial_support, name='tutorial_support'),
+    path('tutorial/support-first', views.tutorial_support_first, name='tutorial_support_first'),
     # 서포트 참여
     path('tutorial/support-join', views.tutorial_support_join_list, name='tutorial_support_join'),
     path('tutorial/support-join-form', views.tutorial_support_join_form, name='tutorial_support_join_form'),
