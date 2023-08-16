@@ -27,13 +27,29 @@
 
     <title>중앙톤 프로젝트</title>
 {% include 'head.html' %}
+<style>
+    .dark-background {
+      background-color: rgba(0, 0, 0, 0.6);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 375px;
+      height: 100vh;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
 </head>
 <body>
-<div class="container">
+    <div class="container" style="position:relative">
+        <div class="dark-background" id="popup" style="display:none;">
+        </div>
     <div class="header">
     <form>
         <button class="btn-select" type="submit">
-        &nbsp; &nbsp;임영웅 •••
+        &nbsp; &nbsp;임영웅 ••• 
         </button>
     </form>
     <div class="icon">
@@ -57,7 +73,10 @@
         </form>
     </div>
     </div>
-
+    <img id="hidden-img" src="{% static 'images/purple.png' %}"
+    style=" width: 240px; display: none; position: absolute; z-index: 9999; top: 13%; left: 50%; transform: translate(-50%, -50%);"
+    alt="이미지">
+    
 <div class="content">
     <img class="back" src="{% static 'images/back.png'%}" alt="이전" onclick="goBack()"></img>
 <h2 class="detail-title-meeting">모임명 : 임영웅 생일 카페</h2>
@@ -76,8 +95,28 @@
     </div>
 <div class="buttons">
     <button class="submit-button" type="button" onclick="showNextButton()">신청하기</button>
-    <button id="button2" class="submit-button" type="button" style="display: none;" onclick="showNextButton()">이미 신청한 모임</button>
-    <button id="button3" class="submit-button" type="button" style="display: none;" onclick="location.href='{% url 'user:tutorial_meeting' %}'">돌아가기</button>
+    <button id="button2" class="done-button" type="button" style="display: none; box-sizing: border-box;
+    width: 300px;
+    height: 55px;
+    background-color: #bc67ff;
+    border: 1px solid #b3b1b0;
+    border-radius: 30px;
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 20px 5px 5px 5px;" onclick="showNextButton()">이미 신청한 모임</button>
+    <button id="button3" class="back-button" type="button" style="display: none;box-sizing: border-box;
+    width: 300px;
+    height: 55px;
+    background-color: #bc67ff;
+    border: 1px solid #b3b1b0;
+    border-radius: 30px;
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 20px 5px 5px 5px;" onclick="location.href='{% url 'user:tutorial_meeting' %}'">돌아가기</button>
 </div>
     </div>
 <div class="footer">
@@ -116,6 +155,58 @@ function showNextButton() {
     buttons[currentIndex].style.display = 'block';
   }
 }
+    const content = document.querySelector('.content');
+    const popup = document.getElementById("popup"); //배경 어둡게 
+    const supportbox = document.querySelector('.custom-box2'); //보여주고 싶은 영역
+    const button = document.querySelector('.submit-button'); //보여주고 싶은 영역
+    const button2 = document.querySelector('.done-button'); //보여주고 싶은 영역
+    const button3 = document.querySelector('.back-button'); //보여주고 싶은 영역
+    const hiddenImg = document.getElementById("hidden-img"); // 이미지 요소 추가
+
+    setTimeout(function () { //2초 뒤에 배경 어둡게 + 영역 보여짐
+        popup.style.display = "block";
+        supportbox.style.zIndex = "9000";
+        button.style.zIndex = "9000";
+        content.scrollTop = content.scrollHeight;
+    // setTimeout(function () {
+    //     popup.style.display = "none";
+    //     supportbox.style.zIndex = "1";
+    // }, 10000);
+    }, 2000);
+
+    setTimeout(function () {
+        popup.style.display = "block";
+        supportbox.style.zIndex = "9000";
+        hiddenImg.style.display = "block"; // 이미지 보여주기
+    //   setTimeout(function () {
+    //     popup.style.display = "none";
+    //     supportbox.style.zIndex = "1";
+    // }, 10000);
+    }, 2000);
+
+    // setTimeout(function () {
+    //     popup.style.display = "block";
+    //     button.style.zIndex = "9000";
+    //     hiddenImg.style.display = "block"; 
+    // }, 2000);
+    button.addEventListener('click', function () {
+    button.style.display = "none"; // 신청하기 버튼 안보이게
+    supportbox.style.zIndex = "1"; // 서포트 박스 뒤로가게
+    hiddenImg.style.top = "50%"; // 이미지의 top 50%로 변경해서 내려오게 만들기
+    button2.style.display = "block"; // "이미 신청한 모임" 버튼 표시하기
+    button2.style.zIndex = "9000"; 
+}, false);
+
+
+    button2.addEventListener('click', function () {
+    button2.style.display = "none"; // 신청하기 버튼 안보이게
+    supportbox.style.zIndex = "1"; // 서포트 박스 뒤로가게
+    hiddenImg.style.top = "50%"; // 이미지의 top 50%로 변경해서 내려오게 만들기
+    button3.style.display = "block"; // "뒤로가기" 버튼 표시하기
+    button3.style.zIndex = "9000"; 
+}, false);
+
+
 </script>
 </body>
 </html>

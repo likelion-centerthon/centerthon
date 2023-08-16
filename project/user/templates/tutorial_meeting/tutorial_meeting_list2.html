@@ -27,9 +27,25 @@
 
       <title>중앙톤 프로젝트</title>
     {% include 'head.html' %}
+    <style>
+    .dark-background {
+      background-color: rgba(0, 0, 0, 0.6);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 375px;
+      height: 100vh;
+      z-index: 5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
    </head>
   <body>
-       <div class="container" >
+    <div class="container" style="position:relative">
+      <div class="dark-background" id="popup" style="display:none;">
+      </div>
           <div class="header">
         <form>
           <button class="btn-select" type="submit">
@@ -81,7 +97,10 @@
         <br/> 사람들과 다양한 이야기를
         <br/> 나누어보세요!</p>
 
-
+        <img id="hidden-img" src="{% static 'images/purple.png' %}"
+        style=" width: 240px; display: none; position: absolute; z-index: 9999; top: 56%; left: 50%; transform: translate(-50%, -50%);"
+        alt="이미지">
+        
     <div class="artist_image_2">
             <img src= "{% static 'images/hero.png'%}" width="150">
     </div>
@@ -97,7 +116,8 @@
                 </div>
         </div>
     </div>
-  <button class="start-Button" style="margin-left: 27px; margin-top:-40px;background: #bc67ff;font-size: 22px;" onclick="location.href='{% url 'user:tutorial_meeting_start'  %}'">모임 작성하기</button>
+  <button class="start-Button" style="margin-left: 27px; margin-top:-40px; position: relative; background: #bc67ff;font-size: 22px;" 
+  onclick="location.href='{% url 'user:tutorial_meeting_start'  %}'">모임 작성하기</button>
 
   <script>
     function highlightText(element) {
@@ -197,6 +217,17 @@ document.getElementById("support-img").addEventListener("mouseover", function ()
   document.querySelector(".support .label").classList.remove("colored");
   });
 
+  const content = document.querySelector('.content');
+  const popup = document.getElementById("popup"); //배경 어둡게 
+    const StartButton = document.querySelector('.start-Button'); //보여주고 싶은 영역
+    const hiddenImg = document.getElementById("hidden-img"); // 이미지 요소 추가
+
+    setTimeout(function () { //2초 뒤에 배경 어둡게 + 영역 보여짐
+        popup.style.display = "block";
+        StartButton.style.zIndex = "9990";
+        content.scrollTop = content.scrollHeight;
+        hiddenImg.style.display = "block"; // 이미지 보여주기
+    }, 3000);
 </script>
 
       </div>

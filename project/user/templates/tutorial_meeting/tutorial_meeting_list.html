@@ -44,6 +44,20 @@
       align-items: center;
       justify-content: center;
     }
+    #hidden-pointer {
+    display: none;
+    position: absolute;
+    animation: motion 1s linear infinite alternate;
+  }
+
+  @keyframes motion {
+    0% {
+      top: 26%;
+    }
+    100% {
+      top: 28%;
+    }
+  }
   </style>
 </head>
 
@@ -70,7 +84,9 @@
         </form>
       </div>
     </div>
-
+    <!-- <img id="hidden-pointer" src="{% static 'images/pointer.png' %}"
+    style="width:50px;  display:none; position: relative; z-index: 9999; top: -45%; left: 35%; transform: translate(-50%, -50%);"
+    alt="이미지"> -->
     <div class="content">
 
       <div style="margin-bottom: 5px; display: flex; align-items: center;" class="support_list_category">
@@ -98,9 +114,10 @@
       </p>
 
 
-      <img id="hidden-img" src="{% static 'images/box_left.png' %}"
-        style=" display: none; position: absolute; z-index: 9999; top: 35%; left: 50%; transform: translate(-50%, -50%);"
+      <img id="hidden-img" src="{% static 'images/purple.png' %}"
+        style=" display: none; position: absolute; z-index: 8887; top: 35%; left: 50%; transform: translate(-50%, -50%);"
         alt="이미지">
+        
 
 
       <div class="artist_image_2">
@@ -227,6 +244,8 @@
     const popup = document.getElementById("popup"); //배경 어둡게 
     const supportbox = document.querySelector('.meeting-item'); //보여주고 싶은 영역
     const hiddenImg = document.getElementById("hidden-img"); // 이미지 요소 추가
+    const hiddenImg2 = document.getElementById("hidden-pointer"); // 이미지 요소 추가
+
 
     setTimeout(function () { //4초 뒤에 배경 어둡게 + 영역 보여짐
       popup.style.display = "block";
@@ -235,10 +254,9 @@
 
     setTimeout(function () {
       popup.style.display = "block";
-      supportbox.style.zIndex = "9999";
-
-      // 이미지 표시
+      supportbox.style.zIndex = "8888";
       hiddenImg.style.display = "block"; // 이미지를 보이도록 스타일 변경
+      hiddenImg2.style.display = "block"; // 이미지를 보이도록 스타일 변경
     }, 2000);
 
     content.scrollTop = content.scrollHeight;
