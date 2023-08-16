@@ -30,9 +30,26 @@
 
     <title>서포트 참여</title>
     {% include 'head.html' %}
+    <style>
+      .dark-background {
+          background-color: rgba(0, 0, 0, 0.6); 
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 375px;
+          height: 100%;
+          z-index: 2;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+      }
+  </style>   
   </head>
   <body>
-    <div class="container">
+    <div class="container" style="position:relative">
+      <div class="dark-background" id="popup" style="display:none;">
+      </div>
+
       <div class="header">
         <form>
           <button class="btn-select" type="submit">
@@ -329,6 +346,16 @@
           blockchain.style.border = "1px solid #b3b1b0";
         }
       }
+      const popup = document.getElementById("popup"); //배경 어둡게 
+      const supportbox = document.querySelector('.support_list_box'); //보여주고 싶은 영역
+    
+      setTimeout(function () { //4초 뒤에 배경 어둡게 + 영역 보여짐
+        popup.style.display = "block"; 
+        supportbox.style.zIndex = "9999";
+      }, 4000); 
+    
+      
     </script>
+
   </body>
 </html>

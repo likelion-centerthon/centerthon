@@ -30,10 +30,27 @@
 
     <title>별너울</title>
     {% include 'head.html' %}
+    <style>
+      .dark-background {
+          background-color: rgba(0, 0, 0, 0.6); 
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 375px;
+          height: 100%;
+          z-index: 2;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+      }
+  </style>   
+
   </head>
   <body>
-    <div class="container">
-      <div class="header">
+    <div class="container" style="position:relative">
+      <div class="dark-background" id="popup" style="display:none;">
+      </div>
+            <div class="header">
         <form>
           <button class="btn-select" type="submit">
             &nbsp; &nbsp;임영웅 •••
@@ -156,6 +173,7 @@
             margin-top: 20px;
             background: #bc67ff;
             font-size: 22px;
+            position:relative;
           "
           onclick="location.href='{% url 'user:tutorial_support_start_form' %}'"
         >
@@ -209,5 +227,17 @@
         </div>
       </div>
     </div>
+    <script>
+
+      const popup = document.getElementById("popup"); //배경 어둡게 
+      const button = document.querySelector('.start-Button'); //보여주고 싶은 영역
+    
+      setTimeout(function () { //4초 뒤에 배경 어둡게 + 영역 보여짐
+        popup.style.display = "block"; 
+        button.style.zIndex = "9999";
+      }, 2000); 
+    
+      
+    </script>
   </body>
 </html>

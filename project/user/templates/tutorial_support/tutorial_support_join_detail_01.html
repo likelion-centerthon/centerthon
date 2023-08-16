@@ -46,7 +46,15 @@
           justify-content: center;
           
       }
-  
+      .hand{ animation: motion 0.4s 
+        linear 0s   
+        infinite alternate; 
+
+      }
+      @keyframes motion {
+        0% {margin-top: -240px;} /* 처음 위치 */
+        100% {margin-top: -220px;} /* 마지막 위치 */
+        }
   </style>
   </head>
   <body>
@@ -126,7 +134,8 @@
           onclick="location.href='{% url 'user:tutorial_support_join_form' %}'">
           모금 정보 작성하기
         </button>
-     
+        <img style="width:80px; height:80px;z-index:100000; left: 280px; position:absolute;display:none;" src="{% static 'images/hand.png'%}" alt="축소" class="hand">
+
        
       </div>
       <div class="footer">
@@ -175,8 +184,7 @@
           </div>
         </div>
       </div>
-    </div>      </div>
-
+    </div>      
  
 
     <script>
@@ -237,28 +245,29 @@
       const popup = document.getElementById("popup");
       const percent = document.querySelector('.percent');
       const content = document.querySelector('.content');
-      const container = document.querySelector('.content');
 
       const account = document.querySelector('.account-box');
       const startbutton = document.querySelector('.start-Button');
-    
+      const hand = document.querySelector('.hand');
+
       setTimeout(function () {
         percent.style.zIndex = "9999";
         popup.style.display = "block";
-      }, 4000);
+      }, 2000);
     
       setTimeout(function() {
         content.scrollTop = content.scrollHeight; 
         account.style.zIndex = "9999";
         percent.style.zIndex = "1";
 
-      }, 8000);
+      }, 9000);
     
       setTimeout(function () {
         content.scrollTop = content.scrollHeight; 
         startbutton.style.zIndex = "9999";
         percent.style.zIndex = "1";
         account.style.zIndex = "1";
+        hand.style.display = "block";
 
       }, 12000);
       </script>

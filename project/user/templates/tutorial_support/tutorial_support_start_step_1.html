@@ -80,6 +80,13 @@
         updateCountdown();
         const interval = setInterval(updateCountdown, 1000);
       });
+      const popup = document.getElementById("popup"); //배경 어둡게 
+      const supportbox = document.querySelector('.support_list_box'); //보여주고 싶은 영역
+    
+      setTimeout(function () { //4초 뒤에 배경 어둡게 + 영역 보여짐
+        popup.style.display = "block"; 
+        supportbox.style.zIndex = "9999";
+      }, 4000); 
     </script>
   </body>
 </html>

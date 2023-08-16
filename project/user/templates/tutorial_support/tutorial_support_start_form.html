@@ -23,9 +23,26 @@
 
     <title>별너울</title>
     {% include 'head.html' %}
+    <style>
+      .dark-background {
+          background-color: rgba(0, 0, 0, 0.6); 
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 375px;
+          height: 100%;
+          z-index: 2;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+      }
+  </style>   
+
   </head>
   <body>
-    <div class="container">
+    <div class="container" style="position:relative">
+      <div class="dark-background" id="popup" style="display:none;">
+      </div>
       <div class="content">
         <img
           class="back"
@@ -43,6 +60,7 @@
             type="text"
             name="title"
             id="title"
+            style="position:relative"
           />
           <input
             class="goal"
@@ -50,6 +68,7 @@
             type="number"
             name="fundraising"
             id="fundraising"
+            style="position:relative"
           />
           <input
             data-placeholder="모금 종료 기간"
@@ -62,9 +81,10 @@
             type="datetime-local"
             name="deadline"
             id="dead"
+            style="position:relative"
           />
 
-          <div style="position: relative; border: none; margin-bottom: 26px">
+          <div style="position: relative; border: none; margin-bottom: 26px" class="detail-box">
             <textarea
               class="detail"
               placeholder="내용"
@@ -149,6 +169,26 @@
               window.location.href = '{% url 'user:tutorial_support_start_step_1' %}';
           }, 1000);
           }
+
+          const popup = document.getElementById("popup");
+          let inputs2 = document.querySelectorAll("input");
+          const startbutton = document.querySelector('.start-Button');
+          const hand = document.querySelector('.hand');
+          const detail = document.querySelector('.detail-box');
+
+  
+  
+          setTimeout(function () {
+              popup.style.display = "block";
+              hand.style.display = "block";
+              detail.style.display = "block";
+
+              inputs2.forEach(function (input) {
+                  input.style.zIndex = "9999";
+                  startbutton.style.zIndex = "9999";
+               
+              });
+          }, 2000);
         </script>
       </div>
     </div>

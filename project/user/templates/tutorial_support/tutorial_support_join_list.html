@@ -4,7 +4,7 @@
   <head>
     <style>
       .dark-background {
-          background-color: rgba(0, 0, 0, 0.6); /* Use a semi-transparent black color */
+          background-color: rgba(0, 0, 0, 0.6); 
           position: absolute;
           top: 0;
           left: 0;
@@ -15,6 +15,15 @@
           align-items: center;
           justify-content: center;
       }
+      .hand{ animation: motion 0.4s 
+        linear 0s   
+        infinite alternate; 
+
+      }
+      @keyframes motion {
+        0% {margin-top: -220px;} /* 처음 위치 */
+        100% {margin-top: -200px;} /* 마지막 위치 */
+        }
   </style>
     <meta charset="UTF-8" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -106,9 +115,12 @@
                     <div class="support_percent_box" id="completionBox">
                         <span style="font-size: 30px;">36</span><span style="font-size: 17px;">%</span>
                     </div>
+                    
                 </div>
+
             </div>
         
+            <img style="width:80px; height:80px;z-index:100000; left: 260px; op:-230px;position:absolute;display:none;" src="{% static 'images/hand.png'%}" alt="축소" class="hand">
 
         </div>
 
@@ -167,11 +179,14 @@
        
         const popup = document.getElementById("popup");
         const supportbox = document.querySelector('.support_list_box');
-      
+        const hand = document.querySelector('.hand');
+
         setTimeout(function () {
           popup.style.display = "block"; 
+          hand.style.display = "block"; 
+
           supportbox.style.zIndex = "9999";
-        }, 4000); 
+        }, 2000); 
       
       
         

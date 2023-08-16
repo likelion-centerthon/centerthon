@@ -30,9 +30,25 @@
 
     <title>서포트 참여</title>
     {% include 'head.html' %}
+    <style>
+      .dark-background {
+          background-color: rgba(0, 0, 0, 0.6); 
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 375px;
+          height: 100%;
+          z-index: 2;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+      }
+  </style>   
   </head>
   <body>
-    <div class="container">
+    <div class="container" style="position:relative">
+      <div class="dark-background" id="popup" style="display:none;">
+      </div>
       <div class="header">
         <form>
           <button class="btn-select" type="submit">
@@ -366,6 +382,20 @@
           blockchain.style.border = "1px solid #b3b1b0";
         }
       }
+
+      const popup = document.getElementById("popup");
+      let inputs2 = document.querySelectorAll("input");
+      const startbutton = document.querySelector('.start-Button');
+
+
+      setTimeout(function () {
+          popup.style.display = "block";
+          inputs2.forEach(function (input) {
+              input.style.zIndex = "9999";
+              startbutton.style.zIndex = "9999";
+
+          });
+      }, 4000);
     </script>
   </body>
 </html>
