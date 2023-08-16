@@ -32,21 +32,35 @@
     {% include 'head.html' %}
     <style>
       .dark-background {
-          background-color: rgba(0, 0, 0, 0.6); /* Use a semi-transparent black color */
+          background-color: rgba(0, 0, 0, 0.6); 
           position: absolute;
+          
+          width: 375px;
+          height: 100vh;
           top: 0;
           left: 0;
-          width: 375px;
-          height: 100%;
+        
           z-index: 2;
           display: flex;
           align-items: center;
           justify-content: center;
+          
       }
+      .hand{ animation: motion 0.4s 
+        linear 0s   
+        infinite alternate; 
+
+      }
+      @keyframes motion {
+        0% {margin-top: -240px;} /* 처음 위치 */
+        100% {margin-top: -220px;} /* 마지막 위치 */
+        }
   </style>
   </head>
   <body>
-    <div class="container" style="position:relative">
+
+    <div class="container" style="position:relative; ">
+      
       <div class="dark-background" id="popup" style="display:none;">
       </div>
       <div class="header">
@@ -85,13 +99,17 @@
           </h1>
         </div>
         <span id="percent-content" style="display: none">80</span>
-        <div class="percent">
+        <div class="percent"  style="background:#fff">
           <div class="percent-bar" id="percent-bar-content"></div>
+          <img style="  position: absolute; z-index: 100000;  left: 50%; transform: translate(-50%, 10%);display:none;" src="{% static 'images/box_left_up.png'%}" alt="말풍선" class="speech-bubble1">
+
         </div>
         <div class="detail-container">
-          <div class="title">임영웅 생일 카페 후원</div>
-          <div class="goal">1,000,000원</div>
-          <div class="detail" style="height: auto">
+          <img style="  position: absolute; z-index: 100000;  left: 50%; transform: translate(-50%, -90%);display:none" src="{% static 'images/box_left.png'%}" alt="말풍선" class="speech-bubble2">
+
+          <div class="title"  style="position: relative; background:#fff">임영웅 생일 카페 후원</div>
+          <div class="goal"  style="position: relative; background:#fff">1,000,000원</div>
+          <div class="detail" style="height: auto;position: relative; background:#fff">
             <p style="word-break: break-all">
               임영웅군 생일을 맞아 8월 19일 OO역 앞 OO카페에서 생일카페를
               엽니다. 장소 대관 및 스탭 후원받습니다!🌼
@@ -103,30 +121,26 @@
             />
           </div>
 
-          <div
+          <div class="account-box"
             style="position: relative; border: none; margin: -1px 0px -55px 0px"
           >
-            <div class="account">농협 20406578234712</div>
+            <div class="account" style="background:#fff">농협 20406578234712</div>
             <div class="select-wrapper" style="border: none">
               <button class="coppy-Button" id="copyButton">복사</button>
             </div>
           </div>
-          <div class="enddate">2023/8/18 PM11:59</div>
+          <div class="enddate"   style="position: relative; background:#fff">2023/8/18 PM11:59</div>
         </div>
 
-        {% if not support.status == '완료' %}
-        <button
-          style="margin-top: 20px; background: #bc67ff"
+      
+        <button style="background: #bc67ff;margin-top:10px;position:relative;"
           class="start-Button"
-          onclick="location.href='{% url 'user:tutorial_support_join_form' %}'"
-        >
+          onclick="location.href='{% url 'user:tutorial_support_join_form' %}'">
           모금 정보 작성하기
         </button>
-        {% if not form.status == '대기' %}
-        <div style="color: blue; margin: -40px 0px 20px 240px; font-size: 20px">
-          {{form.status}}
-        </div>
-        {% endif %}
+        <img style="width:80px; height:80px;z-index:100000; left: 280px; position:absolute;display:none;" src="{% static 'images/hand.png'%}" alt="" class="hand">
+
+       
       </div>
       <div class="footer">
         <div class="singer">
@@ -174,8 +188,8 @@
           </div>
         </div>
       </div>
-    </div>
-    {% endif %}
+    </div>      
+ 
 
     <script>
       function calcPercent() {
@@ -230,16 +244,64 @@
           blockchain.style.border = "1px solid #b3b1b0";
         }
       }
+/*말풍선*/
+const b1 = document.querySelector(".speech-bubble1");
+const b2 = document.querySelector(".speech-bubble2");
+
 
       const popup = document.getElementById("popup");
       const percent = document.querySelector('.percent');
+      const content = document.querySelector('.content');
 
+      const account = document.querySelector('.account-box');
+      const button = document.querySelector('.start-Button');
+      const hand = document.querySelector('.hand');
+     
+      const title = document.querySelector('.title');
+      const goal = document.querySelector('.goal');
+      const detail = document.querySelector('.detail');
+      const enddate= document.querySelector('.enddate');
+
+      const copy= document.querySelector('.coppy-Button');
+
+      /*퍼센트바 설명*/
       setTimeout(function () {
-        popup.style.display = "block";
         percent.style.zIndex = "9999";
-      }, 4000);
+        b1.style.display = "block";
 
+        popup.style.display = "block";
+      }, 1000);
+      /*내용 설명*/
+       setTimeout(function() {
+        title.style.zIndex = "9999";
+        goal.style.zIndex = "9999";
+        detail.style.zIndex = "9999";
+        enddate.style.zIndex = "9999";
+        percent.style.zIndex = "1";
+        b1.style.display = "none";
+        b2.style.display = "block";
 
+      }, 2000);
+      /*은행계좌설명*/
+      setTimeout(function() {
+        content.scrollTop = content.scrollHeight; 
+        account.style.zIndex = "9999";
+        b2.style.transform = "translate(-50%, 3%)";
+        b2.style.top = "300px";
+
+        title.style.zIndex = "1";
+        goal.style.zIndex = "1";
+        detail.style.zIndex = "1";
+        enddate.style.zIndex = "1";
+      
+      }, 3000);
+         
+      copy.addEventListener('click', function(){
+        button.style.zIndex = "9999";
+        b2.style.top = "440px";
+        account.style.zIndex = "1";
+
+      })
       </script>
   </body>
 </html>

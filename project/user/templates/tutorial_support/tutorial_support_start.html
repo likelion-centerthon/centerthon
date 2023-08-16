@@ -30,10 +30,36 @@
 
     <title>별너울</title>
     {% include 'head.html' %}
+    <style>
+      .dark-background {
+          background-color: rgba(0, 0, 0, 0.6); 
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 375px;
+          height: 100%;
+          z-index: 2;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+      }
+      .hand{ animation: motion 0.4s 
+        linear 0s   
+        infinite alternate; 
+
+      }
+      @keyframes motion {
+        0% {margin-top: -190px;} /* 처음 위치 */
+        100% {margin-top: -170px;} /* 마지막 위치 */
+        }
+  </style>   
+
   </head>
   <body>
-    <div class="container">
-      <div class="header">
+    <div class="container" style="position:relative">
+      <div class="dark-background" id="popup" style="display:none;">
+      </div>
+            <div class="header">
         <form>
           <button class="btn-select" type="submit">
             &nbsp; &nbsp;임영웅 •••
@@ -156,12 +182,17 @@
             margin-top: 20px;
             background: #bc67ff;
             font-size: 22px;
+            position:relative;
           "
           onclick="location.href='{% url 'user:tutorial_support_start_form' %}'"
         >
           서포트 작성하기
         </button>
+        <img style="  position: absolute; z-index: 100000;  left: 50%; top: 45%; transform: translate(-50%, -40%);display:none" src="{% static 'images/box_left.png'%}" alt="말풍선" class="speech-bubble2">
+
       </div>
+      <img style="width:80px; height:80px;z-index:100000; left: 260px; position:absolute;display:none;" src="{% static 'images/hand.png'%}" alt="손" class="hand">
+
       <div class="footer">
         <div class="singer">
           <img
@@ -209,5 +240,21 @@
         </div>
       </div>
     </div>
+    <script>
+      const b2 = document.querySelector(".speech-bubble2");
+
+      const popup = document.getElementById("popup");
+      const button = document.querySelector('.start-Button'); 
+      const hand = document.querySelector('.hand'); 
+
+      setTimeout(function () { 
+        popup.style.display = "block"; 
+        button.style.zIndex = "9999";
+        b2.style.display = "block"; 
+        hand.style.display="block";
+      }, 2000); 
+    
+      
+    </script>
   </body>
 </html>

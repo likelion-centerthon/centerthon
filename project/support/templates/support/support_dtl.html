@@ -5,7 +5,9 @@
 {% load custom_filters %}
 <div style="  justify-content:row;  display: flex; margin-bottom: 10px; ">
 <img class="back" src="{% static 'images/back.png'%}" alt="이전"  onclick="goBack()"></img>
+
     <h1 class="support_dtl_h1" style=" margin: 30px 0px 0px 60px;">상세조회</h1>
+
   </div>
     <span id="percent-content" style="display:none;">{{support.balanceAmt|avg:support.fundraising}}</span>
     <div class="percent">
@@ -118,9 +120,9 @@
   <div class="blockchain" id="blockchain-content-{{ bank.pk}}" style="display: none;">
     <div class="hash">&nbsp;&nbsp;{{block.hash}}</div>
       <div class="timestamp">서포트 마감 시간: {{block.timestamp|date:"Y.m.d H:i"}}</div>
-      <div class="credit">블록체인 출금액: {{block.credit}}</div>
-      <div class="depositor">블록체인 출금자 정보: {{block.depositor}}</div>
-      <div class="creditTime">블록체인 출금 시간: {{block.creditTime |date:"Y.m.d H:i"}}</div>
+      <div class="credit">온 체인 블록 출금액: {{block.credit}}</div>
+      <div class="depositor">온 체인 블록 출금자 정보: {{block.depositor}}</div>
+      <div class="creditTime">출금 시간: {{block.creditTime |date:"Y.m.d H:i"}}</div>
   </div>
   {% endfor %}
 </div>

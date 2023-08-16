@@ -4,7 +4,7 @@
   <head>
     <style>
       .dark-background {
-          background-color: rgba(0, 0, 0, 0.6); /* Use a semi-transparent black color */
+          background-color: rgba(0, 0, 0, 0.6); 
           position: absolute;
           top: 0;
           left: 0;
@@ -15,6 +15,15 @@
           align-items: center;
           justify-content: center;
       }
+      .hand{ animation: motion 0.4s 
+        linear 0s   
+        infinite alternate; 
+
+      }
+      @keyframes motion {
+        0% {margin-top: -225px;} /* 처음 위치 */
+        100% {margin-top: -215px;} /* 마지막 위치 */
+        }
   </style>
     <meta charset="UTF-8" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -48,6 +57,7 @@
   </head>
   <body>
     <div class="container" style="position:relative">
+
       <div class="dark-background" id="popup" style="display:none;">
        </div>
       <div class="header ">
@@ -94,6 +104,7 @@
         <div class="supporting-container">
           
             <div class="supporting" style="height: 360px; width: 375px; overflow-y: auto; overflow-x:hidden;">
+
               <div class="support_list_box" onclick="location.href='{% url 'user:tutorial_support_join_detail_1' %}'">
                     <div style="width: 70%;">
                         <h1 class="spt_list_h1"> 임영웅 생카 후원</h1>
@@ -105,9 +116,13 @@
                     <div class="support_percent_box" id="completionBox">
                         <span style="font-size: 30px;">36</span><span style="font-size: 17px;">%</span>
                     </div>
+                    
                 </div>
+
             </div>
         
+            <img style="width:80px; height:80px;z-index:100000; left: 260px; op:-230px;position:absolute;display:none;" src="{% static 'images/hand.png'%}" alt="손" class="hand">
+            <img style="  position: absolute; z-index: 100000;  left: 50%; transform: translate(-50%, -80%);display:none" src="{% static 'images/box_left_up.png'%}" alt="말풍선" class="speech-bubble">
 
         </div>
 
@@ -166,11 +181,16 @@
        
         const popup = document.getElementById("popup");
         const supportbox = document.querySelector('.support_list_box');
-      
+        const hand = document.querySelector('.hand');
+        const bubble = document.querySelector('.speech-bubble');
+
+       
         setTimeout(function () {
           popup.style.display = "block"; 
+          hand.style.display = "block"; 
+          bubble.style.display = "block"; 
           supportbox.style.zIndex = "9999";
-        }, 4000); 
+        }, 1000); 
       
       
         
@@ -178,3 +198,4 @@
   </body>
 
 </html>
+

@@ -28,16 +28,18 @@
 <script>
     const title = document.querySelector('.post-crt-title');
     const detail = document.querySelector('.post-crt-detail');
+    const select = document.querySelector('.post-crt-select');
     const writeButton = document.querySelector('.write-Button');
 
     function checkInputs() {
         const titleValue = title.value.trim();
         const detailValue = detail.value.trim();
+        const selectValue = select.value;
 
-        if (titleValue !== "" && detailValue !== "") {
+        if (titleValue !== "" && detailValue !== "" && selectValue !== "") {
             writeButton.disabled = false;
             writeButton.style.backgroundColor = "#BC67FF";
-            writeButton.innerHTML = "수정하기";
+            writeButton.innerHTML = "작성하기";
         } else {
             writeButton.disabled = true;
             writeButton.style.backgroundColor = "#b3b1b0";
@@ -47,6 +49,8 @@
 
     title.addEventListener("input", checkInputs);
     detail.addEventListener("input", checkInputs);
+    select.addEventListener("change", checkInputs);
+
 
     function goBack() {
         window.history.back();
