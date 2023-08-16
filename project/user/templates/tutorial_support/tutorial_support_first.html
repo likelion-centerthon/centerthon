@@ -1,11 +1,108 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com%22%3E/
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <link rel="stylesheet" href="{% static 'css/base_no_nav.css' %}" />
+
+ <title>중앙톤 프로젝트</title>
+ {% include 'head.html' %}
+ <style>
+    button {
+        margin: 60px;
+    }
+    .tooltip-link{
+        position: relative;
+       background:#fff;
+        padding: 10px;
+        box-sizing: border-box;
+        margin-top:300px;
+        border:none;
+    }
+    .tooltip-link[data-tooltip]:not([data-tooltip=""])::before {
+        content: attr(data-tooltip);
+        position: absolute;
+        background-color: rgba(0,0,0,0.5);
+        color: #fff;
+        padding: 10px 7px;
+        border-radius: 10px;
+        max-width: 300px;
+        width: 250%;
+        left: -24%;
+        bottom: 120%;
+        opacity: 0;
+        transition: all 0.5s linear;
+        padding:30px;
+    }
+    .tooltip-link[data-tooltip]:not([data-tooltip=""])::after {
+        content: '';
+        border-width: 6px;
+        border-style: solid;
+        border-color: transparent;
+        border-top-color: rgba(0,0,0,0.5);
+        width: 0;
+        height: 0;
+        display: inline-block;
+        position: absolute;
+        left: 50%;
+        bottom: 90%;
+        transform: translate(-50%, 0);
+        opacity: 0;
+        transition: all 0.5s linear;
+     
+    }
+    .tooltip-link:hover[data-tooltip]:not([data-tooltip=""])::before
+    , .tooltip-link:hover[data-tooltip]:not([data-tooltip=""])::after {
+        opacity: 1;
+    }
+  
+        .box{
+        width: 100%;
+        height: 120px;
+        text-align: center;
+       
+        padding-top: 30px;
+        animation: up-down 0.5s infinite ease-in-out alternate;
+      }
+      
+      @keyframes up-down{
+        from{
+          transform: translatey(0px);
+        }
+        to{
+          transform: translatey(-20px);
+        }
+      }
+      </style>
+      
+
 </head>
 <body>
- <button onclick="location.href='{% url 'user:tutorial_support' %}'">다음</button>
+<div class="container" >
+ <div class="content">
+    <h3> 튜토리얼 시작하기 전 간단한 연습해볼까요?</h3>
+    <h3>손 모양 아이콘이 나오는 캐릭터를 클릭해 주세요.</h3>
+    <h3>서포트 게시판에 대한 설명이 나와요</h3>
+   <button class="tooltip-link" data-tooltip="
+   
+   서포트 페이지에서는 여러분이 좋아하는 아티스트에게 후원할 수 있어요 
+   온체인 블록을 활용하여 출금 내역까지 투명하게 공개되어 안심하고 입금할 수 있어요
+   이제 같이 서포트 게시판 사용법을 배우러 가볼까요?">
+    <img src="{% static 'images/star.png'%}" alt="말풍선" class="speech-bubble"  style="width:200px;height:200px; ">
+</button>
+<img style="width:80px; height:80px;  position:relative; margin-left:50px; margin-top:-450px;" src="{% static 'images/hand.png'%}" alt="" class="box">
 
-</body>
-</html>
+</div>
+    <div>
+     
+    </div>
+
+    <button onclick="location.href='{% url 'user:tutorial_support' %}'">넘어가기</button>
+ </div>
+ </div>
+ </body>
+ </html>

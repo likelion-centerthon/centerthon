@@ -32,39 +32,26 @@
     {% include 'head.html' %}
     <style>
       .dark-background {
-          background-color: rgba(0, 0, 0, 0.6); 
+          background-color: rgba(0, 0, 0, 0.6); /* Use a semi-transparent black color */
           position: absolute;
           
           width: 375px;
           height: 100vh;
-          top: 0;
-          left: 0;
-        
           z-index: 2;
           display: flex;
           align-items: center;
           justify-content: center;
-          
+          overflow-y:auto;
       }
-      .hand{ animation: motion 0.4s 
-        linear 0s   
-        infinite alternate; 
-
-      }
-      @keyframes motion {
-        0% {margin-top: -100px;} /* 처음 위치 */
-        100% {margin-top: -80px;} /* 마지막 위치 */
-        }
-  
   </style>
   </head>
   <body>
-    <div class="container" style="position:relative; ">
-      
-      <div class="dark-background" id="popup" style="display:none;">
+    <div class="container" style="position:relative; " >
+      <div class="dark-background" id="popup" style="display: none; overflow-y: auto;">
       </div>
       <div class="header">
         <form>
+          
           <button class="btn-select" type="submit">
             &nbsp; &nbsp;임영웅 •••
           </button>
@@ -97,14 +84,10 @@
             상세조회
           </h1>
         </div>
-
-        <span id="percent-content" style="display: none">100</span>
-        <div class="percent"style="background:#fff">
-
+        <span id="percent-content" style="display: none">80</span>
+        <div class="percent">
           <div class="percent-bar" id="percent-bar-content"></div>
         </div>
-        <img style="  position: absolute; z-index: 100000;  left: 50%; transform: translate(-50%, 10%);display:none;" src="{% static 'images/box_left_up.png'%}" alt="말풍선" class="speech-bubble1">
-
         <div class="detail-container">
           <div class="title">임영웅 생일 카페 후원</div>
           <div class="goal">1,000,000원</div>
@@ -115,7 +98,7 @@
             </p>
             <img
               src="{% static 'images/tutorial_support_detail.png'%}"
-              style="margin: 0px 0px 0 10px; width: 300px"
+              style="margin: 0px 0px 0 10px; width: 300px;"
               alt="Support Image"
             />
           </div>
@@ -130,72 +113,19 @@
           </div>
           <div class="enddate">2023/8/18 PM11:59</div>
         </div>
-        <img style="  position: absolute; z-index: 100000;  left: 50%; transform: translate(-50%, -90%);display:none" src="{% static 'images/box_left.png'%}" alt="말풍선" class="speech-bubble2">
 
+        {% if not support.status == '완료' %}
         <button
-          style="margin-top: 20px; background: #b3b1b0; position:relative;"
+          style="margin-top: 20px; background: #bc67ff"
           class="start-Button"
-        
-
         >
-          완료된 서포트입니다.
+          모금 정보 작성하기
         </button>
-       
-        <div class="line"></div>
-          <p class="text">출금 내역</p>
-          <div class="supportinfo-container">
-              <div  class="block-chain-container"  style="position:relative;background:#fff"id="blockchain-11" onclick="toggleBlockchain(11)">
-                <div style="display:flex; position:row;text-align: center;">
-                <input style="font-size:20px;" type="text" class="form-input" value="OO카페 대관" readonly><br>
-                <input style="font-size:18px; margin-top:10px; margin-left:-25px;" type="text" class="form-input" value="-520,000 " readonly><br>
-                </div>
-                <input style="color: #949494; font-size:18px;" type="text" class="form-input" value="2023-08-15 AM 01:18" readonly><br>
-              </div>
-
-              <div class="blockchain"  style="position:relative;background:#fff"id="blockchain-content-11" style="display: none;">
-                <div class="hash">&nbsp;&nbsp;5bb46aaf1b30680d70c612378aa...</div>
-                  <div class="timestamp">서포트 마감 시간: 2023.08.15 01:19</div>
-                  <div class="credit">온 체인 출금액: 100000</div>
-                  <div class="depositor">온 체인 블록 출금자 정보: OO카페 대관</div>
-                  <div class="creditTime">출금 시간: 2023.08.15 01:18</div>
-              </div>
-              <div  class="block-chain-container"  style="background:#fff"id="blockchain-11" onclick="toggleBlockchain(11)">
-                <div style="display:flex; position:row;text-align: center;">
-                <input style="font-size:20px;" type="text" class="form-input" value="OO커피차 이벤트" readonly><br>
-                <input style="font-size:18px; margin-top:10px; margin-left:-25px;" type="text" class="form-input" value="-520,000 " readonly><br>
-                </div>
-                <input style="color: #949494; font-size:18px;" type="text" class="form-input" value="2023-08-09 AM 05:28" readonly><br>
-              </div>
-
-              <form method="get" action="{% url 'user:tutorial' %}">
-                {% csrf_token %}
-                <button
-                class="back-button"
-                  type="submit"
-                  style="
-                    width: 300px;
-                    height: 40px;
-                    box-shadow: 0px 0px 4px #bc67ff;
-                    border-radius: 50px;
-                    text-align: center;
-                    margin: 0 auto;
-                    font-size: 20px;
-                    line-height: 24px;
-                    color: #555555;
-                    font-weight:500;
-                    margin-left:calc(55px / 2);
-                    margin-bottom:10px;
-                    background-color: #fff;
-                    border:2px solid white;
-                    position:relative;
-
-                  "
-                >
-                  돌아가기
-                </button>
-              </form>
-            </div>
-
+        {% if not form.status == '대기' %}
+        <div style="color: blue; margin: -40px 0px 20px 240px; font-size: 20px">
+          {{form.status}}
+        </div>
+        {% endif %}
       </div>
       <div class="footer">
         <div class="singer">
@@ -244,6 +174,8 @@
         </div>
       </div>
     </div>
+    {% endif %}
+    
     <script>
       function calcPercent() {
         let values = document.getElementById("percent-content").innerText;
@@ -297,50 +229,16 @@
           blockchain.style.border = "1px solid #b3b1b0";
         }
       }
-      const b1 = document.querySelector(".speech-bubble1");
-      const b2 = document.querySelector(".speech-bubble2");
-
+     
       const popup = document.getElementById("popup");
       const percent = document.querySelector('.percent');
-      const content = document.querySelector('.content');
-      const blockchain = document.querySelector('.blockchain');
-
-      const container = document.querySelector('.block-chain-container');
-      const startbutton = document.querySelector('.start-Button');
-      const hand = document.querySelector('.hand');
-      const backbutton = document.querySelector('.back-button');
-
+    
       setTimeout(function () {
+        popup.style.display = "block"; 
         percent.style.zIndex = "9999";
-        popup.style.display = "block";
-        container.style.zIndex="3";
-        blockchain.style.zIndex="2";
-  
-               b1.style.display = "block";
-
-
-      }, 1000);
+      }, 4000); 
     
-    
-    
-      setTimeout(function () {
-        content.scrollTop = content.scrollHeight; 
-        startbutton.style.zIndex = "9999";
-        container.style.zIndex="9999";
-        container.style.border = "2px solid #b3b1b0";
-        blockchain.style.zIndex="9997";
-        percent.style.zIndex = "1";
-        b1.style.display = "none";
-        b2.style.display = "block";
-        b2.style.top = "190px";
         
-      }, 2000);
-   
-      container.addEventListener('click', function() {
-      
-        
-        backbutton.style.zIndex="9999";
-      });
-    </script>
+      </script>
   </body>
 </html>

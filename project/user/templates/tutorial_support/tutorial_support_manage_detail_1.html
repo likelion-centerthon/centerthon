@@ -30,9 +30,34 @@
 
     <title>서포트 참여</title>
     {% include 'head.html' %}
+    <style>
+      .dark-background {
+          background-color: rgba(0, 0, 0, 0.6); 
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 375px;
+          height: 100%;
+          z-index: 2;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+      }
+      .hand{ animation: motion 0.4s 
+        linear 0s   
+        infinite alternate; 
+
+      }
+      @keyframes motion {
+        0% {margin-top: -110px;} /* 처음 위치 */
+        100% {margin-top: -90px;} /* 마지막 위치 */
+        }
+  </style>   
   </head>
   <body>
-    <div class="container">
+    <div class="container" style="position:relative">
+      <div class="dark-background" id="popup" style="display:none;">
+      </div>
       <div class="header">
         <form>
           <button class="btn-select" type="submit">
@@ -93,14 +118,16 @@
             />
           </div>
 
-          <div
+          <div class="account-box"
             style="position: relative; border: none; margin: -1px 0px -55px 0px"
           >
-            <div class="account">농협 20406578234712</div>
+            <div class="account" style="background:#fff">농협 20406578234712</div>
             <div class="select-wrapper" style="border: none">
               <button class="coppy-Button" id="copyButton">복사</button>
             </div>
           </div>
+          <img style="  position: absolute; z-index: 100000;  left: 50%; top: 20%; transform: translate(-50%, -40%);display:none;" src="{% static 'images/box_left.png'%}" alt="말풍선" class="speech-bubble2">
+
           <div class="enddate">2023/8/18 PM11:59</div>
         </div>
 
@@ -109,7 +136,7 @@
           <button
             class="start-Button"
             type="submit"
-            style="background: #b3b1b0"
+            style="background: #b3b1b0; position:relative;"
           >
             모든 입금 내역을 확인해주세요.
           </button>
@@ -119,17 +146,17 @@
         <p class="text">모금자 정보</p>
         <div class="supportinfo-container">
           <!-- 모금자 정보 for문 -->
-          <div class="info-text">
-            <div
-              style="
+          <div class="info-text" >
+            <div class="info-box"
+              style=" background:#fff;
                 margin-bottom: 10px;
                 border: 1px solid #333333;
                 filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
                 border-radius: 16px;
                 padding: 5px;
                 width: 308px;
-                margin: 3px 0px 10px 20px;
-              "
+                margin: 3px 0px 10px 20px;position:relative"
+              
             >
               <p style="font-size: 20px">아무개 | 20,000원</p>
               <p style="color: #949494; font-size: 18px">2023.08.14 17:50</p>
@@ -145,19 +172,21 @@
               </div>
             </div>
           </div>
-          <div class="info-text">
-            <div
+
+          <div class="info-text" >
+            <div  class="info-box"
               style="
+              background:#fff;
                 margin-bottom: 10px;
                 border: 1px solid #333333;
                 filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
                 border-radius: 16px;
                 padding: 5px;
                 width: 308px;
-                margin: 3px 0px 10px 20px;
+                margin: 3px 0px 10px 20px; position:relative;
               "
             >
-              <p style="font-size: 20px">홍길동 | 10,000원</p>
+              <p style="font-size: 20px;">홍길동 | 10,000원</p>
               <p style="color: #949494; font-size: 18px">2023.08.15 20:50</p>
               <div
                 onclick="showPopup('10')"
@@ -170,6 +199,8 @@
               >
                 대기
               </div>
+              <img style="width:80px; height:80px;z-index:100000; left: 260px; position:absolute;" src="{% static 'images/hand.png'%}" alt="" class="hand">
+
               <div
                 id="pop_info_10"
                 class="pop_wrap"
@@ -208,6 +239,7 @@
               </div>
             </div>
           </div>
+
         </div>
 
         <script>
@@ -366,6 +398,29 @@
           blockchain.style.border = "1px solid #b3b1b0";
         }
       }
+
+      const popup = document.getElementById("popup");
+      const button = document.querySelector('.start-Button');
+      const account = document.querySelector('.account-box');
+      const boxs = document.querySelectorAll('.info-box');
+      const content = document.querySelector('.content');
+      const hand = document.querySelector('.hand');
+      const b2 = document.querySelector('.speech-bubble2');
+
+
+      setTimeout(function () {
+          popup.style.display = "block";
+          content.scrollTop = content.scrollHeight; 
+          account.style.zIndex = "9999";
+          button.style.zIndex = "9999";
+          hand.style.display = "block";
+          b2.style.display = "block";
+
+          boxs.forEach(function (box) {
+            box.style.zIndex = "9999";
+         
+        });
+      }, 4000);
     </script>
   </body>
 </html>

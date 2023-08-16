@@ -23,10 +23,35 @@
 
     <title>별너울</title>
     {% include 'head.html' %}
+    <style>
+      .dark-background {
+          background-color: rgba(0, 0, 0, 0.6); 
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 375px;
+          height: 100vh;
+          z-index: 0;
+          display: flex;
+         
+      }
+      .hand{ animation: motion 0.4s 
+        linear 0s   
+        infinite alternate; 
+
+      }
+      @keyframes motion {
+        0% {margin-top: -40px;} /* 처음 위치 */
+        100% {margin-top: -20px;} /* 마지막 위치 */
+        }
+  </style>   
+
   </head>
   <body>
-    <div class="container">
-      <div class="content">
+    <div class="container" style="position:relative;">
+      <div class="dark-background" id="popup" style="display:none;">
+      </div>
+      <div class="content"> 
         <img
           class="back"
           src="{% static 'images/back.png'%}"
@@ -37,12 +62,14 @@
         <h2 class="support_h2">서포트 정보를 작성해주세요.</h2>
 
         <div class="register">
-          <input
-            class="title"
+          <img style="  position: absolute; z-index: 100000;  left: 50%; transform: translate(-50%, -90%);display:none" src="{% static 'images/box_left.png'%}" alt="말풍선" class="speech-bubble2">
+
+          <input class="title"
             placeholder="제목"
             type="text"
             name="title"
             id="title"
+            style="position: relative;"
           />
           <input
             class="goal"
@@ -50,21 +77,21 @@
             type="number"
             name="fundraising"
             id="fundraising"
+            style="position:relative"
           />
           <input
             data-placeholder="모금 종료 기간"
             required
             aria-required="true"
-            value="{startDateValue}"
-            className="{styles.selectDay}"
-            onChange="{StartDateValueHandler}"
+         
             class="custom-date"
             type="datetime-local"
             name="deadline"
             id="dead"
+            style="position:relative"
           />
 
-          <div style="position: relative; border: none; margin-bottom: 26px">
+          <div style="position: relative; border: none; margin-bottom: 26px" class="detail-box">
             <textarea
               class="detail"
               placeholder="내용"
@@ -89,13 +116,17 @@
               type="text"
               name="account"
               id="account"
+              style="position:relative"
+           
+
             />
             <select
               class="account-Button"
               onclick="return false;"
               name="bank"
-              value="{{ support.bank }}"
               id="bank"
+              style="position:relative"
+
             >
               <option value="우리">우리</option>
               <option value="농협">농협</option>
@@ -105,14 +136,19 @@
           </article>
           <button
             class="start-Button"
-            disabled
-            style="margin-top: 10px; background: #b3b1b0"
+          
+            style="margin-top: 10px; background: #b3b1b0;position:relative;"
             onclick="goNext()"
-          >
+            style="position:relative"
+            >
             항목을 모두 작성해 주세요
           </button>
+          <img style="width:80px; height:80px;z-index:100000; left: 260px; position:absolute;display:none;" src="{% static 'images/hand.png'%}" alt="손" class="hand">
+
         </div>
         <script>
+          const hand = document.querySelector('.hand'); 
+
           /* 버튼 활성화 */
           let inputs = document.querySelectorAll("input, textarea");
           let startButton = document.querySelector(".start-Button");
@@ -131,6 +167,8 @@
               startButton.disabled = false;
               startButton.style.backgroundColor = "#BC67FF";
               startButton.innerHTML = "시작하기";
+              hand.style.display="block";
+
             } else {
               startButton.disabled = true;
             }
@@ -145,11 +183,50 @@
           }
 
           function goNext(){
+            storeAccount(); 
             setTimeout(function() {
               window.location.href = '{% url 'user:tutorial_support_start_step_1' %}';
           }, 1000);
           }
-        </script>
+
+          const popup = document.getElementById("popup");
+          let inputs2 = document.querySelectorAll("input, select"); // Include select elements here
+          const button = document.querySelector('.start-Button');
+          const detail = document.querySelector('.detail-box');
+          const title = document.querySelector('.title');
+          const b2 = document.querySelector('.speech-bubble2');
+
+  
+  
+          setTimeout(function () {
+              popup.style.display = "block";
+              b2.style.display = "block";
+
+            
+              inputs2.forEach(function (input) {
+                input.style.zIndex = "9999"; 
+              });
+
+          }, 2000);
+
+        
+
+  const accountInput = document.getElementById('account');
+  accountInput.addEventListener('change', storeAccount);
+  const bankInput = document.getElementById('bank');
+  bankInput.addEventListener('change', storeBank);
+
+  function storeAccount() {
+    const accountValue = accountInput.value;
+    window.localStorage.setItem('account', accountValue);
+  
+  }
+
+  function storeBank() {
+    const bankValue = bankInput.value;
+    window.localStorage.setItem('bank', bankValue);
+  }
+</script>
       </div>
     </div>
   </body>
