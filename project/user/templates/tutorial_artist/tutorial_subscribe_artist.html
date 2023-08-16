@@ -28,10 +28,11 @@
             </button>
 
 
-            <form method="get" action="{% url 'user:tutorial_artist_list' %}">
+            <form method="get" action="{% url 'user:tutorial' %}">
                 {% csrf_token %}
                 <button type="submit" class="find-another-artist">다른 아티스트 찾으러 가기</button>
             </form>
+
         </div>
     </body>
 </html>
