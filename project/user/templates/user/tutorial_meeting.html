@@ -1,7 +1,7 @@
 {% extends 'base_no_nav.html' %}
 {% load static %}
 {% block content %}
-<img class="back" style="  left: 3px;top: 50px;"src="{% static 'images/back.png'%}" alt="이전" onclick="goBack()" style="margin-left:-45px;"></img>
+<img class="back" style="  left: 3px;top: 50px;"src="{% static 'images/back.png'%}" alt="이전" onclick="location.href='{% url 'user:tutorial_next' %}'" style="margin-left:-45px;"></img>
 
 <div class="button-container" style="margin-top:200px;">
     <a class="button" href="{% url 'user:tutorial_meeting_list' %}">모임 참여</a>
