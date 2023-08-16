@@ -4,7 +4,10 @@
 {% block content %}
 <div style="  justify-content:row;  display: flex; ">
   <img class="back" src="{% static 'images/back.png'%}" alt="이전" onclick="goBack()"></img>
+
   <h1 class="support_dtl_h1" style=" margin: 30px 0px 0px 70px;">{{ post.title }}</h1>
+
+
 </div>
 <div class="post-dtl-container">
         <div class="post-dtl-name">{{ post.author.userName }}</div>
