@@ -5,7 +5,9 @@
     <title>별너울</title>
 </head>
 <body>
-
- <button onclick="location.href='{% url 'user:tutorial_artist_list' %}'">다음</button>
+    <form method="get" action="{% url 'user:tutorial_artist' %}">
+        {% csrf_token %}
+        <button>다음</button>
+    </form>
 </body>
 </html>
