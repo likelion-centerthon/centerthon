@@ -1,95 +1,128 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
-    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 
-    <link rel="stylesheet" href="{% static 'css/base_meeting.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/header.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/footer.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/meeting_list.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/meeting_detail.css' %}?after" />
-    <link rel="stylesheet" href="{% static 'css/writed_meeting_list.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/meeting_completed_list.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/applyed_meeting_list.css' %}" />
+<head>
+  <meta charset="UTF-8" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+    rel="stylesheet">
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 
-
-    <link rel="stylesheet" href="{% static 'css/support_list.css' %}?after" />
-    <link rel="stylesheet" href="{% static 'css/support_form.css' %}?after" />
-
-    <link rel="stylesheet" href="{% static 'css/artist_info.css' %}?after" />
+  <link rel="stylesheet" href="{% static 'css/base_meeting.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/header.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/footer.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/meeting_list.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/meeting_detail.css' %}?after" />
+  <link rel="stylesheet" href="{% static 'css/writed_meeting_list.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/meeting_completed_list.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/applyed_meeting_list.css' %}" />
 
 
+  <link rel="stylesheet" href="{% static 'css/support_list.css' %}?after" />
+  <link rel="stylesheet" href="{% static 'css/support_form.css' %}?after" />
 
-      <title>중앙톤 프로젝트</title>
-    {% include 'head.html' %}
-   </head>
-  <body>
-      <div class="container" >
-          <div class="header">
+  <link rel="stylesheet" href="{% static 'css/artist_info.css' %}?after" />
+
+
+
+  <title>중앙톤 프로젝트</title>
+  {% include 'head.html' %}
+  <style>
+   .dark-background {
+    background-color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 375px;
+    height: 100vh;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #hidden-pointer {
+    display: none;
+    position: absolute;
+    animation: motion 1s linear infinite alternate;
+  }
+
+  @keyframes motion {
+    0% {
+      top: 26%;
+    }
+    100% {
+      top: 28%;
+    }
+  }
+  </style>
+</head>
+
+<body>
+  <div class="container" style="position:relative">
+    <div class="dark-background" id="popup" style="display:none;">
+    </div>
+    <div class="header">
+      <form>
+        <button class="btn-select" type="submit">
+          &nbsp; &nbsp;임영웅 •••
+        </button>
+      </form>
+      <div class="icon">
         <form>
-          <button class="btn-select" type="submit">
-            &nbsp; &nbsp;임영웅 •••
+          <button type="submit">
+            <img class="user" src="{% static 'images/user.png'%}" alt="이용행보" />
           </button>
         </form>
-        <div class="icon">
-          <form>
-            <button type="submit">
-              <img
-                class="user"
-                src="{% static 'images/user.png'%}"
-                alt="이용행보"
-              />
-            </button>
-          </form>
-          <form>
-            <button id="alarm-button">
-              <img
-                class="alarm"
-                src="{% static 'images/alarm.png'%}"
-                alt="알람"
-              />
-            </button>
-          </form>
-        </div>
+        <form>
+          <button id="alarm-button">
+            <img class="alarm" src="{% static 'images/alarm.png'%}" alt="알람" />
+          </button>
+        </form>
       </div>
-
-          <div class="content">
-      <title>중앙톤 프로젝트</title>
-    {% include 'head.html' %}
-   </head>
-  <body>
-    <div class="container">
-
-      <div style="margin-bottom: 5px; display: flex; align-items: center;" class="support_list_category">
-    <button class ="allsupport" style="width:160px; margin-left:15px; font-size:20px;">모임 전체</button>
-    <button class ="mysupport" style="width:160px; margin-left:24px; font-size:20px;border-bottom:3px solid #000000;" >나의 모임</button>
-</div>
-
-    <div class="meeting-button">
-        <button class="write-button"style="  border: 1px solid #bc67ff;color:#bc67ff;" >작성</button>
-        <button class="apply-button" onclick="location.href='{% url 'user:tutorial_meeting_apply' %}'">신청</button>
-        <button class="guardian-button">보호자</button>
-        <div  style="margin-left:285px; margin-top:-25px;" >
-            <a href="#;" onClick="zoomIn();"><img style="width:20px; height:20px;"src="{% static 'images/zoomin.png'%}" alt="확대"></a>
-              <a href="#;" onClick="zoomOut();"><img style="width:20px; height:20px;"src="{% static 'images/zoomout.png'%}" alt="축소"></a>
-            </div>
     </div>
-        <div class="meeting-search-form">
+
+    <div class="content">
+      <title>중앙톤 프로젝트</title>
+      {% include 'head.html' %}
+      </head>
+
+      <body>
+        <div class="container">
+
+          <div style="margin-bottom: 5px; display: flex; align-items: center;" class="support_list_category">
+            <button class="allsupport" style="width:160px; margin-left:15px; font-size:20px;">모임 전체</button>
+            <button class="mysupport"
+              style="width:160px; margin-left:24px; font-size:20px;border-bottom:3px solid #000000;">나의 모임</button>
+          </div>
+
+          <div class="meeting-button">
+            <button class="write-button"
+              style="  border: 1px solid #bc67ff;color:#bc67ff; position: relative;">작성</button>
+            <button class="apply-button" style="position: relative;"
+              onclick="location.href='{% url 'user:tutorial_meeting_apply' %}'">신청</button>
+            <button class="guardian-button">보호자</button>
+            <div style="margin-left:285px; margin-top:-25px;">
+              <a href="#;" onClick="zoomIn();"><img style="width:20px; height:20px;"
+                  src="{% static 'images/zoomin.png'%}" alt="확대"></a>
+              <a href="#;" onClick="zoomOut();"><img style="width:20px; height:20px;"
+                  src="{% static 'images/zoomout.png'%}" alt="축소"></a>
+            </div>
+          </div>
+          
+          <div class="meeting-search-form">
             <label for="searchInput" style="font-size:17px;">신청자 검색:</label>
             <input type="text" id="searchInput" name="search" placeholder="신청자명을 검색하세요" style="text-indent:0px;">
-         <button type="submit">검색</button>
-    </div>
+            <button type="submit">검색</button>
+          </div>
 
 
-    <div class="meeting-writed">
-        <div class="writed-lost">
-            <h2>내가 작성한 모임 제목</a></h2>
-            <div class="member-info">
+          <div class="meeting-writed">
+            <div class="writed-lost" style="position: relative;">
+              <h2>내가 작성한 모임 제목</a></h2>
+              <div class="member-info">
                 <h3>홍길동</h3>
                 <h3>대기</h3>
                     <button class="confirm-button" onclick="location.href='{% url 'user:tutorial_meeting_userWorking' %}'">신청자 정보 확인</button>
@@ -98,46 +131,53 @@
                     <button class="accept" type="submit">수락하기</button>
                     <button class="refuse" type="submit">거부하기</button>
             </div>
+            <img id="hidden-img" src="{% static 'images/purple.png' %}"
+              style=" width: 200px; display: none; position: absolute; z-index: 8888; top: 23%; left: 67%; transform: translate(-50%, -50%);"
+              alt="이미지">
+            <img id="hidden-pointer" src="{% static 'images/pointer.png' %}"
+              style=" width: 50px; display: none; position: absolute; z-index: 10000; top: 30%; left: 32%; transform: translate(-50%, -50%);"
+              alt="이미지">
+          </div>
         </div>
 
-    </div>
-      </div>
+        <script>
+          function goBack() {
+            window.history.back();
+          }
+        </script>
+      </body>
 
-<script>
-function goBack() {
-    window.history.back();
-}
-</script>
-  </body>
 </html>
-          </div>
-         {% load static %}
+</div>
+{% load static %}
 
 <div class="footer">
-    <div class="singer">
-        <img id="singer-img" src="{% static 'images/singer.png'%}" alt="가수 이미지"></img>
-      <div class="label" >내 가수</div>
-    </div>
-    <div class="list">
-        <img id="list-img" src="{% static 'images/list.png'%}" alt="게시글 이미지"></img>
-        <div class="label">게시판</div>
-    </div>
-    <div class="group" >
-        <img id="group-img" style="width:58px; height:58px; margin-top:-6px;"src="{% static 'images/purplegroup.png'%}" alt="그룹 이미지" ></img>
-      <div class="label" style="margin-top:-1px;color:#BC67FF">모임</div>
-    </div>
-    <div class="support">
-        <img id="support-img" style="width:60px; height:60px;margin-top:-5px;margin-left:-14px;"src="{% static 'images/support.png'%}" alt="서포트 이미지" ></img>
-      <div class="label"style="margin-top:-3px;margin-left:-15px;">서포트</div>
-    </div>
-
+  <div class="singer">
+    <img id="singer-img" src="{% static 'images/singer.png'%}" alt="가수 이미지"></img>
+    <div class="label">내 가수</div>
+  </div>
+  <div class="list">
+    <img id="list-img" src="{% static 'images/list.png'%}" alt="게시글 이미지"></img>
+    <div class="label">게시판</div>
+  </div>
+  <div class="group">
+    <img id="group-img" style="width:58px; height:58px; margin-top:-6px;" src="{% static 'images/purplegroup.png'%}"
+      alt="그룹 이미지"></img>
+    <div class="label" style="margin-top:-1px;color:#BC67FF">모임</div>
+  </div>
+  <div class="support">
+    <img id="support-img" style="width:60px; height:60px;margin-top:-5px;margin-left:-14px;"
+      src="{% static 'images/support.png'%}" alt="서포트 이미지"></img>
+    <div class="label" style="margin-top:-3px;margin-left:-15px;">서포트</div>
   </div>
 
-  <script>
-    //하단바 아이콘 변경
-    function handleImageHover(elementId, newImageSrc) {
-      const imgElement = document.getElementById(elementId);
-      imgElement.src = "{% static 'images/' %}" + newImageSrc;
+</div>
+
+<script>
+  //하단바 아이콘 변경
+  function handleImageHover(elementId, newImageSrc) {
+    const imgElement = document.getElementById(elementId);
+    imgElement.src = "{% static 'images/' %}" + newImageSrc;
   }
 
   const singerImg = document.getElementById("singer-img");
@@ -172,35 +212,58 @@ function goBack() {
     handleImageHover("support-img", "support.png");
   });
 
-//하단바 h3 색상 변경
-document.getElementById("singer-img").addEventListener("mouseover", function () {
-  document.querySelector(".singer .label").classList.add("colored");
-});
+  //하단바 h3 색상 변경
+  document.getElementById("singer-img").addEventListener("mouseover", function () {
+    document.querySelector(".singer .label").classList.add("colored");
+  });
 
-document.getElementById("singer-img").addEventListener("mouseout", function () {
-document.querySelector(".singer .label").classList.remove("colored");
-});
+  document.getElementById("singer-img").addEventListener("mouseout", function () {
+    document.querySelector(".singer .label").classList.remove("colored");
+  });
 
-document.getElementById("list-img").addEventListener("mouseover", function () {
-document.querySelector(".list .label").classList.add("colored");
-});
+  document.getElementById("list-img").addEventListener("mouseover", function () {
+    document.querySelector(".list .label").classList.add("colored");
+  });
 
-document.getElementById("list-img").addEventListener("mouseout", function () {
-document.querySelector(".list .label").classList.remove("colored");
-});
+  document.getElementById("list-img").addEventListener("mouseout", function () {
+    document.querySelector(".list .label").classList.remove("colored");
+  });
 
 
-document.getElementById("support-img").addEventListener("mouseover", function () {
-  document.querySelector(".support .label").classList.add("colored");
+  document.getElementById("support-img").addEventListener("mouseover", function () {
+    document.querySelector(".support .label").classList.add("colored");
   });
 
   document.getElementById("support-img").addEventListener("mouseout", function () {
-  document.querySelector(".support .label").classList.remove("colored");
+    document.querySelector(".support .label").classList.remove("colored");
   });
 
+
+  // const content = document.querySelector('.content');
+  const popup = document.getElementById("popup"); //배경 어둡게 
+  const writeButton = document.querySelector('.write-button'); //보여주고 싶은 영역
+  const writedLost = document.querySelector('.writed-lost'); //보여주고 싶은 영역
+  const applybutton = document.querySelector('.apply-button'); //보여주고 싶은 영역
+  const hiddenImg = document.getElementById("hidden-img"); // 이미지 요소 추가
+  const hiddenImg2 = document.getElementById("hidden-pointer"); // 이미지 요소 추가
+
+  setTimeout(function () { //2초 뒤에 배경 어둡게 + 영역 보여짐
+    popup.style.display = "block";
+    writeButton.style.zIndex = "9990";
+    writedLost.style.zIndex = "9990";
+    hiddenImg.style.display = "block"; // 이미지를 보이도록 스타일 변경
+    setTimeout(function () {
+      writeButton.style.zIndex = "1";
+      writedLost.style.zIndex = "1";
+      applybutton.style.zIndex = "9999";
+      hiddenImg2.style.display = "block"; // 이미지를 보이도록 스타일 변경
+
+    }, 5000);
+  }, 3000);
+
+
+
 </script>
-
-      </div>
-
-  </body>
+</div>
+</body>
 </html>
