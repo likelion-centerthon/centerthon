@@ -7,27 +7,27 @@
     <h1 class="support_h1" >서포트 수정하기</h1>
 
 <h2 class="spt_crt_h2">수정할 정보를 모두 입력해 주세요.</h2>
-<form class="register" method="post" action="{% url 'support:update_support' pk=artist.pk spt_pk=support.pk %}">
+<form class="register" method="post" action="{% url 'support:update_support' pk=artist.pk spt_pk=support.pk %}" enctype="multipart/form-data" >
     {% csrf_token %}
     <input  class="title" placeholder="제목"  type="text" name="title" id="title" value="{{support.title}}">
     <input class="goal" placeholder="목표 모금액"  type="number" name="fundraising" id="fundraising" value="{{support.fundraising}}">
     <input   data-placeholder="모금 종료 기간" required 
     aria-required="true"
     className={styles.selectDay}
-    onChange={StartDateValueHandler}  class="custom-date" type="datetime-local" name="deadline" id="dead" value="{{support.deadline}}">
+    onChange={StartDateValueHandler}  class="custom-date" type="datetime-local" name="deadline" id="dead" value="{{support.deadline|date:'Y-m-d\TH:i'}}">
     <div style="position: relative; border:none; margin-bottom: 26px;">
-      <textarea class="detail" placeholder="내용" name="body" id="body"></textarea>
+      <textarea class="detail" placeholder="내용" name="body" id="body">{{support.body}}</textarea>
       <div class="select-wrapper " style="border:none; margin-top:-65px;">
-  
+
       <label for="image" class="custom-addImg-Button" >사진</label>
-      <input  style="display:none" type="file" name="image" value="{{ support.image }}" id="image">
+      <input  style="display:none" type="file" name="image" id="image">
      </div>
      </div>
      <article>
         <div  style="position: relative; border:none;">
-          <input class="account" placeholder="계좌번호" type="text" name="account" id="account">
+          <input class="account" placeholder="계좌번호" type="text" name="account" id="account" value="{{support.account}}" disabled>
           <div class="select-wrapper " style="border:none; margin-top:10px;">
-            <select class="account-Button" onclick="return false;" name="bank" value="{{ support.bank }}" id="bank">
+            <select class="account-Button" onclick="return false;" name="bank" value="{{ support.bank }}" id="bank" disabled>
               <option value="우리">우리</option>
               <option value="농협">농협</option>
               <option value="신한">신한</option>
@@ -69,7 +69,7 @@
   function goBack() {
     window.history.back();
   }
-  
+
 </script>
 {% endblock %}
 {% endwith %}
