@@ -10,16 +10,8 @@
       <link rel="stylesheet" href="{% static 'css/base.css' %}?after" />
       <link rel="stylesheet" href="{% static 'css/header.css' %}?after" />
       <link rel="stylesheet" href="{% static 'css/footer.css' %}?after" />
-      <link rel="stylesheet" href="{% static 'css/support_form.css' %}?after" />
-      <link rel="stylesheet" href="{% static 'css/support_create.css' %}?after" />
-      <link rel="stylesheet" href="{% static 'css/support_list.css' %}?after" />
-      <link rel="stylesheet" href="{% static 'css/support_dtl.css' %}?after" />
-      <link rel="stylesheet" href="{% static 'css/post_list.css' %}?after" />
-      <link rel="stylesheet" href="{% static 'css/post_detail.css' %}?after" />
+      <link rel="stylesheet" href="{% static 'css/alert_list.css' %}?after" />
 
-
-      <link rel="stylesheet" href="{% static 'css/artist_info.css' %}?after" />
-      <link rel="stylesheet" href="{% static 'css/use_working.css' %}?after" />
 
 
       <title>별너울</title>
@@ -30,10 +22,11 @@
            {% include 'header.html' %}
 
            <div class="content">
+            
                {% block content %}
                {% endblock %}
            </div>
-          {% include 'list_footer.html' %}
+          {% include 'footer.html' %}
        </div>
 
    </body>

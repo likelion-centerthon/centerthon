@@ -1,14 +1,7 @@
 {% extends 'base_alert.html' %}
 {% load static %}
 {% block content %}
-<link rel="stylesheet" href="{% static 'css/header.css' %}" />
 
-
-<script>
-  function goBack() {
-    window.history.back();
-}
-</script>
     <div class="content-alert">
     <div style="  justify-content:row;  display: flex; ">
       <h1 class="support_dtl_h1" style=" margin: 18px 0px 0px -120px;">{{ post.title }}</h1>
@@ -26,23 +19,7 @@
     </div>
     {% endfor %}
   </div>
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const contentAlert = document.querySelector(".content");
-      const container = document.querySelector(".container");
-      const body = document.querySelector("body"); 
-      
-    
-      body.addEventListener("click", function (event) {
-        if (!contentAlert.contains(event.target) && !container.contains(event.target)) {
-          contentAlert.style.display = "none";
-          window.history.back(); 
-        }
-      });
-    });
-    
-    </script>
-    
+
     
 
 {% endblock %}

@@ -115,20 +115,20 @@ border:2px solid white;"onclick="location.href='{% url 'user:tutorial_artist' %}
      
     </div>
 
+    <script>
+      const ment=document.querySelector('.ment');
+      const hand=document.querySelector('.hand');
+  
+      setTimeout(function(){
+        ment.innerHTML="노란색 손이 가리키는 캐릭터 클릭 후 아티스트 게시판 설명을 읽어보세요.";
+      },5000)
+      setTimeout(function(){
+          ment.innerHTML="게시판 설명을 다 읽었다면 아티스트 튜토리얼을 진행하러 넘어가기 버튼을 클릭하세요.";
+          hand.style.top = "120px"; 
+        },15000)
+        
+   </script>
  </div>
- </div>
- 
-<script>
-    const ment=document.querySelector('.ment');
-    const hand=document.querySelector('.hand');
 
-    setTimeout(function(){
-      ment.innerHTML="노란색 손이 가리키는 캐릭터 클릭 후 아티스트 게시판 설명을 읽어보세요.";
-    },5000)
-    setTimeout(function(){
-        ment.innerHTML="게시판 설명을 다 읽었다면 아티스트 튜토리얼을 진행하러 넘어가기 버튼을 클릭하세요.";
-        hand.style.top = "120px"; 
-      },15000)
- </script>
  </body>
  </html>
