@@ -55,13 +55,29 @@
         0% {margin-top: -100px;} /* 처음 위치 */
         100% {margin-top: -80px;} /* 마지막 위치 */
         }
-  
+        .countdown-circle {
+          width: 60px;
+          height: 60px;
+          border-radius: 50%;
+         
+          position: relative;
+          animation: countdown-circle-shrink 10s linear infinite;
+          background:#fff;
+        }
+        
   </style>
   </head>
   <body>
     <div class="container" style="position:relative; ">
       
       <div class="dark-background" id="popup" style="display:none;">
+        <div  class="countdown-container"style="font-size:35px; font-weight:700;z-index: 11199;position: absolute; width:80px;  transform: translate(10%, 90%); margin-left:280px; margin-top:-25px; padding:10px; ">
+          <div class="countdown-circle" id="countdown-circle">
+            <div class="countdown-time" id="countdown-time" style="text-align:center; line-height:150%;"></div>
+          </div>
+        
+        </div>
+        
         <img style="  position: relative; z-index: 100000;  left: 50%; transform: translate(-50%, 70%);display:none;" src="{% static 'tutorial/support_step4_1.png'%}" alt="말풍선" class="speech-bubble1">
         <img style="  position: absolute; z-index: 100000;  left: 50%; transform: translate(-50%, -90%);display:none" src="{% static 'tutorial/support_step4_2.png'%}" alt="말풍선" class="speech-bubble2">
 
@@ -316,7 +332,26 @@
       const hand = document.querySelector('.hand');
       const backbutton = document.querySelector('.back-button');
       content.style.overflow = "hidden";
+/*시간 계산 함수*/
+const countdownTime = document.getElementById("countdown-time");
+const countdownContainer = document.querySelector(".countdown-container");
 
+function startCountdown(seconds) {
+
+let time = seconds;
+const countdownInterval = setInterval(function () {
+  time -= 1;
+  if (time >= 0) {
+    countdownTime.innerHTML = `${time}<span style="font-size:18px;">초</span>`;
+  } else {
+    clearInterval(countdownInterval);
+  }
+}, 1000);
+}
+
+
+startCountdown(7);
+      
       setTimeout(function () {
         percent.style.zIndex = "9999";
         popup.style.display = "block";
@@ -330,7 +365,10 @@
       }, 1000);
     
     
+      setTimeout(()=>{
+        startCountdown(10);
     
+    }, 7000)
       setTimeout(function () {
         content.scrollTop = content.scrollHeight; 
         container.style.zIndex="9999";
@@ -343,7 +381,7 @@
         
         
       }, 8000);
-   
+    
      setTimeout(function(){
       b2.src = "{% static 'tutorial/support_step4_3.png'%}";
       const blockchainDiv = document.getElementById("blockchain-11");
@@ -353,7 +391,7 @@
         backbutton.style.zIndex="9999";
 
       };
-
+      countdownContainer.style.display="none";
      }, 18000)
     </script>
   </body>

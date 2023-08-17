@@ -47,11 +47,26 @@
           top: 35%;
         }
       }
+      .countdown-circle {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+       
+        position: relative;
+        animation: countdown-circle-shrink 10s linear infinite;
+        background:#fff;
+      }
       </style>
    </head>
   <body>
     <div class="container" style="position:relative">
         <div class="dark-background" id="popup" style="display:none;">
+          <div  class="countdown-container"style="font-size:35px; font-weight:700;z-index: 11199;position: absolute; width:80px;  transform: translate(10%, 90%); margin-left:280px; margin-top:-25px; padding:10px; ">
+            <div class="countdown-circle" id="countdown-circle">
+              <div class="countdown-time" id="countdown-time" style="text-align:center; line-height:150%;"></div>
+            </div>
+          
+          </div>
         </div>
       <div class="content">
         <img id="hidden-img" src="{% static 'tutorial/artist_step1_1.png' %}"
@@ -130,6 +145,8 @@
                     popup.style.display = "block";
                     trot.style.zIndex = "1";
                     hiddenImg.style.display = "none";
+                    countdownContainer.style.display="none";
+
                     setTimeout(function () {
                         popup.style.display = "block";
                         hero.style.zIndex = "9999";
@@ -140,7 +157,23 @@
                 }, 7000);
             }, 1000);
 
-    
+    /*시간 계산 함수*/
+const countdownTime = document.getElementById("countdown-time");
+const countdownContainer = document.querySelector(".countdown-container");
+
+function startCountdown(seconds) {
+
+let time = seconds;
+const countdownInterval = setInterval(function () {
+  time -= 1;
+  if (time >= 0) {
+    countdownTime.innerHTML = `${time}<span style="font-size:18px;">초</span>`;
+  } else {
+    clearInterval(countdownInterval);
+  }
+}, 1000);
+}
+startCountdown(8);
 
 
    </script>
