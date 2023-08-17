@@ -165,7 +165,7 @@ function hidePopup(formId) {
   });
 
   function goBack() {
-    window.history.back();
+    window.location.href="{% url 'support:support_list' pk=artist.pk %}"
   }
 
   /*블록체인 아코디언*/
