@@ -3,7 +3,7 @@
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
-    <link rel="preconnect" href="https://fonts.googleapis.com%22%3E/
+    <link rel="preconnect" href="https://fonts.googleapis.com%22%3E/">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
@@ -20,7 +20,7 @@
        background:#fff;
         padding: 10px;
         box-sizing: border-box;
-        margin-top:300px;
+        margin-top:190px;
         border:none;
     }
     .tooltip-link[data-tooltip]:not([data-tooltip=""])::before {
@@ -28,15 +28,17 @@
         position: absolute;
         background-color: rgba(0,0,0,0.5);
         color: #fff;
+        font-size:18px;
         padding: 10px 7px;
         border-radius: 10px;
         max-width: 300px;
         width: 250%;
         left: -24%;
-        bottom: 120%;
+        bottom: 100%;
         opacity: 0;
         transition: all 0.5s linear;
-        padding:30px;
+        padding:25px;
+        
     }
     .tooltip-link[data-tooltip]:not([data-tooltip=""])::after {
         content: '';
@@ -55,9 +57,9 @@
         transition: all 0.5s linear;
      
     }
-    .tooltip-link:hover[data-tooltip]:not([data-tooltip=""])::before
-    , .tooltip-link:hover[data-tooltip]:not([data-tooltip=""])::after {
-        opacity: 1;
+    .tooltip-link:focus[data-tooltip]:not([data-tooltip=""])::before
+    , .tooltip-link:focus[data-tooltip]:not([data-tooltip=""])::after {
+        opacity: 100;
     }
   
         .box{
@@ -65,7 +67,7 @@
         height: 120px;
         text-align: center;
        
-        padding-top: 30px;
+        
         animation: up-down 0.5s infinite ease-in-out alternate;
       }
       
@@ -84,25 +86,47 @@
 <body>
 <div class="container" >
  <div class="content">
-    <h3> 튜토리얼 시작하기 전 간단한 연습해볼까요?</h3>
-    <h3>손 모양 아이콘이 나오는 캐릭터를 클릭해 주세요.</h3>
-    <h3>서포트 게시판에 대한 설명이 나와요</h3>
-   <button class="tooltip-link" data-tooltip="
+  <h2 style="margin:80px 30px 40px 30px;" class="ment"> 튜토리얼 들어가기 전에 서포트 게시판 설명 보면서 간단한 연습 게임해볼까요?</h2>
+  
+   <button class="tooltip-link"  data-tooltip="
    
    서포트 페이지에서는 여러분이 좋아하는 아티스트에게 후원할 수 있어요 
-   온체인 블록을 활용하여 출금 내역까지 투명하게 공개되어 안심하고 입금할 수 있어요
-   이제 같이 서포트 게시판 사용법을 배우러 가볼까요?">
-    <img src="{% static 'images/star.png'%}" alt="말풍선" class="speech-bubble"  style="width:200px;height:200px; ">
+   온체인 블록을 활용하여 출금 내역까지 투명하게 공개되어 안심하고 입금할 수 있어요">
+    <img src="{% static 'images/star.png'%}" alt="말풍선" class="star"  style="width:180px;height:180px; ">
 </button>
-<img style="width:80px; height:80px;  position:relative; margin-left:50px; margin-top:-450px;" src="{% static 'images/hand.png'%}" alt="" class="box">
+<img style="width:70px; height:80px;  position:relative; margin-left:60px; margin-top:-450px;" src="{% static 'images/hand.png'%}" alt="" class="box">
+<button  class="button" style=" width: 300px; 
+height: 40px;
+box-shadow: 0px 0px 4px #bc67ff;
+border-radius: 50px;
+text-align: center;
+margin: 0 auto;
+font-size: 20px;
+line-height: 24px;
+color: #555555;
+font-weight:500;
+margin-left:calc(75px / 2);
+margin-bottom:10px;
+background-color: transparent;
+border:2px solid white;"onclick="location.href='{% url 'user:tutorial_support' %}'">넘어가기</button>
 
 </div>
     <div>
      
     </div>
 
-    <button onclick="location.href='{% url 'user:tutorial_support' %}'">넘어가기</button>
  </div>
  </div>
+ 
+<script>
+    const ment=document.querySelector('.ment');
+    setTimeout(function(){
+      ment.innerHTML="노란색 손이 가리키는 캐릭터 클릭 후 서포트 게시판 설명을 읽어보세요.";
+    },3000)
+    setTimeout(function(){
+      ment.innerHTML="게시판 설명을 다 읽었다면 서포트 튜토리얼을 진행하러 넘어가기 버튼을 클릭하세요.";
+    }
+    ,13000)
+ </script>
  </body>
  </html>
