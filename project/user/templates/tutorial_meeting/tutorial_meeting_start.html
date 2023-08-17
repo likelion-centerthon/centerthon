@@ -37,8 +37,8 @@
       </div>
 
       <div class="content">
-        <img id="hidden-img" src="{% static 'images/purple.png' %}"
-        style=" width: 240px; display: none; position: absolute; z-index: 9999; top: 13%; left: 50%; transform: translate(-50%, -50%);"
+        <img id="hidden-img" src="{% static 'tutorial/meet_step2_2.png' %}"
+        style=" width: 260px; display: none; position: absolute; z-index: 9999; top: 17%; left: 50%; transform: translate(-50%, -50%);"
         alt="이미지">
     <img class="back" src="{% static 'images/back.png'%}" alt="이전" onclick="goBack()"></img>
       <h1 class="h1-meeting">모임 작성하기</h1>
@@ -135,6 +135,7 @@
     const hiddenImg = document.getElementById("hidden-img"); // 이미지 요소 추가
     const image = document.querySelector('.addImg-Button'); //보여주고 싶은 영역
     const wrapper = document.querySelector('.select-wrapper'); //보여주고 싶은 영역
+    const initialScrollPosition = content.scrollTop;
 
     setTimeout(function () { 
         popup.style.display = "block";
@@ -144,8 +145,9 @@
         button.style.zIndex = "9990";
         image.style.zIndex = "9990";
         wrapper.style.zIndex = "9990";
-        content.scrollTop = content.scrollHeight;
-    }, 3000);
+        hiddenImg.style.display = "block";
+        content.scrollTop = initialScrollPosition;
+    }, 1000);
 </script>
 
       </div>
