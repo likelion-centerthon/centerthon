@@ -40,6 +40,21 @@
       align-items: center;
       justify-content: center;
     }
+
+    #hidden-pointer {
+        display: none;
+        position: absolute;
+        animation: motion 1s linear infinite alternate;
+      }
+    
+      @keyframes motion {
+        0% {
+          top: 88%;
+        }
+        100% {
+          top: 90%;
+        }
+      }
   </style>
    </head>
   <body>
@@ -97,8 +112,11 @@
         <br/> 사람들과 다양한 이야기를
         <br/> 나누어보세요!</p>
 
-        <img id="hidden-img" src="{% static 'images/purple.png' %}"
-        style=" width: 240px; display: none; position: absolute; z-index: 9999; top: 56%; left: 50%; transform: translate(-50%, -50%);"
+        <img id="hidden-img" src="{% static 'tutorial/meetwrite_step2_1.png' %}"
+        style=" display: none; position: absolute; z-index: 9999; top: 56%; left: 50%; transform: translate(-50%, -50%);"
+        alt="이미지">
+        <img id="hand" src="{% static 'tutorial/hand.png' %}"
+        style=" width: 70px; display: none; position: absolute; z-index: 10000; top: 90%; left: 70%; transform: translate(-50%, -50%);"
         alt="이미지">
         
     <div class="artist_image_2">
@@ -221,13 +239,17 @@ document.getElementById("support-img").addEventListener("mouseover", function ()
   const popup = document.getElementById("popup"); //배경 어둡게 
     const StartButton = document.querySelector('.start-Button'); //보여주고 싶은 영역
     const hiddenImg = document.getElementById("hidden-img"); // 이미지 요소 추가
+    const hand = document.getElementById("hand"); // 이미지 요소 추가
 
     setTimeout(function () { //2초 뒤에 배경 어둡게 + 영역 보여짐
         popup.style.display = "block";
         StartButton.style.zIndex = "9990";
         content.scrollTop = content.scrollHeight;
+        content.style.overflow = "hidden";
         hiddenImg.style.display = "block"; // 이미지 보여주기
-    }, 3000);
+        hand.style.display = "block";  
+        hand.style.animation = "motion 1s linear infinite alternate";
+    }, 1000);
 </script>
 
       </div>

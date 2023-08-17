@@ -51,10 +51,10 @@
 
   @keyframes motion {
     0% {
-      top: 26%;
+      top: 74%;
     }
     100% {
-      top: 28%;
+      top: 76%;
     }
   }
   </style>
@@ -124,11 +124,11 @@
                     <button class="accept" type="submit">수락하기</button>
                     <button class="refuse" type="submit">거부하기</button>
             </div>
-            <img id="hidden-img" src="{% static 'images/purple.png' %}"
-              style=" width: 200px; display: none; position: absolute; z-index: 8888; top: -56%; left: 67%; transform: translate(-50%, -50%);"
+            <img id="hidden-img" src="{% static 'tutorial/meet_step3_1.png' %}"
+              style=" display: none; position: absolute; z-index: 8888; top: 170%; left: 50%; transform: translate(-50%, -50%);"
               alt="이미지">
-            <img id="hidden-pointer" src="{% static 'images/pointer.png' %}"
-              style=" width: 50px; display: none; position: absolute; z-index: 10000; top: 30%; left: 32%; transform: translate(-50%, -50%);"
+              <img id="hand" src="{% static 'tutorial/hand.png' %}"
+              style=" width: 70px; display: none; position: absolute; z-index: 10000; top: 87%; left: 65%; transform: translate(-50%, -50%);"
               alt="이미지">
           </div>
         </div>
@@ -239,13 +239,16 @@
   const applybutton = document.querySelector('.apply-button'); //보여주고 싶은 영역
   const hiddenImg = document.getElementById("hidden-img"); // 이미지 요소 추가
   const hiddenImg2 = document.getElementById("hidden-pointer"); // 이미지 요소 추가
+  const hand = document.getElementById("hand"); // 이미지 요소 추가
 
   setTimeout(function () { //2초 뒤에 배경 어둡게 + 영역 보여짐
     popup.style.display = "block";
     writeButton.style.zIndex = "9990";
     writedLost.style.zIndex = "9990";
     hiddenImg.style.display = "block"; // 이미지를 보이도록 스타일 변경
-  }, 3000);
+    hand.style.display = "block";  
+    hand.style.animation = "motion 1s linear infinite alternate";
+  }, 1000);
 
     // setTimeout(function () {
     //   writeButton.style.zIndex = "1";
