@@ -52,13 +52,15 @@
               alt="coin"
               width="100px"
             />
+
             <div style="margin-top: 50px; color: #8a8a8a">
               <span id="countdown">7</span>초 뒤 페이지가 자동으로 넘어갑니다.
             </div>
+            <img style="  position: relative; z-index: 100000;   left: 50%; transform: translate(-50%, 5%);" src="{% static 'tutorial/support2_step3.png'%}" alt="말풍선" class="speech-bubble">
+
           </div>
         </div>
       </div>
-      <img style="  position: absolute; z-index: 100000;  top: 80%; left: 50%; transform: translate(-50%, -90%);" src="{% static 'images/box_left_up.png'%}" alt="말풍선" class="speech-bubble">
 
     </div>
     <script>
@@ -85,6 +87,10 @@
       const popup = document.getElementById("popup"); //배경 어둡게 
       const supportbox = document.querySelector('.support_list_box'); //보여주고 싶은 영역
     
+
+      const content = document.querySelector('.content');
+      content.style.overflow = "hidden";
+
       setTimeout(function () { //4초 뒤에 배경 어둡게 + 영역 보여짐
         popup.style.display = "block"; 
         supportbox.style.zIndex = "9999";

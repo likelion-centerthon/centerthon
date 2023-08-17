@@ -49,8 +49,8 @@
 
       }
       @keyframes motion {
-        0% {margin-top: -190px;} /* 처음 위치 */
-        100% {margin-top: -170px;} /* 마지막 위치 */
+        0% {margin-top: -40px;} /* 처음 위치 */
+        100% {margin-top: -20px;} /* 마지막 위치 */
         }
   </style>   
 
@@ -58,6 +58,8 @@
   <body>
     <div class="container" style="position:relative">
       <div class="dark-background" id="popup" style="display:none;">
+        <img style="  position: relative; z-index: 100000;  left: 50%;  transform: translate(-50%, 70%);display:none" src="{% static 'tutorial/support2_step1.png'%}" alt="말풍선" class="speech-bubble2">
+
       </div>
             <div class="header">
         <form>
@@ -86,7 +88,7 @@
           </form>
         </div>
       </div>
-      <div class="content">
+      <div class="content" style="z-index:1">
         <div
           style="margin-bottom: 5px; display: flex; align-items: center"
           class="support_list_category"
@@ -188,10 +190,9 @@
         >
           서포트 작성하기
         </button>
-        <img style="  position: absolute; z-index: 100000;  left: 50%; top: 45%; transform: translate(-50%, -40%);display:none" src="{% static 'images/box_left.png'%}" alt="말풍선" class="speech-bubble2">
+        <img style="width:70px; height:70px;z-index:100000; left: 260px; position:relative;display:none;" src="{% static 'images/hand.png'%}" alt="손" class="hand">
 
       </div>
-      <img style="width:70px; height:80px;z-index:100000; left: 260px; position:absolute;display:none;" src="{% static 'images/hand.png'%}" alt="손" class="hand">
 
       <div class="footer">
         <div class="singer">
@@ -252,7 +253,9 @@
         button.style.zIndex = "9999";
         b2.style.display = "block"; 
         hand.style.display="block";
-      }, 2000); 
+        b2.style.Top = "150px";
+
+      }, 1000); 
     
       
     </script>

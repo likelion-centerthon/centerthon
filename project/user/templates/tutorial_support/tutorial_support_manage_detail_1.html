@@ -49,14 +49,16 @@
 
       }
       @keyframes motion {
-        0% {margin-top: -110px;} /* 처음 위치 */
-        100% {margin-top: -90px;} /* 마지막 위치 */
+        0% {margin-top: -90px;} /* 처음 위치 */
+        100% {margin-top: -70px;} /* 마지막 위치 */
         }
   </style>   
   </head>
   <body>
     <div class="container" style="position:relative">
       <div class="dark-background" id="popup" style="display:none;">
+        <img style="  position: relative; z-index: 100000;  left: 50%;  transform: translate(-50%, 35%);display:none;" src="{% static 'tutorial/support3_step2.png'%}" alt="말풍선" class="speech-bubble2">
+
       </div>
       <div class="header">
         <form>
@@ -85,7 +87,7 @@
           </form>
         </div>
       </div>
-      <div class="content">
+      <div class="content" style="z-index:1">
         <div style="justify-content: row; display: flex; margin-bottom: 10px">
           <img
             class="back"
@@ -126,7 +128,6 @@
               <button class="coppy-Button" id="copyButton">복사</button>
             </div>
           </div>
-          <img style="  position: absolute; z-index: 100000;  left: 50%; top: 20%; transform: translate(-50%, -40%);display:none;" src="{% static 'images/box_left.png'%}" alt="말풍선" class="speech-bubble2">
 
           <div class="enddate">2023/8/18 PM11:59</div>
         </div>
@@ -199,7 +200,6 @@
               >
                 대기
               </div>
-              <img style="width:70px; height:80px;z-index:100000; left: 260px; position:absolute;" src="{% static 'images/hand.png'%}" alt="" class="hand">
 
               <div
                 id="pop_info_10"
@@ -239,6 +239,7 @@
               </div>
             </div>
           </div>
+          <img style="width:70px; height:70px;z-index:100000; left: 260px; position:absolute;" src="{% static 'images/hand.png'%}" alt="" class="hand">
 
         </div>
 
@@ -401,17 +402,17 @@
 
       const popup = document.getElementById("popup");
       const button = document.querySelector('.start-Button');
-      const account = document.querySelector('.account-box');
       const boxs = document.querySelectorAll('.info-box');
       const content = document.querySelector('.content');
       const hand = document.querySelector('.hand');
       const b2 = document.querySelector('.speech-bubble2');
 
 
+      content.style.overflow = "hidden";
+
       setTimeout(function () {
           popup.style.display = "block";
           content.scrollTop = content.scrollHeight; 
-          account.style.zIndex = "9999";
           button.style.zIndex = "9999";
           hand.style.display = "block";
           b2.style.display = "block";
@@ -420,7 +421,7 @@
             box.style.zIndex = "9999";
          
         });
-      }, 4000);
+      }, 1000);
     </script>
   </body>
 </html>

@@ -50,8 +50,10 @@
   <body>
     <div class="container" style="position:relative;">
       <div class="dark-background" id="popup" style="display:none;">
+        <img style="  position: relative; z-index: 100000;  left: 50%; transform: translate(-50%, 1%);display:none" src="{% static 'tutorial/support2_step2.png'%}" alt="말풍선" class="speech-bubble2">
+
       </div>
-      <div class="content"> 
+      <div class="content" style="z-index:1"> 
         <img
           class="back"
           src="{% static 'images/back.png'%}"
@@ -62,7 +64,6 @@
         <h2 class="support_h2">서포트 정보를 작성해주세요.</h2>
 
         <div class="register">
-          <img style="  position: absolute; z-index: 100000;  left: 50%; transform: translate(-50%, -90%);display:none" src="{% static 'images/box_left.png'%}" alt="말풍선" class="speech-bubble2">
 
           <input class="title"
             placeholder="제목"
@@ -143,7 +144,7 @@
             >
             항목을 모두 작성해 주세요
           </button>
-          <img style="width:70px; height:80px;z-index:100000; left: 260px; position:absolute;display:none;" src="{% static 'images/hand.png'%}" alt="손" class="hand">
+          <img style="width:70px; height:70px;z-index:100000; left: 260px; position:relative;display:none;" src="{% static 'images/hand.png'%}" alt="손" class="hand">
 
         </div>
         <script>
@@ -190,13 +191,15 @@
           }
 
           const popup = document.getElementById("popup");
-          let inputs2 = document.querySelectorAll("input, select"); // Include select elements here
+          let inputs2 = document.querySelectorAll("input, select"); 
           const button = document.querySelector('.start-Button');
           const detail = document.querySelector('.detail-box');
           const title = document.querySelector('.title');
           const b2 = document.querySelector('.speech-bubble2');
+          const content = document.querySelector('.content');
 
-  
+          content.style.overflow = "hidden";
+
   
           setTimeout(function () {
               popup.style.display = "block";
@@ -207,7 +210,7 @@
                 input.style.zIndex = "9999"; 
               });
 
-          }, 2000);
+          }, 1000);
 
         
 
