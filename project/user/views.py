@@ -2,6 +2,7 @@ from django.contrib.auth import login, authenticate
 from django.utils import timezone
 from django.shortcuts import render,redirect
 from django.views.generic import View, CreateView, UpdateView, DeleteView
+from decouple import config
 
 from .models import User
 from artist.models import Artist
@@ -41,7 +42,7 @@ class Kakao(View):
     def get(self, request):
         kakao_api="https://kauth.kakao.com/oauth/authorize?response_type=code"
         redirect_uri=f"{uri}/oauth/callback"
-        client_id="714db211a2aee35b2ed21cfed611dd34"
+        client_id=config('KAKAO_CLIENT_ID')
         return redirect(f"{kakao_api}&client_id={client_id}&redirect_uri={redirect_uri}")
 
 # 토큰 발급 및 회원가입
@@ -49,7 +50,7 @@ class KakaoCallback(View):
     def get(self, request):
         data = {
             "grant_type":"authorization_code",
-            "client_id":"714db211a2aee35b2ed21cfed611dd34",
+            "client_id":config('KAKAO_CLIENT_ID'),
             "redirection_uri":f"{uri}/users/oauth",
             "code":request.GET["code"]
         }

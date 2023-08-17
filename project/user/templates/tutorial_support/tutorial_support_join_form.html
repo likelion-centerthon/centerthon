@@ -49,15 +49,18 @@
 
       }
       @keyframes motion {
-        0% {margin-top: 140px;} /* 처음 위치 */
-        100% {margin-top: 120px;} /* 마지막 위치 */
+        0% {margin-top:120px;} /* 처음 위치 */
+        100% {margin-top: 100px;} /* 마지막 위치 */
         }
   </style>   
   </head>
   <body>
     <div class="container" style="position:relative">
       <div class="dark-background" id="popup" style="display:none;">
+        <img style="  position: relative; z-index: 100000;  left: 50%; transform: translate(-50%, 10%);display:none" src="{% static 'tutorial/support_step3_1.png'%}" alt="말풍선" class="speech-bubble">
+
       </div>
+
       <div class="header">
         <form>
           <button class="btn-select" type="submit">
@@ -85,7 +88,7 @@
           </form>
         </div>
       </div>
-      <div class="content">
+      <div class="content" style="z-index:0">
           <img class="back" src="{% static 'images/back.png'%}" alt="이전"  onclick="goBack()"></img>
             <h1 class="support_form_h1" style="margin-left:-15px; ">모금 정보 작성하기</h1>
             <h2 class="support_form_h2"style="  margin:3px 0px 3px 20px;">입금 후 모금 정보를 작성해주세요</h2>
@@ -105,9 +108,9 @@
               id="creditTime"
               style="margin-left: 20px; margin-bottom: 10px; margin-top:0px; position:relative; "/>
             <button class="start-Button" style="margin-top:90px; background: #b3b1b0;position:relative;" onclick="location.href='{% url 'user:tutorial_support_join_detail_2' %}'">항목을 모두 작성해 주세요</button>
+
           </div>
-          <img style="width:80px; height:80px;z-index:100000; left: 260px; position:absolute;display:none;" src="{% static 'images/hand.png'%}" alt="손" class="hand">
-          <img style="  position: absolute; z-index: 100000;  left: 50%; top:25%;transform: translate(-50%, -90%);display:none" src="{% static 'images/box_left.png'%}" alt="말풍선" class="speech-bubble">
+          <img style="width:70px; height:70px;  left: 260px; position:relative; translate(-50%, 90%);display:none;" src="{% static 'images/hand.png'%}" alt="손" class="hand">
 
       </div>
         <div class="footer">
@@ -177,6 +180,8 @@
         startButton.style.backgroundColor = "#BC67FF";
         startButton.innerHTML="제출하기"
         hand.style.display = "block";
+        b1.src = "{% static 'tutorial/support_step3_2.png'%}";
+        hand.style.zIndex = "120000";
 
         } else {
         startButton.disabled = true;
@@ -195,13 +200,17 @@
         const startbutton = document.querySelector('.start-Button');
         const hand = document.querySelector('.hand');
         const b1 = document.querySelector('.speech-bubble');
+        const content = document.querySelector('.content');
+
+
+        content.style.overflow = "hidden";
 
 
         setTimeout(function () {
             popup.style.display = "block";
             startbutton.style.zIndex = "9999";
             b1.style.display = "block";
-            b1.style.Top = "-140px";
+            b1.style.Top = "20px";
 
             inputs2.forEach(function (input) {
                 input.style.zIndex = "9999";

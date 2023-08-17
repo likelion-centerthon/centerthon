@@ -49,8 +49,8 @@
 
       }
       @keyframes motion {
-        0% {margin-top: -440px;} /* 처음 위치 */
-        100% {margin-top: -420px;} /* 마지막 위치 */
+        0% {margin-top: -530px;} /* 처음 위치 */
+        100% {margin-top: -510px;} /* 마지막 위치 */
         }
   </style>   
   </head>
@@ -86,7 +86,7 @@
         </div>
       </div>
       
-      <div class="content">
+      <div class="content" style="z-index:1">
         <div style="justify-content: row; display: flex; margin-bottom: 10px">
           <img
             class="back"
@@ -103,6 +103,9 @@
           <div class="percent-bar" id="percent-bar-content"></div>
         </div>
         <div class="dark-background" id="popup" style="display:none;">
+    
+          <img style="  position: relative; z-index: 100000;  left: 50%;  transform: translate(-50%, 3%);" src="{% static 'tutorial/support3_step3.png'%}" alt="말풍선" class="speech-bubble2">
+
         </div>
         <button style="margin-left: 290px" class="modify_button">수정</button>
         <div class="detail-container">
@@ -121,14 +124,13 @@
           </div>
 
           <div
-            style="position: relative; border: none; margin: -1px 0px -55px 0px"
+            style=" border: none; margin: -1px 0px -55px 0px"
           >
           <div class="account" style="background:#fff">농협 20406578234712</div>
           <div class="select-wrapper" style="border: none">
-            <button class="coppy-Button" id="copyButton">복사</button>
+            <button id="copyButton" style="border:none; background:transparent"></button>
           </div>
         </div>
-        <img style="  position: absolute; z-index: 100000;  left: 50%; top: 20%; transform: translate(-50%, -40%);" src="{% static 'images/box_left.png'%}" alt="말풍선" class="speech-bubble2">
 
           <div class="enddate">2023/8/18 PM11:59</div>
         </div>
@@ -138,14 +140,13 @@
           <button
             class="start-Button"
             type="submit"
-            onclick="location.href='{% url 'user:tutorial' %}'"
+            onclick="location.href='{% url 'user:tutorial_support' %}'"
 
             style="background: #bc67ff;position: relative;"
 
           >
             마감하기
           </button>
-          <img style="width:70px; height:80px;z-index:100000; left: 260px; position:absolute;" src="{% static 'images/hand.png'%}" alt="" class="hand">
 
         </div>
         <div class="line"></div>
@@ -365,14 +366,14 @@
       }
       const popup = document.getElementById("popup");
       const button = document.querySelector('.start-Button');
-      const account = document.querySelector('.account-box');
       const boxs = document.querySelectorAll('.info-box');
-      const content = document.querySelector('.content');
       const hand = document.querySelector('.hand');
+      const content = document.querySelector('.content');
+
+      content.style.overflow = "hidden";
 
           popup.style.display = "block";
           content.scrollTop = content.scrollHeight; 
-          account.style.zIndex = "9999";
           button.style.zIndex = "9999";
           hand.style.display = "block";
           boxs.forEach(function (box) {

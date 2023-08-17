@@ -5,7 +5,7 @@
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <img class="back" src="{% static 'images/back.png'%}" alt="이전" onclick="goBack()"></img>
-    <h1 class="spt_crt_h1" >게시글 수정하기</h1>
+    <h1 class="spt_crt_h1" style="margin-right:110px;" >게시글 수정하기</h1>
     <h2 class="spt_crt_h2">하고싶은 이야기를 작성해주세요</h2>
     <select class="post-crt-select" name="category" value="{{ post.category }}" >
         <option value="" selected disabled hidden>게시판을 선택해 주세요</option>

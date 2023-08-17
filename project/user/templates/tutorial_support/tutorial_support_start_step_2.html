@@ -122,7 +122,7 @@
               color: rgb(50, 50, 50);
             "
           >
-          <img style="width:70px; height:80px;z-index:100000; left: 260px; top: 370px; position:absolute;display:none" src="{% static 'images/hand.png'%}" alt="손" class="hand">
+          <img style="width:70px; height:70px;z-index:100000; left: 260px; top: 370px; position:absolute;display:none" src="{% static 'images/hand.png'%}" alt="손" class="hand">
 
             *입금 내역이 없다면 입력하신 계좌를 다시 한번 확인해주세요.
           </div>
@@ -142,7 +142,7 @@
             "
             onclick="location.href='{% url 'user:tutorial_support_start_step_3' %}'"
           >다음</div>
-          <img style="  position: absolute; z-index: 100000;  left: 50%; transform: translate(-50%, -20%);display:none;" src="{% static 'images/box_left_up.png'%}" alt="말풍선" class="speech-bubble">
+          <img style="  position: absolute; z-index: 100000;  left: 50%; transform: translate(-50%, -20%);display:none;" src="{% static 'tutorial/support2_step4.png'%}" alt="말풍선" class="speech-bubble">
       
         </div>
 
@@ -166,6 +166,8 @@
       const popup = document.getElementById("popup");
 
 
+      const content = document.querySelector('.content');
+      content.style.overflow = "hidden";
     
       inin.addEventListener("input", function () {
         if (inin.value === "1684") {
