@@ -39,11 +39,13 @@
             </div>
     </div>
 
-    <form class="meeting-search-form" method="get" action="{% url 'meeting:writedMeetingList' artist_id=artist_id %}">
-        <label for="searchInput" style="font-size:17px;">검색:</label>
-        <input type="text" id="searchInput" name="search" placeholder="신청자명을 검색하세요" style="text-indent:0px;">
-        <button type="submit">검색</button>
-    </form>
+    <div class="centered-container"> 
+        <form class="meeting-search-form" method="get" action="{% url 'meeting:writedMeetingList' artist_id=artist_id %}">
+            <label for="searchInput" style="font-size: 17px; margin-left: 10px;">검색:</label>
+            <input style="width: 190px;"  type="text" id="searchInput" name="search" placeholder="신청자명을 검색하세요" style="text-indent: 0; width: 182px;">
+            <button type="submit">검색</button>
+        </form>
+    </div>
 
     <div class="meeting-writed">
         {% for meeting in meetings %}

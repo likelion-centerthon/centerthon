@@ -1,7 +1,8 @@
 {% extends 'base_no_nav.html' %}
 {% load static %}
 {% block content %}
-    <div class="button-container"style="margin-top:360px;">
+    <div class="button-container"style="margin-top:280px;">
+        <!-- <img class="logo" src="{% static 'images/star_logo.png' %}"></img> -->
         <a class="button" href="{% url 'user:tutorial_next' %}">앱 사용법 익히러 가기</a>
         <a class="button" href="{% url 'artist:artist_list' category='none' %}">아티스트 선택하러 가기</a>
     </div>
