@@ -242,7 +242,25 @@ def create_support(request, pk):
         userWorking=UserWorking.objects.get(user=user, artist=artist)
         userWorking.supportHost += 1
         userWorking.save()
-        return redirect('support:support_list', pk=artist.pk)
+        return redirect('support:create_support_step_1', pk=artist.pk, spt_pk=support.pk )
+
+def create_support_step_1(request, pk, spt_pk):
+    artist = Artist.objects.get(pk=pk)
+    support = Support.objects.get(pk=spt_pk)
+    if request.method=='GET':
+        return render(request, './support/support_create_step_1.html', {"support":support, "artist":artist})
+
+def create_support_step_2(request, pk, spt_pk):
+    artist = Artist.objects.get(pk=pk)
+    support = Support.objects.get(pk=spt_pk)
+    if request.method=='GET':
+        return render(request, './support/support_create_step_2.html', {"support":support, "artist":artist})
+
+def create_support_step_3(request, pk, spt_pk):
+    artist=Artist.objects.get(pk=pk)
+    support=Support.objects.get(pk=spt_pk)
+    if request.method=='GET':
+        return render(request, './support/support_create_step_3.html', {"support":support, "artist":artist})
 
 #서포트 게시글 수정
 def update_support(request, pk, spt_pk):

@@ -62,7 +62,7 @@
       </div>
     <div style="display: flex; align-items: center; justify-content: center; flex-direction: column;">
         <div style="display: flex;  flex-direction: row; ">
-            <img class="back" src="{% static 'images/back.png'%}" alt="이전" onclick="goBack()" style="margin-left:-45px;"></img>
+            <img class="back" src="{% static 'images/back.png'%}" alt="이전" onclick="location.href='{% url 'user:tutorial_meeting_writed_2'  %}'" style="margin-left:-45px;"></img>
             <h1 class="support_form_h1" style="margin-left: -10px; margin-bottom:20px;">
                 홍길동의 활동 내역
             </h1>
