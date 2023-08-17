@@ -16,16 +16,35 @@
 
       <title>별너울</title>
     {% include 'head.html' %}
+    <style>
+      .dark-background {
+        background-color: rgba(0, 0, 0, 0.6);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 375px;
+        height: 100vh;
+        z-index: 5;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    </style>
    </head>
   <body>
-  <div class="container" >
+    <div class="container" style="position:relative">
+      <div class="dark-background" id="popup" style="display:none;">
+      </div>
 
       <div class="content">
+        <img id="hidden-img" src="{% static 'images/purple.png' %}"
+        style=" width: 240px; display: none; position: absolute; z-index: 9999; top: 13%; left: 50%; transform: translate(-50%, -50%);"
+        alt="이미지">
     <img class="back" src="{% static 'images/back.png'%}" alt="이전" onclick="goBack()"></img>
       <h1 class="h1-meeting">모임 작성하기</h1>
       <h3 class="h3-meeting">등록하고 싶은 모임 세부 사항을 작성해요!</h3>
 
-      <form class="register input" id="meetingForm" method="post" enctype="multipart/form-data">
+      <form class="register input" style="position: relative;" id="meetingForm" method="post" enctype="multipart/form-data">
         {% csrf_token %}
 
         <label for="id_title" class="name" ></label>
@@ -54,16 +73,16 @@
 
         <div style="position: relative; border:none;">
         <label for="id_body"></label>
-        <textarea class="detail1" name="body" id="id_body" placeholder="내용"required></textarea>
+        <textarea style="position: relative;" class="detail1" name="body" id="id_body" placeholder="내용"required></textarea>
         <div class="select-wrapper " style="border:none; margin-top:-50px;">
 
-        <label for="id_image" class="addImg-Button">사진</label>
+        <label style="position: relative;" for="id_image" class="addImg-Button">사진</label>
         <input type="file" name="image" id="id_image" style="display:none" required>
         </div>
         </div>
       </form>
       <div>
-        <input type="submit" value="항목을 모두 작성해 주세요" class="register-Button" disabled style="border-radius: 30.5px; background: #b3b1b0">
+        <input type="submit" value="항목을 모두 작성해 주세요" class="register-Button" disabled style="border-radius: 30.5px; position: relative; background: #b3b1b0">
       </div>
 
 <!-- JavaScript 부분을 아래와 같이 변경합니다 -->
@@ -106,6 +125,27 @@
   function goBack() {
     window.history.back();
   }
+
+  const content = document.querySelector('.content');
+  const popup = document.getElementById("popup"); //배경 어둡게 
+    const form = document.querySelector('form'); //보여주고 싶은 영역
+    const text = document.querySelector('textarea'); //보여주고 싶은 영역
+    const label = document.querySelector('label'); //보여주고 싶은 영역
+    const button = document.querySelector('.register-Button'); //보여주고 싶은 영역
+    const hiddenImg = document.getElementById("hidden-img"); // 이미지 요소 추가
+    const image = document.querySelector('.addImg-Button'); //보여주고 싶은 영역
+    const wrapper = document.querySelector('.select-wrapper'); //보여주고 싶은 영역
+
+    setTimeout(function () { 
+        popup.style.display = "block";
+        label.style.zIndex = "9990";
+        form.style.zIndex = "9990";
+        text.style.zIndex = "9990";
+        button.style.zIndex = "9990";
+        image.style.zIndex = "9990";
+        wrapper.style.zIndex = "9990";
+        content.scrollTop = content.scrollHeight;
+    }, 3000);
 </script>
 
       </div>
