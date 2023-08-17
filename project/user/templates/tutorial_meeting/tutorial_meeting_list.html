@@ -44,7 +44,7 @@
       align-items: center;
       justify-content: center;
     }
-    #hidden-pointer {
+    #hidden-hand {
     display: none;
     position: absolute;
     animation: motion 1s linear infinite alternate;
@@ -84,9 +84,9 @@
         </form>
       </div>
     </div>
-    <!-- <img id="hidden-pointer" src="{% static 'images/pointer.png' %}"
-    style="width:50px;  display:none; position: relative; z-index: 9999; top: -45%; left: 35%; transform: translate(-50%, -50%);"
-    alt="이미지"> -->
+    <img id="hidden-img3" src="{% static 'tutorial/hand_down.png' %}"
+        style=" width: 70px; display: none; position: absolute; z-index: 8887; top: 50%; left: 17%; transform: translate(-50%, -50%);"
+        alt="이미지">
     <div class="content">
 
       <div style="margin-bottom: 5px; display: flex; align-items: center;" class="support_list_category">
@@ -115,7 +115,7 @@
 
 
       <img id="hidden-img" src="{% static 'tutorial/meet_step1_1.png' %}"
-        style=" display: none; position: absolute; z-index: 8887; top: 37%; left: 50%; transform: translate(-50%, -50%);"
+        style=" display: none; position: absolute; z-index: 8887; top: 30%; left: 50%; transform: translate(-50%, -50%);"
         alt="이미지">
         
 
@@ -244,12 +244,14 @@
     const popup = document.getElementById("popup"); //배경 어둡게 
     const supportbox = document.querySelector('.meeting-item'); //보여주고 싶은 영역
     const hiddenImg = document.getElementById("hidden-img"); // 이미지 요소 추가
-    const hiddenImg2 = document.getElementById("hidden-pointer"); // 이미지 요소 추가
+    const hiddenImg3 = document.getElementById("hand"); // 이미지 요소 추가
+
 
 
     setTimeout(function () { //4초 뒤에 배경 어둡게 + 영역 보여짐
       popup.style.display = "block";
       supportbox.style.zIndex = "9999";
+      content.style.overflow = "hidden";
     }, 2000);
 
     setTimeout(function () {
@@ -257,6 +259,10 @@
       supportbox.style.zIndex = "8888";
       hiddenImg.style.display = "block"; // 이미지를 보이도록 스타일 변경
       hiddenImg2.style.display = "block"; // 이미지를 보이도록 스타일 변경
+      content.style.overflow = "hidden";
+      hand.style.display = "block";
+      hand.style.animation = "motion 1s linear infinite alternate";
+
     }, 2000);
 
     content.scrollTop = content.scrollHeight;
