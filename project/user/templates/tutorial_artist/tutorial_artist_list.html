@@ -111,6 +111,7 @@
     </body>
       </div>
    <script>
+    const content = document.querySelector('.content');
     const popup = document.getElementById("popup"); //배경 어둡게 
     const trot = document.querySelector('.artist-btn2'); //보여주고 싶은 영역
     const hiddenImg = document.getElementById("hidden-img"); // 이미지 요소 추가
@@ -126,18 +127,20 @@
                 popup.style.display = "block";
                 trot.style.zIndex = "8888";
                 hiddenImg.style.display = "block";
+                content.style.overflow = "hidden";
                 setTimeout(function () {
                     popup.style.display = "block";
                     trot.style.zIndex = "1";
                     hiddenImg.style.display = "none";
+                    content.style.overflow = "hidden";
                     setTimeout(function () {
                         popup.style.display = "block";
                         hero.style.zIndex = "9999";
                         hiddenImg2.style.display = "block";
                         hiddenImg3.style.display = "block";
                         hiddenImg3.style.animation = "motion 1s linear infinite alternate";
-                    }, 1000);
-                }, 7000);
+                    }, 500);
+                }, 10000);
             }, 1000);
 
     

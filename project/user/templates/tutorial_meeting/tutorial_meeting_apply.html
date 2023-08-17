@@ -46,10 +46,10 @@
    
      @keyframes motion {
        0% {
-         top: 26%;
+         top: 28%;
        }
        100% {
-         top: 28%;
+         top: 30%;
        }
      }
      </style>
@@ -58,6 +58,19 @@
 
 <div class="container" style="position:relative; height: 812px;">
     <div class="dark-background" id="popup" style="display:none;">
+      <img id="hidden-img" src="{% static 'tutorial/meet_step3_5.png' %}"
+              style=" width: 260px;
+               display: none; position: absolute; 
+              z-index: 9888; top: 17%; left: 50%; transform: translate(-50%, -50%);"
+              alt="이미지">
+              <img id="hidden-img2" src="{% static 'tutorial/meet_step3_6.png' %}"
+              style=" 
+               display: none; position: absolute; 
+              z-index: 9888; top: 57%; left: 50%; transform: translate(-50%, -50%);"
+              alt="이미지">
+              <img id="hand" src="{% static 'tutorial/hand.png' %}"
+              style=" width: 70px; display: none; position: absolute; z-index: 10000; top: 90%; left: 50%; transform: translate(-50%, -50%);"
+              alt="이미지">
      </div>
     <div class="header ">
       <form>
@@ -87,7 +100,10 @@
       </div>
     </div>
     <div class="content">
-
+      <img id="hidden-img" src="{% static 'tutorial/meet_step3_5.png' %}"
+      style=" display: none; position: absolute; 
+      z-index: 8888; top: 20%; left: 50%; transform: translate(-50%, -50%);"
+      alt="이미지">
         <div style="margin-bottom: 5px; display: flex; align-items: center;" class="support_list_category">
             <button class="allsupport"
               style="width:160px; margin-left:15px; font-size:20px;border-bottom:3px solid #000000;"> 모임 전체</button>
@@ -98,7 +114,7 @@
           <div class="meeting-button">
             <button >작성</button>
             <button class ="apply-button" style= "  border: 1px solid #bc67ff;color:#bc67ff; position: relative;" >신청</button>
-            <button class="guardian-button" onclick="location.href='{% url 'user:tutorial_meeting_pn'  %}'">보호자</button>
+            <button class="guardian-button" style="position: relative;" onclick="location.href='{% url 'user:tutorial_meeting_pn'  %}'">보호자</button>
             <div  style="margin-left:285px; margin-top:-25px; position: relative;" >
                 <a href="#;" onClick="zoomIn();"><img style="width:20px; height:20px;"src="{% static 'images/zoomin.png'%}" alt="확대"></a>
                 <a href="#;" onClick="zoomOut();"><img style="width:20px; height:20px;"src="{% static 'images/zoomout.png'%}" alt="축소"></a>
@@ -111,7 +127,7 @@
             <button type="submit" style="margin-left:-1px;" >검색</button>
     
         </div>
-    <div class="meeting-writed" style="position: relative;">
+    <div class="meeting-writed" style="position: absolute;">
         <div class="writed-lost" style="position: relative;">
           <div class="member-info">
             <h3>내가 신청한 모임명 1</h3>
@@ -137,22 +153,21 @@
 
     </div>
     <div class="footer">
-        <div class="singer">
-            <img id="singer-img" src="{% static 'images/singer.png'%}" alt="가수 이미지"></img>
-          <div class="label" >내 가수</div>
-        </div>
-        <div class="list">
-            <img id="list-img" src="{% static 'images/list.png'%}" alt="게시글 이미지"></img>
-        </div>
-            <div class="label">게시판</div>
-        <div class="group" >
-            <img id="group-img" style="width:58px; height:58px; margin-top:-6px;"src="{% static 'images/purplegroup.png'%}" alt="그룹 이미지" ></img>
-          <div class="label" style="margin-top:-1px;color:#BC67FF">모임</div>
-        </div>
-        <div class="support">
-            <img id="support-img" style="width:60px; height:60px;margin-top:-5px;margin-left:-14px;"src="{% static 'images/support.png'%}" alt="서포트 이미지" ></img>
-          <div class="label"style="margin-top:-3px;margin-left:-15px;">서포트</div>
-        </div>
+      <div class="singer">
+          <img id="singer-img" src="{% static 'images/singer.png'%}" alt="가수 이미지"></img>
+        <div class="label" >내 가수</div>
+      </div>
+      <div class="list">
+          <img id="list-img" src="{% static 'images/list.png'%}" alt="게시글 이미지"></img>
+          <div class="label">게시판</div>
+      </div>
+      <div class="group" >
+          <img id="group-img" style="width:58px; height:58px; margin-top:-6px;"src="{% static 'images/purplegroup.png'%}" alt="그룹 이미지" ></img>
+        <div class="label" style="margin-top:-1px;color:#BC67FF">모임</div>
+      </div>
+      <div class="support">
+          <img id="support-img" style="width:60px; height:60px;margin-top:-5px;margin-left:-14px;"src="{% static 'images/support.png'%}" alt="서포트 이미지" ></img>
+        <div class="label"style="margin-top:-3px;margin-left:-15px;">서포트</div>
       </div>
    
 <script>
@@ -220,25 +235,32 @@
     document.querySelector(".support .label").classList.remove("colored");
   });
 
-  // const content = document.querySelector('.content');
+  const content = document.querySelector('.content');
   const popup = document.getElementById("popup"); //배경 어둡게 
-  const writedLost = document.querySelector('.writed-lost'); //보여주고 싶은 영역
+  const writedLost = document.querySelector('.meeting-writed'); //보여주고 싶은 영역
   const applybutton = document.querySelector('.apply-button'); //보여주고 싶은 영역
   const hiddenImg = document.getElementById("hidden-img"); // 이미지 요소 추가
-  const hiddenImg2 = document.getElementById("hidden-pointer"); // 이미지 요소 추가
+  const hiddenImg2 = document.getElementById("hidden-img2"); // 이미지 요소 추가
+  const guardianbutton = document.querySelector('.guardian-button'); //보여주고 싶은 영역
+  const hand = document.getElementById("hand"); // 이미지 요소 추가
+
 
   setTimeout(function () { //2초 뒤에 배경 어둡게 + 영역 보여짐
     popup.style.display = "block";
-    writedLost.style.zIndex = "9990";
+    writedLost.style.zIndex = "6669";
+    content.scrollTop = content.scrollHeight;
+    content.style.overflow = "hidden";
     hiddenImg.style.display = "block"; // 이미지를 보이도록 스타일 변경
     setTimeout(function () {
-      writeButton.style.zIndex = "1";
       writedLost.style.zIndex = "1";
-      applybutton.style.zIndex = "9999";
+      guardianbutton.style.zIndex = "9999";
+      hiddenImg.style.display ="none";
       hiddenImg2.style.display = "block"; // 이미지를 보이도록 스타일 변경
+      hand.style.display = "block";  
+      hand.style.animation = "motion 1s linear infinite alternate";
 
-    }, 5000);
-  }, 3000);
+    }, 10000);
+  }, 1000);
 
 
 

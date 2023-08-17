@@ -27,10 +27,51 @@
 
       <title>별너울</title>
     {% include 'head.html' %}
+    <style>
+
+.dark-background {
+    background-color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 375px;
+    height: 100vh;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #hidden-pointer {
+    display: none;
+    position: absolute;
+    animation: motion 1s linear infinite alternate;
+  }
+
+  @keyframes motion {
+    0% {
+      top: 27%;
+    }
+    100% {
+      top: 29%;
+    }
+  }
+     </style>
    </head>
   <body>
-      <div class="container" >
-          <div class="header">
+    <img id="hidden-img" src="{% static 'tutorial/meet_step3_3.png' %}"
+    style=" display: none; position: absolute; z-index: 8888; top: 70%; left: 50%; transform: translate(-50%, -50%);"
+    alt="이미지">
+    <img id="hidden-img2" src="{% static 'tutorial/meet_step3_4.png' %}"
+    style=" display: none; position: absolute; z-index: 8888; top: 70%; left: 50%; transform: translate(-50%, -50%);"
+    alt="이미지">
+    <img id="hand" src="{% static 'tutorial/hand.png' %}"
+    style=" width: 70px; display: none; position: absolute; z-index: 10000; top: 37%; left: 34%; transform: translate(-50%, -50%);"
+    alt="이미지">
+    <div class="container" style="position:relative">
+      <div class="dark-background" id="popup" style="display:none;">
+      </div>
+      <div class="header">
         <form>
           <button class="btn-select" type="submit">
             &nbsp; &nbsp;임영웅 •••
@@ -39,31 +80,17 @@
         <div class="icon">
           <form>
             <button type="submit">
-              <img
-                class="user"
-                src="{% static 'images/user.png'%}"
-                alt="이용행보"
-              />
+              <img class="user" src="{% static 'images/user.png'%}" alt="이용행보" />
             </button>
           </form>
           <form>
             <button id="alarm-button">
-              <img
-                class="alarm"
-                src="{% static 'images/alarm.png'%}"
-                alt="알람"
-              />
+              <img class="alarm" src="{% static 'images/alarm.png'%}" alt="알람" />
             </button>
           </form>
         </div>
       </div>
 
-          <div class="content">
-      <title>별너울</title>
-    {% include 'head.html' %}
-   </head>
-  <body>
-    <div class="container">
 
       <div style="margin-bottom: 5px; display: flex; align-items: center;" class="support_list_category">
     <button class ="allsupport" style="width:160px; margin-left:15px; font-size:20px;">모임 전체</button>
@@ -72,7 +99,7 @@
 
     <div class="meeting-button">
         <button class="write-button"style="  border: 1px solid #bc67ff;color:#bc67ff;" >작성</button>
-        <button class="apply-button" onclick="location.href='{% url 'user:tutorial_meeting_apply' %}'">신청</button>
+        <button class="apply-button" style ="position: relative;" onclick="location.href='{% url 'user:tutorial_meeting_apply' %}'">신청</button>
         <button class="guardian-button">보호자</button>
         <div  style="margin-left:285px; margin-top:-25px;" >
             <a href="#;" onClick="zoomIn();"><img style="width:20px; height:20px;"src="{% static 'images/zoomin.png'%}" alt="확대"></a>
@@ -86,13 +113,13 @@
     </div>
 
 
-    <div class="meeting-writed">
+    <div class="meeting-writed" style="position: relative;">
         <div class="writed-lost">
             <h2>내가 작성한 모임 제목</a></h2>
             <div class="member-info">
                 <h3>홍길동</h3>
                 <h3>대기</h3>
-                    <button class="confirm-button" onclick="location.href='{% url 'user:tutorial_meeting_userWorking' %}'">신청자 정보 확인</button>
+                    <button class="confirm-button">신청자 정보 확인</button>
             </div>
             <div class="action-buttons">
                     <button class="accept" type="submit">수락하기</button>
@@ -138,11 +165,10 @@ function goBack() {
     function handleImageHover(elementId, newImageSrc) {
       const imgElement = document.getElementById(elementId);
       imgElement.src = "{% static 'images/' %}" + newImageSrc;
-  }
+  } 
 
   const singerImg = document.getElementById("singer-img");
   const listImg = document.getElementById("list-img");
-
   const supportImg = document.getElementById("support-img");
 
 
@@ -197,6 +223,33 @@ document.getElementById("support-img").addEventListener("mouseover", function ()
   document.getElementById("support-img").addEventListener("mouseout", function () {
   document.querySelector(".support .label").classList.remove("colored");
   });
+
+  const popup = document.getElementById("popup"); //배경 어둡게 
+  const hiddenImg = document.getElementById("hidden-img"); // 이미지 요소 추가
+  const hiddenImg2 = document.getElementById("hidden-img2"); // 이미지 요소 추가
+  const hand = document.getElementById("hand"); // 이미지 요소 추가
+  const button = document.querySelector('.apply-button'); //보여주고 싶은 영역
+  const meeting = document.querySelector('.meeting-writed'); //보여주고 싶은 영역 
+
+
+
+  setTimeout(function () { 
+    popup.style.display = "block";
+    hiddenImg.style.display = "block"; // 이미지를 보이도록 스타일 변경
+    meeting.style.zIndex = "3888";
+    // hand.style.display = "block";  
+    // hand.style.animation = "motion 1s linear infinite alternate";
+    setTimeout(function () { 
+    popup.style.display = "block";
+    hiddenImg.style.display = "none"; // 이미지를 보이도록 스타일 변경
+    hiddenImg2.style.display = "block"; // 이미지를 보이도록 스타일 변경
+    hand.style.display = "block";  
+    hand.style.animation = "motion 1s linear infinite alternate";
+    button.style.zIndex = "8888";
+    meeting.style.zIndex = "1";
+
+    }, 10000);
+  }, 1000);
 
 </script>
 
