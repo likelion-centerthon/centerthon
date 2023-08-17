@@ -1,18 +1,66 @@
-{% extends 'base_artistlist.html' %}
 {% load static %}
-{% block content %}
 <!DOCTYPE html>
 <html lang="ko">
   <head>
-  </head>
-    <body>
+    <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <link rel="stylesheet" href="{% static 'css/base_artistlist.css' %}" />  
+    <link rel="stylesheet" href="{% static 'css/artist_list.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/subscribe_list.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/create_post.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/support_create.css' %}?after" />
+    <link rel="stylesheet" href="{% static 'css/create_post.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/tutorial-hover.css' %}" />
+
+    
+
+      
+      <title>별너울</title>
+    {% include 'head.html' %}
+    <style>
+        .dark-background {
+          background-color: rgba(0, 0, 0, 0.6);
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 375px;
+          height: 100vh;
+          z-index: 2;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        #hidden-pointer {
+        display: none;
+        position: absolute;
+        animation: motion 1s linear infinite alternate;
+      }
+    
+      @keyframes motion {
+        0% {
+          top: 26%;
+        }
+        100% {
+          top: 28%;
+        }
+      }
+      </style>
+   </head>
+  <body>
+    <div class="container" style="position:relative">
+        <div class="dark-background" id="popup" style="display:none;">
+        </div>
+      <div class="content">
         <h2 class="page-title">나의 아티스트 선택하기</h2>
 
         <div class="artist-buttons">
             <button type="submit"
                 class="artist-btn">K-POP</button>
             <button type="submit"
-                class="artist-btn selected">트로트</button>
+                class="artist-btn2" style="position: relative;" id="trot-button">트로트</button>
             <button type="submit"
                 class="artist-btn">발라드</button>
             <button type="submit"
@@ -42,5 +90,35 @@
             </button>
         </div>
     </body>
+      </div>
+   <script>
+    const popup = document.getElementById("popup"); //배경 어둡게 
+    const trot = document.querySelector('.artist-btn2'); //보여주고 싶은 영역
+    // const hiddenImg = document.getElementById("hidden-img"); // 이미지 요소 추가
+    // const hiddenImg2 = document.getElementById("hidden-pointer"); // 이미지 요소 추가
+
+    
+
+
+    setTimeout(function () { //4초 뒤에 배경 어둡게 + 영역 보여짐
+      popup.style.display = "block";
+      supportbox.style.zIndex = "9999";
+    }, 2000);
+
+    setTimeout(function () {
+      popup.style.display = "block";
+      trot.style.zIndex = "8888";
+    //   hiddenImg.style.display = "block"; // 이미지를 보이도록 스타일 변경
+    //   hiddenImg2.style.display = "block"; // 이미지를 보이도록 스타일 변경
+    }, 2000);
+
+    content.scrollTop = content.scrollHeight;
+    const content = document.querySelector('.content');
+
+
+   </script>
+  </div>
+
+</body>
 </html>
-{% endblock %}
+

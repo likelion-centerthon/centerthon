@@ -1,11 +1,59 @@
-{% extends 'base_artistlist.html' %}
 {% load static %}
-{% block content %}
 <!DOCTYPE html>
 <html lang="ko">
   <head>
-  </head>
-    <body>
+    <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <link rel="stylesheet" href="{% static 'css/base_artistlist.css' %}" />  
+    <link rel="stylesheet" href="{% static 'css/artist_list.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/subscribe_list.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/create_post.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/support_create.css' %}?after" />
+    <link rel="stylesheet" href="{% static 'css/create_post.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/tutorial-hover.css' %}" />
+
+    
+
+      
+      <title>별너울</title>
+    {% include 'head.html' %}
+    <style>
+        .dark-background {
+          background-color: rgba(0, 0, 0, 0.6);
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 375px;
+          height: 100vh;
+          z-index: 2;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        #hidden-pointer {
+        display: none;
+        position: absolute;
+        animation: motion 1s linear infinite alternate;
+      }
+    
+      @keyframes motion {
+        0% {
+          top: 26%;
+        }
+        100% {
+          top: 28%;
+        }
+      }
+      </style>
+   </head>
+  <body>
+    <div class="container" style="position:relative">
+        <div class="dark-background" id="popup" style="display:none;">
+        </div>
+      <div class="content">
         <h2 class="page-title">구독한 아티스트 목록</h2>
 
         <div class="artist-buttons">
@@ -36,5 +84,4 @@
         </div>
     </body>
 </html>
-{% endblock %}
 

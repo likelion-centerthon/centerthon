@@ -16,104 +16,150 @@
     <link rel="stylesheet" href="{% static 'css/writed_meeting_list.css' %}" />
     <link rel="stylesheet" href="{% static 'css/meeting_completed_list.css' %}" />
     <link rel="stylesheet" href="{% static 'css/applyed_meeting_list.css' %}" />
-
-
     <link rel="stylesheet" href="{% static 'css/support_list.css' %}?after" />
     <link rel="stylesheet" href="{% static 'css/support_form.css' %}?after" />
-
     <link rel="stylesheet" href="{% static 'css/artist_info.css' %}?after" />
 
 
 
       <title>별너울</title>
     {% include 'head.html' %}
+    <style>
+      .dark-background {
+       background-color: rgba(0, 0, 0, 0.6);
+       position: absolute;
+       top: 0;
+       left: 0;
+       width: 375px;
+       height: 100vh;
+       z-index: 2;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+     }
+   
+     #hidden-pointer {
+       display: none;
+       position: absolute;
+       animation: motion 1s linear infinite alternate;
+     }
+   
+     @keyframes motion {
+       0% {
+         top: 26%;
+       }
+       100% {
+         top: 28%;
+       }
+     }
+     </style>
    </head>
   <body>
- <div class="container" >
-          <div class="header">
+
+<div class="container" style="position:relative; height: 812px;">
+    <div class="dark-background" id="popup" style="display:none;">
+     </div>
+    <div class="header ">
+      <form>
+        <button class="btn-select" type="submit">
+          &nbsp; &nbsp;임영웅 •••
+        </button>
+      </form>
+      <div class="icon">
         <form>
-          <button class="btn-select" type="submit">
-            &nbsp; &nbsp;임영웅 •••
+          <button type="submit">
+            <img
+              class="user"
+              src="{% static 'images/user.png'%}"
+              alt="이용행보"
+            />
           </button>
         </form>
-        <div class="icon">
-          <form>
-            <button type="submit">
-              <img
-                class="user"
-                src="{% static 'images/user.png'%}"
-                alt="이용행보"
-              />
-            </button>
-          </form>
-          <form>
-            <button id="alarm-button">
-              <img
-                class="alarm"
-                src="{% static 'images/alarm.png'%}"
-                alt="알람"
-              />
-            </button>
-          </form>
+        <form>
+          <button id="alarm-button">
+            <img
+              class="alarm"
+              src="{% static 'images/alarm.png'%}"
+              alt="알람"
+            />
+          </button>
+        </form>
+      </div>
+    </div>
+    <div class="content">
+
+        <div style="margin-bottom: 5px; display: flex; align-items: center;" class="support_list_category">
+            <button class="allsupport"
+              style="width:160px; margin-left:15px; font-size:20px;border-bottom:3px solid #000000;"> 모임 전체</button>
+            <button class="mysupport" style="width:160px; margin-left:24px; font-size:20px;">나의 모임</button>
+    
+          </div>
+
+          <div class="meeting-button">
+            <button >작성</button>
+            <button class ="apply-button" style= "  border: 1px solid #bc67ff;color:#bc67ff; position: relative;" >신청</button>
+            <button class="guardian-button" onclick="location.href='{% url 'user:tutorial_meeting_pn'  %}'">보호자</button>
+            <div  style="margin-left:285px; margin-top:-25px; position: relative;" >
+                <a href="#;" onClick="zoomIn();"><img style="width:20px; height:20px;"src="{% static 'images/zoomin.png'%}" alt="확대"></a>
+                <a href="#;" onClick="zoomOut();"><img style="width:20px; height:20px;"src="{% static 'images/zoomout.png'%}" alt="축소"></a>
+            </div>
+        </div>
+
+        <div class="meeting-search-form">
+            <label for="searchInput" style="font-size:17px;">모임 검색:</label>
+            <input type="text" id="searchInput" name="search" placeholder="내 신청 모임명을 검색하세요"style="text-indent:0px; width:182px;">
+            <button type="submit" style="margin-left:-1px;" >검색</button>
+    
+        </div>
+    <div class="meeting-writed" style="position: relative;">
+        <div class="writed-lost" style="position: relative;">
+          <div class="member-info">
+            <h3>내가 신청한 모임명 1</h3>
+          </div>
+          <p><span class="date-color">2023/8/18</span>에 신청했습니다.</p>
+          <p>현재 <span class="wait">대기 </span> 상태입니다.</p>
+        </div>
+        <div class="writed-lost">
+          <div class="member-info">
+            <h3>내가 신청한 모임명 2</h3>
+          </div>
+          <p><span class="date-color">2023/8/18</span>에 신청했습니다.</p>
+          <p>현재 <span class="approval"> 승인 </span> 상태입니다. 알림을 확인하세요</p>
+        </div>
+        <div class="writed-lost">
+          <div class="member-info">
+            <h3>내가 신청한 모임명 3</h3>
+          </div>
+          <p><span class="date-color">2023/8/18</span>에 신청했습니다.</p>
+          <p>현재<span class="reject"> 거부 </span> 상태입니다. 다른 모임을 찾아보세요</p>
         </div>
       </div>
 
-          <div class="content">
-<div style="margin-bottom: 5px; display: flex; align-items: center;" class="support_list_category">
-    <button class ="allsupport" style="width:160px; margin-left:15px; font-size:20px;" >모임 전체</button>
-    <button class ="mysupport" style="width:160px; margin-left:24px; font-size:20px;border-bottom:3px solid #000000;" >나의 모임</button>
-</div>
-
-<div class="meeting-button">
-    <button >작성</button>
-    <button style= "  border: 1px solid #bc67ff;color:#bc67ff;" >신청</button>
-    <button onclick="location.href='{% url 'user:tutorial_meeting_pn'  %}'">보호자</button>
-    <div  style="margin-left:285px; margin-top:-25px;" >
-        <a href="#;" onClick="zoomIn();"><img style="width:20px; height:20px;"src="{% static 'images/zoomin.png'%}" alt="확대"></a>
-        <a href="#;" onClick="zoomOut();"><img style="width:20px; height:20px;"src="{% static 'images/zoomout.png'%}" alt="축소"></a>
     </div>
-</div>
-              <div class="meeting-search-form">
-        <label for="searchInput" style="font-size:17px;">모임 검색:</label>
-        <input type="text" id="searchInput" name="search" placeholder="내 신청 모임명을 검색하세요"style="text-indent:0px; width:182px;">
-        <button type="submit" style="margin-left:-1px;" >검색</button>
-
-    </div>
-<div class="content">
-
-<div class="meeting-writed">
-            <div class="writed-lost">
-                <div class="member-info">
-                     <h3>내가 신청한 모임명 1</h3>
-                </div>
-                    <p><span class="date-color">2023/8/18</span>에 신청했습니다.</p>
-                    <p>현재 <span class = "wait">대기 </span> 상태입니다.</p>
-                 </div>
-             <div class="writed-lost">
-                <div class="member-info">
-                    <h3>내가 신청한 모임명 2</h3>
-                    </div>
-                    <p><span class="date-color">2023/8/18</span>에 신청했습니다.</p>
-                    <p>현재 <span class = "approval"> 승인 </span> 상태입니다. 알림을 확인하세요</p>
-                 </div>
-                         <div class="writed-lost">
-                <div class="member-info">
-                     <h3>내가 신청한 모임명 3</h3>
-                    </div>
-                    <p><span class="date-color">2023/8/18</span>에 신청했습니다.</p>
-                    <p>현재<span class = "reject"> 거부 </span> 상태입니다. 다른 모임을 찾아보세요</p>
-                 </div>
+    <div class="footer">
+        <div class="singer">
+            <img id="singer-img" src="{% static 'images/singer.png'%}" alt="가수 이미지"></img>
+          <div class="label" >내 가수</div>
         </div>
-
-</div>
-
-
-
-  <script>
-    //하단바 아이콘 변경
-    function handleImageHover(elementId, newImageSrc) {
-      const imgElement = document.getElementById(elementId);
-      imgElement.src = "{% static 'images/' %}" + newImageSrc;
+        <div class="list">
+            <img id="list-img" src="{% static 'images/list.png'%}" alt="게시글 이미지"></img>
+        </div>
+            <div class="label">게시판</div>
+        <div class="group" >
+            <img id="group-img" style="width:58px; height:58px; margin-top:-6px;"src="{% static 'images/purplegroup.png'%}" alt="그룹 이미지" ></img>
+          <div class="label" style="margin-top:-1px;color:#BC67FF">모임</div>
+        </div>
+        <div class="support">
+            <img id="support-img" style="width:60px; height:60px;margin-top:-5px;margin-left:-14px;"src="{% static 'images/support.png'%}" alt="서포트 이미지" ></img>
+          <div class="label"style="margin-top:-3px;margin-left:-15px;">서포트</div>
+        </div>
+      </div>
+   
+<script>
+  //하단바 아이콘 변경
+  function handleImageHover(elementId, newImageSrc) {
+    const imgElement = document.getElementById(elementId);
+    imgElement.src = "{% static 'images/' %}" + newImageSrc;
   }
 
   const singerImg = document.getElementById("singer-img");
@@ -148,53 +194,59 @@
     handleImageHover("support-img", "support.png");
   });
 
-//하단바 h3 색상 변경
-document.getElementById("singer-img").addEventListener("mouseover", function () {
-  document.querySelector(".singer .label").classList.add("colored");
-});
+  //하단바 h3 색상 변경
+  document.getElementById("singer-img").addEventListener("mouseover", function () {
+    document.querySelector(".singer .label").classList.add("colored");
+  });
 
-document.getElementById("singer-img").addEventListener("mouseout", function () {
-document.querySelector(".singer .label").classList.remove("colored");
-});
+  document.getElementById("singer-img").addEventListener("mouseout", function () {
+    document.querySelector(".singer .label").classList.remove("colored");
+  });
 
-document.getElementById("list-img").addEventListener("mouseover", function () {
-document.querySelector(".list .label").classList.add("colored");
-});
+  document.getElementById("list-img").addEventListener("mouseover", function () {
+    document.querySelector(".list .label").classList.add("colored");
+  });
 
-document.getElementById("list-img").addEventListener("mouseout", function () {
-document.querySelector(".list .label").classList.remove("colored");
-});
+  document.getElementById("list-img").addEventListener("mouseout", function () {
+    document.querySelector(".list .label").classList.remove("colored");
+  });
 
 
-document.getElementById("support-img").addEventListener("mouseover", function () {
-  document.querySelector(".support .label").classList.add("colored");
+  document.getElementById("support-img").addEventListener("mouseover", function () {
+    document.querySelector(".support .label").classList.add("colored");
   });
 
   document.getElementById("support-img").addEventListener("mouseout", function () {
-  document.querySelector(".support .label").classList.remove("colored");
+    document.querySelector(".support .label").classList.remove("colored");
   });
 
+  // const content = document.querySelector('.content');
+  const popup = document.getElementById("popup"); //배경 어둡게 
+  const writedLost = document.querySelector('.writed-lost'); //보여주고 싶은 영역
+  const applybutton = document.querySelector('.apply-button'); //보여주고 싶은 영역
+  const hiddenImg = document.getElementById("hidden-img"); // 이미지 요소 추가
+  const hiddenImg2 = document.getElementById("hidden-pointer"); // 이미지 요소 추가
+
+  setTimeout(function () { //2초 뒤에 배경 어둡게 + 영역 보여짐
+    popup.style.display = "block";
+    writedLost.style.zIndex = "9990";
+    hiddenImg.style.display = "block"; // 이미지를 보이도록 스타일 변경
+    setTimeout(function () {
+      writeButton.style.zIndex = "1";
+      writedLost.style.zIndex = "1";
+      applybutton.style.zIndex = "9999";
+      hiddenImg2.style.display = "block"; // 이미지를 보이도록 스타일 변경
+
+    }, 5000);
+  }, 3000);
+
+
+
+
 </script>
+      
 
-      </div>
-<div class="footer">
-    <div class="singer">
-        <img id="singer-img" src="{% static 'images/singer.png'%}" alt="가수 이미지"></img>
-      <div class="label" >내 가수</div>
-    </div>
-    <div class="list">
-        <img id="list-img" src="{% static 'images/list.png'%}" alt="게시글 이미지"></img>
-        <div class="label">게시판</div>
-    </div>
-    <div class="group" >
-        <img id="group-img" style="width:58px; height:58px; margin-top:-6px;"src="{% static 'images/purplegroup.png'%}" alt="그룹 이미지" ></img>
-      <div class="label" style="margin-top:-1px;color:#BC67FF">모임</div>
-    </div>
-    <div class="support">
-        <img id="support-img" style="width:60px; height:60px;margin-top:-5px;margin-left:-14px;"src="{% static 'images/support.png'%}" alt="서포트 이미지" ></img>
-      <div class="label"style="margin-top:-3px;margin-left:-15px;">서포트</div>
-    </div>
+ </div>
 
-  </div>
-  </body>
+</body>
 </html>
