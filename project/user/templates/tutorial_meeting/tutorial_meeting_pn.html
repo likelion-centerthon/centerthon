@@ -27,9 +27,53 @@
 
       <title>별너울</title>
     {% include 'head.html' %}
+    <style>
+      .dark-background {
+        background-color: rgba(0, 0, 0, 0.6);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 375px;
+        height: 100vh;
+        z-index: 5;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+  
+      #hidden-pointer {
+          display: none;
+          position: absolute;
+          animation: motion 1s linear infinite alternate;
+        }
+      
+        @keyframes motion {
+          0% {
+            top: 88%;
+          }
+          100% {
+            top: 90%;
+          }
+        }
+    </style>
    </head>
   <body>
- <div class="container" >
+    <div class="container" style="position:relative">
+    <div class="dark-background" id="popup" style="display:none;">
+      <img id="hidden-img" src="{% static 'tutorial/meet_step3_7.png' %}"
+      style=" width: 290x; height: 220px;
+       display: none; position: absolute; 
+      z-index: 9888; top: 17%; left: 50%; transform: translate(-50%, -50%);"
+      alt="이미지">
+      <img id="hidden-img2" src="{% static 'tutorial/meet_done.png' %}"
+      style=" 
+       display: none; position: absolute; 
+      z-index: 9888; top: 54%; left: 50%; transform: translate(-50%, -50%);"
+      alt="이미지">
+      <img id="hand" src="{% static 'tutorial/hand.png' %}"
+      style=" width: 70px; display: none; position: absolute; z-index: 10000; top: 90%; left: 50%; transform: translate(-50%, -50%);"
+      alt="이미지">
+    </div>
           <div class="header">
         <form>
           <button class="btn-select" type="submit">
@@ -67,7 +111,7 @@
 <div class="meeting-button">
     <button >작성</button>
     <button >신청</button>
-    <button style="  border: 1px solid #bc67ff;color:#bc67ff;" >보호자</button>
+    <button class="guardian-button" style="  border: 1px solid #bc67ff;color:#bc67ff;" >보호자</button>
     <div  style="margin-left:285px; margin-top:-25px;" >
         <a href="#;" onClick="zoomIn();"><img style="width:20px; height:20px;"src="{% static 'images/zoomin.png'%}" alt="확대"></a>
         <a href="#;" onClick="zoomOut();"><img style="width:20px; height:20px;"src="{% static 'images/zoomout.png'%}" alt="축소"></a>
@@ -80,27 +124,29 @@
     <button type="submit">검색</button>
 </div>
 
-<div class="meeting-writed">
+<div class="meeting-writed" style="position: relative;">
                     <div class="writed-lost">
-                        <h2>내가 작성한 모임명1</h2>
+                        <h2 style=" color:#bc67ff;">내가 작성한 모임명1</h2>
                         <div class="member-info">
-                            <h3>이멋사</h3>
+                            <h3>보호자 명 : 이멋사</h3>
                           </div>
-                            <p>01012345678</p>
+                            <p>보호자 번호 : 01012345678</p>
               
                     </div>
                       <div class="writed-lost">
-                        <h2>내가 작성한 모임명2</h2>
+                        <h2 style=" color:#bc67ff;">내가 작성한 모임명2</h2>
                         <div class="member-info">
-                            <h3>김멋사</h3>
+                            <h3>보호자 명 : 김멋사</h3>
                           </div>
-                            <p>01012345678</p>
+                            <p>보호자 번호 : 01012345678</p>
                     </div>
 
 </div>
-    <div class="buttons">
-    <button onclick="location.href='{% url 'user:tutorial' %}'">돌아가기</button>
+  
 </div>
+<div class="buttons">
+  <button class ="start-Button" style="position: relative; background-color: #BC67FF;"
+  onclick="location.href='{% url 'user:tutorial' %}'">돌아가기</button>
     </div>
 
 
@@ -118,58 +164,85 @@
   const supportImg = document.getElementById("support-img");
 
 
-  singerImg.addEventListener("mouseenter", function () {
-    handleImageHover("singer-img", "purplesinger.png");
-  });
+//   singerImg.addEventListener("mouseenter", function () {
+//     handleImageHover("singer-img", "purplesinger.png");
+//   });
 
-  singerImg.addEventListener("mouseleave", function () {
-    handleImageHover("singer-img", "singer.png");
-  });
+//   singerImg.addEventListener("mouseleave", function () {
+//     handleImageHover("singer-img", "singer.png");
+//   });
 
-  listImg.addEventListener("mouseenter", function () {
-    handleImageHover("list-img", "purplelist.png");
-  });
+//   listImg.addEventListener("mouseenter", function () {
+//     handleImageHover("list-img", "purplelist.png");
+//   });
 
-  listImg.addEventListener("mouseleave", function () {
-    handleImageHover("list-img", "list.png");
-  });
+//   listImg.addEventListener("mouseleave", function () {
+//     handleImageHover("list-img", "list.png");
+//   });
 
+//   supportImg.addEventListener("mouseenter", function () {
+//     handleImageHover("support-img", "purplesupport.png");
+//   });
 
+//   supportImg.addEventListener("mouseleave", function () {
+//     handleImageHover("support-img", "support.png");
+//   });
 
-  supportImg.addEventListener("mouseenter", function () {
-    handleImageHover("support-img", "purplesupport.png");
-  });
+// //하단바 h3 색상 변경
+// document.getElementById("singer-img").addEventListener("mouseover", function () {
+//   document.querySelector(".singer .label").classList.add("colored");
+// });
 
-  supportImg.addEventListener("mouseleave", function () {
-    handleImageHover("support-img", "support.png");
-  });
+// document.getElementById("singer-img").addEventListener("mouseout", function () {
+// document.querySelector(".singer .label").classList.remove("colored");
+// });
 
-//하단바 h3 색상 변경
-document.getElementById("singer-img").addEventListener("mouseover", function () {
-  document.querySelector(".singer .label").classList.add("colored");
-});
+// document.getElementById("list-img").addEventListener("mouseover", function () {
+// document.querySelector(".list .label").classList.add("colored");
+// });
 
-document.getElementById("singer-img").addEventListener("mouseout", function () {
-document.querySelector(".singer .label").classList.remove("colored");
-});
-
-document.getElementById("list-img").addEventListener("mouseover", function () {
-document.querySelector(".list .label").classList.add("colored");
-});
-
-document.getElementById("list-img").addEventListener("mouseout", function () {
-document.querySelector(".list .label").classList.remove("colored");
-});
+// document.getElementById("list-img").addEventListener("mouseout", function () {
+// document.querySelector(".list .label").classList.remove("colored");
+// });
 
 
-document.getElementById("support-img").addEventListener("mouseover", function () {
-  document.querySelector(".support .label").classList.add("colored");
-  });
+// document.getElementById("support-img").addEventListener("mouseover", function () {
+//   document.querySelector(".support .label").classList.add("colored");
+//   });
 
-  document.getElementById("support-img").addEventListener("mouseout", function () {
-  document.querySelector(".support .label").classList.remove("colored");
-  });
+//   document.getElementById("support-img").addEventListener("mouseout", function () {
+//   document.querySelector(".support .label").classList.remove("colored");
+//   });
+const content = document.querySelector('.content');
+  const popup = document.getElementById("popup"); //배경 어둡게 
+    const meeting = document.querySelector('.meeting-writed'); //보여주고 싶은 영역
+    const hiddenImg = document.getElementById("hidden-img"); // 이미지 요소 추가
+    const hiddenImg2 = document.getElementById("hidden-img2"); // 이미지 요소 추가
+    const hand = document.getElementById("hand"); // 이미지 요소 추가
+    const guardianbutton = document.querySelector('.guardian-button'); //보여주고 싶은 영역
+    const button = document.querySelector('.start-Button'); //보여주고 싶은 영역
 
+
+    setTimeout(function () { 
+        popup.style.display = "block";
+        guardianbutton.style.zIndex = "9990";
+        // content.scrollTop = content.scrollHeight;
+        content.style.overflow = "hidden";
+        hiddenImg.style.display = "block"; // 이미지 보여주기
+        meeting.style.zIndex ="9999";
+         setTimeout(function () {
+        guardianbutton.style.zIndex = "9990";
+        // content.scrollTop = content.scrollHeight;
+        content.style.overflow = "hidden";
+        hiddenImg.style.display = "none"; 
+        hiddenImg2.style.display = "block"; // 이미지 보여주기
+        meeting.style.zIndex ="1";
+        button.style.zIndex ="9999";
+        content.scrollTop = content.scrollHeight;
+        hand.style.display = "block";  
+        hand.style.animation = "motion 1s linear infinite alternate";
+    }, 10000);
+    }, 1000);
 </script>
 
       </div>

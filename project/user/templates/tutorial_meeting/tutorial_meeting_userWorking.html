@@ -30,10 +30,46 @@
 
     <title>별너울</title>
     {% include 'head.html' %}
+    <style>
+    .dark-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 375px;
+    height: 100vh;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #hidden-pointer {
+    display: none;
+    position: absolute;
+    animation: motion 1s linear infinite alternate;
+  }
+
+  @keyframes motion {
+    0% {
+      top: 22%;
+    }
+    100% {
+      top: 24%;
+    }
+  }
+    </style>
   </head>
   <body>
-    <div class="container">
+    <div class="container" style="position:relative">
+      <div class="dark-background" id="popup" style="display:none;">
+      </div>
       <div class="header">
+        <img id="hidden-img" src="{% static 'tutorial/meet_step3_2.png' %}"
+        style=" width: 240px; display: none; position: absolute; z-index: 8888; top: 15%; left: 60%; transform: translate(-50%, -50%);"
+        alt="이미지">
+        <img id="hand" src="{% static 'tutorial/hand.png' %}"
+        style=" width: 70px; display: none; position: absolute; z-index: 10000; top: 87%; left: 12%; transform: translate(-50%, -50%);"
+        alt="이미지">
         <form action="{% url 'user:tutorial_subscribe_artist' %}" method="get">
           <button class="btn-select">
             &nbsp; &nbsp;임영웅 •••
@@ -63,8 +99,7 @@
     <div style="display: flex; align-items: center; justify-content: center; flex-direction: column;">
         <div style="display: flex;  flex-direction: row; ">
 
-          <button class="confirm-button" onclick="location.href='{% url 'user:tutorial_meeting_userWorking' %}'">신청자 정보 확인</button>
-            <img class="back" style="margin-left:-45px;" src="{% static 'images/back.png'%}" alt="이전" onclick="location.href='{% url 'user:tutorial_meeting_userWorking' %}'">신청자 정보 확인></img>
+            <img class="back" style="margin-left:-45px;" src="{% static 'images/back.png'%}" alt="이전" onclick="location.href='{% url 'user:tutorial_meeting_writed_2' %}'"></img>
             <h1 class="support_form_h1" style="margin-left: -10px; margin-bottom:20px;">
                 홍길동의 활동 내역
             </h1>
@@ -143,6 +178,21 @@
           </div>
         </div>
       </div>
+      <script>
+  const popup = document.getElementById("popup"); //배경 어둡게 
+  const hiddenImg = document.getElementById("hidden-img"); // 이미지 요소 추가
+  // const back = document.getElementById(".back"); // 이미지 요소 추가
+  const hand = document.getElementById("hand"); // 이미지 요소 추가
+
+  setTimeout(function () { 
+    // popup.style.display = "block";
+    hiddenImg.style.display = "block"; // 이미지를 보이도록 스타일 변경
+    // back.style.display = "block"; // 이미지를 보이도록 스타일 변경
+    hand.style.display = "block";  
+    hand.style.animation = "motion 1s linear infinite alternate";
+  }, 1000);
+
+      </script>
     </div>
   </body>
 </html>
