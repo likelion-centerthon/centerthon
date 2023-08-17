@@ -30,12 +30,51 @@
 
     <title>별너울</title>
     {% include 'head.html' %}
+    <style>
+      .dark-background {
+        background-color: rgba(0, 0, 0, 0.6);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 375px;
+        height: 100vh;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      #hidden-hand {
+      display: none;
+      position: absolute;
+      animation: motion 1s linear infinite alternate;
+    }
+  
+    @keyframes motion {
+      0% {
+        top: 11%;
+      }
+      100% {
+        top: 13%;
+      }
+    }
+    </style>
   </head>
   <body>
-    <div class="container">
+    <div class="container" style="position:relative">
+      <div class="dark-background" id="popup" style="display:none;">
+        <img id="artist_step1" src="{% static 'tutorial/artist_step2_1.png' %}"
+        style=" display: none; position: absolute; z-index: 8887; top: 80%; left: 50%; transform: translate(-50%, -50%);"
+        alt="이미지">
+
+        <img id="hand" src="{% static 'tutorial/hand.png' %}"
+        style=" width: 70px; display: none; position: absolute; z-index: 8887; top: 28%; left: 20%; transform: translate(-50%, -50%);"
+        alt="이미지">
+      </div>
+    <div class="content">
+      
       <div class="header">
         <form action="{% url 'user:tutorial_subscribe_artist' %}" method="get">
-          <button class="btn-select">
+          <button class="btn-select" style="position: relative;">
             &nbsp; &nbsp;임영웅 •••
           </button>
         </form>
@@ -62,10 +101,10 @@
       </div>
       <div class="content">
         <div class="artist_name" style="color:black"> 아티스트 임영웅</div>
-      <div class="artist_image">
+      <div class="artist_image" style="position: relative;">
           <img src="{% static 'images/hero.png'%}">
       </div>
-      <div class="custom-box">
+      <div class="custom-box" style="position: relative;">
           <div class="artist_info">
               <div class="artist_members"> <strong>멤버</strong> 솔로</div>
               <div class="artist_debuteDate"> <strong>데뷔</strong> 2016년 8월 16일</div>
@@ -128,6 +167,48 @@
           </div>
         </div>
       </div>
+      <script>
+        const popup = document.getElementById("popup"); //배경 어둡게 
+        const content = document.querySelector('.content');
+        const customBox = document.querySelector('.custom-box'); //보여주고 싶은 영역
+        const artistImage = document.querySelector('.artist_image'); //보여주고 싶은 영역
+        const btnSelect = document.querySelector('.btn-select'); //보여주고 싶은 영역
+        const artistStep1 = document.getElementById("artist_step1"); // 이미지 요소 추가
+        const hand = document.getElementById("hand"); // 이미지 요소 추가
+        const initialScrollPosition = content.scrollTop;
+        // const hiddenImg3 = document.getElementById("hidden-img3"); // 이미지 요소 추가
+    
+        
+    
+    
+      
+        setTimeout(function () {
+                    popup.style.display = "block";
+                    artistImage.style.zIndex = "8888";
+                    customBox.style.zIndex = "8886";
+                    artistStep1.style.display = "block";
+                    content.scrollTop = content.scrollHeight;
+
+                    setTimeout(function () {
+                    popup.style.display = "block";
+                    artistImage.style.zIndex = "1";
+                    customBox.style.zIndex = "1";
+                    artistStep1.style.top = "40%";
+                    hand.style.display = "block";
+                    hand.style.animation = "motion 1s linear infinite alternate";
+                    content.scrollTop = initialScrollPosition;
+                    btnSelect.style.zIndex = "8888";
+                    content.style.overflow = "hidden";
+ 
+                 
+                  }, 12000);
+                 
+              }, 2000);
+    
+        
+    
+    
+       </script>
     </div>
   </body>
 </html>
