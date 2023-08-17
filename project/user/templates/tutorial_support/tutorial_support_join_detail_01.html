@@ -37,24 +37,14 @@
           
           width: 375px;
           height: 100vh;
-          top: 0;
-          left: 0;
+      
         
           z-index: 2;
           display: flex;
-          align-items: center;
-          justify-content: center;
+       
           
       }
-      .hand{ animation: motion 0.4s 
-        linear 0s   
-        infinite alternate; 
-
-      }
-      @keyframes motion {
-        0% {margin-top: -240px;} /* 처음 위치 */
-        100% {margin-top: -220px;} /* 마지막 위치 */
-        }
+    
   </style>
   </head>
   <body>
@@ -62,7 +52,11 @@
     <div class="container" style="position:relative; ">
       
       <div class="dark-background" id="popup" style="display:none;">
-      </div>
+        <img style="  position: relative; z-index: 100000;  left: 50%; transform: translate(-50%, 60%);display:none;" src="{% static 'tutorial/support_step2_1.png'%}" alt="말풍선" class="speech-bubble1">
+     
+        <img style="  position: relative; z-index: 100000;  left: 50%; transform: translate(-50%, 15%);display:none" src="{% static 'tutorial/support_step2_2.png'%}" alt="말풍선" class="speech-bubble2">
+     
+    </div>
       <div class="header">
         <form>
 
@@ -91,7 +85,7 @@
           </form>
         </div>
       </div>
-      <div class="content">
+      <div class="content" style="z-index:1;" >
         <div style="justify-content: row; display: flex; margin-bottom: 10px">
           <img class="back" src="{% static 'images/back.png'%}" alt="이전" />
           <h1 class="support_dtl_h1" style="margin: 22px 0px 0px 60px">
@@ -101,11 +95,12 @@
         <span id="percent-content" style="display: none">80</span>
         <div class="percent"  style="background:#fff">
           <div class="percent-bar" id="percent-bar-content"></div>
-          <img style="  position: absolute; z-index: 100000;  left: 50%; transform: translate(-50%, 10%);display:none;" src="{% static 'images/box_left_up.png'%}" alt="말풍선" class="speech-bubble1">
 
         </div>
+
+     
+
         <div class="detail-container">
-          <img style="  position: absolute; z-index: 100000;  left: 50%; transform: translate(-50%, -90%);display:none" src="{% static 'images/box_left.png'%}" alt="말풍선" class="speech-bubble2">
 
           <div class="title"  style="position: relative; background:#fff">임영웅 생일 카페 후원</div>
           <div class="goal"  style="position: relative; background:#fff">1,000,000원</div>
@@ -138,7 +133,6 @@
           onclick="location.href='{% url 'user:tutorial_support_join_form' %}'">
           모금 정보 작성하기
         </button>
-        <img style="width:70px; height:80px;z-index:100000; left: 280px; position:absolute;display:none;" src="{% static 'images/hand.png'%}" alt="" class="hand">
 
        
       </div>
@@ -263,12 +257,12 @@ const b2 = document.querySelector(".speech-bubble2");
       const enddate= document.querySelector('.enddate');
 
       const copy= document.querySelector('.coppy-Button');
+      content.style.overflow = "hidden";
 
       /*퍼센트바 설명*/
       setTimeout(function () {
         percent.style.zIndex = "9999";
         b1.style.display = "block";
-
         popup.style.display = "block";
       }, 1000);
       /*내용 설명*/
@@ -280,26 +274,29 @@ const b2 = document.querySelector(".speech-bubble2");
         percent.style.zIndex = "1";
         b1.style.display = "none";
         b2.style.display = "block";
+        b2.style.zIndex="10000";
 
-      }, 2000);
+      }, 7000);
       /*은행계좌설명*/
       setTimeout(function() {
         content.scrollTop = content.scrollHeight; 
         account.style.zIndex = "9999";
-        b2.style.transform = "translate(-50%, 3%)";
-        b2.style.top = "300px";
+        b2.style.top = "160px";
 
         title.style.zIndex = "1";
         goal.style.zIndex = "1";
         detail.style.zIndex = "1";
         enddate.style.zIndex = "1";
-      
-      }, 3000);
+        b2.src = "{% static 'tutorial/support_step2_3.png'%}";
+
+      }, 13000);
          
       copy.addEventListener('click', function(){
         button.style.zIndex = "9999";
-        b2.style.top = "40px";
+        b2.style.top = "280px";
         account.style.zIndex = "1";
+        b2.src = "{% static 'tutorial/support_step2_4.png'%}";
+        hand.style.display="block";
 
       })
       </script>
