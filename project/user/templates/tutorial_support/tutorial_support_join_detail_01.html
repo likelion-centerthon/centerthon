@@ -44,15 +44,33 @@
        
           
       }
-    
+      
+      .countdown-circle {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+       
+        position: relative;
+        animation: countdown-circle-shrink 10s linear infinite;
+        background:#fff;
+      }
+      
   </style>
   </head>
   <body>
 
     <div class="container" style="position:relative; ">
       
-      <div class="dark-background" id="popup" style="display:none;">
-        <img style="  position: relative; z-index: 100000;  left: 50%; transform: translate(-50%, 60%);display:none;" src="{% static 'tutorial/support_step2_1.png'%}" alt="말풍선" class="speech-bubble1">
+        <div class="dark-background" id="popup" style="display:none;">
+            <div  class="countdown-container"style="font-size:35px; font-weight:700;z-index: 11199;position: absolute; width:80px;  transform: translate(10%, 90%); margin-left:280px; margin-top:-25px; padding:10px; ">
+                <div class="countdown-circle" id="countdown-circle">
+                  <div class="countdown-time" id="countdown-time" style="text-align:center; line-height:150%;"></div>
+                </div>
+              
+              </div>
+      
+     
+            <img style="  position: relative; z-index: 100000;  left: 50%; transform: translate(-50%, 60%);display:none;" src="{% static 'tutorial/support_step2_1.png'%}" alt="말풍선" class="speech-bubble1">
      
         <img style="  position: relative; z-index: 100000;  left: 50%; transform: translate(-50%, 15%);display:none" src="{% static 'tutorial/support_step2_2.png'%}" alt="말풍선" class="speech-bubble2">
      
@@ -259,6 +277,26 @@ const b2 = document.querySelector(".speech-bubble2");
       const copy= document.querySelector('.coppy-Button');
       content.style.overflow = "hidden";
 
+      /*시간 계산 함수*/
+        const countdownTime = document.getElementById("countdown-time");
+        const countdownContainer = document.querySelector(".countdown-container");
+
+      function startCountdown(seconds) {
+      
+        let time = seconds;
+        const countdownInterval = setInterval(function () {
+          time -= 1;
+          if (time >= 0) {
+            countdownTime.innerHTML = `${time}<span style="font-size:18px;">초</span>`;
+          } else {
+            clearInterval(countdownInterval);
+          }
+        }, 1000);
+      }
+      
+
+      startCountdown(7);
+
       /*퍼센트바 설명*/
       setTimeout(function () {
         percent.style.zIndex = "9999";
@@ -275,8 +313,12 @@ const b2 = document.querySelector(".speech-bubble2");
         b1.style.display = "none";
         b2.style.display = "block";
         b2.style.zIndex="10000";
+      }, 8000);
+      setTimeout(()=>{
+        startCountdown(7);
+    
+    }, 7000)
 
-      }, 1000);
       /*은행계좌설명*/
       setTimeout(function() {
         content.scrollTop = content.scrollHeight; 
@@ -288,8 +330,9 @@ const b2 = document.querySelector(".speech-bubble2");
         detail.style.zIndex = "1";
         enddate.style.zIndex = "1";
         b2.src = "{% static 'tutorial/support_step2_3.png'%}";
+        countdownContainer.style.display="none";
 
-      }, 13000);
+      }, 15000);
          
       copy.addEventListener('click', function(){
         button.style.zIndex = "9999";
@@ -299,6 +342,10 @@ const b2 = document.querySelector(".speech-bubble2");
         hand.style.display="block";
 
       })
+
+   
+
+      
       </script>
   </body>
 </html>

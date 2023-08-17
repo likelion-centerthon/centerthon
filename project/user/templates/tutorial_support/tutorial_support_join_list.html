@@ -15,15 +15,27 @@
           align-items: center;
           justify-content: center;
       }
-      .hand{ animation: motion 0.4s 
+      .hand{ animation: motion 1s 
         linear 0s   
         infinite alternate; 
 
       }
       @keyframes motion {
         0% {margin-top: -225px;} /* 처음 위치 */
-        100% {margin-top: -215px;} /* 마지막 위치 */
+        100% {margin-top: -205px;} /* 마지막 위치 */
         }
+        .countdown-circle {
+          width: 60px;
+          height: 60px;
+          border-radius: 50%;
+         
+          position: relative;
+          animation: countdown-circle-shrink 10s linear infinite;
+          background:#fff;
+        }
+        
+     
+        
   </style>
     <meta charset="UTF-8" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -53,20 +65,25 @@
 
     <title>서포트 참여</title>
     {% include 'head.html' %}
-   
+  
   </head>
   <body>
     <div class="container" style="position:relative">
 
       <div class="dark-background" id="popup" style="display:none;">
-       </div>
+        
+      </div>
+
+
       <div class="header ">
         <form>
           <button class="btn-select" type="submit">
             &nbsp; &nbsp;임영웅 •••
           </button>
         </form>
+
         <div class="icon">
+
           <form>
             <button type="submit">
               <img
@@ -102,7 +119,7 @@
         </div>
 
         <div class="supporting-container">
-          
+
             <div class="supporting" style="height: 360px; width: 375px; overflow-y: auto; overflow-x:hidden;">
 
               <div class="support_list_box" onclick="location.href='{% url 'user:tutorial_support_join_detail_1' %}'">
@@ -121,7 +138,7 @@
 
             </div>
         
-            <img style="width:70px; height:70px;z-index:100000; left: 260px; op:-230px;position:absolute;display:none;" src="{% static 'images/hand.png'%}" alt="손" class="hand">
+            <img style="width:70px; height:70px;z-index:100000; left: 260px; position:absolute;display:none;" src="{% static 'images/hand.png'%}" alt="손" class="hand">
             <img style="  position: absolute; z-index: 100000;  left: 50%; transform: translate(-50%, -70%);display:none" src="{% static 'tutorial/support_step1.png'%}" alt="말풍선" class="speech-bubble">
 
         </div>
@@ -192,8 +209,7 @@
           supportbox.style.zIndex = "9999";
         }, 1000); 
       
-      
-        
+       
       </script>
   </body>
 
