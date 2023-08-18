@@ -13,8 +13,8 @@
         <option value="자유">자유</option>
     </select>
     <input class="post-crt-title" type="text" name="title" value="{{ post.title }}" placeholder="클릭하여 제목을 작성해 주세요" required>
-    <div style="position: relative; border:none; word-break: break-all;">
-        <textarea class="post-crt-detail"  name="contents" style="padding-top: 15px;" placeholder="클릭하여 내용을 입력해 주세요" required>{{ post.contents }}</textarea>
+    <div style="position: relative; border:none;height:auto; word-break:break-all;">
+        <textarea class="post-crt-detail" name="contents" style="padding-top: 15px;" placeholder="클릭하여 내용을 입력해 주세요" required>{{ post.contents }}</textarea>
         <div class="select-wrapper" style="border:none; margin-top:-57px;">
             <!-- <div class="addImg-Button" > -->
                 <label for="custom-file" class="custom-addImg-Button">사진</label>
@@ -50,7 +50,7 @@
     title.addEventListener("input", checkInputs);
     detail.addEventListener("input", checkInputs);
     select.addEventListener("change", checkInputs);
-
+    imageInput.addEventListener("change", checkInputs);
 
     function goBack() {
         window.history.back();

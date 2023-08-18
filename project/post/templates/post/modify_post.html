@@ -29,14 +29,16 @@
     const title = document.querySelector('.post-crt-title');
     const detail = document.querySelector('.post-crt-detail');
     const select = document.querySelector('.post-crt-select');
+    const imageInput = document.querySelector('#custom-file'); // Get the image input element
     const writeButton = document.querySelector('.write-Button');
 
     function checkInputs() {
         const titleValue = title.value.trim();
         const detailValue = detail.value.trim();
         const selectValue = select.value;
+        const imageValue = imageInput.value; // Get the value of the image input
 
-        if (titleValue !== "" && detailValue !== "" && selectValue !== "") {
+        if (titleValue !== "" && detailValue !== "" && selectValue !== "" && imageValue !== "") {
             writeButton.disabled = false;
             writeButton.style.backgroundColor = "#BC67FF";
             writeButton.innerHTML = "작성하기";
@@ -50,11 +52,13 @@
     title.addEventListener("input", checkInputs);
     detail.addEventListener("input", checkInputs);
     select.addEventListener("change", checkInputs);
-
+    imageInput.addEventListener("change", checkInputs); // Listen for changes in the image input
 
     function goBack() {
         window.history.back();
     }
 </script>
+
+
 {% endblock %}
 {% endwith %}
