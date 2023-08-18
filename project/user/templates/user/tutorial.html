@@ -1,7 +1,7 @@
 {% extends 'base_tutorial.html' %}
 {% load static %}
 {% block content %}
-<h2 style="margin:100px 30px 40px 30px;font-size:18px;" class="ment"></h2>
+<h2 style="margin:100px 30px 40px 30px;font-size: 18px; align-items: center; text-align: center;font-size:18px;" class="ment"></h2>
 
     <div class="button-container"style="margin-top:130px;">
         <!-- <img class="logo" src="{% static 'images/star_logo.png' %}"></img> -->
@@ -9,9 +9,7 @@
         <a class="button" href="{% url 'artist:artist_list' category='none' %}">아티스트 선택하러 가기</a>
     </div>
 <script>
-    function goBack() {
-        window.history.back();
-        }
+
         const ment=document.querySelector('.ment');
         ment.innerHTML="저희 서비스가 처음이라면 <br/> 앱 사용법 익히러 가기 버튼을 <br/>클릭하세요";
 </script>

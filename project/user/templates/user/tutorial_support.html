@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
 <img class="back" style="  left: 3px;top: 50px;"src="{% static 'images/back.png'%}" alt="이전" onclick="location.href='{% url 'user:tutorial_next' %}'" style="margin-left:-45px;"></img>
-<h2 style="margin:10px 30px 40px 30px;font-size:18px;" class="ment"></h2>
+<h2 style="margin:10px 30px 40px 30px;font-size:18px; text-align: center;" class="ment"></h2>
 
 <div class="button-container" style="margin-top:80px;">
     <a class="button" href="{% url 'user:tutorial_support_first' %}">서포트 설명듣기</a>

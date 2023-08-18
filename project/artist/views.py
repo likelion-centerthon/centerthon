@@ -13,7 +13,7 @@ def artist_list(request, category):
 
     if user.is_authenticated:
         if request.method == 'GET': # 로그인 시 get 요청
-            artists = Artist.objects.all()
+            artists = Artist.objects.filter(category='트로트')
 
         if request.method == 'POST': # 다른 아티스트 보러가기 시 post 요청
             if category == 'none':
