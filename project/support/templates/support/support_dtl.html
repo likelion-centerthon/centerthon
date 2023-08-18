@@ -127,7 +127,6 @@
   <div  class="block-chain-container"  id="blockchain-{{ bank.pk}}" onclick="toggleBlockchain({{ bank.pk }})">
     <div style="display:flex; position:row;text-align: center;">
     <input style="font-size:20px;" type="text" class="form-input" value="{{ bank.depositor }}" readonly><br>
-    <input style="font-size:18px; margin-top:10px; margin-left:-25px;" type="text" class="form-input" value="-{{ bank.credit }} " readonly><br>
     </div>
     <input style="color: #949494; font-size:18px;" type="text" class="form-input" value="{{ bank.creditTime|date:"Y-m-d A h:i" }}" readonly><br>
   </div>
