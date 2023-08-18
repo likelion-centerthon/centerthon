@@ -52,7 +52,7 @@
 
     <h1>{{ meeting.artist.artistName }}</h1>
     <div class="meeting-grid-container" >
-    <div class="meeting-grid" style="height:auto;">
+    <div class="meeting-grid">
     {% for meeting in meetings_completed %}
         <div class="meeting-item"onclick="location.href='{% url 'meeting:meeting_detail' meeting_id=meeting.id artist_id=artist_id%}'">
             {% if meeting.image %}

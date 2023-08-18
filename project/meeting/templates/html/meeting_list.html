@@ -107,13 +107,16 @@
       <img
         src="{{ meeting.image.url }}"
         alt="{{ meeting.title }} Image"
-        style="width: 140px; height: 130px"
       />
       {% else %}
       <p>No image available</p>
       {% endif %}
       <div>
-        <p>{{ meeting.title }}</p>
+        <p style=" 
+        width: 120px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;">{{ meeting.title }}</p>
         <p>{{ meeting.peopleNm }}명</p>
       </div>
     </div>
