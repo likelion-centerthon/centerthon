@@ -6,20 +6,28 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
-    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-    <link rel="stylesheet" href="{% static 'css/base_alert.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/alert_list.css' %}" />
-  
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+      <link rel="stylesheet" href="{% static 'css/base.css' %}?after" />
+      <link rel="stylesheet" href="{% static 'css/header.css' %}?after" />
+      <link rel="stylesheet" href="{% static 'css/footer.css' %}?after" />
+      <link rel="stylesheet" href="{% static 'css/alert_list.css' %}?after" />
+
+
+
       <title>별너울</title>
-    {% include 'head.html' %}
-   </head>
+      {% include 'head.html' %}
+    </head>
    <body>
-   <div class="container" >
-      
-    <div class="content">
-      {% block content %}
-      {% endblock %}
-    </div>
-    </div>
-    </body>
-    </html>
+       <div class="container" >
+           {% include 'header.html' %}
+
+           <div class="content">
+            
+               {% block content %}
+               {% endblock %}
+           </div>
+          {% include 'footer.html' %}
+       </div>
+
+   </body>
+</html>

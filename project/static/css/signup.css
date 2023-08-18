@@ -20,12 +20,14 @@ form {
 }
 
 label {
-    margin-bottom: 10px;
+    margin-bottom: 16px;
     margin-top: 10px;
+    font-size: 20px;
 }
 
 h2{text-align: center;
     margin-left: 40px;
+    font-size: 26px;
     
 }
 
@@ -38,6 +40,7 @@ input[type="submit"] {
     border: 1px solid #ccc;
     border-radius: 10px;
     margin-bottom: 20px;
+    font-size: 16px; /* 입력 필드 및 제출 버튼의 글씨 크기 */
 }
 
 input[type="submit"] {
@@ -45,20 +48,29 @@ input[type="submit"] {
     color: white;
     cursor: pointer;
     font-family: 'Noto Sans KR', sans-serif;
-    font-size: 20px;
+    font-size: 18px;
     border: none;
     transition: background-color 0.3s;
     width: 40%;
     border-radius: 10px;
     margin-left: 170px;
+    font-weight: 500;
 }
 
 input[type="submit"]:hover {
-    background-color: rgba(217, 217, 217, 1);
+    background-color: rgb(255, 255, 255);
+    color: rgba(188, 103, 255, 1);
+    border: 1px solid #bc67ff;
+    
 }
 
 .error {
     color: #f44336;
     margin-top: -10px;
     margin-bottom: 20px;
+    font-size: 16px; /* 오류 메시지의 글씨 크기 */
+}
+::placeholder {
+    font-size: 16px; /* 플레이스홀더 글자 크기 조정 */
+    font-weight: 400;
 }

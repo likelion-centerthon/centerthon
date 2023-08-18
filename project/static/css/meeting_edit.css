@@ -1,7 +1,7 @@
 .meeting-h1 {
   font-family: 'Noto Sans KR', sans-serif;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 700;
   font-size: 24px;
   line-height: 147%;
   text-align: center;
@@ -19,6 +19,7 @@
   border: 1px solid #b3b1b0;
   border-radius: 16px;
   margin: 10px 3px 3px 22px;
+  
 }
 
 .custom-date{
@@ -29,6 +30,7 @@
   border: 1px solid #b3b1b0;
   border-radius: 16px;
   margin: 10px 10px 6px 23px;
+  text-indent: 6px;
 }
 
 .detail1-container {
@@ -113,7 +115,7 @@ color: #000000;
 text-indent: 13px;
 }
 .select-wrapper1 {
-margin: -70px 0px 0px 270px;
+margin: -54px 0px 0px 267px;
 z-index: 1;
 
 }

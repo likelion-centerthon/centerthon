@@ -2,10 +2,8 @@
 {% load static %}
 {% block content %}
     <div class="content-1">
-        <div class="e0_804"></div>
-        <a href="{% url 'user:oauth' %}" class="e0_805">카카오톡으로 로그인</a>
-        <!-- <div class="e0_807" style="background-image: url({% static 'images/kakaologo.png' %});"></div> -->
-        <span class="e0_808">카카오톡 아이디로 로그인하세요!</span>
-        <div class="e0_806"></div>
+        <img class="logo" src="{% static 'images/logo_title.png' %}"></img>
+        <a href="{% url 'user:oauth' %}" class="kakao">카카오톡으로 로그인         <img class="kakao_icon" src="{% static 'images/kakao_logo.png' %}"></img></a>
+        <span class="kakao_ment">카카오톡 아이디로 로그인하세요!</span>
     </div>
 {% endblock %}

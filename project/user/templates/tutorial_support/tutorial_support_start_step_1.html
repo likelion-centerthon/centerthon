@@ -26,12 +26,34 @@
 
     <title>별너울</title>
     {% include 'head.html' %}
+    <style>
+        .countdown-circle {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+       
+        position: relative;
+        animation: countdown-circle-shrink 10s linear infinite;
+        background:#d9d9d9;
+      }
+    </style>
   </head>
   <body>
     <div class="container">
       <div class="content">
+     
+      
+  
         <div style="margin: 60px 0">
           <h1 class="support_h1">서포트 계좌 인증</h1>
+          <div  class="countdown-container"style="font-size:35px; z-index:10px;font-weight:700; width:80px;   margin-left:280px;padding:10px; ">
+            <div class="countdown-circle" id="countdown-circle">
+              <div class="countdown-time" id="countdown-time" style="text-align:center; line-height:150%;">
+                7<span style="font-size:18px;">초</span>
+              </div>
+            </div>
+           
+          </div>
           <h2 style="font-size: 24px; font-weight: 400; margin-left: 25px">
             1원을 보냈습니다.
           </h2>
@@ -84,6 +106,8 @@
         updateCountdown();
         const interval = setInterval(updateCountdown, 1000);
       });
+
+
       const popup = document.getElementById("popup"); //배경 어둡게 
       const supportbox = document.querySelector('.support_list_box'); //보여주고 싶은 영역
     
@@ -91,10 +115,26 @@
       const content = document.querySelector('.content');
       content.style.overflow = "hidden";
 
-      setTimeout(function () { //4초 뒤에 배경 어둡게 + 영역 보여짐
-        popup.style.display = "block"; 
-        supportbox.style.zIndex = "9999";
-      }, 4000); 
+    
+
+      /*시간 계산 함수*/
+const countdownTime = document.getElementById("countdown-time");
+const countdownContainer = document.querySelector(".countdown-container");
+
+function startCountdown(seconds) {
+
+let time = seconds;
+const countdownInterval = setInterval(function () {
+  time -= 1;
+  if (time >= 0) {
+    countdownTime.innerHTML = `${time}<span style="font-size:18px;">초</span>`;
+  } else {
+    clearInterval(countdownInterval);
+  }
+}, 1000);
+}
+
+startCountdown(7);
     </script>
   </body>
 </html>
