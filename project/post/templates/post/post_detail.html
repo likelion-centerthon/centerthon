@@ -10,8 +10,9 @@
     transform: translateX(-50%);">게시판</h1>
 </div>
 <div class="post-dtl-container">
-  <div class="post-dtl-title">제목:{{ post.title }}</div>
-
+  <div style="word-break: break-all; height: auto;">
+    <div class="post-dtl-title">제목:{{ post.title }}</div>
+</div>
         <div class="post-dtl-name">{{ post.author.userName }}</div>
    
     <div style="display: flex; position: row;  ">
