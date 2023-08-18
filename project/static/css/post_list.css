@@ -2,6 +2,7 @@
 .post-title {
   
   height: 30px;
+  width: 180px;
   overflow: hidden;
   line-height: 22px;
   font-family: 'Noto Sans KR', sans-serif;
@@ -9,6 +10,10 @@
   font-weight: 600;
   color: #bc67ff;
   margin: 5px 0px 0px 10px;
+  overflow: hidden; 
+  text-overflow: ellipsis; 
+  white-space: nowrap; 
+
 }
 .post-title:hover{
   color: #000000;

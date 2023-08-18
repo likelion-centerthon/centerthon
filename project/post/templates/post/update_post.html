@@ -14,8 +14,9 @@
     </select>
     <input class="post-crt-title" type="text" name="title" value="{{ post.title }}" placeholder="클릭하여 제목을 작성해 주세요">
     <div style="position: relative; border:none;">
-        <input class="post-crt-detail" type="textarea" name="contents" value="{{ post.contents }}" style="padding-top: 15px;" placeholder="클릭하여 내용을 입력해 주세요">
+        <textarea class="post-crt-detail" name="contents" style="padding-top: 15px;word-break: break-all;" placeholder="클릭하여 내용을 입력해 주세요">{{ post.contents }}</textarea>
         <div class="select-wrapper" style="border:none; margin-top:-50px;">
+            
             <div class="addImg-Button">
                 <label for="custom-file" class="custom-addImg-Button">사진</label>
                 <input style="display:none" type="file" name="image" value="{{ post.image }}" id="custom-file">
@@ -24,9 +25,8 @@
     </div>
     <button type="submit" class="write-Button" style="background:#b3b1b0" disabled>항목을 모두 작성해 주세요</button>
 </form>
-
 <script>
-    const form = document.querySelector('form');
+const form = document.querySelector('form');
     const inputs = form.querySelectorAll('input, select');
     const writeButton = form.querySelector('.write-Button');
 
@@ -44,8 +44,7 @@
             writeButton.style.backgroundColor = "#BC67FF";
             writeButton.innerHTML = "작성하기";
         } else {
-            startButton.disabled = true;
-            
+            writeButton.disabled = true;
         }
     }
 

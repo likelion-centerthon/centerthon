@@ -4,12 +4,14 @@
 {% block content %}
 <div style="  justify-content:row;  display: flex; ">
   <img class="back" src="{% static 'images/back.png'%}" alt="이전" onclick="goBack()"></img>
-  <h1 class="support_dtl_h1" style="position: sticky;
+  <h1 class="post_dtl_h1" style="position: sticky;
     top: 0;
     left: 50%;
-    transform: translateX(-50%);">{{ post.title }}</h1>
+    transform: translateX(-50%);">게시판</h1>
 </div>
 <div class="post-dtl-container">
+  <div class="post-dtl-title">제목:{{ post.title }}</div>
+
         <div class="post-dtl-name">{{ post.author.userName }}</div>
    
     <div style="display: flex; position: row;  ">
@@ -28,14 +30,15 @@
       </form>
       {% endif %}
     </div>
+    
     <div class="post-dtl-line"></div>
+        <div class="post-dtl-contents">{{ post.contents }}</div>
 
     {% if post.image %}
-    <img class="post-dtl-img" src="{{ post.image.url }}" width="150" height="100">
+    <div class="post-dtl-img-container">
+      <img class="post-dtl-img" src="{{ post.image.url }}" alt="이미지">
+    </div>
     {% endif %}
-    <div class="post-dtl-contents">{{ post.contents }}</div>
-
-    
 
 </div>
 
@@ -62,7 +65,7 @@
             </form>
             {% endif %}
         </div>
-        <div style="font-size: 20px; margin: -2px 0px 0px 20px;">{{ comment.contents }}</div>
+        <div style="font-size: 20px; margin: -2px 0px 0px 20px; word-break: break-all;">{{ comment.contents }}</div>
     </div>
     {% endfor %}
 </div>
