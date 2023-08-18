@@ -62,7 +62,7 @@
         opacity: 100;
     }
   
-        .hand{
+        .box{
         width: 100%;
         height: 120px;
         text-align: center;
@@ -84,23 +84,22 @@
 
 </head>
 <body>
-
 <div class="container" >
  <div class="content">
-  <h2 style="margin:80px 30px 40px 30px;" class="ment"> 튜토리얼 들어가기 전에 아티스트 게시판 설명 보면서 간단한 연습 게임해볼까요?</h2>
+  <h2 style="margin:45px 30px 40px 30px;font-size:22px;" class="ment"></h2>
   
-   <button class="tooltip-link"  data-tooltip="
-   
-   아티스트 페이지에서는 여러분이 좋아하는 아티스트의 SNS와 정보를 확인할 수 있어요">
-    <img src="{% static 'images/star.png'%}" alt="말풍선" class="star"  style="width:180px;height:180px; ">
-</button>
-<img style="width:70px; height:70px;  position:relative; margin-left:60px; margin-top:-450px;" src="{% static 'images/hand.png'%}" alt="" class="hand">
+   <img style=" position:relative; margin-left:52px;display:none;" class="bubble"src="{% static 'tutorial/artist_first.png'%}" alt="" >
+
+   <img src="{% static 'images/star.png'%}" alt="별" class="star"  style="width:180px;height:180px; margin-left:90px; ">
+
+<img style="width:70px; height:70px;  position:relative; margin-left:145px; margin-top:-350px;top:60px;" src="{% static 'images/hand.png'%}" alt="" class="box">
+
 <button  class="button" style=" width: 300px; 
 height: 40px;
 box-shadow: 0px 0px 4px #bc67ff;
 border-radius: 50px;
 text-align: center;
-margin: 0 auto;
+margin: 20 auto;
 font-size: 20px;
 line-height: 24px;
 color: #555555;
@@ -115,20 +114,27 @@ border:2px solid white;"onclick="location.href='{% url 'user:tutorial_artist' %}
      
     </div>
 
-    <script>
-      const ment=document.querySelector('.ment');
-      const hand=document.querySelector('.hand');
-  
-      setTimeout(function(){
-        ment.innerHTML="노란색 손이 가리키는 캐릭터 클릭 후 아티스트 게시판 설명을 읽어보세요.";
-      },5000)
-      setTimeout(function(){
-          ment.innerHTML="게시판 설명을 다 읽었다면 아티스트 튜토리얼을 진행하러 넘어가기 버튼을 클릭하세요.";
-          hand.style.top = "120px"; 
-        },15000)
-        
-   </script>
  </div>
+ </div>
+ 
+<script>
+  const star=document.querySelector('.star');
+  const bubble=document.querySelector('.bubble');
 
+    const ment=document.querySelector('.ment');
+ment.style.textAlign="center";
+    ment.innerHTML="튜토리얼 들어가기 전에 <br/>아티스트 페이지 설명 보면서 <br/>간단한 연습 게임해볼까요?";
+
+    setTimeout(function(){
+      ment.innerHTML="손이 가리키는 별을 클릭 후  <br/>아티스트 페이지에 대한 설명을 <br/>읽어보세요.";
+    },3000)
+    setTimeout(function(){
+      ment.innerHTML="게시판 설명을 다 읽었다면  <br/>아티스트 튜토리얼을 진행하러  <br/>넘어가기 버튼을 클릭하세요.";
+    }
+    ,13000)
+    star.addEventListener('click', function(){
+bubble.style.display="block";
+    })
+ </script>
  </body>
  </html>

@@ -350,7 +350,7 @@ const countdownInterval = setInterval(function () {
 }
 
 
-startCountdown(7);
+startCountdown(11);
       
       setTimeout(function () {
         percent.style.zIndex = "9999";
@@ -365,10 +365,7 @@ startCountdown(7);
       }, 1000);
     
     
-      setTimeout(()=>{
-        startCountdown(10);
-    
-    }, 7000)
+   
       setTimeout(function () {
         content.scrollTop = content.scrollHeight; 
         container.style.zIndex="9999";
@@ -378,10 +375,13 @@ startCountdown(7);
         b1.style.display = "none";
         b2.style.display = "block";
         b2.style.top = "650px";
+
         
-        
-      }, 8000);
-    
+      }, 12000);
+    setTimeout(function(){
+      startCountdown(11);
+
+    }, 11000)
      setTimeout(function(){
       b2.src = "{% static 'tutorial/support_step4_3.png'%}";
       const blockchainDiv = document.getElementById("blockchain-11");
@@ -392,7 +392,7 @@ startCountdown(7);
 
       };
       countdownContainer.style.display="none";
-     }, 18000)
+     }, 23000)
     </script>
   </body>
 </html>
