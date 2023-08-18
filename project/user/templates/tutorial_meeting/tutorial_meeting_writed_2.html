@@ -82,9 +82,7 @@
       <div class="dark-background" id="popup" style="display:none;">
         <div  class="countdown-container"style="font-size:35px; font-weight:700;z-index: 11199;position: absolute; width:80px;  transform: translate(10%, 90%); margin-left:280px; margin-top:-25px; padding:10px; ">
           <div class="countdown-circle" id="countdown-circle">
-            <div class="countdown-time" id="countdown-time" style="text-align:center; line-height:150%;">
-             
-            </div>
+            <div class="countdown-time" id="countdown-time" style="text-align:center; line-height:150%;"></div>
           
           </div>
         
@@ -252,7 +250,7 @@ document.getElementById("support-img").addEventListener("mouseover", function ()
   const meeting = document.querySelector('.meeting-writed'); //보여주고 싶은 영역 
 
 
-  startCountdown(10);
+  startCountdown(11);
   setTimeout(function () { 
     popup.style.display = "block";
     hiddenImg.style.display = "block"; // 이미지를 보이도록 스타일 변경
@@ -270,7 +268,7 @@ document.getElementById("support-img").addEventListener("mouseover", function ()
     button.style.zIndex = "8888";
     meeting.style.zIndex = "1";
     countdownContainer.style.display="none";
-    }, 10000);
+    }, 11000);
   }, 1000);
 
 
