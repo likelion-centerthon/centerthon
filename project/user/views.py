@@ -61,21 +61,14 @@ class KakaoCallback(View):
         user_info=requests.get(kakao_user_api, headers={"Authorization":f"Bearer ${access_token}"}).json()
         # print(user_info)
         if not User.objects.filter(kakaoId=user_info['id']).exists():
-            if user_info['kakao_account']['gender']:
-                user = User.objects.create(
-                    kakaoId=user_info['id'],
-                    userName=user_info['properties']['nickname'],
-                    gender=user_info['kakao_account']['gender'],
-                    last_login=timezone.now(),
-                    password="1234",
-                )
-            else:
-                user = User.objects.create(
-                    kakaoId=user_info['id'],
-                    userName=user_info['properties']['nickname'],
-                    last_login=timezone.now(),
-                    password="1234",
-                )
+                    if not User.objects.filter(kakaoId=user_info['id']).exists():
+            user = User.objects.create(
+                kakaoId=user_info['id'],
+                userName=user_info['properties']['nickname'],
+                last_login=timezone.now(),
+                password="1234",
+                gender='female'
+            )
             return redirect('user:signup', pk=user.pk)
         # 로그인
         user = User.objects.get(kakaoId=user_info['id'])
