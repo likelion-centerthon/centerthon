@@ -61,7 +61,6 @@ class KakaoCallback(View):
         user_info=requests.get(kakao_user_api, headers={"Authorization":f"Bearer ${access_token}"}).json()
         # print(user_info)
         if not User.objects.filter(kakaoId=user_info['id']).exists():
-                    if not User.objects.filter(kakaoId=user_info['id']).exists():
             user = User.objects.create(
                 kakaoId=user_info['id'],
                 userName=user_info['properties']['nickname'],
