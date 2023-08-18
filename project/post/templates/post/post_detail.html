@@ -54,7 +54,7 @@
     
   </form>
     {% for comment in comments %}
-    <div class="post-comment-box">
+    <div class="post-comment-box" style="height:auto; word-break:all-break;">
         <div style="display: flex; position: row; margin: 5px 0px 0px 20px;">
             <div>{{ comment.author.userName }}</div>
             <div style="color: #858585; margin-left: 5px;">{{ comment.regTime|date:"Y.m.d H:i" }}</div>
