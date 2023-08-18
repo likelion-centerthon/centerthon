@@ -2,8 +2,9 @@
 {% load static %}
 {% block content %}
 <img class="back" style="  left: 3px;top: 50px;"src="{% static 'images/back.png'%}" alt="이전" onclick="location.href='{% url 'user:tutorial_next' %}'" style="margin-left:-45px;"></img>
+<h2 style="margin:10px 30px 40px 30px;font-size:18px;" class="ment"></h2>
 
-<div class="button-container" style="margin-top:200px;">
+<div class="button-container" style="margin-top:80px;">
     <a class="button" href="{% url 'user:tutorial_meeting_first' %}">모임 설명듣기</a>
     <a class="button" href="{% url 'user:tutorial_meeting_list' %}">모임 참여</a>
     <a class="button" href="{% url 'user:tutorial_meeting_list2' %}">모임 작성</a>
@@ -13,6 +14,9 @@
     function goBack() {
         window.history.back();
         }
+        
+        const ment=document.querySelector('.ment');
+        ment.innerHTML="서비스 이용 방법을 <br/> 자세히 살펴보고 도움 받고싶다면 <br/>설명듣기 버튼을 클릭하세요";
 </script>
 
 {% endblock %}
