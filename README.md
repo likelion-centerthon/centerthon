@@ -1,4 +1,4 @@
-<img width="122" alt="스크린샷 2023-08-24 오전 12 34 43" src="https://github.com/likelion-centerthon/centerthon/assets/86940801/698fe2eb-2b8f-458b-b04e-bc6bbef45659" align="left"> <br>
+<img width="122" alt="스크린샷 2023-08-24 오전 12 34 43" src="https://github.com/likelion-centerthon/centerthon/assets/86940801/698fe2eb-2b8f-458b-b04e-bc6bbef45659" align="left">
 
 ```
 <별너울>은 고령층을 위한 특별한 서비스로, 덕질을 통해 흥미로운 디지털 활용 경험을
